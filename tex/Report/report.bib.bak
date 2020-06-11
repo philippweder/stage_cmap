@@ -70,4 +70,16 @@
   doi       = {10.1007/978-1-4419-9982-5},
 }
 
+@Book{Lounesto2006,
+  author    = {Lounesto, Pertti},
+  title     = {Clifford Algebras and Spinors},
+  year      = {2006},
+  date      = {2006-06-15},
+  publisher = {Cambridge University Press},
+  isbn      = {0521005515},
+  pagetotal = {352},
+  url       = {https://www.ebook.de/de/product/2991827/pertti_lounesto_clifford_algebras_and_spinors.html},
+  ean       = {9780521005517},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

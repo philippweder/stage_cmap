@@ -25,7 +25,6 @@ and for the angular part of the solution
 at any point in time $t \in I$. Eventually, we can rigorously state the following symmetry property of the control system (\ref{eq:dynamical system}) with respect to rotations:
 
 \begin{condition}[Rotational invariance]
-\label{cond:rotational invariance}
 If $\gamma(c_0, R_0, \xi)$ is a solution of the control system (\ref{eq:dynamical system}) then so is $\gamma(c_0, R R_0, \xi)$ and (\ref{eq:spatial rotational invariance}) and (\ref{eq: angular rotational invariance}) hold.
 \end{condition}
 
@@ -112,7 +111,6 @@ as desired.
 With this lemma at hand, we can now finally state the following
 
 \begin{condition}[Swap $(||i \leftrightsquigarrow ||j)$]
-\label{cond:swap}
 Let the initial position be $p_0 := (c_0, I)$. If $\gamma(c_0, I, P_{ij} \xi)$ is a solution of the control system (\ref{eq: control system}), then so is $\gamma(S_{ij}c_0, I, \xi)$ and the following relations hold
 \begin{equation}
 	\gamma_c(c_0, I, P_{ij} \xi) = S_{ij} \gamma_c(S_{ij}c_0, I, \xi)
@@ -124,15 +122,6 @@ and
 \end{condition}
 To avoid chaos in our notation, we treat the the spatial and angular parts now separately. For the spatial part, we find
 \begin{proposition}
-If the control system (\ref{eq: control system}) is invariant under the swap $(||i \leftrightsquigarrow ||j)$ and $T_{\xi} \M \simeq \R^4$ for all $\xi \in \M$, then for all $\xi \in \M$
-\begin{align}
-	 F_c(P_{ij} \xi) = S_{ij} F_c(\xi) P_{ij}.
-\end{align}
-\end{proposition}
+If the control system (\ref{eq: control system}) is invariant under the swap $(||i \leftrightsquigarrow ||j)$ and $T_{\xi} \M \simeq \R^4$ for all $\xi \in \M$, then
 
-\begin{proof}
-Let $\gamma_c(c_0, R_0, P_{ij} \xi)$ be the spatial part of any solution of the control problem (\ref{eq: control system}). The hypothesis of rotational invariance, i.e. (\ref{eq:spatial rotational invariance}), implies that
-\begin{equation}
-	\gamma(c_0, R_0, P_{ij} \xi) = R_0^T \gamma(c_0, I, P_{ij} \xi) - (R_0^T - I)c_0.
-\end{equation}
-\end{proof}
+\end{proposition}

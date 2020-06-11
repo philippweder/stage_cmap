@@ -71,6 +71,39 @@
       \verb 10.3934/dcdsb.2013.18.1189
       \endverb
     \endentry
+    \entry{Alouges2017}{article}{}
+      \name{author}{2}{}{%
+        {{hash=bbaa542e639eb60a359cc0adda7e7092}{%
+           family={Alouges},
+           familyi={A\bibinitperiod},
+           given={Fran{ç}ois},
+           giveni={F\bibinitperiod}}}%
+        {{hash=afeb9c4b568a0a9ea411428a30a5ef2e}{%
+           family={Fratta},
+           familyi={F\bibinitperiod},
+           given={Giovanni\bibnamedelima Di},
+           giveni={G\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Center for Open Science}%
+      }
+      \strng{namehash}{d4816d1c37f46ae98d5088873af63078}
+      \strng{fullhash}{d4816d1c37f46ae98d5088873af63078}
+      \strng{bibnamehash}{d4816d1c37f46ae98d5088873af63078}
+      \strng{authorbibnamehash}{d4816d1c37f46ae98d5088873af63078}
+      \strng{authornamehash}{d4816d1c37f46ae98d5088873af63078}
+      \strng{authorfullhash}{d4816d1c37f46ae98d5088873af63078}
+      \field{sortinit}{A}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{9}
+      \field{title}{Parking 3-sphere swimmer. I. Energy minimizing strokes}
+      \field{year}{2017}
+      \verb{doi}
+      \verb 10.31219/osf.io/7sfbj
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
