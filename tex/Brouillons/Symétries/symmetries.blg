@@ -1,0 +1,21 @@
+[0] Config.pm:304> INFO - This is Biber 2.14
+[0] Config.pm:307> INFO - Logfile is 'symmetries.blg'
+[91] biber-darwin:322> INFO - === Wed May 20, 2020, 11:41:54
+[105] Biber.pm:415> INFO - Reading 'symmetries.bcf'
+[193] Biber.pm:943> INFO - Found 1 citekeys in bib section 0
+[205] Biber.pm:4256> INFO - Processing section 0
+[205] Utils.pm:75> INFO - Globbing data source '/Users/philipp/Documents/Studium/Stage/tex/stage.bib'
+[205] Utils.pm:91> INFO - Globbed data source '/Users/philipp/Documents/Studium/Stage/tex/stage.bib' to /Users/philipp/Documents/Studium/Stage/tex/stage.bib
+[214] Biber.pm:4455> INFO - Looking for bibtex format file '/Users/philipp/Documents/Studium/Stage/tex/stage.bib' for section 0
+[215] bibtex.pm:1653> INFO - LaTeX decoding ...
+[222] bibtex.pm:1471> INFO - Found BibTeX data source '/Users/philipp/Documents/Studium/Stage/tex/stage.bib'
+[227] Utils.pm:304> WARN - Name in key 'Alouges2018' is empty (probably consecutive 'and'): skipping entry 'Alouges2018'
+[227] Utils.pm:304> WARN - Entry with key 'Alouges2018' in section '0' is cited and found but not created (likely due to sourcemap)
+[227] Utils.pm:304> WARN - BibTeX subsystem: substring 2, warning: empty substring
+[232] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[232] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[233] Biber.pm:4084> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'fr-FR'
+[233] Biber.pm:4090> INFO - No sort tailoring available for locale 'fr-FR'
+[234] bbl.pm:652> INFO - Writing 'symmetries.bbl' with encoding 'UTF-8'
+[234] bbl.pm:755> INFO - Output to symmetries.bbl
+[235] Biber.pm:128> INFO - WARNINGS: 3
