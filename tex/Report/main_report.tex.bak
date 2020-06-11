@@ -1,0 +1,101 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[font=small]{caption}
+\usepackage{wrapfig}
+\usepackage{subfig}
+\usepackage[a4paper,width=140mm,top=25mm,bottom=25mm]{geometry}
+\author{Philipp Weder}
+\title{\textbf{Final Report - Research Internship}}
+\date{}
+
+
+
+
+
+% packages for layout
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textit{\nouppercase{\leftmark}}}
+\fancyhead[R]{\thepage}
+
+\renewcommand{\headrulewidth}{0.5pt}
+
+
+%roman enumeration
+\renewcommand\labelenumi{(\roman{enumi})}
+\renewcommand\theenumi\labelenumi
+
+% font
+%\usepackage{pxfonts}
+
+% bibliography
+\usepackage[style=numeric, backend = biber]{biblatex}
+
+
+% environments
+% theorem
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+% corollary
+\theoremstyle{plain}
+\newtheorem{corollary}{Corollary}
+% lemma
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemme}
+% remark
+\theoremstyle{definition}
+\newtheorem*{remark}{Remark}
+% definition
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+% example
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+% proposition
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+
+% additional packages
+\usepackage{appendix}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\R}{\mathbb{R}}
+\DeclareMathOperator{\asym}{Asym}
+\DeclareMathOperator{\id}{id}
+\newcommand{\h}{\mathcal{H}}
+\newcommand{\so}{\mathfrak{so}}
+
+\begin{document}
+\linespread{1.05}
+\maketitle
+
+\section{Introduction}
+\input{sec1_report.tex}
+
+\section{Modelling of the swimmer as a control problem}
+\input{sec2_report.tex}
+
+\section{Symmetries}
+\input{sec3_report.tex}
+
+\section{Th}
+
+
+
+
+
+
+\end{document}
