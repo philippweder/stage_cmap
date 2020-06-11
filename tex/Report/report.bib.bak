@@ -1,0 +1,73 @@
+% Encoding: UTF-8
+
+@Article{Alouges2017,
+  author    = {Fran{\c{c}}ois Alouges and Giovanni Di Fratta},
+  title     = {Parking 3-sphere swimmer. I. Energy minimizing strokes},
+  year      = {2017},
+  month     = {9},
+  doi       = {10.31219/osf.io/7sfbj},
+  publisher = {Center for Open Science},
+}
+
+@Article{Alouges2013,
+  author    = {Fran{\c{c}}ois Alouges and Antonio DeSimone and Luca Heltai and Aline Lefebvre-Lepot and Beno{\^{\i}}t Merlet and},
+  title     = {Optimally swimming stokesian robots},
+  journal   = {Discrete {\&} Continuous Dynamical Systems - B},
+  year      = {2013},
+  volume    = {18},
+  number    = {5},
+  pages     = {1189--1215},
+  doi       = {10.3934/dcdsb.2013.18.1189},
+  publisher = {American Institute of Mathematical Sciences ({AIMS})},
+}
+
+@Article{Najafi2004,
+  author    = {Ali Najafi and Ramin Golestanian},
+  title     = {Simple swimmer at low Reynolds number: Three linked spheres},
+  journal   = {Physical Review E},
+  year      = {2004},
+  volume    = {69},
+  number    = {6},
+  month     = {jun},
+  doi       = {10.1103/physreve.69.062901},
+  publisher = {American Physical Society ({APS})},
+}
+
+@Article{Purcell1977,
+  author    = {E. M. Purcell},
+  title     = {Life at low Reynolds number},
+  journal   = {American Journal of Physics},
+  year      = {1977},
+  volume    = {45},
+  number    = {1},
+  month     = {jan},
+  pages     = {3--11},
+  doi       = {10.1119/1.10903},
+  publisher = {American Association of Physics Teachers ({AAPT})},
+}
+
+@Book{Gantmacher1986,
+  author    = {Felix R. Gantmacher},
+  title     = {Matrizentheorie},
+  year      = {1986},
+  publisher = {Springer Berlin Heidelberg},
+  doi       = {10.1007/978-3-642-71243-2},
+}
+
+@Book{Agrachev2004,
+  author    = {Andrei A. Agrachev and Yuri L. Sachkov},
+  title     = {Control Theory from the Geometric Viewpoint},
+  year      = {2004},
+  publisher = {Springer Berlin Heidelberg},
+  doi       = {10.1007/978-3-662-06404-7},
+}
+
+@Book{Lee2012,
+  author    = {John M. Lee},
+  title     = {Introduction to Smooth Manifolds},
+  year      = {2012},
+  publisher = {Springer New York},
+  doi       = {10.1007/978-1-4419-9982-5},
+}
+
+@Comment{jabref-meta: databaseType:biblatex;}

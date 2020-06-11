@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[10pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsmath}
@@ -36,7 +36,8 @@
 %\usepackage{pxfonts}
 
 % bibliography
-\usepackage[style=numeric, backend = biber]{biblatex}
+\usepackage[style=ieee, sorting = nty, backend = biber]{biblatex}
+\bibliography{report.bib}
 
 
 % environments
@@ -73,10 +74,14 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\M}{\mathcal{M}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\h}{\mathcal{H}}
+\newcommand{\G}{\mathcal{G}}
 \DeclareMathOperator{\asym}{Asym}
 \DeclareMathOperator{\id}{id}
-\newcommand{\h}{\mathcal{H}}
 \newcommand{\so}{\mathfrak{so}}
+\newcommand{\REF}{\mathrm{ref}}
+\newcommand{\spr}{\textsf{SPr4 }}
+\DeclareMathOperator{\dist}{dist}
 
 \begin{document}
 \linespread{1.05}
@@ -85,16 +90,21 @@
 \section{Introduction}
 \input{sec1_report.tex}
 
+
 \section{Modelling of the swimmer as a control problem}
 \input{sec2_report.tex}
 
 \section{Symmetries}
 \input{sec3_report.tex}
 
-\section{Th}
+\section{The control problem in the regime of small strokes}
+\input{sec4_report.tex}
+
+\section{Energy optimizing strokes}
+\input{sec5_report.tex}
 
 
-
+\printbibliography
 
 
 

@@ -18,5 +18,5 @@ where $\omega$ is the axial vector associated with the skew matrix $\dot{R} R$.
 
 In \cite{Alouges2013} it is shown that the system \spr, i.e. both the shape $\xi$ and the position $p$, is controllable only using the rate of change $\dot{\xi}$ of the shape. To do so, we have to understand how $p$ changes when we vary $\dot{\xi}$. To that and, the assumptions of \emph{self-propulsion} and negligible inertia of the swimmer are made. They imply that the total viscous force and torque exerted by the surrounding fluid on the swimmer must vanish. More precisely, the system can be written as
 \begin{equation}
-	\dot{p} = F(R, \xi) \dot{\xi} \text{ with }
+	\dot{p} = F(R, \xi) \dot{\xi} \text{ with } F(R, \xi) := [f_1(R, \xi) | f_1(R, \xi) |f_1(R, \xi)|f_1(R, \xi)|f_1(R, \xi)|f_1(R, \xi)]^T
 \end{equation}
