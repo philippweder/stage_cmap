@@ -128,7 +128,9 @@ and
 \end{equation}
 \end{condition}
 To avoid chaos in our notation, we treat the the spatial and angular parts now separately. For the spatial part, we find
+
 \begin{proposition}
+\label{prop: spatial permutation invariance}
 If the control system (\ref{eq:dynamical system}) is invariant under the swap $(||i \leftrightsquigarrow ||j)$ and $T_{\xi} \M \simeq \R^4$ for all $\xi \in \M$, then for all $\xi \in \M$
 \begin{align}
 	 F_c(P_{ij} \xi) = S_{ij} F_c(\xi) P_{ij}.
@@ -161,6 +163,7 @@ Equating (\ref{eq: spatial permutation invariance int2}) and (\ref{eq: spatial p
 For the angular part, we first have to choose a basis and fix some notation. Naturally, we choose the canonical basis $\mathcal{E} := (e_1, e_2, e_3, e_4)$ for $\R^4$. For $\so(3)$, we choose the basis $\mathcal{L} := (L_1, L_2, L_3)$, where the matrices $L_i$ are defined in (\ref{eq: L1}) - (\ref{eq: L3}). Then we denote the the matrix representing an arbitrary linear map $T: V \to W$ between two vector spaces $V$ and $W$ with respect to two bases $\mathcal{B}$ and $\mathcal{B}'$ by $[T]_{\mathcal{B}}^{\mathcal{B}'}$. Let $S$ be an arbitrary reflection at a plane in $\R^3$ and define the adjoint isomorphism $T_S: \so(3) \to \so(3)$ by $M \mapsto S MS$. Then the calculations leading to (\ref{eq: transformation of rotation axis}) show that in fact we have $[T_S]_{\mathcal{L}}^{\mathcal{L}} = -S$. This leads to the following 
 
 \begin{proposition}
+\label{prop: angular permutation invariance}
 If the control system (\ref{eq:dynamical system}) is invariant under the swap $(||i \leftrightsquigarrow ||j)$ and $T_{\xi}\M \simeq \R^4$ for all $\xi \in \M$, then for all $\xi \in \M$
 \begin{equation}
 [F_{\theta}(P_{ij} \xi)]_{\mathcal{E}}^{\mathcal{L}} = - S_{ij} [F_{\theta}(\xi)]_{\mathcal{E}}^{\mathcal{L}} P_{ij}.
@@ -198,7 +201,7 @@ By choice of the canonical basis for $\R^4$ we clearly have $[P_{ij}]_{\mathcal{
 Recalling that $T_{\xi_0} \M \simeq \R^4$ as well as the arbitrariness of $\xi_0$ finishes the proof.
 \end{proof}
 
-In the following sections, we will always understand $F_{\theta}(\xi)$ as a matrix of size $3 \times 4$ and since no confusion may arise, we will abandon the slightly cumbersome notation and identify $[F_{\theta}(\xi)]_{\mathcal{E}}^{\mathcal{L}}$ with $F_{\theta(\xi)}$.
+In the following sections, we will always understand $F_{\theta}(\xi)$ as a matrix of size $3 \times 4$ and thus, since no confusion may arise, we will abandon the slightly cumbersome notation and identify $[F_{\theta}(\xi)]_{\mathcal{E}}^{\mathcal{L}}$ with $F_{\theta}(\xi)$.
 
 
 

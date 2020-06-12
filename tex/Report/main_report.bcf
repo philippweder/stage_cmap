@@ -2187,6 +2187,11 @@
     <bcf:citekey order="2">Alouges2013</bcf:citekey>
     <bcf:citekey order="3">Alouges2017</bcf:citekey>
     <bcf:citekey order="4">Alouges2017</bcf:citekey>
+    <bcf:citekey order="5">Alouges2013</bcf:citekey>
+    <bcf:citekey order="6">Alouges2017</bcf:citekey>
+    <bcf:citekey order="7">Alouges2017</bcf:citekey>
+    <bcf:citekey order="8">Alouges2017</bcf:citekey>
+    <bcf:citekey order="9">Alouges2017</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

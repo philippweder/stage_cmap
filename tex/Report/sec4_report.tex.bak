@@ -1,6 +1,5 @@
 Let us return to the control equations for \spr given by (\ref{eq:dynamical system}). The response of the control system is characterized by the two matrix valued functions $F_c, F_{\theta}: \SO(3) \times \R^4 \to M_{3 \times 4}(\R)$ which can by Proposition \ref{prop: rotational invariance} can be factorized as:
 \begin{equation}
-\label{eq: reminder control system}
 	F_{c}(R, \zeta) = R F_{c}(\zeta) \text{ and } F_{\theta}(R, \xi) = R F_{\theta}(\zeta),
 \end{equation}
 with $F_{c}(\zeta) := F_c(I, \zeta)$ and $F_{\theta}(\zeta) := F_{\theta}(I, \zeta)$. Hereinafter, we suppose that $\zeta := \xi_0 + \xi$ with $\xi_0 \in \M$ having all its components equal. Furthermore, we set $F_{c, \xi_0}(\xi) := F_{c}(\xi_0 + \xi)$ and analogously $F_{\theta, \xi_0}(\xi) := F_{\theta}(\xi_0 + \xi)$. It has been shown in \cite{Alouges2013} that $F$ and thus both $F_{ c, \xi_0}$ and $F_{\theta, \xi_0}$ are analytic functions. Therefore, we can consider their first order expansions in $\xi$:
@@ -156,4 +155,4 @@ M_6 = 2 \sqrt{2} \left (\begin{array}{cccc}
 \subsection{The linearized control equations}
 Herein, we denote by $J$ the closed interval  $[0,2] \subset \R$ and we define the so-called \emph{strokes space} as $H_\sharp^1(J, \R^4)$, i.e. the Sobolev space of $2\pi$-periodic vector valued functions of $L_{\sharp}^2(J, \R^4$ having first order weak derivative in $L_{\sharp}^2(\R^4)$. For every $f \in L^{2}_{\sharp}(J, \R^4)$ we denote by $\langle f \rangle := (2\pi)^{-1} \int_{J} f(s) ds$ the average of $f$ on $J$.
 
-In the previous section, we have seen that the control system governing the evolution of \spr under the action of the control parameters $\zeta$ is given by $\dot{p} = R F(\zeta) \dot{\zeta}$, where $p = (c, R)$ and $F = (F_c , F_\theta): \M \to M_{6 \times 4}(\R)$ is given by (\ref{eq: reminder control system}) and $\dot{\zeta} \in T_{\zeta} \M$.
+In the previous section, we have seen that the control system governing the evolution of \spr
