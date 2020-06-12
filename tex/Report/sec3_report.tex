@@ -34,6 +34,7 @@ To follow the reasoning of \cite{Alouges2017}, the symmetry relations satisfied 
 \end{remark}
 We then have
 \begin{proposition}
+\label{prop: rotational invariance}
 Let $\xi_0 := \xi(0) \in \M$ denote the initial state of the control parameters and by $T_{\xi}\M$ the tangent space of $\M$ at $\xi$. If the control system (\ref{eq:dynamical system}) is invariant under rotations and for every $\xi \in \M$ it holds that $T_{\xi} \M \simeq \R^4$, then
 \begin{equation}
 	F_c(R, \xi) = R F_c(\xi) \text { and } F_\theta(R, \xi) = R F_{\theta} (R, \xi),
@@ -51,7 +52,7 @@ On the other hand, using equation (\ref{eq:spatial rotational invariance}) and o
 	\dot{\gamma}_c (c_0, R \xi) = R  \dot{\gamma}_c(c_0, I, \xi) = 
 	R F_c(\gamma_{\theta}(c_0, I, \xi), \xi) \dot{\xi}.
 \end{equation}
-Therefore, $F_c(\gamma_{\theta}(c_0, R, \xi), \xi) \dot{\xi} = R F_{c}(\gamma_{\theta}(c_0, I, \xi), \xi) \dot{\xi}$ for every $R \in \SO(3)$. Since $T_{\xi_0} \M \simeq \R^4$, evaluation of the preceding expression at $t = 0$ yields $F_{c}(R, \xi) = R F_{c}(I, \xi)$, as desired. The proof for $F_{\theta}$ is completely analogous.
+Therefore, $F_c(\gamma_{\theta}(c_0, R, \xi), \xi) \dot{\xi} = R F_{c}(\gamma_{\theta}(c_0, I, \xi), \xi) \dot{\xi}$ for every $R \in \SO(3)$. Since $T_{\xi_0} \M \simeq \R^4$, evaluation of the preceding expression at $t = 0$ yields $F_{c}(R, \xi_0) = R F_{c}(I, \xi_0)$, as desired. The proof for $F_{\theta}$ is completely analogous.
 \end{proof}
 \subsection{Permutation of two arms}
 In this section, we investigate the effect of a swap of two arms on the generic solution of the dynamical system (\ref{eq:dynamical system}).
@@ -62,16 +63,19 @@ Before we formulate the symmetry conditions for the interchanging of two arms, w
 
 It is clear that $\dim \Skew_3(\R) = 3$. In particular, if $R_1(\theta), R_2(\theta)$ and $R_3(\theta)$ denote the simple rotations around the $\hat{e}_1$-, $\hat{e}_2$- and $\hat{e}_3$-axis, where $\hat{e}_1, \hat{e}_2, \hat{e}_3$ denote the canonical basis vectors of $\R^3$, then the matrices
 \begin{align}
+\label{eq: L1}
 	&L_1 = \frac{d}{d\theta}R_1(\theta)_{\mid \theta =0} = \left(\begin{array}{ccc}
 	0 & 0 & 0 \\ 
 	0 & 0 & -1 \\ 
 	0 & 1 & 0
 	\end{array}  \right ),\\
+\label{eq: L2}
 	&L_2 = \frac{d}{d\theta}R_2(\theta)_{\mid \theta =0} = \left (\begin{array}{ccc}
 	0 & 0 & 1 \\ 
 	0 & 0 & 0 \\ 
 	-1 & 0 & 0
 	\end{array}  \right ),\\
+\label{eq: L3}
 	&L_3 = \frac{d}{d\theta}R_3(\theta)_{\mid \theta =0} = \left (\begin{array}{ccc}
 	0 & -1 & 0 \\ 
 	1 & 0 & 0 \\ 
@@ -94,6 +98,7 @@ For any orientation of a rigid body characterized by $R \in \SO(3)$, the orienta
 \begin{proof}
 Let us first consider the simple case where $S$ is the reflection of the $\hat{e}_1$-axis. Let $\omega$ and $\tilde{\omega}$ be the rotation vectors corresponding to $R$ and $\tilde{R}$, respectively. They are related by $\tilde{\omega} = -S \omega$, where the gain of the minus sign stems from the fact that rotation vectors are in fact pseudovectors. In other words, we not only reflect the axis of rotation but we also reverse the sense of rotation around the axis. It follows then from direct computation that
 \begin{equation}
+\label{eq: transformation of rotation axis}
  \tilde{\omega} \cdot \mathbf{L} = (-S\omega) \cdot \mathbf{L} = S(\omega \cdot \mathbf{L})S
 \end{equation}
 and thus we have
@@ -102,9 +107,9 @@ and thus we have
 \end{equation}
 as $S^{-1} = S$.
 
-If now $S'$ is now an arbitrary reflection, we always find a rotation $Q \in \SO(3)$ such that $S' = Q S Q^T$. Moreover, for any rotation $R' \in \SO(3)$ we find another $R \in \SO(3)$ such that $R' = Q R Q^T$. In particular, we have
+If now $S'$ is an arbitrary reflection, we always find a rotation $Q \in \SO(3)$ such that $S' = Q S Q^T$. Moreover, for any rotation $R' \in \SO(3)$ we find another $R \in \SO(3)$ such that $R' = Q R Q^T$. In particular, we have
 \begin{equation}
-\tilde{R}' = Q \tilde{R} Q^T = Q SRS Q^T = S' R'^T S',
+\tilde{R}' = Q \tilde{R} Q^T = Q SRS Q^T = S' R' S'^T,
 \end{equation}
 as desired.
 \end{proof}
@@ -124,7 +129,7 @@ and
 \end{condition}
 To avoid chaos in our notation, we treat the the spatial and angular parts now separately. For the spatial part, we find
 \begin{proposition}
-If the control system (\ref{eq: control system}) is invariant under the swap $(||i \leftrightsquigarrow ||j)$ and $T_{\xi} \M \simeq \R^4$ for all $\xi \in \M$, then for all $\xi \in \M$
+If the control system (\ref{eq:dynamical system}) is invariant under the swap $(||i \leftrightsquigarrow ||j)$ and $T_{\xi} \M \simeq \R^4$ for all $\xi \in \M$, then for all $\xi \in \M$
 \begin{align}
 	 F_c(P_{ij} \xi) = S_{ij} F_c(\xi) P_{ij}.
 \end{align}
@@ -133,6 +138,69 @@ If the control system (\ref{eq: control system}) is invariant under the swap $(|
 \begin{proof}
 Let $\gamma_c(c_0, R_0, P_{ij} \xi)$ be the spatial part of any solution of the control problem (\ref{eq: control system}). The hypothesis of rotational invariance, i.e. (\ref{eq:spatial rotational invariance}), implies that
 \begin{equation}
-	\gamma(c_0, R_0, P_{ij} \xi) = R_0^T \gamma(c_0, I, P_{ij} \xi) - (R_0^T - I)c_0.
+	\gamma_c(c_0, R_0, P_{ij} \xi) = R_0 \gamma_c(c_0, I, P_{ij} \xi) + (I - R_0)c_0.
 \end{equation}
+From condition \ref{cond:swap}, we then get
+\begin{equation}
+\label{eq:spatial permutation invariance int1}
+	\gamma_c(c_0, R_0, P_{ij}\xi) = R_0 S_{ij} \gamma_c(S_{ij} c_0, I, \xi) + (I - R_0)c_0.
+\end{equation}
+As both $\gamma_c(c_0, R_0, P_{ij} \xi)$ and $\gamma_c(S_{ij} c_0, I, \xi)$ are spatial parts of solutions of the control system (\ref{eq:dynamical system}), we have on one hand using Proposition \ref{prop: rotational invariance}
+\begin{equation}
+\label{eq: spatial permutation invariance int2}
+	\dot{\gamma_c}(c_0, R_0, P_{ij} \xi) = \gamma_{\theta}(c_0, R_0, P_{ij} \xi) F_c(P_{ij} \xi) P_{ij} \dot{\xi},
+\end{equation}
+and on the other hand using (\ref{eq:spatial permutation invariance int1}) and once more (\ref{eq:dynamical system}) together with Proposition \ref{prop: rotational invariance}
+\begin{equation}
+\label{eq: spatial permutation invariance int3}
+	\dot{\gamma_c}(c_0, R_0, P_{ij} \xi) = R_0 S_{ij} \dot{\gamma}_c(S_{ij} c_0, I, \xi) = R_0 S_{ij} \gamma_\theta(S_{ij} c_0, I, \xi) F_c(\xi) \dot{\xi}.
+\end{equation}
+Equating (\ref{eq: spatial permutation invariance int2}) and (\ref{eq: spatial permutation invariance int3}) at $t = 0$ yields $ F_c(P_{ij} \xi_0) = S_{ij} F_c(\xi_0) P_{ij}$, since by hypothesis $T_{\xi_0} \M \simeq \R^4$. As $\xi_0$ was arbitrary, we conclude.
 \end{proof}
+
+For the angular part, we first have to choose a basis and fix some notation. Naturally, we choose the canonical basis $\mathcal{E} := (e_1, e_2, e_3, e_4)$ for $\R^4$. For $\so(3)$, we choose the basis $\mathcal{L} := (L_1, L_2, L_3)$, where the matrices $L_i$ are defined in (\ref{eq: L1}) - (\ref{eq: L3}). Then we denote the the matrix representing an arbitrary linear map $T: V \to W$ between two vector spaces $V$ and $W$ with respect to two bases $\mathcal{B}$ and $\mathcal{B}'$ by $[T]_{\mathcal{B}}^{\mathcal{B}'}$. Let $S$ be an arbitrary reflection at a plane in $\R^3$ and define the adjoint isomorphism $T_S: \so(3) \to \so(3)$ by $M \mapsto S MS$. Then the calculations leading to (\ref{eq: transformation of rotation axis}) show that in fact we have $[T_S]_{\mathcal{L}}^{\mathcal{L}} = -S$. This leads to the following 
+
+\begin{proposition}
+If the control system (\ref{eq:dynamical system}) is invariant under the swap $(||i \leftrightsquigarrow ||j)$ and $T_{\xi}\M \simeq \R^4$ for all $\xi \in \M$, then for all $\xi \in \M$
+\begin{equation}
+[F_{\theta}(P_{ij} \xi)]_{\mathcal{E}}^{\mathcal{L}} = - S_{ij} [F_{\theta}(\xi)]_{\mathcal{E}}^{\mathcal{L}} P_{ij}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Let $\gamma_\theta(c_0, R_0, P_{ij}\xi)$ be the angular part of any solution of the control problem (\ref{eq:dynamical system}). By the rotational invariance hypothesis, i.e. (\ref{eq: angular rotational invariance}), we have
+\begin{equation}
+	\gamma_\theta(c_0, R_0, P_{ij}\xi) = R_0 \gamma(c_0, I, \xi).
+\end{equation}
+Then Condition \ref{cond:swap} implies that
+\begin{equation}
+\label{eq: angular permutation invariance int1}
+	\gamma_\theta(c_0, R_0,P_{ij} \xi) = R_0 S_{ij} \gamma_\theta(S_{ij}c_0, I, \xi) S_{ij}.
+\end{equation}
+Since both $\gamma_\theta(c_0, R_0, P_{ij} \xi)$ and $\gamma_\theta(S_{ij} c_0, I, \xi)$ are the angular parts of solutions of the control problem (\ref{eq:dynamical system}), we obtain with Proposition \ref{prop: rotational invariance} on one hand
+\begin{equation}
+\label{eq: angular permutation invariance int2}
+	\dot{\gamma_\theta}(c_0, R_0, P_{ij} \xi)= \gamma_\theta(c_0, R_0, P_{ij} \xi) F_{\theta}(P_{ij} \xi) P_{ij } \dot{\xi}
+\end{equation}
+and on the other hand using (\ref{eq: angular permutation invariance int1}) and once more Proposition \ref{prop: rotational invariance}
+\begin{equation}
+\label{eq: angular permutation invariance int3}
+	\dot{\gamma_\theta}(c_0, R_0, P_{ij} \xi) =  R_0 S_{ij} \dot{\gamma_\theta}(S_{ij} c_0, I, \xi) S_{ij} = R_0 S_{ij} \gamma_\theta(S_{ij} c_0, I, \xi) F_{\theta}(\xi) \dot{\xi} S_{ij}.
+\end{equation}
+Imposing equality of (\ref{eq: angular permutation invariance int2}) and (\ref{eq: angular permutation invariance int3}) at $t = 0$ yields
+\begin{equation}
+	F_{\theta}(P_{ij} \xi_0) P_{ij}  \dot{\xi}(0) = S_{ij} F_{\theta}(\xi_0) \dot{\xi}(0) S_{ij}.
+\end{equation}
+By choice of the canonical basis for $\R^4$ we clearly have $[P_{ij}]_{\mathcal{E}}^{\mathcal{E}} = P_{ij}$. Therefore, by the reasoning concerning the linear map $T_{S_{ij}}$ above, we have
+\begin{equation}
+	[F_{\theta}(P_{ij} \xi_0)]_{\mathcal{E}}^{\mathcal{L}}  P_{ij} [\dot{\xi}(0)]_{\mathcal{E}} = [S_{ij} F_{\theta}(\xi_0) \dot{\xi}(0) S_{ij}]_{\mathcal{L}} = -S_{ij} [F_{\theta}(\xi_0)]_{\mathcal{E}}^{\mathcal{L}} [\dot{\xi}(0)]_{\mathcal{E}}.
+\end{equation}
+Recalling that $T_{\xi_0} \M \simeq \R^4$ as well as the arbitrariness of $\xi_0$ finishes the proof.
+\end{proof}
+
+In the following sections, we will always understand $F_{\theta}(\xi)$ as a matrix of size $3 \times 4$ and since no confusion may arise, we will abandon the slightly cumbersome notation and identify $[F_{\theta}(\xi)]_{\mathcal{E}}^{\mathcal{L}}$ with $F_{\theta(\xi)}$.
+
+
+
+
+
