@@ -19,6 +19,38 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{Agrachev2004}{book}{}
+      \name{author}{2}{}{%
+        {{hash=e2bdc81bbf974f04d07a8476b8652db0}{%
+           family={Agrachev},
+           familyi={A\bibinitperiod},
+           given={Andrei\bibnamedelima A.},
+           giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=a84bd81e08d85a7ac1f21a2abf7d6ff7}{%
+           family={Sachkov},
+           familyi={S\bibinitperiod},
+           given={Yuri\bibnamedelima L.},
+           giveni={Y\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{47a98ca024a8e904e8a9a9af9d5739af}
+      \strng{fullhash}{47a98ca024a8e904e8a9a9af9d5739af}
+      \strng{bibnamehash}{47a98ca024a8e904e8a9a9af9d5739af}
+      \strng{authorbibnamehash}{47a98ca024a8e904e8a9a9af9d5739af}
+      \strng{authornamehash}{47a98ca024a8e904e8a9a9af9d5739af}
+      \strng{authorfullhash}{47a98ca024a8e904e8a9a9af9d5739af}
+      \field{sortinit}{A}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Control Theory from the Geometric Viewpoint}
+      \field{year}{2004}
+      \verb{doi}
+      \verb 10.1007/978-3-662-06404-7
+      \endverb
+    \endentry
     \entry{Alouges2013}{article}{}
       \name{author}{5}{}{%
         {{hash=bbaa542e639eb60a359cc0adda7e7092}{%

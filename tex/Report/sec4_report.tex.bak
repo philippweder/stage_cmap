@@ -1,5 +1,6 @@
 Let us return to the control equations for \spr given by (\ref{eq:dynamical system}). The response of the control system is characterized by the two matrix valued functions $F_c, F_{\theta}: \SO(3) \times \R^4 \to M_{3 \times 4}(\R)$ which can by Proposition \ref{prop: rotational invariance} can be factorized as:
 \begin{equation}
+\label{eq: reminder control system}
 	F_{c}(R, \zeta) = R F_{c}(\zeta) \text{ and } F_{\theta}(R, \xi) = R F_{\theta}(\zeta),
 \end{equation}
 with $F_{c}(\zeta) := F_c(I, \zeta)$ and $F_{\theta}(\zeta) := F_{\theta}(I, \zeta)$. Hereinafter, we suppose that $\zeta := \xi_0 + \xi$ with $\xi_0 \in \M$ having all its components equal. Furthermore, we set $F_{c, \xi_0}(\xi) := F_{c}(\xi_0 + \xi)$ and analogously $F_{\theta, \xi_0}(\xi) := F_{\theta}(\xi_0 + \xi)$. It has been shown in \cite{Alouges2013} that $F$ and thus both $F_{ c, \xi_0}$ and $F_{\theta, \xi_0}$ are analytic functions. Therefore, we can consider their first order expansions in $\xi$:
@@ -12,7 +13,8 @@ with $F_{c}(\zeta) := F_c(I, \zeta)$ and $F_{\theta}(\zeta) := F_{\theta}(I, \ze
 where $F_{c,0} := F_{c}(\xi_0) \in M_{3 \times 4}(\R)$, $\h_{c,0}\in \mathcal{L}(\R^4 \otimes \R^4, \R^3)$ represents the first order derivative of $F_{c, \xi_0}$ at $\xi = 0$ and for $F_{\theta, \xi}$ the analogous definitions are made.
 The purpose of this section is to reveal the structure of the different terms in the expansions (\ref{eq: angular control expansion}) and (\ref{eq: spatial control expansion}) in light of the symmetry properties fulfilled by $F_{c}$ and $F_{\theta}$ due to Propositions (\ref{prop: spatial permutation invariance}) and (\ref{prop: angular permutation invariance}) , i.e
 \begin{align}
-	F_{c}(P_{ij} \xi) = S_{ij} F_{c}(\xi) P_{ij}& & \text{ and } & & F_{\theta}(P_{ij} \xi) = - S_{ij} F_{\theta}(\xi) P_{ij} & & \forall \xi \in \M.
+\label{eq: spatial and angular first order expansion}
+	F_{c}(P_{ij} \xi) = S_{ij} F_{c}(\xi) P_{ij}& & \text{ and } & & 			F_{\theta}(P_{ij} \xi) = - S_{ij} F_{\theta}(\xi) P_{ij} & & \forall \xi \in \M.
 \end{align}
 
 The following slightly generalized statement of Lemma 9 in \cite{Alouges2017} proves useful in our case as well. However, the proof is omitted, it being exactly the same.
@@ -54,14 +56,16 @@ First, we observe that the upper left corner of $F_{c,0}$ corresponding to the a
 \subsection{The first order terms $\h_{c,0}$ and $\h_{\theta,0}$}
 Following the approach in \cite{Alouges2017}, we evaluate the tensors $\h_{c,0}$ and $\h_{\theta,0}$ on the basis $(e_{i} \otimes e_{j})_{i,j \in \N_4}$. Setting $A_k := (\h_{c,0}(e_i \otimes e_j)\cdot \hat{e})_{i,j \in \N_4}$ and $B_k:= (\h_{\theta,0}(e_i \otimes e_j)\cdot \hat{e})_{i,j \in \N_4}$ for $k \in \N_3$, we can write the vectors $\h_{c,0}(\xi \otimes \eta), \h_{\theta,0}(\xi \otimes \eta) \in \R^3$ for any $\xi, \eta \in \R^3$ as
 \begin{equation}
+\label{eq: matrix representation of spatial first order term}
 	\h_{c,0}(\xi \otimes \eta) = \sum_{k \in \N_3}(A_k \eta \cdot \xi)\hat{e}_k, 
 \end{equation}
 and similarly
 \begin{equation}
-	\h_{\theta, 0}(\xi \otimes \eta) = \sum_{j \in \N_3}(B_k \eta \cdot \xi) L_k.
+\label{eq: matrix representation of angular first order term}
+	\h_{\theta, 0}(\xi \otimes \eta) = \sum_{k \in \N_3}(B_k \eta \cdot \xi) L_k.
 \end{equation}
 
-We could follow pursue the approach of \cite{Alouges2017} and directly calculate the matrices $A_k$ and $B_k$. However, as we shall see later, the dynamics of \spr, up to higher order terms in the norm of the control curve $\xi$, will only be governed by their skew symmetric parts. Thus, we will evade this strenuous task and we will determine the skew symmetric matrices $M_k := \tfrac{1}{2}(A_k - A_k^T)$ and $M_{k + 3}:= \tfrac{1}{2}(B_k - B_k^T)$ for $k \in \N_3$, up to two scalar parameters, using a more abstract argument.
+We could pursue the approach of \cite{Alouges2017} and directly calculate the matrices $A_k$ and $B_k$. However, as we shall see later, the dynamics of \spr, up to higher order terms in the norm of the control curve $\xi$, will only be governed by their skew symmetric parts. Thus, we will evade this strenuous task and we determine the skew symmetric matrices $M_k := \tfrac{1}{2}(A_k - A_k^T)$ and $M_{k + 3}:= \tfrac{1}{2}(B_k - B_k^T)$ for $k \in \N_3$, up to two scalar parameters, using a more abstract argument.
 
 
 To that end, we notice that Lemma \ref{lem: general symmetries of expansion terms} together with the fact that $(P_{ij})^2 = I$ yields for all $i,j \in \N_4$ and for all $\xi, \eta \in \N_4$
@@ -93,6 +97,7 @@ where $\sgn(ijkl)$ denotes the parity of the permutation $(ijkl)$ of $\N_4$, sta
 for all $i \neq j \in \N_4$ and some scalar $\alpha \in \R$. Clearly, the symmetry conditions imply that $\K_{c,0}(e_i \otimes e_i) = 0$ for all $i \in  \N_4$. Thus, we have determined the matrices $M_1, M_2, M_3$ up to one scalar parameter. By explicitly calculating the cross products $z_i \times z_j$, we find
 \renewcommand{\arraystretch}{1.1}
 \begin{align}
+\label{eq: M1 and M2}
 M_1 = \alpha \left ( \begin{array}{cccc}
 0 & 3 & 3 & 2 \\ 
 -3 & 0 & 0 & -1 \\ 
@@ -109,6 +114,7 @@ M_2 = \sqrt{3} \alpha \left (
 \end{align}
 and
 \begin{align}
+\label{eq: M3}
 M_3 = 2 \sqrt{2} \alpha \left (
 \begin{array}{cccc}
 0 & 0 & 0 & -1 \\ 
@@ -128,6 +134,7 @@ and therefore $\K_{\theta,0}(e_i \otimes e_j) = \delta_{ij} e_i \times e_j$. By 
 \end{equation}
 for all $i \neq j \in \N_4$. Again, we have $\K_{\theta}(e_i \otimes e_i= = 0$ for all $i \in \N_4$. A calculation similar to the one above now yields
 \begin{align}
+\label{eq: M4 and M5}
 	M_4 = \delta \left (
 	\begin{array}{cccc}
 	0 & 1 & 1 & 0 \\ 
@@ -144,6 +151,7 @@ for all $i \neq j \in \N_4$. Again, we have $\K_{\theta}(e_i \otimes e_i= = 0$ f
 \end{align}
 and
 \begin{align}
+\label{eq: M6}
 M_6 = 2 \sqrt{2} \left (\begin{array}{cccc}
 0 & 1 & -1 & 0 \\ 
 -1 & 0 & 1 & 0 \\ 
@@ -153,6 +161,117 @@ M_6 = 2 \sqrt{2} \left (\begin{array}{cccc}
 \end{align}
 
 \subsection{The linearized control equations}
-Herein, we denote by $J$ the closed interval  $[0,2] \subset \R$ and we define the so-called \emph{strokes space} as $H_\sharp^1(J, \R^4)$, i.e. the Sobolev space of $2\pi$-periodic vector valued functions of $L_{\sharp}^2(J, \R^4$ having first order weak derivative in $L_{\sharp}^2(\R^4)$. For every $f \in L^{2}_{\sharp}(J, \R^4)$ we denote by $\langle f \rangle := (2\pi)^{-1} \int_{J} f(s) ds$ the average of $f$ on $J$.
+Herein, we denote by $J$ the closed interval  $[0,2] \subset \R$ and we define the so-called \emph{strokes space} as $H_\sharp^1(J, \R^4)$, i.e. the Sobolev space of $2\pi$-periodic vector valued functions of $L_{\sharp}^2(J, \R^4)$ having first order weak derivative in $L_{\sharp}^2(\R^4)$. For every $f \in L^{2}_{\sharp}(J, \R^4)$ we denote by $\langle f \rangle := (2\pi)^{-1} \int_{J} f(s) ds$ the average of $f$ on $J$.
 
-In the previous section, we have seen that the control system governing the evolution of \spr
+In the previous section, we have seen that the control system governing the evolution of \spr under the action of the control parameters $\zeta \in \M$ is given by
+\begin{align}
+\begin{cases}
+	\dot{c} &= R F_c(\zeta) \dot{\zeta}\\
+	\dot{R} &= R F_{\theta}(\zeta) \dot{\zeta},
+\end{cases}
+\end{align}
+where $(c,R) \in \mathcal{P} = \R^3 \times \SO(3)$ and the systems $F_{c}, F_{\theta}: \M \to M_{3 \times
+ 4}(\R)$ are given by (\ref{eq: reminder control system}) and $\dot{\zeta}  \in T_{\zeta}\M$. Furthermore, we have seen previously, c.f. (\ref{eq: spatial and angular first order expansion}), (\ref{eq: matrix representation of spatial first order term}) and (\ref{eq: matrix representation of angular first order term}), that if we set $\zeta = \xi_0 + \xi$, the response of the system around $\xi = 0$, up to higher order terms, simplifies to
+ \begin{align}
+ \begin{cases}
+ 	\dot{c} &= R F_{c,0} \dot{\xi} + R \sum_{k \in \N_3}(A_k \dot{\xi} \cdot \xi)\hat{e_k}\\
+ 	\dot{R} &= R \sum_{k \in \N_3} (B_k \dot{\xi} \cdot \xi) L_k.
+ \end{cases}
+ \end{align}
+In particular, if we fix $\xi \in H^1_{\sharp}(J, \R^4)$ and define $\Gamma := \sum_{k \in \N_3} (B_k \dot{\xi} \cdot \xi): J \to \so_(3)$, then the dynamics of $R$ can be written as an ordinary differential equation on the Lie group $\SO(3)$:
+\begin{align}
+\label{eq: orientation ode}
+\begin{cases}
+	\dot{R}(t) = R(t) \Gamma(t)\\
+	R(0) := R_0.
+\end{cases}
+\end{align}
+
+To state and estimate the solution of this differential equations, we recall some notions about chronological calculus, the details whereof  can be found in \cite{Agrachev2004}, chapter 2. Essentially, we identify $\SO(3)$ with $C^\infty(\SO(3))$, i.e. the space of all smooth real valued functions on $\SO(3)$. More precisely, for a general smooth manifold $M$, we identify points $p \in M$ on the manifold with non-trivial homomorphisms of algebras $\hat{p}: C^{\infty}(M) \to \R$, diffemorphisms $P : M \to M$ with automorphisms $\hat{P} \in \Aut(C^{\infty}(M))$, tangent vectors $v \in T_p M$ with linear functionals $\hat{p}: C^{\infty}(M) \to \R$ satisfying the Leibniz rule, i.e.
+\begin{align}
+	\hat{v}(ab) = (\hat{v} a) b(p) + a(p) (\hat{v} b), & & \forall a, b \in C^{\infty}(M)
+\end{align}
+and finally smooth vector fields $V$ on $M$ with linear operators $\hat{V}: C^{\infty}(M) \to C^{\infty}(M)$ also satisfying the Leibniz rule, i.e.
+\begin{align}
+	\hat{V}(ab) = (\hat{V} a) b + a (\hat{V} b), & &  \forall a,b \in C^{\infty}(M).
+\end{align}
+ Then one considers the $C^{\infty}(\SO(3))$-topology, which is a metric topology and sometimes also referred to as the Whitney topology. It is constructed via a family of seminorms, c.f. \cite{Agrachev2004}, p. 25, $||\cdot||_{s, K}$ with $s \geq 0$ and $K \subset \SO(3)$ a compactum, where we naturally set $K = \SO(3)$ as $\SO(3)$ is compact. Then, one can show that a differential equation of the form (\ref{eq: orientation ode}) on a compact manifold always admits a unique solution
+\begin{align}
+ R(t) = R_0 \, \chroexp \int_{0}^{t} \Gamma(\tau) d \tau,
+\end{align}
+where the operator $\chroexp \int_{0}^{t} \Gamma(\tau) d\tau$ is called \emph{right chronological exponential} of the field $\Gamma$. Moreover, it is shown in \cite{Agrachev2004}, that we have the following series expansion of the chronological exponential:
+\begin{equation}
+\label{eq: partial sum of chronological exp}
+	S_m(t) = I + \sum_{n = 1}^{m - 1} \int_{\Delta_n(t)} \dotsm \int \Gamma(\tau_n) \circ \dotsm \circ \Gamma(\tau_1) d \tau_n \dotsm d \tau_n,
+\end{equation}
+where $\Delta(t) = \{(\tau_1, \dotsc, \tau_n) \in \R^n \mid 0 \leq \tau_n \leq \dotsm \leq \tau_1 \leq t\}$, such that for any $a \in C^{\infty}(M)$ and any $s \geq 0, K \subset M$ compact
+\begin{align}
+\left | \left | \left (\chroexp \int_0^t \Gamma(\tau) d\tau - S_m(t) \right )a\right |\right |_{s, K} = \mathcal{O}(t^m),& &  t \downarrow 0.
+\end{align}
+Let $\varepsilon > 0$. If we write $S_m^\varepsilon$ for the expansion (\ref{eq: partial sum of chronological exp}) of the vector field $\varepsilon \Gamma$, we notably have the estimate
+\begin{align}
+\label{eq: estimation of chronological exponential}
+\left | \left | \left (\chroexp \int_0^t \varepsilon \Gamma(\tau) d\tau - S_m^\varepsilon(t) \right )a\right |\right |_{s, K} = \mathcal{O}(\varepsilon^m),& &  \varepsilon \downarrow 0.
+\end{align}
+
+\begin{remark}
+The form of the series expansion (\ref{eq: partial sum of chronological exp}) notably shows that if the non-autonomous vector field $\Gamma$ commutes with itself at any two points in time, i.e. $\Gamma(t)\Gamma(s) = \Gamma(s) \Gamma(t)$ for any two $t,s \in J$, then the chronological exponential coincides with the usual matrix exponential.
+\end{remark}
+
+With the estimate (\ref{eq: estimation of chronological exponential}) at hand, let $\hat{\xi} \in H^1_{\sharp}(J, \R^4)$ a normalized stroke, i.e. $||\hat{\xi}||_{H_{\sharp}^1} = 1$, and $\varepsilon > 0$. Set $\xi := \varepsilon \hat{\xi}$ as well as $\Gamma_\varepsilon := \sum_{k \in \N_3}(B_k \dot{\xi} \cdot \xi) L_k$ such that $\Gamma_1 = \sum_{k \in \N_3}(B_k \dot{\hat{\xi}} \cdot \hat{\xi}) L_k$ and  $\Gamma_\varepsilon = \varepsilon^2 \Gamma_1$. Writing $S_{m}^{\epsilon}$ for the expansion (\ref{eq: partial sum of chronological exp}) of the vector field $\Gamma_\varepsilon$, we find by (\ref{eq: estimation of chronological exponential})
+\begin{align}
+	R(t) = R_0 \left ( I + \int_{0}^{t} \Gamma_\varepsilon(\tau) d\tau \right ) + \mathcal{O}(\epsilon^4), & & \varepsilon \downarrow 0.
+\end{align}
+Hence, we have in particular the following approximations for any $t \in J $
+\begin{align}
+\label{eq: linearized ode}
+\begin{cases}
+\dot{c} &= \left ( I + \int_{0}^{t} \Gamma_\varepsilon(\tau) d\tau \right ) \left ( F_{c,0} \dot{\xi} + \sum_{k \in \N_3} (A_k \dot{\xi} \cdot \xi) \hat{e}_k \right )  + \mathcal{O}(\varepsilon^4)\\
+\dot{R} &= \left ( I + \int_{0}^{t} \Gamma_\varepsilon(\tau) d\tau \right ) \sum_{k \in \N_3}(B_k \dot{\xi} \cdot \xi) L_k + \mathcal{O}(\varepsilon^4),
+\end{cases}
+\end{align}
+for $\varepsilon\downarrow 0$. By integrating the previous two relations over $J$, we find an estimate of the net displacement undergone by the center $c$ of \spr as well as its orientation $R$ after a small stroke. Moreover, with equations (\ref{eq: linearized ode}) we can express the net displacements $\delta c$ and $\delta R$ as maps $H_{\sharp}^1(J,\R^4) \to \R^4$ given by $\xi \mapsto 2 \pi \langle \dot{c}(\xi) \rangle $ and $\xi \mapsto 2 \pi \langle \dot{R}(\xi) \rangle$, respectively. Consequently, let us prove that
+
+\begin{proposition}
+For any $\xi \in H_\sharp^1(J, \R^4), \xi: J \to \R^4$, in a neighborhood of $0 \in H_{\sharp}^{1}(J, \R^4)$, the following estimates hold
+\begin{equation}
+\begin{aligned}
+\delta c(\xi) &= 2 \pi \sum_{k \in \N_3} \langle A_k \dot{\xi} \cdot \xi \rangle \hat{e}_k + \mathcal{O}(||\xi||_{H^1_{\sharp}}^3),\\
+\delta R(\xi) &= 2 \pi \sum_{k \in \N_3} \langle B_k \dot{\xi} \cdot \xi \rangle L_k + \mathcal{O}(||\xi||^4_{H_\sharp^1}).
+\end{aligned}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+First, let us note that the term $\langle F_{c,0} \dot{\xi} \rangle$ vanishes due to the periodicity of the stroke $\xi$. Next, we observe that it suffices to prove that the scalar quantities of the form 
+\begin{align}
+\left \langle \left ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(\tau) d\tau \right ) A_l \dot{\hat{\xi}} \cdot \hat{\xi} \right  \rangle, & & k,l \in \N_3,
+\end{align}
+as well as $ \langle  ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(\tau) d \tau  )\dot{\hat{\xi}}_i  \rangle$, $i \in \N_4$ are bounded, where we again set $\xi = \varepsilon \xi$. We focus on the terms of the latter form, since the others can be treated in the same manner. We have
+\begin{equation}
+\begin{aligned}
+\left |\int_J \left ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau) \cdot hat{\xi}(\tau) d\tau\right ) \dot{hat{\xi}}(t) dt \right | = \left | \int_{0}^{2\pi} B_k \dot{hat{\xi}}(t) \cdot hat{\xi}(t) \int_{0}^{t} \dot{hat{\xi}}_i(s) ds dt \right |\\
+\leq ||B_k||_{op} \int_{J} |\dot{hat{\xi}}(t)| \cdot |\hat{\xi}(t) - \hat{\xi}(0)|^2 dt
+\end{aligned}
+\end{equation}
+The Sobolev-Morrey embedding $H_\sharp^{1}(J, \R^4) \subseteq L^\infty_{\sharp}(J, \R^4)$ guarantees the existence of a $c_S > 0$ such that $||\xi||_{\infty} \leq c_S ||\xi||_{H_\sharp}^1$ for every $\xi \in H_\sharp^1(J, \R^4)$. Hence, we have
+\begin{equation}
+\begin{aligned}
+\left | \left \langle \left  ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(\tau) d \tau  \right )\dot{\hat{\xi}}_i \right  \rangle\right |
+& \leq ||B_k||_{op} ||\hat{\xi}||_{\infty}^2 ||||_{H_\sharp^1}\\
+&\leq c_S ||B_k||_{op} ||\hat{\xi}||_{H_\sharp^1}^3 = c_S ||B_k||_{op},
+\end{aligned}
+\end{equation}
+which is clearly bounded. This finishes the proof.
+\end{proof}
+
+To end this section, we note that on the one hand, we have $\langle A_k \dot{\xi} \cdot \xi \rangle = \langle M_k \dot{\xi} \cdot \xi \rangle$ and $\langle B_k \dot{\xi} \cdot \xi \rangle = \langle M_{k + 3} \dot{\xi} \cdot \xi \rangle$ for all $k \in \N_3$. Indeed, if $A$ is a symmetric matrix, we have by integration by parts that $\langle A \xi \cdot \dot{\xi} \rangle = \langle A \dot{\xi} \cdot \xi \rangle = - \langle A \xi \cdot \dot{\xi} \rangle $ and thus only the skew-symmetric parts of the matrices $A_k$ and $B_k$ contribute to the net displacement. Furthermore, similarly to \cite{Alouges2017}, we can represent the terms $ M_k \dot{\xi} \cdot \xi$ in terms of certain operations of the orthonormal basis $\{\tau_i\}_{i \in \N_4}$ of $\R^4$. In fact, we find by straightforward calculation using  that
+\begin{align}
+  M_k \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\alpha( \xi \wedge \dot{\xi} \wedge \tau_{k+1} \wedge \tau_{k+2}), & & k \in \N_3 \\
+  M_{3 + k} \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\delta  ( \xi \wedge \dot{\xi} \wedge \tau_{k} \wedge \tau_{4}), & & k \in \N_3,
+\end{align}
+where the indexes are reduce mod 3 to simplify the notation. Ultimately, using that $\R^3 \times \so(3) \simeq \R^6$, we can write the net displacement in position and orientation simultaneously as
+\begin{equation}
+\delta p = - 4 \pi \sqrt{6} \alpha \sum_{k \in \N_3} ( \xi \wedge \dot{\xi} \wedge \tau_{k+1} \wedge \tau_{k+2}) E_k  - 4 \pi \sqrt{6} \delta \sum_{k \in \N_3} ( \xi \wedge \dot{\xi} \wedge \tau_{k} \wedge \tau_{4}) E_{k + 3},
+\end{equation}
+where $\{E_k\}_{k \in \N_6}$ denotes the canonical Basis of $\R^6$ and the index $k$ is once more reduced mod 3.

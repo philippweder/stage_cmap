@@ -2192,6 +2192,10 @@
     <bcf:citekey order="7">Alouges2017</bcf:citekey>
     <bcf:citekey order="8">Alouges2017</bcf:citekey>
     <bcf:citekey order="9">Alouges2017</bcf:citekey>
+    <bcf:citekey order="10">Agrachev2004</bcf:citekey>
+    <bcf:citekey order="11">Agrachev2004</bcf:citekey>
+    <bcf:citekey order="12">Agrachev2004</bcf:citekey>
+    <bcf:citekey order="13">Alouges2017</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
