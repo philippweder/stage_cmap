@@ -136,6 +136,33 @@
       \verb 10.31219/osf.io/7sfbj
       \endverb
     \endentry
+    \entry{Hall2015}{book}{}
+      \name{author}{1}{}{%
+        {{hash=b805c00e09278506b061111d904aa5c8}{%
+           family={Hall},
+           familyi={H\bibinitperiod},
+           given={Brian\bibnamedelima C.},
+           giveni={B\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer International Publishing}%
+      }
+      \strng{namehash}{b805c00e09278506b061111d904aa5c8}
+      \strng{fullhash}{b805c00e09278506b061111d904aa5c8}
+      \strng{bibnamehash}{b805c00e09278506b061111d904aa5c8}
+      \strng{authorbibnamehash}{b805c00e09278506b061111d904aa5c8}
+      \strng{authornamehash}{b805c00e09278506b061111d904aa5c8}
+      \strng{authorfullhash}{b805c00e09278506b061111d904aa5c8}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Lie Groups, Lie Algebras, and Representations}
+      \field{year}{2015}
+      \verb{doi}
+      \verb 10.1007/978-3-319-13467-3
+      \endverb
+    \endentry
     \entry{Lighthill1952}{article}{}
       \name{author}{1}{}{%
         {{hash=eea1108242f9788f484f1806161a8e45}{%

@@ -1,4 +1,5 @@
-For any initial condition $p_0 = (c_0, R_0) \in \mathcal{P}$ and any control curve $\xi: I \subseteq \R \to \M$, with $I$ a neighborhood of zero, we denote $\gamma(p_0, \xi): I \to \mathcal{P}$ the solution associated to the dynamical system
+\label{sec: symmetries}
+For any initial condition $p_0 = (c_0, R_0) \in \mathcal{P}$ and any control curve $\xi: I \subseteq \R \to \M$, with $I$ a neighborhood of zero, we denote $\gamma(c_0, R_0, \xi): I \to \mathcal{P}$ the solution associated to the dynamical system
 \begin{equation}
 \label{eq:dynamical system}
 \begin{aligned}
@@ -49,14 +50,14 @@ On one hand, we have by definition of the dynamical system (\ref{eq:dynamical sy
 \end{equation}
 On the other hand, using equation (\ref{eq:spatial rotational invariance}) and once more the definition of the dynamical system (\ref{eq: control system}), we obtain
 \begin{equation}
-	\dot{\gamma}_c (c_0, R \xi) = R  \dot{\gamma}_c(c_0, I, \xi) = 
+	\dot{\gamma}_c (c_0, R, \xi) = R  \dot{\gamma}_c(c_0, I, \xi) = 
 	R F_c(\gamma_{\theta}(c_0, I, \xi), \xi) \dot{\xi}.
 \end{equation}
-Therefore, $F_c(\gamma_{\theta}(c_0, R, \xi), \xi) \dot{\xi} = R F_{c}(\gamma_{\theta}(c_0, I, \xi), \xi) \dot{\xi}$ for every $R \in \SO(3)$. Since $T_{\xi_0} \M \simeq \R^4$, evaluation of the preceding expression at $t = 0$ yields $F_{c}(R, \xi_0) = R F_{c}(I, \xi_0)$, as desired. The proof for $F_{\theta}$ is completely analogous.
+Therefore, $F_c(\gamma_{\theta}(c_0, R, \xi), \xi) \dot{\xi} = R F_{c}(\gamma_{\theta}(c_0, I, \xi), \xi) \dot{\xi}$ for every $R \in \SO(3)$. Since $T_{\xi_0} \M \simeq \R^4$, evaluation of the preceding expression at $t = 0$ yields $F_{c}(R, \xi_0) = R F_{c}(I, \xi_0)$, as desired. The proof for $F_{\theta}$ is completely analogous and thus is omitted.
 \end{proof}
 \subsection{Permutation of two arms}
 In this section, we investigate the effect of a swap of two arms on the generic solution of the dynamical system (\ref{eq:dynamical system}).
-To that end, let $P_{ij} \in M_{4 \times 4}(\R)$ denote the permutation matrix that interchanges the $i$-th and $j$-th index, which corresponds to the swap of the arms $i$ and $j$, denoted by $(||i\leftrightsquigarrow ||j$), if applied to the shape space $\M$. In addition, let $S_{ij}$ denote the reflection of $\R^3$ sending arm $||i$ onto arm $||j$ in the reference orientation $I$. Geometrical inspection of the reference tetrahedron shows that $S_{ij}$ is always a reflection at a plane containing the remaining arms $||k$ and $||l$.
+To that end, let $P_{ij} \in M_{4 \times 4}(\R)$ denote the permutation matrix that interchanges the $i$-th and $j$-th index of a vector, which corresponds to the swap of the arms $||i$ and $||j$, denoted by $(||i\leftrightsquigarrow ||j$), if applied to the shape space $\M$. In addition, let $S_{ij}$ denote the reflection of $\R^3$ sending arm $||i$ onto arm $||j$ in the reference orientation $I$. Geometrical inspection of the reference tetrahedron shows that $S_{ij}$ is always a reflection at a plane containing the remaining arms $||k$ and $||l$.
 
 Before we formulate the symmetry conditions for the interchanging of two arms, we recall some results about how rotations behave under reflections. So far, we have only regarded the orientation of \spr as a rotation matrix in $\SO(3)$. However, by Euler's rotation theorem to every such rotation matrix $R \in \SO(3)$ there exists a corresponding rotation vector $\omega \in \R^3$ which is collinear to the unique axis of rotation defined by $R$, i.e. $\omega$ is an eigenvector associated to the eigenvalue 1 of $R$. It's length is then given by the angle of rotation around this axis. The rotation vector $\omega$ is then directly related to the rotation matrix $R$ via the map $\exp: \so(3) \to \SO(3)$, where $\so(3) = T_I \SO(3) = \Skew_3(\R)$ denotes the Lie algebra over $\SO(3)$, which we will illustrate in the following paragraphs.
 
@@ -89,7 +90,7 @@ form a basis of $\so(3)$ consisting of the infinitesimal rotations around the co
 we find by direct computation that $\exp(\omega \cdot \mathbf{L}) = R$. This relationship allows us to formulate the behavior of the orientation of \spr under reflection and thus under permutation of two arms as we shall see later. Indeed, we have
 
 \begin{lemma}
-For any orientation of a rigid body characterized by $R \in \SO(3)$, the orientation of its mirror image under a reflection $S$ is characterized by
+For any orientation of a rigid body characterized by $R \in \SO(3)$, the orientation of its mirror image under a reflection $S$ is given by
 \begin{align}
 	\tilde{R} = S R S.
 \end{align}
@@ -198,7 +199,7 @@ By choice of the canonical basis for $\R^4$ we clearly have $[P_{ij}]_{\mathcal{
 \begin{equation}
 	[F_{\theta}(P_{ij} \xi_0)]_{\mathcal{E}}^{\mathcal{L}}  P_{ij} [\dot{\xi}(0)]_{\mathcal{E}} = [S_{ij} F_{\theta}(\xi_0) \dot{\xi}(0) S_{ij}]_{\mathcal{L}} = -S_{ij} [F_{\theta}(\xi_0)]_{\mathcal{E}}^{\mathcal{L}} [\dot{\xi}(0)]_{\mathcal{E}}.
 \end{equation}
-Recalling that $T_{\xi_0} \M \simeq \R^4$ as well as the arbitrariness of $\xi_0$ finishes the proof.
+Recalling that $T_{\xi_0} \M \simeq \R^4$ as well as the arbitrariness of $\xi_0$ finish the proof.
 \end{proof}
 
 In the following sections, we will always understand $F_{\theta}(\xi)$ as a matrix of size $3 \times 4$ and thus, since no confusion may arise, we will abandon the slightly cumbersome notation and identify $[F_{\theta}(\xi)]_{\mathcal{E}}^{\mathcal{L}}$ with $F_{\theta}(\xi)$.
