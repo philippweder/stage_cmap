@@ -2196,6 +2196,11 @@
     <bcf:citekey order="11">Agrachev2004</bcf:citekey>
     <bcf:citekey order="12">Agrachev2004</bcf:citekey>
     <bcf:citekey order="13">Alouges2017</bcf:citekey>
+    <bcf:citekey order="14">Alouges2013</bcf:citekey>
+    <bcf:citekey order="15">Alouges2017</bcf:citekey>
+    <bcf:citekey order="16">Lighthill1952</bcf:citekey>
+    <bcf:citekey order="17">Alouges2013</bcf:citekey>
+    <bcf:citekey order="18">Lounesto2006</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

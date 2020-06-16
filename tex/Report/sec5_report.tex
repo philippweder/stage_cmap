@@ -1,0 +1,101 @@
+In the spirit of \cite{Alouges2013} and \cite{Alouges2017}, we follow the notion of swimming efficiency suggested by Lighthill \cite{Lighthill1952} and we adopt the following notion of optimality: energy minimizing strokes are the ones that minimize the kinematic energy dissipated while trying to reach a given net displacement $\delta p \in \R^3 \times \so(3) \simeq \R^6$. Mathematically speaking, the total energy dissipation due to a stroke $\xi \in H^1_{\sharp}(J, \R^4)$ can be evaluated through an adequate quadratic energy functional, c.f. \cite{Alouges2013},
+\begin{equation}
+ \mathcal{G}_S(\xi) := \int_{J} \mathfrak{g}(\xi(t))\dot{\xi}(t) \cdot \dot{\xi}(t) dt,
+\end{equation}
+where the energy density $\mathfrak{g} \in C^1(\R^4)$ is a function with values in the space of symmetric and positive definite matrices $M_{4 \times 4}(\R)$. In other words, $\mathfrak{g}$ defines a continuous Riemannian metric on $\M$. In the small strokes regime, we can approximate the energy density by $\mathfrak{g}(\xi) = \mathfrak{g}(0) + o(1)$, where $\mathfrak{g}(0) \in M_{4 \times 4}(\R)$ is symmetric and positive definite. More precisely,
+\begin{equation}
+\label{eq: linearized energy functional}
+	\mathcal{G}(\xi) := \int_{J} Q_{\mathfrak{g}}(\dot{\xi}(t)) dt,
+\end{equation}
+with $Q_{\mathfrak{g}}(\eta) := \mathfrak{g}(0)\eta \cdot \eta$. For the same symmetry reasons as discussed in section \ref{sec: symmetries}, we necessarily have for all $\eta \in \R^4$
+\begin{align}
+	Q_{\mathfrak{g}}(P_{ij} \eta) = Q_{\mathfrak{g}}(\eta),\; i,j \in \N_4,
+\end{align}
+where $P_{ij}$ denotes the permutation matrix swapping the $i$-th and $j$-th entries. By direct computation, on finds that the symmetric positive matrix $G$ representing the quadratic form $Q_{\mathfrak{g}}$ is of the form
+\begin{equation}
+G = \left ( \begin{array}{cccc}
+\kappa & h & h & h \\ 
+h & \kappa & h & h \\ 
+h & h & \kappa & h \\ 
+h & h & h & \kappa
+\end{array} \right ),
+\end{equation}
+for two parameters $h$ and $\kappa > \max(h, -3h)$. In particular, we observe that $G \tau_k = (\kappa - h ) \tau_k$ for $k \in  \N_3$ and $G \tau_4 = (\kappa + 3h) \tau_4$. In the following, we denote by $\mathfrak{g}_1 := \mathfrak{g}_2 := \mathfrak{g}_3 := \kappa - h$ and $\mathfrak{g}_4 := \kappa + 3h$ the eigenvalues of $G$. Furthermore, the eigenvalues $(\mathfrak{g}_i)_{i \in \N_4}$ allow us to diagonalize  $G$ as
+\begin{align}
+G = U \Lambda_{\mathfrak{g}} U^T, \; U := [\tau_1 | \tau_2 |\tau_3 |\tau_4], \; \Lambda_{\mathfrak{g}} := \diag(\mathfrak{g}_i).
+\end{align}
+
+The goal of this section is the minimization of $\mathcal{G}$ in $H_{\sharp}^1(J, \R^4)$ subject to a prescribed net displacement $\delta p \in \R^6$, i.e. subject to the constraint (c.f. (\ref{eq: net displacement}))
+\begin{equation}
+\label{eq: constraint}
+\begin{aligned}
+	 \delta p = \mathfrak{h}_{c} \sum_{k \in \N_3}\left ( \int_{J} \det( \xi(t) | \dot{\xi}(t) | \tau_{k+1} | \tau_{k+2}) dt \right ) f_k\\
+	+ \mathfrak{h}_{\theta}  \sum_{k \in \N_3}\left ( \int_{J} \det ( \xi(t) | \dot{\xi}(t) | \tau_{k} | \tau_{4}) dt\right ) f_{k + 3},
+\end{aligned}
+\end{equation}
+with $\mathfrak{h}_c = - 2 \sqrt{6} \alpha$ and $\mathfrak{h}_{\theta} = - 2 \sqrt{6} \delta$.
+
+
+\subsection{G-orthogonalisation}
+We begin by rewriting the energy functional (\ref{eq: linearized energy functional}) and the constraint (\ref{eq: constraint}) in terms of the orthonormal basis of eigenvectors $(\tau_i)_{i \in \N_4}$ of the matrix $G$. The change of variables $\eta(t) := U^T \xi(t) \in H_{\sharp}^{1}(J, \R^4)$, allows us to write
+\begin{equation}
+\label{eq: G-orth energy functional}
+\mathcal{G}_{U}(\eta) = \int_{J} \Lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \dot{\eta}(t) dt,
+\end{equation}
+with $\mathcal{G}_{U}(\eta) := \mathcal{G}(\xi) = \mathcal{G}(U \eta)$. For the constraint, we note that
+\begin{equation}
+\det(\xi |\dot{\xi} | \tau_i | \tau_j) =  \det U \det (\eta | \dot{\eta} | e_i | e_j) = \det(\dot{\eta} | \eta | e_i |e_j),
+\end{equation}
+since $\det U = -1$. Eventually, we can express the determinants more elegantly in terms of exterior products. To that end, one notes that the scalar product on $\R^n$ extends to the 2nd power $\bigwedge^2 \R^n$, cf. \cite{Lounesto2006}, by
+\begin{equation}
+(x_1 \wedge y_1, x_2 \wedge y_2) = \det \left (\begin{array}{cc}
+x_1 \cdot x_2 & x_1 \cdot y_2 \\ 
+x_2 \cdot y_1 & x_2 \cdot y_2
+\end{array}  \right ).
+\end{equation}
+In our case, this yields $\det(\dot{\eta} | \eta | e_k |e_4) = (\dot{\eta} \wedge \eta, e_{k + 1} \wedge e_{k+2})$ and $\det(\dot{\eta} |\eta | e_{k + 1} |e_{k + 2}) = (\dot{\eta} \wedge \eta, e_k \wedge e_4)$, for $k \in \N_3$ taken mod 3. Since $\dim \bigwedge^2 \R^4 = 6$, the isomorphism sending the basis $\{f_i\}_{i \in \N_6}$ of $\R^6$ onto the basis $(e_{14}, e_{24}, e_{34}, e_{23}, e_{31}, e_{12})$ of $\bigwedge^2 \R^4$, where we write $e_{ij} := e_i \wedge e_j$, allows us to rewrite (\ref{eq: constraint}) as
+\begin{equation}
+\label{eq: G-orth constraint}
+\Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) dt,
+\end{equation}
+with $\Lambda_{\mathfrak{h}} := \diag(\mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta})$.
+
+\subsection{Fourier transformation of the mimimization problem}
+We denote by $\ell^2(\R^4)$ the space of sequences $\mathbf{u} := (u_n)_{n \in \N}$ in $\R^4$ such that the norm
+\begin{equation}
+	||\mathbf{u}||_{\ell^2(\R^4)} := \sqrt{ \sum_{n \in \N} |u_n|^2 }
+\end{equation}
+is finite. Consequently, we denote by $\dot{\ell}^2(\R^4)$ the Hilbert space of sequences $\mathbf{u} = (u_n)_{n \in \N} \in \ell^2(\R^4)$ such that $(n u_n)_{n \in \N} \in \ell^2(\R^4)$. As the elements in $H_{\sharp}^{1}(J, \R^4)$ are $2\pi$-periodic, we can express $\eta$ in terms of its Fourier series as
+\begin{equation}
+\eta(t) := \frac{1}{2} a_0 + \sum_{n \in \N} \cos(nt) a_n + \sin(n t) b_n,
+\end{equation}
+with $(a_n, b_n) \in \dot{\ell}^2(\R^4) \times \dot{\ell}^2(\R^4)$. Substitution of the Fourier series of $\dot{\eta}$ into the energy functional (\ref{eq: G-orth energy functional}) yields due to Parseval's equality
+\begin{align}
+\mathcal{G}_{U} (\eta) := \int_{J} \Lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \dot{\eta} dt &= \pi \sum_{n  \in \N} n^2(\Lambda_{\mathfrak{g}} a_n \cdot a_n + \Lambda_{\mathfrak{g}} b_n \cdot b_n)  \\  &=
+\frac{1}{2} ||\mathbf{u}||_{\ell^2(\R^4)}^2 + \frac{1}{2} ||\mathbf{v}||_{\ell^2(\R^4)}^2,
+\end{align}
+where we have set
+\begin{align}
+	\mathbf{u} := (u_n)_{n \in \N} := \sqrt{2 \pi \Lambda_{\mathfrak{g}}}(n a_n)_{n \in \N} \text{ and } \mathbf{v} := (v_n)_{n \in \N} := \sqrt{2 \pi \Lambda_{\mathfrak{g}}} (n b_n)_{n \in \N}.
+\end{align}
+Clearly, we have $(\mathbf{u}, \mathbf{v}) \in \ell^2(\R^4) \times \ell^2(\R^4)$. As a result of the $L_{\sharp}^2(J, \R^4)$-orthogonality of the Fourier trigonometric system, we can express the constraint (\ref{eq: G-orth constraint}) in terms of Fourier coefficients as $2 \pi \sum_{n \in \N} \tfrac{1}{n} (nb_n) \wedge (n a_n) = \Lambda_{\mathfrak{h}}^{-1} \delta p$. Returning to our old notation for a moment, we note that for any $n \in \N$, we have
+\begin{equation}
+2 \pi n^2 \det(b_n | a_n | e_i | e_j) = \frac{\sqrt{\mathfrak{g}_i \mathfrak{g}_j}}{\sqrt{\det \Lambda_{\mathfrak{g}}}} \det(v_n | u_n |e_i | e_j),
+\end{equation}
+and hence by setting $\tilde{\Lambda}_{\mathfrak{g}} := \diag(\mathfrak{g}_c, \mathfrak{g}_c, \mathfrak{g}_c, \sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}, \sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}, \sqrt{\mathfrak{g}_c  \mathfrak{g}_{\theta}})$, we eventually find
+\begin{equation}
+\sqrt{\det \Lambda_{\mathfrak{g}}} (\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p = \sum_{n \in \N} \frac{v_n  \wedge u_n}{n}.
+\end{equation}
+We thus have proved the following
+
+\begin{proposition}
+The $H_{\sharp}^1(J, \R^4)$ minimization of the functional $\mathcal{G}_U$ given by (\ref{eq: G-orth energy functional}) under the constraint (\ref{eq: G-orth constraint}) is equivalent to the minimization of the functional
+\begin{equation}
+	\mathcal{F}(\mathbf{u}, \mathbf{v}) := \frac{1}{2} ||\mathbf{u} ||^2_{\ell^2(\R^4)} + \frac{1}{2} ||\mathbf{v}||^2_{\ell^2(\R^4)},
+\end{equation}
+defined in the product Hilbert space $\ell^2(\R^4) \times \ell^2(\R^4)$ and subject to the constraint
+\begin{equation}
+\sum_{n \in \N} \frac{1}{n} v_n \wedge u_n = \omega \text{ with} \omega := \sqrt{\det \Lambda_{\mathfrak{g}}}(\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p,
+\end{equation}
+where $\delta p \in \R^6$ is a prescribed net displacement of position and orientation.
+\end{proposition}

@@ -86,7 +86,7 @@ For the spatial part, we deduce from the symmetry properties above that for all 
 \begin{equation}
 	\K_{c,0}(e_i \otimes e_j) = S_{ij} \K_{c,0}(e_j \otimes e_i) = -S_{ij} \K_{c,0}(e_i \otimes e_j)
 \end{equation}
-and therefore $\K_{c,0}(e_i \otimes e_j)$ is an eigenvector associated to the eigenvalue -1 of the reflection $S_{ij}$. The reflection $S_{ij}$ taking place at the plane passing through the two remaining arms $z_k$ and $z_l$, implies that $\K_{c,0}(e_i \otimes e_j) = \alpha_{ij}( z_k \times z_l)$ for some scalar $\alpha_{ij} \in \R$. Additionally, we have $\K_{c,0}(e_i \otimes e_j) = S_{jk} \K_{c,0}(e_i \otimes e_k) = \alpha_{ik}(z_j \times z_l)$ and since $S_{jk}$ is orthogonal, we have $|\alpha_{ij}| = |\alpha_{ik}|$ since the vectors $z_i$ are normalized. Eventually, one quickly verifies that the quantity
+and therefore $\K_{c,0}(e_i \otimes e_j)$ is an eigenvector associated to the eigenvalue -1 of the reflection $S_{ij}$. The reflection $S_{ij}$ taking place at the plane passing through the two remaining arms $z_k$ and $z_l$, implies that $\K_{c,0}(e_i \otimes e_j) = \alpha_{ij}( z_k \times z_l)$ for some scalar $\alpha_{ij} \in \R$. Additionally, we have $\K_{c,0}(e_i \otimes e_j) = S_{jk} \K_{c,0}(e_i \otimes e_k) = \alpha_{ik}(z_j \times z_l)$ and since $S_{jk}$ is orthogonal, we have $|\alpha_{ij}| = |\alpha_{ik}|$ as the vectors $z_i$ are normalized. Eventually, one quickly verifies that the quantity
 \begin{equation}
 	\K_{c,0}(e_i \otimes e_j) \cdot \sgn(ijkl) (z_k \times z_l),
 \end{equation}
@@ -222,7 +222,7 @@ With the estimate (\ref{eq: estimation of chronological exponential}) at hand, l
 \begin{align}
 	R(t) = R_0 \left ( I + \int_{0}^{t} \Gamma_\varepsilon(\tau) d\tau \right ) + \mathcal{O}(\epsilon^4), & & \varepsilon \downarrow 0.
 \end{align}
-Hence, we have in particular the following approximations for any $t \in J $
+Hence, choosing $R_0 = I$, we have in particular the following approximations for any $t \in J $
 \begin{align}
 \label{eq: linearized ode}
 \begin{cases}
@@ -247,14 +247,14 @@ First, let us note that the term $\langle F_{c,0} \dot{\xi} \rangle$ vanishes du
 \begin{align}
 \left \langle \left ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(\tau) d\tau \right ) A_l \dot{\hat{\xi}} \cdot \hat{\xi} \right  \rangle, & & k,l \in \N_3,
 \end{align}
-as well as $ \langle  ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(\tau) d \tau  )\dot{\hat{\xi}}_i  \rangle$, $i \in \N_4$ are bounded, where we again set $\xi = \varepsilon \xi$. We focus on the terms of the latter form, since the others can be treated in the same manner. We have
+as well as $ \langle  ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(\tau) d \tau  )\dot{\hat{\xi}}_i  \rangle$, $i \in \N_4$ are bounded, where we again set $\xi = \varepsilon \hat{\xi}$. We focus on the terms of the latter form, since the others can be treated in the same manner. We have
 \begin{equation}
 \begin{aligned}
-\left |\int_J \left ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau) \cdot hat{\xi}(\tau) d\tau\right ) \dot{hat{\xi}}(t) dt \right | = \left | \int_{0}^{2\pi} B_k \dot{hat{\xi}}(t) \cdot hat{\xi}(t) \int_{0}^{t} \dot{hat{\xi}}_i(s) ds dt \right |\\
-\leq ||B_k||_{op} \int_{J} |\dot{hat{\xi}}(t)| \cdot |\hat{\xi}(t) - \hat{\xi}(0)|^2 dt
+\left |\int_J \left ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau) \cdot \hat{\xi}(\tau) d\tau\right ) \dot{\hat{\xi}}(t) dt \right | = \left | \int_{0}^{2\pi} B_k \dot{\hat{\xi}}(t) \cdot \hat{\xi}(t) \int_{0}^{t} \dot{\hat{\xi}}_i(s) ds dt \right |\\
+\leq ||B_k||_{op} \int_{J} |\dot{\hat{\xi}}(t)| \cdot |\hat{\xi}(t) - \hat{\xi}(0)|^2 dt
 \end{aligned}
 \end{equation}
-The Sobolev-Morrey embedding $H_\sharp^{1}(J, \R^4) \subseteq L^\infty_{\sharp}(J, \R^4)$ guarantees the existence of a $c_S > 0$ such that $||\xi||_{\infty} \leq c_S ||\xi||_{H_\sharp}^1$ for every $\xi \in H_\sharp^1(J, \R^4)$. Hence, we have
+The Sobolev-Morrey embedding $H_\sharp^{1}(J, \R^4) \subseteq L^\infty_{\sharp}(J, \R^4)$ guarantees the existence of a $c_S > 0$ such that $||\xi||_{\infty} \leq c_S ||\xi||_{H_\sharp^1}$ for every $\xi \in H_\sharp^1(J, \R^4)$. Hence, we have
 \begin{equation}
 \begin{aligned}
 \left | \left \langle \left  ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(\tau) d \tau  \right )\dot{\hat{\xi}}_i \right  \rangle\right |
@@ -267,11 +267,12 @@ which is clearly bounded. This finishes the proof.
 
 To end this section, we note that on the one hand, we have $\langle A_k \dot{\xi} \cdot \xi \rangle = \langle M_k \dot{\xi} \cdot \xi \rangle$ and $\langle B_k \dot{\xi} \cdot \xi \rangle = \langle M_{k + 3} \dot{\xi} \cdot \xi \rangle$ for all $k \in \N_3$. Indeed, if $A$ is a symmetric matrix, we have by integration by parts that $\langle A \xi \cdot \dot{\xi} \rangle = \langle A \dot{\xi} \cdot \xi \rangle = - \langle A \xi \cdot \dot{\xi} \rangle $ and thus only the skew-symmetric parts of the matrices $A_k$ and $B_k$ contribute to the net displacement. Furthermore, similarly to \cite{Alouges2017}, we can represent the terms $ M_k \dot{\xi} \cdot \xi$ in terms of certain operations of the orthonormal basis $\{\tau_i\}_{i \in \N_4}$ of $\R^4$. In fact, we find by straightforward calculation using  that
 \begin{align}
-  M_k \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\alpha( \xi \wedge \dot{\xi} \wedge \tau_{k+1} \wedge \tau_{k+2}), & & k \in \N_3 \\
-  M_{3 + k} \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\delta  ( \xi \wedge \dot{\xi} \wedge \tau_{k} \wedge \tau_{4}), & & k \in \N_3,
+  M_k \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\alpha \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}), & & k \in \N_3 \\
+  M_{3 + k} \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\delta \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4}), & & k \in \N_3,
 \end{align}
-where the indexes are reduce mod 3 to simplify the notation. Ultimately, using that $\R^3 \times \so(3) \simeq \R^6$, we can write the net displacement in position and orientation simultaneously as
+where $\det(\xi|\dot{\xi}|\tau_j|\tau_k)$ denotes the determinant of the matrix $(\xi|\dot{\xi}|\tau_j |\tau_k)$ the indexes are reduce mod 3 to simplify the notation. Ultimately, using that $\R^3 \times \so(3) \simeq \R^6$, we can write the net displacement in position and orientation simultaneously in terms of the wedge product $\wedge$ on $\R^4$ as
 \begin{equation}
-\delta p = - 4 \pi \sqrt{6} \alpha \sum_{k \in \N_3} ( \xi \wedge \dot{\xi} \wedge \tau_{k+1} \wedge \tau_{k+2}) E_k  - 4 \pi \sqrt{6} \delta \sum_{k \in \N_3} ( \xi \wedge \dot{\xi} \wedge \tau_{k} \wedge \tau_{4}) E_{k + 3},
+\label{eq: net displacement}
+\frac{\delta p}{2 \pi}= - 2  \sqrt{6} \alpha \sum_{k \in \N_3} \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}) f_k  - 2  \sqrt{6} \delta \sum_{k \in \N_3} \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4}) f_{k + 3},
 \end{equation}
-where $\{E_k\}_{k \in \N_6}$ denotes the canonical Basis of $\R^6$ and the index $k$ is once more reduced mod 3.
+where $\{f_i\}_{i \in \N_6}$ denotes the canonical Basis of $\R^6$ and the index $k$ is once more reduced mod 3. This representation will prove particularly useful in the following section.
