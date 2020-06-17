@@ -244,7 +244,7 @@ First, let us note that the term $\langle F_{c,0} \dot{\xi} \rangle$ vanishes du
 as well as $ \langle  ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(\tau) d \tau  )\dot{\hat{\xi}}_i  \rangle$, $i \in \N_4$ are bounded, where we again set $\xi = \varepsilon \hat{\xi}$. We focus on the terms of the latter form, since the others can be treated in the same manner. We have
 \begin{equation}
 \begin{aligned}
-\left |\int_J \left ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau) \cdot \hat{\xi}(\tau) d\tau\right ) \dot{\hat{\xi}}_i(t) dt \right | = \left | \int_{0}^{2\pi} B_k \dot{\hat{\xi}}(t) \cdot \hat{\xi}(t) \int_{0}^{t} \dot{\hat{\xi}}_i(s) ds dt \right |\\
+\left |\int_J \left ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau) \cdot \hat{\xi}(\tau) d\tau\right ) \dot{\hat{\xi}}_i(t) dt \right | = \left | \int_{0}^{2\pi} B_k \dot{\hat{\xi}}(t) \cdot \hat{\xi}(t) \int_{t}^{2 \pi} \dot{\hat{\xi}}_i(s) ds dt \right |\\
 \leq ||B_k||_{op} \int_{J} |\dot{\hat{\xi}}(t)| \cdot |\hat{\xi}(t) - \hat{\xi}(0)|^2 dt
 \end{aligned}
 \end{equation}

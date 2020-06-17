@@ -136,6 +136,67 @@
       \verb 10.31219/osf.io/7sfbj
       \endverb
     \endentry
+    \entry{DeSimone2011}{inbook}{}
+      \name{author}{3}{}{%
+        {{hash=4beb38f8658966a7a3d53ed89c224d97}{%
+           family={DeSimone},
+           familyi={D\bibinitperiod},
+           given={Antonio},
+           giveni={A\bibinitperiod}}}%
+        {{hash=bbaa542e639eb60a359cc0adda7e7092}{%
+           family={Alouges},
+           familyi={A\bibinitperiod},
+           given={Fran{ç}ois},
+           giveni={F\bibinitperiod}}}%
+        {{hash=3a5d2af9760ccb007b8c92107b64ae12}{%
+           family={Lefebvre},
+           familyi={L\bibinitperiod},
+           given={Aline},
+           giveni={A\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=7f936ba7a00efb9cbc751c65eb2fd482}{%
+           family={Meyers},
+           familyi={M\bibinitperiod},
+           given={Robert\bibnamedelima A.},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY}%
+      }
+      \list{publisher}{1}{%
+        {Springer New York}%
+      }
+      \strng{namehash}{00e277d36cb59c020fef312908d07f62}
+      \strng{fullhash}{00e277d36cb59c020fef312908d07f62}
+      \strng{bibnamehash}{00e277d36cb59c020fef312908d07f62}
+      \strng{authorbibnamehash}{00e277d36cb59c020fef312908d07f62}
+      \strng{authornamehash}{00e277d36cb59c020fef312908d07f62}
+      \strng{authorfullhash}{00e277d36cb59c020fef312908d07f62}
+      \strng{editorbibnamehash}{7f936ba7a00efb9cbc751c65eb2fd482}
+      \strng{editornamehash}{7f936ba7a00efb9cbc751c65eb2fd482}
+      \strng{editorfullhash}{7f936ba7a00efb9cbc751c65eb2fd482}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Glossary}
+      \field{booktitle}{Mathematics of Complexity and Dynamical Systems}
+      \field{isbn}{978-1-4614-1806-1}
+      \field{title}{Biological Fluid Dynamics, Non-linear Partial Differential Equations}
+      \field{year}{2011}
+      \field{pages}{26\bibrangedash 31}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1007/978-1-4614-1806-1_3
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-1-4614-1806-1_3
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-1-4614-1806-1_3
+      \endverb
+    \endentry
     \entry{Hall2015}{book}{}
       \name{author}{1}{}{%
         {{hash=b805c00e09278506b061111d904aa5c8}{%
@@ -229,6 +290,75 @@
       \endverb
       \verb{url}
       \verb https://www.ebook.de/de/product/2991827/pertti_lounesto_clifford_algebras_and_spinors.html
+      \endverb
+    \endentry
+    \entry{Najafi2004}{article}{}
+      \name{author}{2}{}{%
+        {{hash=da6a097388ca8ce3f690062002f1abdd}{%
+           family={Najafi},
+           familyi={N\bibinitperiod},
+           given={Ali},
+           giveni={A\bibinitperiod}}}%
+        {{hash=8ec3096a85591eae915de508fc526725}{%
+           family={Golestanian},
+           familyi={G\bibinitperiod},
+           given={Ramin},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society ({APS})}%
+      }
+      \strng{namehash}{5e78b20dad170f2f9ee2f53da54621dd}
+      \strng{fullhash}{5e78b20dad170f2f9ee2f53da54621dd}
+      \strng{bibnamehash}{5e78b20dad170f2f9ee2f53da54621dd}
+      \strng{authorbibnamehash}{5e78b20dad170f2f9ee2f53da54621dd}
+      \strng{authornamehash}{5e78b20dad170f2f9ee2f53da54621dd}
+      \strng{authorfullhash}{5e78b20dad170f2f9ee2f53da54621dd}
+      \field{sortinit}{N}
+      \field{sortinithash}{98cf339a479c0454fe09153a08675a15}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review E}
+      \field{month}{6}
+      \field{number}{6}
+      \field{title}{Simple swimmer at low Reynolds number: Three linked spheres}
+      \field{volume}{69}
+      \field{year}{2004}
+      \verb{doi}
+      \verb 10.1103/physreve.69.062901
+      \endverb
+    \endentry
+    \entry{Purcell1977}{article}{}
+      \name{author}{1}{}{%
+        {{hash=6c864a5d1f1695b310d2cab6b3a8dd37}{%
+           family={Purcell},
+           familyi={P\bibinitperiod},
+           given={E.\bibnamedelimi M.},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Association of Physics Teachers ({AAPT})}%
+      }
+      \strng{namehash}{6c864a5d1f1695b310d2cab6b3a8dd37}
+      \strng{fullhash}{6c864a5d1f1695b310d2cab6b3a8dd37}
+      \strng{bibnamehash}{6c864a5d1f1695b310d2cab6b3a8dd37}
+      \strng{authorbibnamehash}{6c864a5d1f1695b310d2cab6b3a8dd37}
+      \strng{authornamehash}{6c864a5d1f1695b310d2cab6b3a8dd37}
+      \strng{authorfullhash}{6c864a5d1f1695b310d2cab6b3a8dd37}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Journal of Physics}
+      \field{month}{1}
+      \field{number}{1}
+      \field{title}{Life at low Reynolds number}
+      \field{volume}{45}
+      \field{year}{1977}
+      \field{pages}{3\bibrangedash 11}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1119/1.10903
       \endverb
     \endentry
   \enddatalist
