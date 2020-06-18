@@ -100,3 +100,17 @@ defined in the product Hilbert space $\ell^2(\R^4) \times \ell^2(\R^4)$ and subj
 \end{equation}
 where $\delta p \in \R^6$ is a prescribed net displacement of position and orientation.
 \end{proposition}
+
+\subsection{Reduction to finite dimension}
+To start out this section, we would like to recall some facts about the notion of \emph{bivector} in $\R^3$ and $\R^4$ as well as illustrate their differences. As we have already seen, the space of bivectors of $\R^4$ has dimension 6. In contrast, we have $\dim \bigwedge^{2} \R^3 = 3$. This implies that the bivectors in $\R^3$ are isomorphic to $\R^3$ itself. This is realized by the Hodge star operator $\star$, c.f. \cite{Lounesto2006} p. 38, which is defined in such a way that for two vectors $u,v \in \R^3$, we have
+\begin{equation}
+\label{eq: hodge star}
+	u \wedge v = \star(u \times v),
+\end{equation}
+where $\times$ denotes the usual cross product. In particular, this implies that every bivector in $\R^3$ can be expressed as the wedge product of two vectors, i.e. every bivector in $\R^3$ is \emph{simple}. In light of (\ref{eq: hodge star}), we can also say, that every bivector in $\R^3$ defines exactly one plane. It is due to this underlying geometrical fact, that in \cite{Alouges2017}, one could for any two sequences of Fourier coefficients choose two vectors in $\R^3$ in order to attain a prescribed net displacement with the same energy consumption. This then implied that the optimal control curves are situated in a plane defined by the prescribed net displacement.
+
+Yet, in $\R^4$ the situation proves to be more involved. As we have already mentioned, we have $\dim \bigwedge^2 \R^4 = 6$ and thus there is no isomorphism between bivectors and vectors anymore. This especially entails that in the fourth dimension, not all bivectors are simple, e.g. the bivector
+\begin{equation}
+e_1 \wedge e_2 + e_3 \wedge e_4 \in \bigwedge^2 \R^4
+\end{equation}
+cannot be written as a wedge product of only two vectors. Nevertheless, every element in $\bigwedge^2 \R^4$ can be written as the sum of two orthogonal simple bivectors \cite{Lounesto2006}. As a consequence, a bivector in $\R^4$ defines one plane or two completely orthogonal planes. Thus, in general we have to look for two pairs of Fourier coefficients to reach the same net displacement at the same cost to reduce our problem to a finite dimensional one. Nonetheless, it will be interesting to investigate the special case, where the net displacement is a simple bivector.

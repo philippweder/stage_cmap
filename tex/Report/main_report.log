@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.20)  17 JUN 2020 14:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.20)  18 JUN 2020 09:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -684,20 +684,20 @@ LaTeX Font Info:    Trying to load font information for U+euf on input line 62.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 ) [4] [5])
-(./sec4_report.tex [6] [7] [8] [9] [10]) (./sec5_report.tex [11] [12]) [13]
-[14] (./main_report.aux)
+(./sec4_report.tex [6] [7] [8] [9] [10]) (./sec5_report.tex [11] [12] [13])
+[14] [15] (./main_report.aux)
 Package logreq Info: Writing requests to 'main_report.run.xml'.
 \openout1 = `main_report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 13229 strings out of 480608
- 228882 string characters out of 5903630
- 885795 words of memory out of 5000000
- 28940 multiletter control sequences out of 15000+600000
+ 13230 strings out of 480608
+ 228898 string characters out of 5903630
+ 885805 words of memory out of 5000000
+ 28941 multiletter control sequences out of 15000+600000
  544677 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,16n,45p,1228b,2782s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,16n,45p,1228b,2791s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
@@ -723,10 +723,10 @@ ist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2020/texmf
 f-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2020/
 texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2
 020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main_report.pdf (14 pages, 322719 bytes).
+Output written on main_report.pdf (15 pages, 325748 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
+ 154 PDF objects out of 1000 (max. 8388607)
+ 110 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

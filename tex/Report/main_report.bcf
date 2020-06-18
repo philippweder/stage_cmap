@@ -2213,6 +2213,9 @@
     <bcf:citekey order="26">Lighthill1952</bcf:citekey>
     <bcf:citekey order="27">Alouges2013</bcf:citekey>
     <bcf:citekey order="28">Lounesto2006</bcf:citekey>
+    <bcf:citekey order="29">Lounesto2006</bcf:citekey>
+    <bcf:citekey order="30">Alouges2017</bcf:citekey>
+    <bcf:citekey order="31">Lounesto2006</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

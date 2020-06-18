@@ -99,13 +99,13 @@
 \section{Introduction}
 \input{sec1_report.tex}
 
-\section{Modeling of the swimmer as a control problem}[Modeling]
+\section[Modeling]{Modeling of the swimmer as a control problem}
 \input{sec2_report.tex}
 
 \section{Symmetries}
 \input{sec3_report.tex}
 
-\section{The control problem in the regime of small strokes}[Small strokes regime]
+\section[The small strokes regime]{The control problem in the regime of small strokes}
 \input{sec4_report.tex}
 
 \section{Energy minimizing strokes}
