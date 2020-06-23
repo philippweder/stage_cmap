@@ -197,6 +197,40 @@
       \verb https://doi.org/10.1007/978-1-4614-1806-1_3
       \endverb
     \endentry
+    \entry{Doran2007}{book}{}
+      \name{author}{1}{}{%
+        {{hash=85acd282be40d1408f002ac66c321e80}{%
+           family={Doran},
+           familyi={D\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{85acd282be40d1408f002ac66c321e80}
+      \strng{fullhash}{85acd282be40d1408f002ac66c321e80}
+      \strng{bibnamehash}{85acd282be40d1408f002ac66c321e80}
+      \strng{authorbibnamehash}{85acd282be40d1408f002ac66c321e80}
+      \strng{authornamehash}{85acd282be40d1408f002ac66c321e80}
+      \strng{authorfullhash}{85acd282be40d1408f002ac66c321e80}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{22}
+      \field{isbn}{9781139632416}
+      \field{month}{11}
+      \field{title}{Geometric Algebra for Physicists}
+      \field{year}{2007}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.ebook.de/de/product/20757008/chris_doran_geometric_algebra_for_physicists.html
+      \endverb
+      \verb{url}
+      \verb https://www.ebook.de/de/product/20757008/chris_doran_geometric_algebra_for_physicists.html
+      \endverb
+    \endentry
     \entry{Hall2015}{book}{}
       \name{author}{1}{}{%
         {{hash=b805c00e09278506b061111d904aa5c8}{%

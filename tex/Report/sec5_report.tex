@@ -1,12 +1,12 @@
 \label{sec: optimization}
 In the spirit of \cite{Alouges2013} and \cite{Alouges2017}, we follow the notion of swimming efficiency suggested by Lighthill \cite{Lighthill1952} and we adopt the following notion of optimality: energy minimizing strokes are the ones that minimize the kinematic energy dissipated while trying to reach a given net displacement $\delta p \in \R^3 \times \so(3) \simeq \R^6$. Mathematically speaking, the total energy dissipation due to a stroke $\xi \in H^1_{\sharp}(J, \R^4)$ can be evaluated through an adequate quadratic energy functional, c.f. \cite{Alouges2013},
 \begin{equation}
- \mathcal{G}_S(\xi) := \int_{J} \mathfrak{g}(\xi(t))\dot{\xi}(t) \cdot \dot{\xi}(t) dt,
+ \mathcal{G}_S(\xi) := \int_{J} \mathfrak{g}(\xi(t))\dot{\xi}(t) \cdot \dot{\xi}(t) \dd t,
 \end{equation}
 where the energy density $\mathfrak{g} \in C^1(\R^4)$ is a function with values in the space of symmetric and positive definite matrices $M_{4 \times 4}(\R)$. In other words, $\mathfrak{g}$ defines a continuous Riemannian metric on $\M$. In the small strokes regime, we can approximate the energy density by $\mathfrak{g}(\xi) = \mathfrak{g}(0) + o(1)$, where $\mathfrak{g}(0) \in M_{4 \times 4}(\R)$ is symmetric and positive definite. More precisely,
 \begin{equation}
 \label{eq: linearized energy functional}
-	\mathcal{G}(\xi) := \int_{J} Q_{\mathfrak{g}}(\dot{\xi}(t)) dt,
+	\mathcal{G}(\xi) := \int_{J} Q_{\mathfrak{g}}(\dot{\xi}(t))\dd t,
 \end{equation}
 with $Q_{\mathfrak{g}}(\eta) := \mathfrak{g}(0)\eta \cdot \eta$. For the same symmetry reasons as discussed in section \ref{sec: symmetries}, we necessarily have for all $\eta \in \R^4$
 \begin{align}
@@ -22,16 +22,16 @@ h & h & h & \kappa
 \end{array} \right ),
 \end{equation}
 for two parameters $h$ and $\kappa > \max(h, -3h)$. In particular, we observe that $G \tau_k = (\kappa - h ) \tau_k$ for $k \in  \N_3$ and $G \tau_4 = (\kappa + 3h) \tau_4$. In the following, we denote by $\mathfrak{g}_1 := \mathfrak{g}_2 := \mathfrak{g}_3 := \kappa - h$ and $\mathfrak{g}_4 := \kappa + 3h$ the eigenvalues of $G$. Furthermore, the eigenvalues $(\mathfrak{g}_i)_{i \in \N_4}$ allow us to diagonalize  $G$ as
-\begin{align}
-G = U \Lambda_{\mathfrak{g}} U^T, \; U := [\tau_1 | \tau_2 |\tau_3 |\tau_4], \; \Lambda_{\mathfrak{g}} := \diag(\mathfrak{g}_i).
-\end{align}
+\begin{eqnarray}
+G = U \Lambda_{\mathfrak{g}} U^T, & U := [\tau_1 | \tau_2 |\tau_3 |\tau_4], & \Lambda_{\mathfrak{g}} := \diag(\mathfrak{g}_i).
+\end{eqnarray}
 
 The goal of this section is the minimization of $\mathcal{G}$ in $H_{\sharp}^1(J, \R^4)$ subject to a prescribed net displacement $\delta p \in \R^6$, i.e. subject to the constraint (c.f. (\ref{eq: net displacement}))
 \begin{equation}
 \label{eq: constraint}
 \begin{aligned}
-	 \delta p = \mathfrak{h}_{c} \sum_{k \in \N_3}\left ( \int_{J} \det( \xi(t) | \dot{\xi}(t) | \tau_{k+1} | \tau_{k+2}) dt \right ) f_k\\
-	+ \mathfrak{h}_{\theta}  \sum_{k \in \N_3}\left ( \int_{J} \det ( \xi(t) | \dot{\xi}(t) | \tau_{k} | \tau_{4}) dt\right ) f_{k + 3},
+	 \delta p = \mathfrak{h}_{c} \sum_{k \in \N_3}\left ( \int_{J} \det( \xi(t) | \dot{\xi}(t) | \tau_{k+1} | \tau_{k+2}) \dd t \right ) f_k\\
+	+ \mathfrak{h}_{\theta}  \sum_{k \in \N_3}\left ( \int_{J} \det ( \xi(t) | \dot{\xi}(t) | \tau_{k} | \tau_{4}) \dd t\right ) f_{k + 3},
 \end{aligned}
 \end{equation}
 with $\mathfrak{h}_c = - 2 \sqrt{6} \alpha$ and $\mathfrak{h}_{\theta} = - 2 \sqrt{6} \delta$.
@@ -41,7 +41,7 @@ with $\mathfrak{h}_c = - 2 \sqrt{6} \alpha$ and $\mathfrak{h}_{\theta} = - 2 \sq
 We begin by rewriting the energy functional (\ref{eq: linearized energy functional}) and the constraint (\ref{eq: constraint}) in terms of the orthonormal basis of eigenvectors $(\tau_i)_{i \in \N_4}$ of the matrix $G$. The change of variables $\eta(t) := U^T \xi(t) \in H_{\sharp}^{1}(J, \R^4)$, allows us to write
 \begin{equation}
 \label{eq: G-orth energy functional}
-\mathcal{G}_{U}(\eta) = \int_{J} \Lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \dot{\eta}(t) dt,
+\mathcal{G}_{U}(\eta) = \int_{J} \Lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \dot{\eta}(t) \dd t,
 \end{equation}
 with $\mathcal{G}_{U}(\eta) := \mathcal{G}(\xi) = \mathcal{G}(U \eta)$. For the constraint, we note that
 \begin{equation}
@@ -49,15 +49,20 @@ with $\mathcal{G}_{U}(\eta) := \mathcal{G}(\xi) = \mathcal{G}(U \eta)$. For the 
 \end{equation}
 since $\det U = -1$. Eventually, we can express the determinants more elegantly in terms of exterior products. To that end, one notes that the scalar product on $\R^n$ extends to the 2nd power $\bigwedge^2 \R^n$, cf. \cite{Lounesto2006}, by
 \begin{equation}
-(x_1 \wedge y_1, x_2 \wedge y_2) = \det \left (\begin{array}{cc}
-x_1 \cdot x_2 & x_1 \cdot y_2 \\ 
+(x_1 \wedge x_2, y_1 \wedge y_2) = \det \left (\begin{array}{cc}
+x_1 \cdot y_1 & x_1 \cdot y_2 \\ 
 x_2 \cdot y_1 & x_2 \cdot y_2
 \end{array}  \right ).
 \end{equation}
-In our case, this yields $\det(\dot{\eta} | \eta | e_k |e_4) = (\dot{\eta} \wedge \eta, e_{k + 1} \wedge e_{k+2})$ and $\det(\dot{\eta} |\eta | e_{k + 1} |e_{k + 2}) = (\dot{\eta} \wedge \eta, e_k \wedge e_4)$, for $k \in \N_3$ taken mod 3. Since $\dim \bigwedge^2 \R^4 = 6$, the isomorphism sending the basis $\{f_i\}_{i \in \N_6}$ of $\R^6$ onto the basis $(e_{14}, e_{24}, e_{34}, e_{23}, e_{31}, e_{12})$ of $\bigwedge^2 \R^4$, where we write $e_{ij} := e_i \wedge e_j$, allows us to rewrite (\ref{eq: constraint}) as
+In our case, this yields $\det(\dot{\eta} | \eta | e_k |e_4) = (\dot{\eta} \wedge \eta, e_{k + 1} \wedge e_{k+2})$ and $\det(\dot{\eta} |\eta | e_{k + 1} |e_{k + 2}) = (\dot{\eta} \wedge \eta, e_k \wedge e_4)$, for $k \in \N_3$ taken mod 3. Since $\dim \bigwedge^2 \R^4 = 6$, the isomorphism sending the basis $\{f_i\}_{i \in \N_6}$ of $\R^6$ onto the basis 
+\begin{equation}
+\label{eq: basis of bivectors}
+(e_{14}, e_{24}, e_{34}, e_{23}, e_{31}, e_{12})
+\end{equation}
+of $\bigwedge^2 \R^4$, where we write $e_{ij} := e_i \wedge e_j$, allows us to rewrite (\ref{eq: constraint}) as
 \begin{equation}
 \label{eq: G-orth constraint}
-\Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) dt,
+\Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) \dd 1t,
 \end{equation}
 with $\Lambda_{\mathfrak{h}} := \diag(\mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta})$.
 
@@ -77,40 +82,253 @@ with $(a_n, b_n) \in \dot{\ell}^2(\R^4) \times \dot{\ell}^2(\R^4)$. Substitution
 \end{align}
 where we have set
 \begin{align}
+\label{eq:relation Fourier coeffs of eta}
 	\mathbf{u} := (u_n)_{n \in \N} := \sqrt{2 \pi \Lambda_{\mathfrak{g}}}(n a_n)_{n \in \N} \text{ and } \mathbf{v} := (v_n)_{n \in \N} := \sqrt{2 \pi \Lambda_{\mathfrak{g}}} (n b_n)_{n \in \N}.
 \end{align}
 Clearly, we have $(\mathbf{u}, \mathbf{v}) \in \ell^2(\R^4) \times \ell^2(\R^4)$. As a result of the $L_{\sharp}^2(J, \R^4)$-orthogonality of the Fourier trigonometric system, we can express the constraint (\ref{eq: G-orth constraint}) in terms of Fourier coefficients as $2 \pi \sum_{n \in \N} \tfrac{1}{n} (nb_n) \wedge (n a_n) = \Lambda_{\mathfrak{h}}^{-1} \delta p$. Returning to our old notation for a moment, we note that for any $n \in \N$, we have
 \begin{equation}
 2 \pi n^2 \det(b_n | a_n | e_i | e_j) = \frac{\sqrt{\mathfrak{g}_i \mathfrak{g}_j}}{\sqrt{\det \Lambda_{\mathfrak{g}}}} \det(v_n | u_n |e_i | e_j),
 \end{equation}
-and hence by setting $\tilde{\Lambda}_{\mathfrak{g}} := \diag(\mathfrak{g}_c, \mathfrak{g}_c, \mathfrak{g}_c, \sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}, \sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}, \sqrt{\mathfrak{g}_c  \mathfrak{g}_{\theta}})$, we eventually find
+and hence by setting $\tilde{\Lambda}_{\mathfrak{g}} := \diag(\mathfrak{g}_c, \mathfrak{g}_c, \mathfrak{g}_c, \sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}, \sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}, \sqrt{\mathfrak{g}_c  \mathfrak{g}_{\theta}})$, with $\mathfrak{g}_1 :=\mathfrak{g}_2 := \mathfrak{g}_3 := \mathfrak{g}_c$ and $\mathfrak{g}_4 := \mathfrak{g}_\theta$, we eventually find
 \begin{equation}
-\sqrt{\det \Lambda_{\mathfrak{g}}} (\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p = \sum_{n \in \N} \frac{v_n  \wedge u_n}{n}.
+\sqrt{\det \Lambda_{\mathfrak{g}}} (\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p = \sum_{n \in \N} \frac{v_n  \wedge u_n}{n}
 \end{equation}
 We thus have proved the following
 
 \begin{proposition}
+\label{prop: l2-minimization}
 The $H_{\sharp}^1(J, \R^4)$ minimization of the functional $\mathcal{G}_U$ given by (\ref{eq: G-orth energy functional}) under the constraint (\ref{eq: G-orth constraint}) is equivalent to the minimization of the functional
 \begin{equation}
+\label{eq:l2-energy}
 	\mathcal{F}(\mathbf{u}, \mathbf{v}) := \frac{1}{2} ||\mathbf{u} ||^2_{\ell^2(\R^4)} + \frac{1}{2} ||\mathbf{v}||^2_{\ell^2(\R^4)},
 \end{equation}
 defined in the product Hilbert space $\ell^2(\R^4) \times \ell^2(\R^4)$ and subject to the constraint
 \begin{equation}
+\label{eq:l2-constraint}
 \sum_{n \in \N} \frac{1}{n} v_n \wedge u_n = \omega \text{ with } \omega := \sqrt{\det \Lambda_{\mathfrak{g}}}(\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p,
 \end{equation}
 where $\delta p \in \R^6$ is a prescribed net displacement of position and orientation.
 \end{proposition}
 
-\subsection{Reduction to finite dimension}
-To start out this section, we would like to recall some facts about the notion of \emph{bivector} in $\R^3$ and $\R^4$ as well as illustrate their differences. As we have already seen, the space of bivectors of $\R^4$ has dimension 6. In contrast, we have $\dim \bigwedge^{2} \R^3 = 3$. This implies that the bivectors in $\R^3$ are isomorphic to $\R^3$ itself. This is realized by the Hodge star operator $\star$, c.f. \cite{Lounesto2006} p. 38, which is defined in such a way that for two vectors $u,v \in \R^3$, we have
+\subsection{Preliminaries for the reduction to finite dimension}
+To continue our analysis of \spr and to reduce the minimization problem defined by (\ref{eq:l2-energy}) and (\ref{eq:l2-constraint}), we have to discuss the notions  \emph{bivector} and \emph{wedge product} in more detail and introduce the \emph{Clifford product} to illustrate the fundamental differences between the two swimmers \textsc{SPr3} and \spr. For an extensive introduction to this topic, we refer to \cite{Lounesto2006} and \cite{Doran2007}.
+
+For our purposes, the abstract definition of $k$-vectors as alternating tensors is not very useful. We merely illustrate them in $\R^3$ since the notion then generalizes easily to higher dimensions. In $\R^3$, a bivector is an oriented plane segment; that is, a small piece of surface having a magnitude given by the area of the surface element as well as a direction given by the attitude of the plane the surface element lies in as well as a sense of rotation. Naturally, we represent a bivector $\omega$ as a small parallelogram which suggests that we can think of it as some product of the two vectors along its sides. This is realized by the \emph{exterior product}, also called \emph{wedge product}, $u \wedge v$ of two vectors $u$ and $v$. The product $u \wedge v$ then represents the bivector obtained by sweeping $v$ along $u$. This operation yields a direct link between $\R^3$ and the vector space $\bigwedge^2 \R^3$ of bivectors, a basis of which is given by
+\begin{equation}
+ \{\hat{e}_1 \wedge \hat{e}_2, \hat{e}_1 \wedge \hat{e}_3, \hat{e}_2 \wedge \hat{e}_3\},
+\end{equation}
+if $\{\hat{e}_1, \hat{e}_2, \hat{e}_3\}$ is a basis of $\R^3$. In fact, the standard scalar product on $\R^3$ extends to a scalar product on $\bigwedge^2 \R^3$ by
+\begin{equation}
+\langle u_1 \wedge u_2 , v_1 \wedge v_2 \rangle = \det \left (\begin{array}{cc}
+u_1 \cdot v_1 & u_1 \cdot v_2 \\ 
+u_2 \cdot v_1 & u_2 \cdot v_2
+\end{array}  \right).
+\end{equation}
+In particular, $\langle u \wedge v, u \wedge v \rangle = |u|^2 |v|^2 \sin^2\psi$, where $\psi$ is the angle between the vectors $u$ and $v$. Eventually, the norm of a bivector $\omega = \omega_{12} \hat{e}_1 \wedge \hat{e}_2 + \omega_{13} \hat{e}_1 \wedge \hat{e}_3 + \omega_{23} \hat{e}_2 \wedge \hat{e}_3$ is given by
+\begin{equation}
+|\omega| = \sqrt{\omega_{12}^2 + \omega_{13}^2 + \omega_{23}^2}.
+\end{equation}
+These definitions then extend naturally to all higher dimensions and one can also defined the exterior algebra which connects all possible wedge products, c.f. \cite{Lounesto2006}. In particular, we note that if $\{e_1, e_2, e_3, e_4\}$ again denotes the canonical basis of $\R^4$, a basis of the space $\bigwedge^2 \R^4$ is given by
+\begin{equation}
+\{e_{12}, e_{13}, e_{14}, e_{23}, e_{24}, e_{34}\},
+\end{equation}
+where we write $e_{ij} := e_i \wedge e_j$ to simplify the notation.
+
+One peculiarity of the bivectors in $\R^3$ is that they are isomorphic to the space $\R^3$ itself. This is realized by the so-called \emph{Hodge dual operator} $\star$, c.f. \cite{Lounesto2006} p. 38, which is defined in a way such that for any two vectors $u,v \in \R^3$ one has
 \begin{equation}
 \label{eq: hodge star}
-	u \wedge v = \star(u \times v),
+u \wedge v = \star(u \times v),
 \end{equation}
-where $\times$ denotes the usual cross product. In particular, this implies that every bivector in $\R^3$ can be expressed as the wedge product of two vectors, i.e. every bivector in $\R^3$ is \emph{simple}. In light of (\ref{eq: hodge star}), we can also say, that every bivector in $\R^3$ defines exactly one plane. It is due to this underlying geometrical fact, that in \cite{Alouges2017}, one could for any two sequences of Fourier coefficients choose two vectors in $\R^3$ in order to attain a prescribed net displacement with the same energy consumption. This then implied that the optimal control curves are situated in a plane defined by the prescribed net displacement.
+where $\times$ denotes the usual cross products. This entails two things: First, every bivector in $\R^3$ is \emph{simple}; that is, it can be written as the wegde product of two vectors. Second, every bivector in $\R^3$ defines one unique plane in $\R^3$. It is due to this underlying geometrical fact that in \cite{Alouges2017} one could always reduce the Fourier coefficients of an optimal control curve to one pair of vectors by which one attained the same net displacement at the same energy consumption. Furthermore, this implied that the optimal control curves are situated in a certain plane defined by the vector of the net displacement.
 
-Yet, in $\R^4$ the situation proves to be more involved. As we have already mentioned, we have $\dim \bigwedge^2 \R^4 = 6$ and thus there is no isomorphism between bivectors and vectors anymore. This especially entails that in the fourth dimension, not all bivectors are simple, e.g. the bivector
+Yet, in $\R^4$, the geometry of its bivectors proves to be more involved. As $\dim \bigwedge^2 \R^4 = 6$, it is already clear that the bivectors in $\R^4$ are not isomorphic to $\R^4$ itself. In particular, in $\R^4$ not all bivectors are simple. To understand why this is the case and to characterize nevertheless the simple bivectors of $\R^4$, we introduce the so-called \emph{Clifford product}. For two vectors $u, v \in \R^n$, the Clifford product is given by
 \begin{equation}
-e_1 \wedge e_2 + e_3 \wedge e_4 \in \bigwedge^2 \R^4
+uv = u \cdot v + u \wedge v.
 \end{equation}
-cannot be written as a wedge product of only two vectors. Nevertheless, every element in $\bigwedge^2 \R^4$ can be written as the sum of two orthogonal simple bivectors \cite{Lounesto2006}. As a consequence, a bivector in $\R^4$ defines one plane or two completely orthogonal planes. Thus, in general we have to look for two pairs of Fourier coefficients to reach the same net displacement at the same cost to reduce our problem to a finite dimensional one. Nonetheless, it will be interesting to investigate the special case, where the net displacement is a simple bivector.
+If $\{e_i\}_{i \in \N_n}$ is a basis of $\R^n$, the Clifford algebra is then characterized by 
+\begin{equation}
+\begin{aligned}
+	e_i e_j &= - e_j e_i,& & i \neq j\\
+	e_i e_i &= 1.
+\end{aligned}
+\end{equation}
+There is also a basis-free definition using quadratic forms which is more general for sure, but we will not make any use of it in this paper. However, we will make use of the identities $|u \wedge v| = |u| |v| \sin \psi$ and $(u \wedge v)^2 = - |u \wedge v|^2$. In fact, we have the following two results which characterize the simple bivectors in four dimensions:
+
+\begin{proposition}
+\label{lem:cond simple 1}
+A bivector $\omega \in \bigwedge^2 \R^4$ is simple if an only if its square $\omega^2$ is real.
+\end{proposition}
+
+\begin{proof}
+If $\omega$ is simple, there exist two vectors $u, v \in \R^4$ such that $\omega = u \wedge v$. Then the preceding identity immediately yields
+\begin{equation}
+\omega^2 = (u \wedge v)^2 = -|u \wedge v|^2 \in \R.
+\end{equation}
+\end{proof}
+
+By direct computation, then one finds that for a general bivector $\omega \in \bigwedge^2 \R^4$
+\begin{equation}
+\omega^2 = - |\omega|^2 + 2(\omega_{12}\omega_{34} + \omega_{23} \omega_{14} - \omega_{13} \omega_{24}).
+\end{equation}
+Hence, we have the following
+
+\begin{corollary}
+A bivector $\omega = \sum_{i,j} \omega_{ij} e_{ij} \in \bigwedge^2 \R^4$ is simple if and only if
+\begin{equation}
+\label{eq: general cond simple}
+\omega_{12} \omega_{34} + \omega_{23} \omega_{14} +  \omega_{31} \omega_{24} = 0.
+\end{equation}
+\end{corollary}
+
+We note that the condition (\ref{eq: general cond simple}) is in particular satisfied if all coefficients corresponding to a certain index are zero, e.g. $\omega_{i4} = 0$ for $i \in \N_4$. This yields four subspaces $D^*_{ijk}$ of $\bigwedge^2 \R^4$ consisting only of simple bivectors. Since net displacement $\delta p$ is merely scaled and multiplied by diagonal matrices to get the constraint vector in (\ref{eq:l2-constraint}), its structure is not changed and thus by inspection of the basis of $\bigwedge^2 \R^4$, we have the following correspondences:
+\begin{align*}
+D^{*}_{123} &\longleftrightarrow\text{ rotations around all three axes } \hat{e}_1, \hat{e}_2, \hat{e}_3\\
+D^{*}_{124} &\longleftrightarrow \text{ translation in the $\hat{e}_1\hat{e}_2$-plane, rotation around the $\hat{e}_3$-axis }\\
+D^{*}_{134} &\longleftrightarrow  \text{ translation in the $\hat{e}_1\hat{e}_3$-plane, rotation around the $\hat{e}_2$-axis }\\
+D^{*}_{234} &\longleftrightarrow  \text{ translation in the $\hat{e}_2\hat{e}_3$-plane, rotation around the $\hat{e}_1$-axis }
+\end{align*}
+In particular, the subspaces $D^{*}_{ijk}$ are of dimension three and correspond to the subspaces $D_{ijk} := \Span\{e_i, e_j, e_k\} \subset \R^4$. In fact, we have $D^{*}_{ijk} = \bigwedge^2 D_{ijk}$ and furthermore the isomorphism given by the Hodge star operator $\star$, i.e.
+\begin{equation}
+\omega = \omega_{ij} e_{ij} + \omega_{ik} e_{ik} + \omega_{jk} e_{jk} \mapsto \omega_{ij} e_k + \omega_{ik} e_j + \omega_{jk} e_i.
+\end{equation}
+This especially allows us to relate cross products in the subspace $D_{ijk}$ to a unique bivector in $D_{ijk}^*$. More precisely, we have for $u, v \in D_{ijk}$ that $u \wedge v = \star(u \times v)$ just like in (\ref{eq: hodge star}), where the cross product is understood in the subspace $D_{ijk}$.
+
+\subsection[The simple case]{The simple case $\omega \in D_{ijk}^*$}
+With the remarks from the preceding section, we are able to solve the constrained minimization problem of Proposition \ref{prop: l2-minimization} in a similar manner to \cite{Alouges2017}. In fact, we retrieve essentially the same result, i.e. that the optimal control curves are ellipses in a certain plane defined by the net displacement. Let us prove
+
+\begin{proposition}
+\label{prop:simple reduction}
+If $\omega = D_{ijk}$, then for any $(\mathbf{u}, \mathbf{v}) \in \ell^2(\R^4) \times \ell^2(\R^4)$ such that the constraint (\ref{eq:l2-constraint}) holds, there exist two vectors $u, v \in \R^4$ such that for the sequences $\mathbf{u_\star} := \mathbf{e}_1 u$ and $\mathbf{v_\star} := \mathbf{e}_1 v \in \ell^2(\R^4)$ one has
+\begin{equation}
+\mathcal{F}(\mathbf{u_{\star}}, \mathbf{v_{\star}}) = \mathcal{F}(\mathbf{u}, \mathbf{v}) \text{ and } v \wedge u = \omega.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+If $\omega = 0$, then the proof is trivial. Thus, let us denote by $\hat{\omega}$ the unit bivector associated to $\omega$. For a couple $(\mathbf{u}, \mathbf{v}) \in \ell^2(\R^4) \times \ell^2(\R^4)$, we then choose $u,v \in \R^4$ such that the following relations hold:
+\begin{eqnarray}
+\label{eq:reduction int1}
+	|u| = ||\mathbf{u} ||_{\ell^2(\R^4)}, &  |v| = ||\mathbf{v} ||_{\ell^2(\R^4)} , & \frac{u \wedge v}{|u \wedge v|} = \hat{\omega}.
+\end{eqnarray}
+The latter is possible since $\hat{\omega}$ is a simple bivector by hypothesis. Furthermore, we have $u \wedge v = ||\mathbf{u}||_{\ell^2(\R^4)} ||\mathbf{v}||_{\ell^2(\R^4)} (\sin\psi)\hat{\omega}$, where $\psi$ is the angle between $u$ and $v$. Therefore, the equality $u \wedge v = \omega$ can be satisfied by choosing the angle $\psi \in (0, \pi)$ such that
+\begin{equation}
+ \sin \psi = \frac{|\omega|}{||\mathbf{u}||_{\ell^2(\R^4)} ||\mathbf{v} ||_{\ell^2(\R^4)}}
+ \end{equation}
+This is possible under the condition that the right hand side  of the previous equation is not greater than one. In fact, we have using the Cauchy-Schwarz inequality
+\begin{equation}
+|\omega| \leq \sum_{n \in \N} \frac{1}{n} |v_n \wedge u_n| \leq \sum_{n \in \N} |v_n| |u_n| \leq ||\mathbf{u} ||_{\ell^2(\R^4)} ||\mathbf{v} ||_{\ell^2(\R^4)}.
+\end{equation}
+Finally, from (\ref{eq:reduction int1}) we obtain
+\begin{equation}
+\mathcal{F}(\mathbf{u_\star}, \mathbf{v_{\star}}) = \frac{1}{2} |u| + \frac{1}{2} |v| = \frac{1}{2} ||\mathbf{u}||_{\ell^2(\R^4)} + \frac{1}{2} ||\textbf{v}||_{\ell^2(\R^4)},
+\end{equation}
+which concludes the proof.
+\end{proof}
+
+We immediately have
+
+\begin{corollary}
+\label{cor:simple reduction}
+The minimization problem for $\mathcal{F}$ in $\ell^2(\R^4) \times \ell^2(\R^4)$, under the constraint (\ref{eq:l2-constraint}), is equivalent to the minimization in $\R^4 \times \R^4$ of the function
+\begin{equation}
+\label{eq:finite dim energy}
+ 	f(u,v) := \frac{1}{2}|u|^2 + \frac{1}{2} |v|^2
+ \end{equation} 
+ under the constraint
+ \begin{equation}
+ \label{eq:finite dim constraint}
+ v \wedge u = \omega.
+ \end{equation}
+\end{corollary}
+
+\begin{proof}
+It suffices to observe that if $\mathcal{V}_{\omega}$ denotes the subset of $\ell^2(\R^4) \times \ell^2(\R^4)$ satisfying the constraint (\ref{eq:l2-constraint}) and by $V_{\omega}$ the subset of $(u, v)  \in \R^4 \times \R^4$ such that $u \times v = \omega$, then Proposition \ref{prop:simple reduction} yields
+\begin{equation}
+\min_{(\mathbf{u}, \mathbf{v}) \in \mathcal{V}_{\omega}}\mathcal{F}(\mathbf{u}, \mathbf{v}) = \min_{(u, v) \in V_\omega} \mathcal{F}(\mathbf{e}_1 u, \mathbf{e}_1, v) = \min_{(u,v) \in V_{\omega}} f(u,v).
+\end{equation}
+\end{proof}
+
+Let us now prove the following
+
+
+\begin{proposition}
+\label{prop:finite dim minimization}
+Any couple of vectors $(u_{\star}, v_{\star}) \in \R^4 \times \R^4$ minimizing the function $f$ given in (\ref{eq:finite dim energy}) and subject to the constraint (\ref{eq:finite dim constraint}) with $\omega \in D_{ijk}^{*}$, is characterized by the following conditions:
+\begin{eqnarray}
+\label{eq:finite dim minimization conditions}
+u_{\star}, v_{\star} \in D_{ijk}, & 
+|u_{\star}|^2 = |v_{\star}|^2, & 
+u_{\star} \cdot v_{\star} = 0.
+\end{eqnarray}
+Therefore, for any $\sigma \in D_{ijk}$ such that $\sigma \cdot \hat{\omega} = 0$ and $|\sigma|^2 = |\omega|$, the couple
+\begin{equation}
+(\sigma, \sigma \times \star \omega) \in D_{ijk} \times D_{ijk} \subset \R^4 \times \R^4
+\end{equation}
+is a (global) constrained minimizer for $f$.
+\end{proposition}
+
+\begin{proof}
+First, we note that it is clear that $u_{\star}, v_{\star} \in D_{ijk}$ by definition of $D_{ijk}^{*}$.
+Next, to find the minimizers of the problem (\ref{eq:finite dim energy}) - (\ref{eq:finite dim constraint}), we note that the constraint $u \wedge v = \omega$ implies the existence of a $\psi \in (0, \pi)$ such that $|u||v| \sin \psi= |\omega|$. Hence, the constrained minimization for $f$ is equivalent to the unconstrained minimization of the function $\hat{f}: \R^4 \times (0, \pi) \to \R$ defined by
+\begin{equation}
+(u, \psi) \mapsto \frac{1}{2} |u|^2 + \frac{1}{2} \frac{|\omega|^2}{|u|^2 \sin^2\psi},
+\end{equation}
+whose stationary satisfy $\psi_{\star} = \frac{\pi}{2}$ and $|u_{\star}|^2 = |\omega|$. This shows the necessity of the conditions stated in (\ref{eq:finite dim minimization conditions}). To show sufficiency of the condition, one observes that for any such points one has $\hat{f}(u_{\star}, \psi_{\star}) = |\omega|$. Indeed, for any $(u, \psi) \in D_{ijk, \psi} \in \R^4 \times (0, \pi)$ we have
+\begin{equation}
+\hat{f}(u, \psi) \geq \frac{1}{2} \frac{|u|^4 + |\omega|^2}{|u|^2} = |\omega| + \frac{1}{2}\frac{(|\omega| - |u|^2)^2}{|u|^2} \geq |\omega| = \hat{f}(u_{\star}, \psi_{\star}).
+\end{equation}
+This proves the first statement. For the second part, we set $\hat{\omega} := \omega/|\omega|$ and we consider a vector $\sigma \in D_{ijk}$ such that
+\begin{equation}
+	\sigma \cdot \hat{\omega} \text{ and } |\sigma|^2 = |\omega|. 
+\end{equation}
+By a trivial computation, on finds that the vectors $v := \sigma \times \star \hat{\omega}$ and $u := \sigma$ satisfy the relations $u \cdot v = 0$, $|u|^2 = |v|^2 = |\omega|$ and $v \wedge u = \omega$. 
+\end{proof}
+
+Pasting everything worked out above together leads to the final result of this section. We have
+
+
+\begin{theorem}
+Let $\delta p \in \R^3 \times \so(3) \simeq \bigwedge^2 \R^4$ be a prescribed net displacement. Moreover, assume that $\delta p \in D_{ijk}^*$ for some combination of indices $i,j,k \in \N_4$. Then, any minimizer $\xi \in H_{\sharp}^1(J, \R^4)$ of the energy functional (\ref{eq: linearized energy functional}) subject to the constraint (\ref{eq: constraint}) is of the form
+\begin{equation}
+\xi(t) := (\cos t) a + (\sin t) b,
+\end{equation}
+i.e. an ellipse of $D_{ijk} \subset \R^4$ centered at the origin and contained in the plane spanned by the vectors $a$ and $b$. The vectors $a,b \in D_{ijk}$ are obtained as follows:
+\begin{enumerate}
+\item We compute the vector $\omega$ via the relation
+\begin{equation}
+\omega := \diag \left (\frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta} \right ) \delta p \in D_{ijk}.
+\end{equation}
+Then we consider a vector $u \in D_{ijk}$ in the plane orthogonal to $\star \omega$ in $D_{ijk}$ and such that
+\begin{equation}
+|u|^2 = |\omega|,
+\end{equation}
+e.g. $u := \sqrt{|\omega|} \frac{\mu \times \star \omega}{|\mu \times \star \omega|}$, with $\mu \in D_{ijk}$ linearly independent from $\star \omega$. Furthermore, we set $v := u \times \star \omega$.
+
+\item We set $\hat{\omega} := \omega/|\omega|$ and we calculate the vectors $a$ and $b$ via the relations
+\begin{equation}
+\begin{aligned}
+a := \frac{U \Lambda_{\mathfrak{g}}^{-1/2}}{\sqrt{2 \pi}} u,&& b := \frac{U \Lambda_{\mathfrak{g}}^{-1/2}}{\sqrt{2 \pi}} v.
+\end{aligned}
+\end{equation}
+\end{enumerate}
+We then have $ v \wedge u = \omega$ and the minimum value of $\mathcal{G}$ is equal to $|\omega|$.
+
+In addition, the vectors $a$ and $b$ are $\mathfrak{g}$-orthogonal, i.e. with respect to the inner product defined for every $x,y \in \R^4$ by $(x, y)_{\mathfrak{g}} := 2 \pi \Lambda_{\mathfrak{g}} x \cdot y$, and have the same $\mathfrak{g}$-norm $|a|_{\mathfrak{g}}^2 = |b|_{\mathfrak{g}}^2 = |\omega|$. 
+\end{theorem}
+
+\begin{proof}
+From Proposition \ref{prop:finite dim minimization}, Corollary \ref{cor:simple reduction} and then Proposition \ref{prop: l2-minimization}, we get that any $\sigma \in D_{ijk}$ satisfying the relations
+\begin{eqnarray}
+ u \cdot \star \hat{\omega}, & |u|^2 = |\omega|, & \omega := \sqrt{\det \Lambda_{\mathfrak{g}}} (\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p,
+\end{eqnarray}
+is associated to a (global) constrained minimizer for $\mathcal{G}_{U}$, via the curve $\eta(t) := (\cos t) \tilde{a} + (\sin t) \tilde{b}$, where the Fourier coefficients $\tilde{a}, \tilde{b} \in \R^4$ are related to $\omega$ (c.f. \ref{eq:relation Fourier coeffs of eta}) by $(\sqrt{2 \pi \Lambda_{\mathfrak{g}}}) \tilde{a} = u$ and $(\sqrt{2 \pi \Lambda_{\mathfrak{g}}}) \tilde{b} = (u \times \star\hat{\omega})$. The minimum value of the energy is then $\mathcal{G}_{U}(\eta) = |\omega|$.
+
+Finally, in the $\mathfrak{g}$-orthogonal reference frame, the inner product is defined by $(x, y)_{\mathfrak{g}} := 2 \pi \Lambda_{\mathfrak{g}}x \cdot y$ for $x,y \in \R^4$. Let us denote by $|\cdot|_{\mathfrak{g}}$ the associated norm. Then we have the following relations:
+\begin{align}
+|\tilde{a}|_{\mathfrak{g}}^2 = |\tilde{b}|_{\mathfrak{g}}^{2} = |\omega| \;  \text{ and } \; (\tilde{a}, \tilde{b})_{\mathfrak{g}} = 0.
+\end{align}
+Applying the orthogonal map $U$ to $\tilde{a}$ and $\tilde{b}$ finishes the proof.
+\end{proof}
+
+
+

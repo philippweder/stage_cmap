@@ -27,10 +27,19 @@
 
 \renewcommand{\headrulewidth}{0.5pt}
 
+%section titles
+\usepackage{titlesec}
+
+
+\titleformat{\section}
+  {\centering\Large\scshape}{\thesection. }{1em}{}
+
+
 
 %roman enumeration
 \renewcommand\labelenumi{(\roman{enumi})}
 \renewcommand\theenumi\labelenumi
+\numberwithin{equation}{section}
 
 % font
 %\usepackage{pxfonts}
@@ -44,27 +53,32 @@
 % theorem
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
+
 % corollary
 \theoremstyle{plain}
-\newtheorem{corollary}{Corollary}
+\newtheorem{corollary}[theorem]{Corollary}
+
 % lemma
 \theoremstyle{plain}
-\newtheorem{lemma}{Lemma}
+\newtheorem{lemma}[theorem]{Lemma}
+
 % remark
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
 % definition
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}
+\newtheorem{definition}[theorem]{Definition}
 % example
 \theoremstyle{definition}
 \newtheorem{example}{Example}
 % proposition
 \theoremstyle{plain}
-\newtheorem{proposition}{Proposition}
+\newtheorem{proposition}[theorem]{Proposition}
+
 
 \theoremstyle{plain}
-\newtheorem{condition}{Condition}
+\newtheorem{condition}[theorem]{Condition}
+
 
 % additional packages
 \usepackage{appendix}
@@ -91,6 +105,8 @@
 \DeclareMathOperator{\diag}{diag}
 \newcommand{\chroexp}{\overset{\longrightarrow}{\exp}}
 \DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\Span}{span}
+\newcommand{\dd}[1]{\mathrm{d}#1}
 
 \renewcommand{\baselinestretch}{1.1} 
 \begin{document}
@@ -105,7 +121,7 @@
 \section{Symmetries}
 \input{sec3_report.tex}
 
-\section[The small strokes regime]{The control problem in the regime of small strokes}
+\section[The small strokes regime]{The small strokes regime}
 \input{sec4_report.tex}
 
 \section{Energy minimizing strokes}

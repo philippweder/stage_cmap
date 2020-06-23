@@ -1,3 +1,4 @@
+\label{sec: linearization}
 Let us return to the control equations for \spr given by (\ref{eq:dynamical system}). The response of the control system is characterized by the two matrix valued functions $F_c, F_{\theta}: \SO(3) \times \R^4 \to M_{3 \times 4}(\R)$ which can by Proposition \ref{prop: rotational invariance} can be factorized as:
 \begin{equation}
 \label{eq: reminder control system}
@@ -30,15 +31,15 @@ Then we have
 	G_0 = S G_0 P,
 \end{equation}
 and
-\begin{align}
-	&\h_0((P \xi) \otimes \eta) = S \h_0(\xi \otimes (P \eta)) &  & \forall \xi, \eta \in \R^n
-\end{align}
+\begin{eqnarray}
+	\h_0((P \xi) \otimes \eta) = S \h_0(\xi \otimes (P \eta)) &  & \forall \xi, \eta \in \R^n
+\end{eqnarray}
 \end{lemma}
 
 \subsection{The zeroth order terms $F_{c,0}$ and $F_{\theta, 0}$} By applying Lemma \ref{lem: general symmetries of expansion terms} to $F_{c, \xi_0}$ and $F_{\theta, \xi_0}$, we obtain two linear systems of matrix equations in the unknowns $F_{c, 0}$ and $F_{\theta,0}$. To solve these two systems, we eventually have to determine at least some of the matrices $S_{ij}$. Let $S_{kl}(\phi)$ denote the reflection at the plane orthogonal to the $\hat{e}_k-\hat{e}_l$-plane making an angle of $\phi$ with the $\hat{e}_k$-axis. By geometrical inspection of the reference tetrahedron $(S_1, S_2, S_3, S_4)$, we find that
-\begin{align}
-	S_{12} = S_{12}\left (\tfrac{2\pi}{3}\right ),& & S_{23} = S_{12}(0), & & S_{13} = S_{13}\left (\tfrac{\pi - \alpha_{\mathrm{tet}}}{2}\right ),
-\end{align}
+\begin{eqnarray}
+	S_{12} = S_{12}\left (\tfrac{2\pi}{3}\right ), & S_{23} = S_{12}(0),  & S_{13} = S_{13}\left (\tfrac{\pi - \alpha_{\mathrm{tet}}}{2}\right ),
+\end{eqnarray}
 where $\alpha_{\mathrm{tet}} = \arccos (-1/3)$ denotes the angle between two legs of a regular tetrahedron. Indeed, it happens that these three matrices are enough to determine both terms of order and one finds that $F_{\theta, 0} = 0$ and
 \begin{equation}
 	F_{c, 0}  = \left ( \begin{array}{cccc}
@@ -165,7 +166,7 @@ At this point, let us point out the apparent similarity between the matrices $M_
 \end{remark}
 
 \subsection{The linearized control equations}
-Herein, we denote by $J$ the closed interval  $[0,2\pi] \subset \R$ and we define the so-called \emph{strokes space} as $H_\sharp^1(J, \R^4)$, i.e. the Sobolev space of $2\pi$-periodic vector valued functions of $L_{\sharp}^2(J, \R^4)$ having first order weak derivative in $L_{\sharp}^2(\R^4)$. For every $f \in L^{2}_{\sharp}(J, \R^4)$ we denote by $\langle f \rangle := (2\pi)^{-1} \int_{J} f(s) ds$ the average of $f$ on $J$.
+Herein, we denote by $J$ the closed interval  $[0,2\pi] \subset \R$ and we define the so-called \emph{strokes space} as $H_\sharp^1(J, \R^4)$, i.e. the Sobolev space of $2\pi$-periodic vector valued functions of $L_{\sharp}^2(J, \R^4)$ having first order weak derivative in $L_{\sharp}^2(\R^4)$. For every $f \in L^{2}_{\sharp}(J, \R^4)$ we denote by $\langle f \rangle := (2\pi)^{-1} \int_{J} f(s) \dd s$ the average of $f$ on $J$.
 
 In the previous section, we have seen that the control system governing the evolution of \spr under the action of the control parameters $\zeta \in \M$ is given by
 \begin{align}
@@ -194,12 +195,12 @@ In particular, if we fix $\xi \in H^1_{\sharp}(J, \R^4)$ and define $\Gamma := \
 
 To simplify equations  (\ref{eq: dynamics first approx}) further, we are interested in the solution of (\ref{eq: orientation ode}) in the regime of a small stroke $\xi \in H_{\sharp}^1(J, \R^4)$ or equivalently in the regime of a small vector field $\Gamma$. Intuitively, the solution $R$ of (\ref{eq: orientation ode}) should not deviate too much from the initial value $R_0$ if the vector field $\Gamma$ driving the differential equation is small. The solution of (\ref{eq: orientation ode}) and its relation to a small vector field $\Gamma$ as well as the notion of smallness for the vector field $\Gamma$ in the first place, are mathematically formalized by the concept of \emph{chronological calculus}. For details on the topic, we refer to \cite{Agrachev2004} but essentially it works as follows: First, one identifies any smooth manifold $M$ with the space $C^{\infty}(M)$, on which one defines a certain metric topology, the Whitney topology. Then, the solution of a differential equation $\dot{q}(t) = q(t) V(t)$ for $V$ a non-autonomous vecor field on $M$ is given by
 \begin{equation}
-	q(t) = q(0)\chroexp \int_{J}^{t} V(s) ds,
+	q(t) = q(0)\chroexp \int_{J}^{t} V(s) \dd s,
 \end{equation}
 where $\chroexp$ is a special operator called the \emph{right chronological exponential}, which is defined as a limit of an iterated integral. For the series expansion
 \begin{equation}
 \label{eq: chron exp series expansion}
-S_m(t) := I + \sum_{n = 1}^{m-1} \int_{\Delta_n(t)} \dotsm \int V(s_n) \circ \dotsm \circ V(s_1) ds_n \dotsm ds_1,
+S_m(t) := I + \sum_{n = 1}^{m-1} \int_{\Delta_n(t)} \dotsm \int V(s_n) \circ \dotsm \circ V(s_1) \dd s_n \dotsm \dd s_1,
 \end{equation}
 with $\Delta_n(t) = \{(s_1, \dotsc, s_n) \in \R^n | 0 \leq s_n \leq \dotsm \leq s_1 \leq t\}$, we have
 \begin{align}
@@ -214,14 +215,14 @@ where $S_{m}^{\varepsilon}$ denotes the series expansion (\ref{eq: chron exp ser
 
 With the estimate (\ref{eq: estimation of chronological exponential}) at hand, let $\hat{\xi} \in H^1_{\sharp}(J, \R^4)$ a normalized stroke, i.e. $||\hat{\xi}||_{H_{\sharp}^1} = 1$, and $\varepsilon > 0$. Set $\xi := \varepsilon \hat{\xi}$ as well as $\Gamma_\varepsilon := \sum_{k \in \N_3}(B_k \dot{\xi} \cdot \xi) L_k$ such that $\Gamma_1 = \sum_{k \in \N_3}(B_k \dot{\hat{\xi}} \cdot \hat{\xi}) L_k$ and  $\Gamma_\varepsilon = \varepsilon^2 \Gamma_1$. Writing $S_{m}^{\epsilon}$ for the expansion (\ref{eq: chron exp series expansion}) of the vector field $\Gamma_\varepsilon$, we find by (\ref{eq: estimation of chronological exponential})
 \begin{align}
-	R(t) = R_0 \left ( I + \int_{0}^{t} \Gamma_\varepsilon(\tau) d\tau \right ) + \mathcal{O}(\epsilon^4), & & \varepsilon \downarrow 0.
+	R(t) = R_0 \left ( I + \int_{0}^{t} \Gamma_\varepsilon(\tau) \dd\tau \right ) + \mathcal{O}(\epsilon^4), & & \varepsilon \downarrow 0.
 \end{align}
 Hence, choosing $R_0 = I$, we have in particular the following approximations for any $t \in J $
 \begin{align}
 \label{eq: linearized ode}
 \begin{cases}
-\dot{c} &= \left ( I + \int_{0}^{t} \Gamma_\varepsilon(\tau) d\tau \right ) \left ( F_{c,0} \dot{\xi} + \sum_{k \in \N_3} (A_k \dot{\xi} \cdot \xi) \hat{e}_k \right )  + \mathcal{O}(\varepsilon^4)\\
-\dot{R} &= \left ( I + \int_{0}^{t} \Gamma_\varepsilon(\tau) d\tau \right ) \sum_{k \in \N_3}(B_k \dot{\xi} \cdot \xi) L_k + \mathcal{O}(\varepsilon^4),
+\dot{c} &= \left ( I + \int_{0}^{t} \Gamma_\varepsilon(\tau) \dd\tau \right ) \left ( F_{c,0} \dot{\xi} + \sum_{k \in \N_3} (A_k \dot{\xi} \cdot \xi) \hat{e}_k \right )  + \mathcal{O}(\varepsilon^4)\\
+\dot{R} &= \left ( I + \int_{0}^{t} \Gamma_\varepsilon(\tau) \dd\tau \right ) \sum_{k \in \N_3}(B_k \dot{\xi} \cdot \xi) L_k + \mathcal{O}(\varepsilon^4),
 \end{cases}
 \end{align}
 for $\varepsilon\downarrow 0$. By integrating the previous two relations over $J$, we find an estimate of the net displacement undergone by the center $c$ of \spr as well as its orientation $R$ after a small stroke. Moreover, with equations (\ref{eq: linearized ode}) we can express the net displacements $\delta c$ and $\delta R$ as maps $H_{\sharp}^1(J,\R^4) \to \R^4$ given by $\xi \mapsto 2 \pi \langle \dot{c}(\xi) \rangle $ and $\xi \mapsto 2 \pi \langle \dot{R}(\xi) \rangle$, respectively. Consequently, let us prove that
@@ -239,19 +240,19 @@ For any $\xi \in H_\sharp^1(J, \R^4), \xi: J \to \R^4$, in a neighborhood of $0 
 \begin{proof}
 First, let us note that the term $\langle F_{c,0} \dot{\xi} \rangle$ vanishes due to the periodicity of the stroke $\xi$. Next, we observe that it suffices to prove that the scalar quantities of the form 
 \begin{align}
-\left \langle \left ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(\tau) d\tau \right ) A_l \dot{\hat{\xi}} \cdot \hat{\xi} \right  \rangle, & & k,l \in \N_3,
+\left \langle \left ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(\tau) \dd \tau \right ) A_l \dot{\hat{\xi}} \cdot \hat{\xi} \right  \rangle, & & k,l \in \N_3,
 \end{align}
-as well as $ \langle  ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(\tau) d \tau  )\dot{\hat{\xi}}_i  \rangle$, $i \in \N_4$ are bounded, where we again set $\xi = \varepsilon \hat{\xi}$. We focus on the terms of the latter form, since the others can be treated in the same manner. We have
+as well as $ \langle  ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(\tau) \dd \tau  )\dot{\hat{\xi}}_i  \rangle$, $i \in \N_4$ are bounded, where we again set $\xi = \varepsilon \hat{\xi}$. We focus on the terms of the latter form, since the others can be treated in the same manner. We have
 \begin{equation}
 \begin{aligned}
-\left |\int_J \left ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau) \cdot \hat{\xi}(\tau) d\tau\right ) \dot{\hat{\xi}}_i(t) dt \right | = \left | \int_{0}^{2\pi} B_k \dot{\hat{\xi}}(t) \cdot \hat{\xi}(t) \int_{t}^{2 \pi} \dot{\hat{\xi}}_i(s) ds dt \right |\\
-\leq ||B_k||_{op} \int_{J} |\dot{\hat{\xi}}(t)| \cdot |\hat{\xi}(t) - \hat{\xi}(0)|^2 dt
+\left |\int_J \left ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau) \cdot \hat{\xi}(\tau) \dd \tau\right ) \dot{\hat{\xi}}_i(t) \dd t \right | = \left | \int_{0}^{2\pi} B_k \dot{\hat{\xi}}(t) \cdot \hat{\xi}(t) \int_{t}^{2 \pi} \dot{\hat{\xi}}_i(s) \dd s \dd t \right |\\
+\leq ||B_k||_{op} \int_{J} |\dot{\hat{\xi}}(t)| \cdot |\hat{\xi}(t) - \hat{\xi}(0)|^2 \dd t
 \end{aligned}
 \end{equation}
 The Sobolev-Morrey embedding $H_\sharp^{1}(J, \R^4) \subseteq L^\infty_{\sharp}(J, \R^4)$ guarantees the existence of a $c_S > 0$ such that $||\xi||_{\infty} \leq c_S ||\xi||_{H_\sharp^1}$ for every $\xi \in H_\sharp^1(J, \R^4)$. Hence, we have
 \begin{equation}
 \begin{aligned}
-\left | \left \langle \left  ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(\tau) d \tau  \right )\dot{\hat{\xi}}_i \right  \rangle\right |
+\left | \left \langle \left  ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(\tau) \dd \tau  \right )\dot{\hat{\xi}}_i \right  \rangle\right |
 & \leq ||B_k||_{op} ||\hat{\xi}||_{\infty}^2 ||||_{H_\sharp^1}\\
 &\leq c_S ||B_k||_{op} ||\hat{\xi}||_{H_\sharp^1}^3 = c_S ||B_k||_{op},
 \end{aligned}
