@@ -120,5 +120,15 @@ doi="10.1007/978-1-4614-1806-1_3",
 url="https://doi.org/10.1007/978-1-4614-1806-1_3"
 }
 
+@Book{Doran2007,
+  author    = {Doran, Chris},
+  title     = {Geometric Algebra for Physicists},
+  year      = {2007},
+  date      = {2007-11-22},
+  publisher = {Cambridge University Press},
+  isbn      = {9781139632416},
+  url       = {https://www.ebook.de/de/product/20757008/chris_doran_geometric_algebra_for_physicists.html},
+  ean       = {9781139632416},
+}
 
 @Comment{jabref-meta: databaseType:biblatex;}

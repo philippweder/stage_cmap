@@ -2205,20 +2205,22 @@
     <bcf:citekey order="18">Alouges2017</bcf:citekey>
     <bcf:citekey order="19">Alouges2017</bcf:citekey>
     <bcf:citekey order="20">Alouges2017</bcf:citekey>
-    <bcf:citekey order="21">Agrachev2004</bcf:citekey>
-    <bcf:citekey order="22">Agrachev2004</bcf:citekey>
-    <bcf:citekey order="23">Alouges2017</bcf:citekey>
-    <bcf:citekey order="24">Alouges2013</bcf:citekey>
+    <bcf:citekey order="21">Alouges2017</bcf:citekey>
+    <bcf:citekey order="22">Alouges2017</bcf:citekey>
+    <bcf:citekey order="23">Agrachev2004</bcf:citekey>
+    <bcf:citekey order="24">Agrachev2004</bcf:citekey>
     <bcf:citekey order="25">Alouges2017</bcf:citekey>
-    <bcf:citekey order="26">Lighthill1952</bcf:citekey>
-    <bcf:citekey order="27">Alouges2013</bcf:citekey>
-    <bcf:citekey order="28">Lounesto2006</bcf:citekey>
-    <bcf:citekey order="29">Lounesto2006</bcf:citekey>
-    <bcf:citekey order="30">Doran2007</bcf:citekey>
+    <bcf:citekey order="26">Alouges2013</bcf:citekey>
+    <bcf:citekey order="27">Alouges2017</bcf:citekey>
+    <bcf:citekey order="28">Lighthill1952</bcf:citekey>
+    <bcf:citekey order="29">Alouges2013</bcf:citekey>
+    <bcf:citekey order="30">Lounesto2006</bcf:citekey>
     <bcf:citekey order="31">Lounesto2006</bcf:citekey>
-    <bcf:citekey order="32">Lounesto2006</bcf:citekey>
-    <bcf:citekey order="33">Alouges2017</bcf:citekey>
+    <bcf:citekey order="32">Alouges2017</bcf:citekey>
+    <bcf:citekey order="33">Lounesto2006</bcf:citekey>
     <bcf:citekey order="34">Alouges2017</bcf:citekey>
+    <bcf:citekey order="35">Hitchin2003</bcf:citekey>
+    <bcf:citekey order="36">Alouges2017</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

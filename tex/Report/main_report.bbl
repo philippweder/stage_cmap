@@ -258,6 +258,33 @@
       \verb 10.1007/978-3-319-13467-3
       \endverb
     \endentry
+    \entry{Hitchin2003}{online}{}
+      \name{author}{1}{}{%
+        {{hash=d0af63589d0e61aaeda653b8860bf668}{%
+           family={Hitchin},
+           familyi={H\bibinitperiod},
+           given={Nigel},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{d0af63589d0e61aaeda653b8860bf668}
+      \strng{fullhash}{d0af63589d0e61aaeda653b8860bf668}
+      \strng{bibnamehash}{d0af63589d0e61aaeda653b8860bf668}
+      \strng{authorbibnamehash}{d0af63589d0e61aaeda653b8860bf668}
+      \strng{authornamehash}{d0af63589d0e61aaeda653b8860bf668}
+      \strng{authorfullhash}{d0af63589d0e61aaeda653b8860bf668}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Projective Geometry - b3 course}
+      \field{year}{2003}
+      \verb{urlraw}
+      \verb http://people.maths.ox.ac.uk/hitchin/files/LectureNotes/Projective_geometry/Chapter_3_Exterior.pdf
+      \endverb
+      \verb{url}
+      \verb http://people.maths.ox.ac.uk/hitchin/files/LectureNotes/Projective_geometry/Chapter_3_Exterior.pdf
+      \endverb
+    \endentry
     \entry{Lighthill1952}{article}{}
       \name{author}{1}{}{%
         {{hash=eea1108242f9788f484f1806161a8e45}{%

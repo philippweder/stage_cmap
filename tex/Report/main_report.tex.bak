@@ -51,19 +51,17 @@
 
 % environments
 % theorem
-\usepackage{thmtools}
-\declaretheoremstyle[headfont=\scshape,postheadspace= 1em]{mythm}
-\declaretheorem[style=mythm]{theorem}
-
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
 
 % corollary
-%\theoremstyle{plain}
-%\newtheorem{corollary}[theorem]{Corollary}
-\declaretheorem[style=mythm, name = Corollary]{corollary}
+\theoremstyle{plain}
+\newtheorem{corollary}[theorem]{Corollary}
 
 % lemma
 \theoremstyle{plain}
 \newtheorem{lemma}[theorem]{Lemma}
+
 % remark
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
@@ -77,8 +75,10 @@
 \theoremstyle{plain}
 \newtheorem{proposition}[theorem]{Proposition}
 
+
 \theoremstyle{plain}
 \newtheorem{condition}[theorem]{Condition}
+
 
 % additional packages
 \usepackage{appendix}
@@ -107,6 +107,7 @@
 \DeclareMathOperator{\re}{Re}
 \DeclareMathOperator{\Span}{span}
 \newcommand{\dd}[1]{\mathrm{d}#1}
+\DeclareMathOperator{\ad}{ad}
 
 \renewcommand{\baselinestretch}{1.1} 
 \begin{document}
@@ -128,7 +129,7 @@
 \input{sec5_report.tex}
 
 
-\printbibliography
+\printbibliography[title = Bibliography]
 
 
 

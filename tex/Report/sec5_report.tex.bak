@@ -37,7 +37,34 @@ The goal of this section is the minimization of $\mathcal{G}$ in $H_{\sharp}^1(J
 with $\mathfrak{h}_c = - 2 \sqrt{6} \alpha$ and $\mathfrak{h}_{\theta} = - 2 \sqrt{6} \delta$.
 
 
-\subsection{G-orthogonalisation}
+\subsection{Recall of the exterior algebra}
+Let us recall in this small section the basic definitions around the notion of the \emph{exterior algebra}, where we refer to \cite{Lounesto2006} for details. For our purposes, the abstract definition of $k$-vectors as alternating $k$-tensors is not very useful. We merely illustrate them in $\R^3$ since the notion then generalizes easily to higher dimensions. In $\R^3$, a bivector is an oriented plane segment; that is, a small piece of surface having a magnitude given by the area of the surface element as well as a direction given by the attitude of the plane the surface element lies in as well as a sense of rotation. Together, they form the vector space $\bigwedge^2 \R^3$. We can represent a bivector $\omega \in \bigwedge^2 \R^3$ as a small parallelogram which suggests that we can think of it as some product of the two vectors along its sides. This is realized by the \emph{exterior product}, also called \emph{wedge product}, $u \wedge v$ of two vectors $u$ and $v$. The product $u \wedge v$ then represents the bivector obtained by sweeping $v$ along $u$. This operation yields a direct link between $\R^3$ and the vector space $\bigwedge^2 \R^3$ of bivectors, a basis of which is given by
+\begin{equation}
+ \{\hat{e}_1 \wedge \hat{e}_2, \hat{e}_1 \wedge \hat{e}_3, \hat{e}_2 \wedge \hat{e}_3\},
+\end{equation}
+if $\{\hat{e}_1, \hat{e}_2, \hat{e}_3\}$ is a basis of $\R^3$. In fact, the standard scalar product on $\R^3$ extends to a scalar product on $\bigwedge^2 \R^3$ by
+\begin{equation}
+\langle u_1 \wedge u_2 , v_1 \wedge v_2 \rangle = \det \left (\begin{array}{cc}
+u_1 \cdot v_1 & u_1 \cdot v_2 \\ 
+u_2 \cdot v_1 & u_2 \cdot v_2
+\end{array}  \right).
+\end{equation}
+In particular, $\langle u \wedge v, u \wedge v \rangle = |u|^2 |v|^2 \sin^2\psi$, where $\psi$ is the angle between the vectors $u$ and $v$. Eventually, the norm of a bivector $\omega = \omega_{12} \hat{e}_1 \wedge \hat{e}_2 + \omega_{13} \hat{e}_1 \wedge \hat{e}_3 + \omega_{23} \hat{e}_2 \wedge \hat{e}_3$ is given by
+\begin{equation}
+|\omega| = \sqrt{\omega_{12}^2 + \omega_{13}^2 + \omega_{23}^2}.
+\end{equation}
+These definitions then extend naturally to all higher dimensions and one can also defined the exterior algebra which connects all possible wedge products, c.f. \cite{Lounesto2006}. In particular, we note that if $\{e_1, e_2, e_3, e_4\}$ again denotes the canonical basis of $\R^4$, a basis of the space $\bigwedge^2 \R^4$ is given by
+\begin{equation}
+\{e_{12}, e_{13}, e_{14}, e_{23}, e_{24}, e_{34}\},
+\end{equation}
+where we write $e_{ij} := e_i \wedge e_j$ to simplify the notation. More generally, the vectors, bivectors etc. of $\R^4$ all make part of a graded algebra, the \emph{exterior algebra}, defined by
+\begin{equation}
+\bigwedge \R^4 := \R \oplus \R^4 \oplus \bigwedge^3\R^4 \oplus \bigwedge^3 \R^4 \oplus \bigwedge^4 \R^4,
+\end{equation}
+whose product is given by the wedge product. As we shall see later, it is due to the fundamental differences between $\bigwedge^2 \R^3$ and $\bigwedge^2 \R^4$ that the structure of optimal control curves for \textsc{SPr3} and \spr are substantially different.
+
+
+\subsection{G-Orthogonalization}
 We begin by rewriting the energy functional (\ref{eq: linearized energy functional}) and the constraint (\ref{eq: constraint}) in terms of the orthonormal basis of eigenvectors $(\tau_i)_{i \in \N_4}$ of the matrix $G$. The change of variables $\eta(t) := U^T \xi(t) \in H_{\sharp}^{1}(J, \R^4)$, allows us to write
 \begin{equation}
 \label{eq: G-orth energy functional}
@@ -47,14 +74,7 @@ with $\mathcal{G}_{U}(\eta) := \mathcal{G}(\xi) = \mathcal{G}(U \eta)$. For the 
 \begin{equation}
 \det(\xi |\dot{\xi} | \tau_i | \tau_j) =  \det U \det (\eta | \dot{\eta} | e_i | e_j) = \det(\dot{\eta} | \eta | e_i |e_j),
 \end{equation}
-since $\det U = -1$. Eventually, we can express the determinants more elegantly in terms of exterior products. To that end, one notes that the scalar product on $\R^n$ extends to the 2nd power $\bigwedge^2 \R^n$, cf. \cite{Lounesto2006}, by
-\begin{equation}
-(x_1 \wedge x_2, y_1 \wedge y_2) = \det \left (\begin{array}{cc}
-x_1 \cdot y_1 & x_1 \cdot y_2 \\ 
-x_2 \cdot y_1 & x_2 \cdot y_2
-\end{array}  \right ).
-\end{equation}
-In our case, this yields $\det(\dot{\eta} | \eta | e_k |e_4) = (\dot{\eta} \wedge \eta, e_{k + 1} \wedge e_{k+2})$ and $\det(\dot{\eta} |\eta | e_{k + 1} |e_{k + 2}) = (\dot{\eta} \wedge \eta, e_k \wedge e_4)$, for $k \in \N_3$ taken mod 3. Since $\dim \bigwedge^2 \R^4 = 6$, the isomorphism sending the basis $\{f_i\}_{i \in \N_6}$ of $\R^6$ onto the basis 
+since $\det U = -1$. Eventually, we can express the determinants more elegantly in terms of exterior products. In fact, by direct calculation one obtains $\det(\dot{\eta} | \eta | e_k |e_4) = (\dot{\eta} \wedge \eta, e_{k + 1} \wedge e_{k+2})$ and $\det(\dot{\eta} |\eta | e_{k + 1} |e_{k + 2}) = (\dot{\eta} \wedge \eta, e_k \wedge e_4)$, for $k \in \N_3$ taken mod 3. Then, the isomorphism sending the basis $\{f_i\}_{i \in \N_6}$ of $\R^6$ onto the ordered basis 
 \begin{equation}
 \label{eq: basis of bivectors}
 (e_{14}, e_{24}, e_{34}, e_{23}, e_{31}, e_{12})
@@ -110,29 +130,8 @@ defined in the product Hilbert space $\ell^2(\R^4) \times \ell^2(\R^4)$ and subj
 where $\delta p \in \R^6$ is a prescribed net displacement of position and orientation.
 \end{proposition}
 
-\subsection{Preliminaries for the reduction to finite dimension}
-To continue our analysis of \spr and to reduce the minimization problem defined by (\ref{eq:l2-energy}) and (\ref{eq:l2-constraint}), we have to discuss the notions  \emph{bivector} and \emph{wedge product} in more detail and introduce the \emph{Clifford product} to illustrate the fundamental differences between the two swimmers \textsc{SPr3} and \spr. For an extensive introduction to this topic, we refer to \cite{Lounesto2006} and \cite{Doran2007}.
-
-For our purposes, the abstract definition of $k$-vectors as alternating tensors is not very useful. We merely illustrate them in $\R^3$ since the notion then generalizes easily to higher dimensions. In $\R^3$, a bivector is an oriented plane segment; that is, a small piece of surface having a magnitude given by the area of the surface element as well as a direction given by the attitude of the plane the surface element lies in as well as a sense of rotation. Naturally, we represent a bivector $\omega$ as a small parallelogram which suggests that we can think of it as some product of the two vectors along its sides. This is realized by the \emph{exterior product}, also called \emph{wedge product}, $u \wedge v$ of two vectors $u$ and $v$. The product $u \wedge v$ then represents the bivector obtained by sweeping $v$ along $u$. This operation yields a direct link between $\R^3$ and the vector space $\bigwedge^2 \R^3$ of bivectors, a basis of which is given by
-\begin{equation}
- \{\hat{e}_1 \wedge \hat{e}_2, \hat{e}_1 \wedge \hat{e}_3, \hat{e}_2 \wedge \hat{e}_3\},
-\end{equation}
-if $\{\hat{e}_1, \hat{e}_2, \hat{e}_3\}$ is a basis of $\R^3$. In fact, the standard scalar product on $\R^3$ extends to a scalar product on $\bigwedge^2 \R^3$ by
-\begin{equation}
-\langle u_1 \wedge u_2 , v_1 \wedge v_2 \rangle = \det \left (\begin{array}{cc}
-u_1 \cdot v_1 & u_1 \cdot v_2 \\ 
-u_2 \cdot v_1 & u_2 \cdot v_2
-\end{array}  \right).
-\end{equation}
-In particular, $\langle u \wedge v, u \wedge v \rangle = |u|^2 |v|^2 \sin^2\psi$, where $\psi$ is the angle between the vectors $u$ and $v$. Eventually, the norm of a bivector $\omega = \omega_{12} \hat{e}_1 \wedge \hat{e}_2 + \omega_{13} \hat{e}_1 \wedge \hat{e}_3 + \omega_{23} \hat{e}_2 \wedge \hat{e}_3$ is given by
-\begin{equation}
-|\omega| = \sqrt{\omega_{12}^2 + \omega_{13}^2 + \omega_{23}^2}.
-\end{equation}
-These definitions then extend naturally to all higher dimensions and one can also defined the exterior algebra which connects all possible wedge products, c.f. \cite{Lounesto2006}. In particular, we note that if $\{e_1, e_2, e_3, e_4\}$ again denotes the canonical basis of $\R^4$, a basis of the space $\bigwedge^2 \R^4$ is given by
-\begin{equation}
-\{e_{12}, e_{13}, e_{14}, e_{23}, e_{24}, e_{34}\},
-\end{equation}
-where we write $e_{ij} := e_i \wedge e_j$ to simplify the notation.
+\subsection{Bivectors in the fourth dimension}
+In this section we will point out some of the fundamenta
 
 One peculiarity of the bivectors in $\R^3$ is that they are isomorphic to the space $\R^3$ itself. This is realized by the so-called \emph{Hodge dual operator} $\star$, c.f. \cite{Lounesto2006} p. 38, which is defined in a way such that for any two vectors $u,v \in \R^3$ one has
 \begin{equation}
@@ -141,46 +140,23 @@ u \wedge v = \star(u \times v),
 \end{equation}
 where $\times$ denotes the usual cross products. This entails two things: First, every bivector in $\R^3$ is \emph{simple}; that is, it can be written as the wegde product of two vectors. Second, every bivector in $\R^3$ defines one unique plane in $\R^3$. It is due to this underlying geometrical fact that in \cite{Alouges2017} one could always reduce the Fourier coefficients of an optimal control curve to one pair of vectors by which one attained the same net displacement at the same energy consumption. Furthermore, this implied that the optimal control curves are situated in a certain plane defined by the vector of the net displacement.
 
-Yet, in $\R^4$, the geometry of its bivectors proves to be more involved. As $\dim \bigwedge^2 \R^4 = 6$, it is already clear that the bivectors in $\R^4$ are not isomorphic to $\R^4$ itself. In particular, in $\R^4$ not all bivectors are simple. To understand why this is the case and to characterize nevertheless the simple bivectors of $\R^4$, we introduce the so-called \emph{Clifford product}. For two vectors $u, v \in \R^n$, the Clifford product is given by
-\begin{equation}
-uv = u \cdot v + u \wedge v.
-\end{equation}
-If $\{e_i\}_{i \in \N_n}$ is a basis of $\R^n$, the Clifford algebra is then characterized by 
-\begin{equation}
-\begin{aligned}
-	e_i e_j &= - e_j e_i,& & i \neq j\\
-	e_i e_i &= 1.
-\end{aligned}
-\end{equation}
-There is also a basis-free definition using quadratic forms which is more general for sure, but we will not make any use of it in this paper. However, we will make use of the identities $|u \wedge v| = |u| |v| \sin \psi$ and $(u \wedge v)^2 = - |u \wedge v|^2$. In fact, we have the following two results which characterize the simple bivectors in four dimensions:
+Yet, in $\R^4$, the geometry of its bivectors proves to be more involved. As $\dim \bigwedge^2 \R^4 = 6$, it is already clear that the bivectors in $\R^4$ are not isomorphic to $\R^4$ itself. In particular, in $\R^4$ not all bivectors are simple. Indeed, the bivector $e_1 \wedge e_2 + e_3 \wedge e_4 \in \bigwedge^2 \R^4$ cannot be written as an exterior product of just two vectors in $\R^4$. In fact, we have the following criterion to determine whether a bivector is simple:%
 
-\begin{proposition}
-\label{lem:cond simple 1}
-A bivector $\omega \in \bigwedge^2 \R^4$ is simple if an only if its square $\omega^2$ is real.
-\end{proposition}
+\begin{lemma}
+\label{lem:simple bivector}
+A bivector $\omega \in \bigwedge^2 \R^4$ is simple if and only if $\omega \wedge \omega = 0$.
+\end{lemma}
 
 \begin{proof}
-If $\omega$ is simple, there exist two vectors $u, v \in \R^4$ such that $\omega = u \wedge v$. Then the preceding identity immediately yields
+If $\omega \in \bigwedge^2 \R^4$ is a simple bivector, i.e. if there are vectors $u,v \in \R^4$ such that $\omega = u \wedge v$, then it is clear from the anticommutativity and associativity of the wedge product that
 \begin{equation}
-\omega^2 = (u \wedge v)^2 = -|u \wedge v|^2 \in \R.
+\omega \wedge \omega = (u \wedge v) \wedge (u \wedge v) = - u \wedge u \wedge v \wedge v = 0.
 \end{equation}
+The inverse requires a rather lengthy proof by induction, see the lecture notes on projective geometry by Nigel Hitchin, chapter 3, p.48 \cite{Hitchin2003}.
 \end{proof}
 
-By direct computation, then one finds that for a general bivector $\omega \in \bigwedge^2 \R^4$
-\begin{equation}
-\omega^2 = - |\omega|^2 + 2(\omega_{12}\omega_{34} + \omega_{23} \omega_{14} - \omega_{13} \omega_{24}).
-\end{equation}
-Hence, we have the following
 
-\begin{corollary}
-A bivector $\omega = \sum_{i,j} \omega_{ij} e_{ij} \in \bigwedge^2 \R^4$ is simple if and only if
-\begin{equation}
-\label{eq: general cond simple}
-\omega_{12} \omega_{34} + \omega_{23} \omega_{14} +  \omega_{31} \omega_{24} = 0.
-\end{equation}
-\end{corollary}
-
-We note that the condition (\ref{eq: general cond simple}) is in particular satisfied if all coefficients corresponding to a certain index are zero, e.g. $\omega_{i4} = 0$ for $i \in \N_4$. This yields four subspaces $D^*_{ijk}$ of $\bigwedge^2 \R^4$ consisting only of simple bivectors. Since net displacement $\delta p$ is merely scaled and multiplied by diagonal matrices to get the constraint vector in (\ref{eq:l2-constraint}), its structure is not changed and thus by inspection of the basis of $\bigwedge^2 \R^4$, we have the following correspondences:
+We note that the condition in Lemma \ref{lem:simple bivector} is in particular satisfied if all coefficients corresponding to a certain index are zero, e.g. $\omega_{i4} = 0$ for $i \in \N_4$. This yields four subspaces $D^*_{ijk}$ of $\bigwedge^2 \R^4$ consisting only of simple bivectors. Since net displacement $\delta p$ is merely scaled and multiplied by diagonal matrices to get the constraint vector in (\ref{eq:l2-constraint}), its structure is not changed and thus by inspection of the basis of $\bigwedge^2 \R^4$, we have the following correspondences:
 \begin{align*}
 D^{*}_{123} &\longleftrightarrow\text{ rotations around all three axes } \hat{e}_1, \hat{e}_2, \hat{e}_3\\
 D^{*}_{124} &\longleftrightarrow \text{ translation in the $\hat{e}_1\hat{e}_2$-plane, rotation around the $\hat{e}_3$-axis }\\
@@ -191,7 +167,7 @@ In particular, the subspaces $D^{*}_{ijk}$ are of dimension three and correspond
 \begin{equation}
 \omega = \omega_{ij} e_{ij} + \omega_{ik} e_{ik} + \omega_{jk} e_{jk} \mapsto \omega_{ij} e_k + \omega_{ik} e_j + \omega_{jk} e_i.
 \end{equation}
-This especially allows us to relate cross products in the subspace $D_{ijk}$ to a unique bivector in $D_{ijk}^*$. More precisely, we have for $u, v \in D_{ijk}$ that $u \wedge v = \star(u \times v)$ just like in (\ref{eq: hodge star}), where the cross product is understood in the subspace $D_{ijk}$.
+This especially allows us to relate cross products in the subspace $D_{ijk}$ to a unique bivector in $D_{ijk}^*$. More precisely, we have for $u, v \in D_{ijk}$ that $u \wedge v = \star(u \times v)$ just like in (\ref{eq: hodge star}), where the usual cross product is understood in the subspace $D_{ijk}$.
 
 \subsection[The simple case]{The simple case $\omega \in D_{ijk}^*$}
 With the remarks from the preceding section, we are able to solve the constrained minimization problem of Proposition \ref{prop: l2-minimization} in a similar manner to \cite{Alouges2017}. In fact, we retrieve essentially the same result, i.e. that the optimal control curves are ellipses in a certain plane defined by the net displacement. Let us prove

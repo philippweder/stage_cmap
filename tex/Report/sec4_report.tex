@@ -37,15 +37,36 @@ and
 \end{lemma}
 
 \subsection{The zeroth order terms $F_{c,0}$ and $F_{\theta, 0}$} 
-One could directly use Lemma \ref{lem: general symmetries of expansion terms} to obtain the terms of order zero up to a scalar by solving a system of two matrix equations as it was done in \cite{Alouges2017}. Nonetheless, to gain more intuition about the structure of the control system, we prove the following more general result.
+One could directly use Lemma \ref{lem: general symmetries of expansion terms} to obtain the terms of order zero up to a scalar by solving a system of two matrix equations as it was done in \cite{Alouges2017}. Yet, there is a direct geometric argument, which incidentally also works for \textsc{SPr3} in \cite{Alouges2017},  that reveals their structure.
+Let us denote by $A^{(i)}$ the $i$-th column of a matrix $A$. Then we note that for the spatial term $F_{c,0}$ and any $i \in \N_4$ we obtain from Lemma \ref{lem: general symmetries of expansion terms} and Proposition \ref{prop: spatial permutation invariance}
+\begin{equation}
+\label{eq:zeroth spatial term condition 1}
+	F_{c,0}^{(i)} = F_{c,0} e_i = S_{ij} F_{c,0} P_{ij} e_i = S_{ij} F_{c,0} e_j = S_{ij} F_{c,0}^{(j)}.
+\end{equation}
+Similarly, for any $k \in \N_4$ one has
+\begin{equation}
+\label{eq:zeroth spatial term condition 2}
+F_{c,0}^{(k)} = S_{ij} F_{c,0} P_{ij} e_k = S_{ij} F_{c,0} e_k = S_{ij} F_{c,0}^{(k)}.
+\end{equation}
+Recall that $S_{ij}$ is the reflection that maps the arm $||i$ onto arm $||j$ and vice-versa in the reference orientation, i.e. where $||i$ is collinear to $z_i$, the $i$-th arm of the reference tetrahedron defined in section \ref{sec:modeling}. In particular, the plane of reflection is defined by the remaining arms, i.e. by the vectors $z_k$ and $z_l$. Thus, equation (\ref{eq:zeroth spatial term condition 2}) implies that $F_{c,0}^{(k)} \in \Span\{z_k, z_l\}$ as $F_{c,0}^{(k)}$ apparently is an eigenvector associated to the eigenvalue 1 of $S_{ij}$. Yet, the same argument shows that $F_{c,0}^{(k)} \in \Span\{z_k, z_i\}$ and $F_{c,0} \in \Span\{z_k, z_j\}$ and the vectors $z_i, z_j$ and $z_l$ being linearly independent implies that $F_{c,0}^{(k)} = a_k z_k$ for some $a_k \in \R$. Due to equation (\ref{eq:zeroth spatial term condition 1}) and the fact that $S_{ij}$ is orthogonal, we have $|a_i| = |a_j| = |a_k| = |a_l|$. Finally, we note that the quantity $a_k z_k \cdot z_k$ stays constant under change of indeces again in consequence of the symmetry conditions from Lemma \ref{lem: general symmetries of expansion terms}. Hence, we have $a_1 = a_2 = a_3 =a_4 := \mathfrak{a}$ and therefore
+\begin{equation}
+	F_{c,0} = a (z_1 |z_2| z_3|z_4).
+\end{equation}
+
+In the following sections, we will exploit the orthonormal basis of $\R^4$ consisting of the vectors $\tau_1 : = \tfrac{1}{\sqrt{6}}(-2,1,1,0)^T$, $\tau_2 := \tfrac{1}{\sqrt{2}}(0,1,-1,0)^T$, $\tau_{3}:= \tfrac{1}{2 \sqrt{3}} (1,1,1,-3)^T$ and $\tau_4:= \tfrac{1}{2}(1,1,1,1)^T$, in terms of which $F_{c,0}$ can be written as $F_{c, 0} = -3 \sqrt{3} \mathfrak{a} [\tau_1|\tau_2| \tau_3 ]^T$.
+
+For the angular term $F_{\theta,0}$ we find by Lemma \ref{lem: general symmetries of expansion terms}, Proposition \ref{prop: angular permutation invariance} and a similar argument for any $k \in \N_4$ that
+\begin{equation}
+F_{\theta, 0}^{(k)} = -S_{ij} F_{\theta, 0}^{(k)}.
+\end{equation}
+This means that in this case $F_{\theta,0}^{(k)}$ is an eigenvector to the eigenvalue $-1$ and therefore must be orthogonal to the plane of reflection, i.e. $\Span\{z_k, z_l\}$. The same is true for the reflections $S_{il}$ and $S_{jl}$ and hence $F_{c,0}^{(k)}$ is in particular orthogonal to $z_i, z_j, z_l$. This eventually implies that $ F_{\theta, 0} = 0$ since the latter three vectors form a basis of $\R^3$.
+
+\begin{remark}
+First, we observe that the upper left corner of $F_{c,0}$ corresponding to the arms $||1, ||2$ and $||3$ up to multiplication by a scalar is the same as for \textsc{SPr3} in \cite{Alouges2017}. Furthermore, one notes that physically it is  clear that $F_{\theta,0}$ must vanish since by hypothesis $\xi_0$ has all its components equal and thus the swimmer is in a symmetric shape at $\xi = 0$. Therefore, the balls moving along their axes cannot create any torque.
+\end{remark}
 
 
-
-%By applying Lemma \ref{lem: general symmetries of expansion terms} to $F_{c, \xi_0}$ and $F_{\theta, \xi_0}$, we obtain two linear systems of matrix equations in the unknowns $F_{c, 0}$ and $F_{\theta,0}$. To solve these two systems, we eventually have to determine at least some of the matrices $S_{ij}$. Let $S_{kl}(\phi)$ denote the reflection at the plane orthogonal to the $\hat{e}_k-\hat{e}_l$-plane making an angle of $\phi$ with the $\hat{e}_k$-axis. By geometrical inspection of the reference tetrahedron $(S_1, S_2, S_3, S_4)$, we find that
-%\begin{eqnarray}
-%	S_{12} = S_{12}\left (\tfrac{2\pi}{3}\right ), & S_{23} = S_{12}(0),  & S_{13} = S_{13}\left (\tfrac{\pi - \alpha_{\mathrm{tet}}}{2}\right ),
-%\end{eqnarray}
-%where $\alpha_{\mathrm{tet}} = \arccos (-1/3)$ denotes the angle between two legs of a regular tetrahedron. Indeed, it happens that these three matrices are enough to determine both terms of order and one finds that $F_{\theta, 0} = 0$ and
+%However, setting $\mathfrak{a} := -3/\sqrt{2} a$ yields the slightly more convenient form
 %\begin{equation}
 %	F_{c, 0}  = \left ( \begin{array}{cccc}
 %	- 2 \mathfrak{a}  & \mathfrak{a}  & \mathfrak{a}  & 0 \\ 
@@ -53,7 +74,14 @@ One could directly use Lemma \ref{lem: general symmetries of expansion terms} to
 %	 \tfrac{1}{\sqrt{2}}\mathfrak{a} & \tfrac{1}{\sqrt{2}}\mathfrak{a} & \tfrac{1}{\sqrt{2}} \mathfrak{a}  & \tfrac{-3}{\sqrt{2}}\mathfrak{a} 
 %	\end{array} \right ) \text{ with } \mathfrak{a} \in \R.
 %\end{equation}
-%In the following sections, we will exploit the orthonormal basis of $\R^4$ consisting of the vectors $\tau_1 : = \tfrac{1}{\sqrt{6}}(-2,1,1,0)^T$, $\tau_2 := \tfrac{1}{\sqrt{2}}(0,1,-1,0)^T$, $\tau_{3}:= \tfrac{1}{2 \sqrt{3}} (1,1,1,-3)^T$ and $\tau_4:= \tfrac{1}{2}(1,1,1,1)^T$, in terms of which $F_{c,0}$ can be written as $F_{c, 0} = \mathfrak{a} \sqrt{6} [\tau_1|\tau_2| \tau_3 ]^T$.
+%One recognizes in the top left corner of $F_{c,0}$ the zeroth order term of the control system associated to the swimmer \textsc{SPr3} in \cite{Alouges2017}. Further
+
+%By applying Lemma \ref{lem: general symmetries of expansion terms} to $F_{c, \xi_0}$ and $F_{\theta, \xi_0}$, we obtain two linear systems of matrix equations in the unknowns $F_{c, 0}$ and $F_{\theta,0}$. To solve these two systems, we eventually have to determine at least some of the matrices $S_{ij}$. Let $S_{kl}(\phi)$ denote the reflection at the plane orthogonal to the $\hat{e}_k-\hat{e}_l$-plane making an angle of $\phi$ with the $\hat{e}_k$-axis. By geometrical inspection of the reference tetrahedron $(S_1, S_2, S_3, S_4)$, we find that
+%\begin{eqnarray}
+%	S_{12} = S_{12}\left (\tfrac{2\pi}{3}\right ), & S_{23} = S_{12}(0),  & S_{13} = S_{13}\left (\tfrac{\pi - \alpha_{\mathrm{tet}}}{2}\right ),
+%\end{eqnarray}
+%where $\alpha_{\mathrm{tet}} = \arccos (-1/3)$ denotes the angle between two legs of a regular tetrahedron. Indeed, it happens that these three matrices are enough to determine both terms of order and one finds that $F_{\theta, 0} = 0$ and
+
 
 %\begin{remark}
 %First, we observe that the upper left corner of $F_{c,0}$ corresponding to the arms $||1, ||2$ and $||3$ is exactly the same as for \textsc{SPr3} in \cite{Alouges2017}. Furthermore, one notes that physically it is  clear that $F_{\theta,0}$ must vanish since by hypothesis $\xi_0$ has all its components equal and thus the swimmer is in a symmetric shape at $\xi = 0$. Therefore, the balls moving along their axes cannot create any torque. Lastly, one should note that apparently $F_{c,0} \sim (z_1 |z_2|z_3|z_4)$ which can be shown directly using the symmetry properties.
@@ -71,7 +99,7 @@ and similarly
 	\h_{\theta, 0}(\xi \otimes \eta) = \sum_{k \in \N_3}(B_k \eta \cdot \xi) L_k.
 \end{equation}
 
-We could pursue the approach of \cite{Alouges2017} and directly calculate the matrices $A_k$ and $B_k$. However, as we shall see later, the dynamics of \spr, up to higher order terms in the norm of the control curve $\xi$, will only be governed by their skew symmetric parts. Thus, we will evade this strenuous task and we determine the skew symmetric matrices $M_k := \tfrac{1}{2}(A_k - A_k^T)$ and $M_{k + 3}:= \tfrac{1}{2}(B_k - B_k^T)$ for $k \in \N_3$, up to two scalar parameters, using a more abstract argument.
+We could pursue the approach of \cite{Alouges2017} and directly calculate the matrices $A_k$ and $B_k$. However, as we shall see later, the dynamics of \spr, up to higher order terms in the norm of the control curve $\xi$, will only be governed by their skew symmetric parts. Thus, we will evade this strenuous task and we determine the skew symmetric matrices $M_k := \tfrac{1}{2}(A_k - A_k^T)$ and $M_{k + 3}:= \tfrac{1}{2}(B_k - B_k^T)$ for $k \in \N_3$, up to two scalar parameters, using a geometric argument similar to the one used in the previous section.
 
 
 To that end, we notice that Lemma \ref{lem: general symmetries of expansion terms} together with the fact that $(P_{ij})^2 = I$ yields for all $i,j \in \N_4$ and for all $\xi, \eta \in \N_4$
