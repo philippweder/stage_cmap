@@ -136,6 +136,47 @@
       \verb 10.31219/osf.io/7sfbj
       \endverb
     \endentry
+    \entry{Avron2004}{article}{}
+      \name{author}{3}{}{%
+        {{hash=2fbcce1df851d5ce20dbd0cf68390519}{%
+           family={Avron},
+           familyi={A\bibinitperiod},
+           given={J.\bibnamedelimi E.},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=0375a3b472ad9011092a14bc54c0906a}{%
+           family={Gat},
+           familyi={G\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod}}}%
+        {{hash=66ab3f205b98c973ee7e1b7752b6f39c}{%
+           family={Kenneth},
+           familyi={K\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society ({APS})}%
+      }
+      \strng{namehash}{45edd7166df309ae8ca7f5a087ed894a}
+      \strng{fullhash}{45edd7166df309ae8ca7f5a087ed894a}
+      \strng{bibnamehash}{45edd7166df309ae8ca7f5a087ed894a}
+      \strng{authorbibnamehash}{45edd7166df309ae8ca7f5a087ed894a}
+      \strng{authornamehash}{45edd7166df309ae8ca7f5a087ed894a}
+      \strng{authorfullhash}{45edd7166df309ae8ca7f5a087ed894a}
+      \field{sortinit}{A}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review Letters}
+      \field{month}{10}
+      \field{number}{18}
+      \field{title}{Optimal Swimming at Low Reynolds Numbers}
+      \field{volume}{93}
+      \field{year}{2004}
+      \verb{doi}
+      \verb 10.1103/physrevlett.93.186001
+      \endverb
+    \endentry
     \entry{DeSimone2011}{inbook}{}
       \name{author}{3}{}{%
         {{hash=4beb38f8658966a7a3d53ed89c224d97}{%
@@ -195,40 +236,6 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1007/978-1-4614-1806-1_3
-      \endverb
-    \endentry
-    \entry{Doran2007}{book}{}
-      \name{author}{1}{}{%
-        {{hash=85acd282be40d1408f002ac66c321e80}{%
-           family={Doran},
-           familyi={D\bibinitperiod},
-           given={Chris},
-           giveni={C\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Cambridge University Press}%
-      }
-      \strng{namehash}{85acd282be40d1408f002ac66c321e80}
-      \strng{fullhash}{85acd282be40d1408f002ac66c321e80}
-      \strng{bibnamehash}{85acd282be40d1408f002ac66c321e80}
-      \strng{authorbibnamehash}{85acd282be40d1408f002ac66c321e80}
-      \strng{authornamehash}{85acd282be40d1408f002ac66c321e80}
-      \strng{authorfullhash}{85acd282be40d1408f002ac66c321e80}
-      \field{sortinit}{D}
-      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{day}{22}
-      \field{isbn}{9781139632416}
-      \field{month}{11}
-      \field{title}{Geometric Algebra for Physicists}
-      \field{year}{2007}
-      \field{dateera}{ce}
-      \verb{urlraw}
-      \verb https://www.ebook.de/de/product/20757008/chris_doran_geometric_algebra_for_physicists.html
-      \endverb
-      \verb{url}
-      \verb https://www.ebook.de/de/product/20757008/chris_doran_geometric_algebra_for_physicists.html
       \endverb
     \endentry
     \entry{Hall2015}{book}{}

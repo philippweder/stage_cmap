@@ -53,7 +53,7 @@ In particular, $\langle u \wedge v, u \wedge v \rangle = |u|^2 |v|^2 \sin^2\psi$
 \begin{equation}
 |\omega| = \sqrt{\omega_{12}^2 + \omega_{13}^2 + \omega_{23}^2}.
 \end{equation}
-These definitions then extend naturally to all higher dimensions and one can also defined the exterior algebra which connects all possible wedge products, c.f. \cite{Lounesto2006}. In particular, we note that if $\{e_1, e_2, e_3, e_4\}$ again denotes the canonical basis of $\R^4$, a basis of the space $\bigwedge^2 \R^4$ is given by
+These definitions then extend naturally to all higher dimensions. In particular, we note that if $\{e_1, e_2, e_3, e_4\}$ again denotes the canonical basis of $\R^4$, a basis of the space $\bigwedge^2 \R^4$ is given by
 \begin{equation}
 \{e_{12}, e_{13}, e_{14}, e_{23}, e_{24}, e_{34}\},
 \end{equation}
@@ -131,16 +131,16 @@ where $\delta p \in \R^6$ is a prescribed net displacement of position and orien
 \end{proposition}
 
 \subsection{Bivectors in the fourth dimension}
-In this section we will point out some of the fundamenta
+In this section we will point out some properties of the space $\bigwedge^2 \R^4$ and how it differs from $\bigwedge^2 \R^3$, which then illustrates why the optimal control curves for $\textsc{SPr3}$ and \spr in general do not have the same structure. Nevertheless, we will be able treat a simplified situation for \spr in the same manner as \textsc{SPr3} in \cite{Alouges2017}.
 
-One peculiarity of the bivectors in $\R^3$ is that they are isomorphic to the space $\R^3$ itself. This is realized by the so-called \emph{Hodge dual operator} $\star$, c.f. \cite{Lounesto2006} p. 38, which is defined in a way such that for any two vectors $u,v \in \R^3$ one has
+As a matter of fact, one peculiarity of the bivectors in $\R^3$ is that they are isomorphic to the space $\R^3$ itself. This is realized by the so-called \emph{Hodge dual operator} $\star$, c.f. \cite{Lounesto2006} p. 38, which is defined in a way such that for any two vectors $u,v \in \R^3$ one has
 \begin{equation}
 \label{eq: hodge star}
 u \wedge v = \star(u \times v),
 \end{equation}
 where $\times$ denotes the usual cross products. This entails two things: First, every bivector in $\R^3$ is \emph{simple}; that is, it can be written as the wegde product of two vectors. Second, every bivector in $\R^3$ defines one unique plane in $\R^3$. It is due to this underlying geometrical fact that in \cite{Alouges2017} one could always reduce the Fourier coefficients of an optimal control curve to one pair of vectors by which one attained the same net displacement at the same energy consumption. Furthermore, this implied that the optimal control curves are situated in a certain plane defined by the vector of the net displacement.
 
-Yet, in $\R^4$, the geometry of its bivectors proves to be more involved. As $\dim \bigwedge^2 \R^4 = 6$, it is already clear that the bivectors in $\R^4$ are not isomorphic to $\R^4$ itself. In particular, in $\R^4$ not all bivectors are simple. Indeed, the bivector $e_1 \wedge e_2 + e_3 \wedge e_4 \in \bigwedge^2 \R^4$ cannot be written as an exterior product of just two vectors in $\R^4$. In fact, we have the following criterion to determine whether a bivector is simple:%
+Yet, in $\R^4$, the geometry of its bivectors proves to be more involved. As $\dim \bigwedge^2 \R^4 = 6$, it is already clear that the bivectors in $\R^4$ are not isomorphic to $\R^4$ itself. In particular, in $\R^4$ not all bivectors are simple. Indeed, the bivector $e_1 \wedge e_2 + e_3 \wedge e_4 \in \bigwedge^2 \R^4$ cannot be written as an exterior product of just two vectors in $\R^4$. In fact, we have the following criterion to determine whether a bivector is simple:
 
 \begin{lemma}
 \label{lem:simple bivector}
@@ -238,10 +238,14 @@ u_{\star} \cdot v_{\star} = 0.
 \end{eqnarray}
 Therefore, for any $\sigma \in D_{ijk}$ such that $\sigma \cdot \hat{\omega} = 0$ and $|\sigma|^2 = |\omega|$, the couple
 \begin{equation}
-(\sigma, \sigma \times \star \omega) \in D_{ijk} \times D_{ijk} \subset \R^4 \times \R^4
+(\sigma, \sigma \times \star \hat{\omega}) \in D_{ijk} \times D_{ijk} \subset \R^4 \times \R^4
 \end{equation}
 is a (global) constrained minimizer for $f$.
 \end{proposition}
+
+\begin{remark}
+The construction of a couple of vectors satisfying relations (\ref{eq:finite dim minimization conditions}) is straightforward and very similar to the construction of the corresponding pair of vectors for \textsc{SPr3}, c.f. Remark 18 in \cite{Alouges2017}. It suffices to choose any vector $\mu \in D_{ijk}$ linearly independent from $\star \hat{\omega}$ and to set $\sigma := \mu \times \star\hat{\omega}$. In fact, setting $\hat{\mu} := \mu / |\mu|$ yields $|\mu|^2 = |\omega|/(1 - (\hat{\mu} \cdot \star\hat{\omega})^2)$ and therefore by choosing $|\mu|^2 = |\omega|/(1 - (\hat{\mu} \cdot \star \hat{\omega})^2)$ we get $|\sigma|^2 = |\omega|$.
+\end{remark}
 
 \begin{proof}
 First, we note that it is clear that $u_{\star}, v_{\star} \in D_{ijk}$ by definition of $D_{ijk}^{*}$.
@@ -276,12 +280,14 @@ i.e. an ellipse of $D_{ijk} \subset \R^4$ centered at the origin and contained i
 \end{equation}
 Then we consider a vector $u \in D_{ijk}$ in the plane orthogonal to $\star \omega$ in $D_{ijk}$ and such that
 \begin{equation}
+\label{eq:global minimizer condition}
 |u|^2 = |\omega|,
 \end{equation}
 e.g. $u := \sqrt{|\omega|} \frac{\mu \times \star \omega}{|\mu \times \star \omega|}$, with $\mu \in D_{ijk}$ linearly independent from $\star \omega$. Furthermore, we set $v := u \times \star \omega$.
 
 \item We set $\hat{\omega} := \omega/|\omega|$ and we calculate the vectors $a$ and $b$ via the relations
 \begin{equation}
+\label{eq:global minimizer form}
 \begin{aligned}
 a := \frac{U \Lambda_{\mathfrak{g}}^{-1/2}}{\sqrt{2 \pi}} u,&& b := \frac{U \Lambda_{\mathfrak{g}}^{-1/2}}{\sqrt{2 \pi}} v.
 \end{aligned}
@@ -291,6 +297,14 @@ We then have $ v \wedge u = \omega$ and the minimum value of $\mathcal{G}$ is eq
 
 In addition, the vectors $a$ and $b$ are $\mathfrak{g}$-orthogonal, i.e. with respect to the inner product defined for every $x,y \in \R^4$ by $(x, y)_{\mathfrak{g}} := 2 \pi \Lambda_{\mathfrak{g}} x \cdot y$, and have the same $\mathfrak{g}$-norm $|a|_{\mathfrak{g}}^2 = |b|_{\mathfrak{g}}^2 = |\omega|$. 
 \end{theorem}
+
+%\begin{remark}
+%If $\delta p \mid \mid e_{ij}$, then $\star \hat{\omega} = e_{k}$. Consequently, we can take $u := - \sqrt{|\omega|} e_{j}$ to satisfy (\ref{eq:global minimizer condition}). Then we obtain from (\ref{eq:global minimizer form}) that
+%\begin{eqnarray}
+%	a := -\sqrt{\frac{|\omega|}{2 \pi \mathfrak{g}_k}} \tau_j &,& b := - \sqrt{\frac{|\omega|}{2 \pi \mathfrak{g}_{i}}} \tau_{i}.
+%\end{eqnarray}
+%Recalling that a net displacement along the $\hat{e}_1$-axis corresponds to $\delta p \mid \mid e_{14}$, the corresponding energy minimizing stroke is an ellipse with respect to the standard euclidean space $(\R^3, (\cdot, \cdot)_{2})$ orthogonal to the vector 
+%\end{remark}
 
 \begin{proof}
 From Proposition \ref{prop:finite dim minimization}, Corollary \ref{cor:simple reduction} and then Proposition \ref{prop: l2-minimization}, we get that any $\sigma \in D_{ijk}$ satisfying the relations
