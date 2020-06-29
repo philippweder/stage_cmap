@@ -12,13 +12,13 @@ with $F_{c}(\zeta) := F_c(I, \zeta)$ and $F_{\theta}(\zeta) := F_{\theta}(I, \ze
 	F_{\theta, \xi_0}(\xi) \eta &= F_{\theta, 0} \eta + \h_{c, 0}(\xi \otimes \eta) + \mathcal{O}(|\xi|)\eta,
 \end{align}
 where $F_{c,0} := F_{c}(\xi_0) \in M_{3 \times 4}(\R)$, $\h_{c,0}\in \mathcal{L}(\R^4 \otimes \R^4, \R^3)$ represents the first order derivative of $F_{c, \xi_0}$ at $\xi = 0$ and for $F_{\theta, \xi}$ the analogous definitions are made.
-The purpose of this section is to reveal the structure of the different terms in the expansions (\ref{eq: angular control expansion}) and (\ref{eq: spatial control expansion}) in light of the symmetry properties fulfilled by $F_{c}$ and $F_{\theta}$ due to Propositions (\ref{prop: spatial permutation invariance}) and (\ref{prop: angular permutation invariance}) , i.e
+The purpose of this section is to reveal the structure of the different terms in the expansions (\ref{eq: angular control expansion}) and (\ref{eq: spatial control expansion}) in light of the symmetry properties fulfilled by $F_{c}$ and $F_{\theta}$ due to Propositions (\ref{prop: spatial permutation invariance}) and (\ref{prop: angular permutation invariance}) , i.e.
 \begin{align}
 \label{eq: spatial and angular first order expansion}
 	F_{c}(P_{ij} \xi) = S_{ij} F_{c}(\xi) P_{ij}& & \text{ and } & & 			F_{\theta}(P_{ij} \xi) = - S_{ij} F_{\theta}(\xi) P_{ij} & & \forall \xi \in \M.
 \end{align}
 
-The following slightly generalized statement of Lemma 9 in \cite{Alouges2017} proves useful in our case as well. However, the proof is omitted, it being exactly the same.
+The following slightly generalized statement of Lemma 9 in \cite{Alouges2017} proves useful in our case as well. However, the proof,being exactly the same, is omitted.
 
 \begin{lemma}
 \label{lem: general symmetries of expansion terms}
@@ -32,7 +32,7 @@ Then we have
 \end{equation}
 and
 \begin{eqnarray}
-	\h_0((P \xi) \otimes \eta) = S \h_0(\xi \otimes (P \eta)) &  & \forall \xi, \eta \in \R^n
+	\h_0((P \xi) \otimes \eta) = S \h_0(\xi \otimes (P \eta)) &  & \forall \xi, \eta \in \R^n.
 \end{eqnarray}
 \end{lemma}
 
@@ -48,7 +48,7 @@ Similarly, for any $k \in \N_4$ one has
 \label{eq:zeroth spatial term condition 2}
 F_{c,0}^{(k)} = S_{ij} F_{c,0} P_{ij} e_k = S_{ij} F_{c,0} e_k = S_{ij} F_{c,0}^{(k)}.
 \end{equation}
-Recall that $S_{ij}$ is the reflection that maps the arm $||i$ onto arm $||j$ and vice-versa in the reference orientation, i.e. where $||i$ is collinear to $z_i$, the $i$-th arm of the reference tetrahedron defined in section \ref{sec:modeling}. In particular, the plane of reflection is defined by the remaining arms, i.e. by the vectors $z_k$ and $z_l$. Thus, equation (\ref{eq:zeroth spatial term condition 2}) implies that $F_{c,0}^{(k)} \in \Span\{z_k, z_l\}$ as $F_{c,0}^{(k)}$ apparently is an eigenvector associated to the eigenvalue 1 of $S_{ij}$. Yet, the same argument shows that $F_{c,0}^{(k)} \in \Span\{z_k, z_i\}$ and $F_{c,0} \in \Span\{z_k, z_j\}$ and the vectors $z_i, z_j$ and $z_l$ being linearly independent implies that $F_{c,0}^{(k)} = a_k z_k$ for some $a_k \in \R$. Due to equation (\ref{eq:zeroth spatial term condition 1}) and the fact that $S_{ij}$ is orthogonal, we have $|a_i| = |a_j| = |a_k| = |a_l|$. Finally, we note that the quantity $a_k z_k \cdot z_k$ stays constant under change of indeces again in consequence of the symmetry conditions from Lemma \ref{lem: general symmetries of expansion terms}. Hence, we have $a_1 = a_2 = a_3 =a_4 := \mathfrak{a}$ and therefore
+Recall that $S_{ij}$ is the reflection that maps the arm $||i$ onto arm $||j$ and vice-versa in the reference orientation, i.e. where $||i$ is collinear to $z_i$, the $i$-th arm of the reference tetrahedron defined in section \ref{sec:modeling}. In particular, the plane of reflection is defined by the remaining arms, i.e. by the vectors $z_k$ and $z_l$. Thus, equation (\ref{eq:zeroth spatial term condition 2}) implies that $F_{c,0}^{(k)} \in \Span\{z_k, z_l\}$ as $F_{c,0}^{(k)}$ apparently is an eigenvector associated to the eigenvalue 1 of $S_{ij}$. Yet, the same argument shows that $F_{c,0}^{(k)} \in \Span\{z_k, z_i\}$ and $F_{c,0} \in \Span\{z_k, z_j\}$ and the vectors $z_i, z_j$ and $z_l$ being linearly independent implies that $F_{c,0}^{(k)} = a_k z_k$ for some $a_k \in \R$. Due to equation (\ref{eq:zeroth spatial term condition 1}) and the fact that $S_{ij}$ is orthogonal, we have $|a_i| = |a_j| = |a_k| = |a_l|$. Finally, we note that the quantity $a_k z_k \cdot z_k$ stays constant under change of indices again in consequence of the symmetry conditions from Lemma \ref{lem: general symmetries of expansion terms}. Hence, we have $a_1 = a_2 = a_3 =a_4 := \mathfrak{a}$ and therefore
 \begin{equation}
 	F_{c,0} = a (z_1 |z_2| z_3|z_4).
 \end{equation}
@@ -226,7 +226,7 @@ In particular, if we fix $\xi \in H^1_{\sharp}(J, \R^4)$ and define $\Gamma := \
 \end{cases}
 \end{align}
 
-To simplify equations  (\ref{eq: dynamics first approx}) further, we are interested in the solution of (\ref{eq: orientation ode}) in the regime of a small stroke $\xi \in H_{\sharp}^1(J, \R^4)$ or equivalently in the regime of a small vector field $\Gamma$. Intuitively, the solution $R$ of (\ref{eq: orientation ode}) should not deviate too much from the initial value $R_0$ if the vector field $\Gamma$ driving the differential equation is small. The solution of (\ref{eq: orientation ode}) and its relation to a small vector field $\Gamma$ as well as the notion of smallness for the vector field $\Gamma$ in the first place, are mathematically formalized by the concept of \emph{chronological calculus}. For details on the topic, we refer to \cite{Agrachev2004} but essentially it works as follows: First, one identifies any smooth manifold $M$ with the space $C^{\infty}(M)$, on which one defines a certain metric topology, the Whitney topology. Then, the solution of a differential equation $\dot{q}(t) = q(t) V(t)$ for $V$ a non-autonomous vecor field on $M$ is given by
+To simplify equations  (\ref{eq: dynamics first approx}) further, we are interested in the solution of (\ref{eq: orientation ode}) in the regime of a small stroke $\xi \in H_{\sharp}^1(J, \R^4)$ or equivalently in the regime of a small vector field $\Gamma$. Intuitively, the solution $R$ of (\ref{eq: orientation ode}) should not deviate too much from the initial value $R_0$ if the vector field $\Gamma$ driving the differential equation is small. The solution of (\ref{eq: orientation ode}) and its relation to a small vector field $\Gamma$ as well as the notion of smallness for the vector field $\Gamma$ in the first place, are mathematically formalized by the concept of \emph{chronological calculus}. For details on the topic, we refer to \cite{Agrachev2004} but essentially it works as follows: First, one identifies any smooth manifold $M$ with the space $C^{\infty}(M)$, on which one defines a certain metric topology, the Whitney topology. Then, the solution of a differential equation $\dot{q}(t) = q(t) V(t)$ for $V$ a non-autonomous vector field on $M$ is given by
 \begin{equation}
 	q(t) = q(0)\chroexp \int_{J}^{t} V(s) \dd s,
 \end{equation}

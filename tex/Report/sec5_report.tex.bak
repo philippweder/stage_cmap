@@ -3,7 +3,7 @@ In the spirit of \cite{Alouges2013} and \cite{Alouges2017}, we follow the notion
 \begin{equation}
  \mathcal{G}_S(\xi) := \int_{J} \mathfrak{g}(\xi(t))\dot{\xi}(t) \cdot \dot{\xi}(t) \dd t,
 \end{equation}
-where the energy density $\mathfrak{g} \in C^1(\R^4)$ is a function with values in the space of symmetric and positive definite matrices $M_{4 \times 4}(\R)$. In other words, $\mathfrak{g}$ defines a continuous Riemannian metric on $\M$. In the small strokes regime, we can approximate the energy density by $\mathfrak{g}(\xi) = \mathfrak{g}(0) + o(1)$, where $\mathfrak{g}(0) \in M_{4 \times 4}(\R)$ is symmetric and positive definite. More precisely,
+where the energy density $\mathfrak{g} \in C^1(\R^4)$ is a function with values in the space of symmetric and positive definite matrices $M_{4 \times 4}(\R)$. In other words, $\mathfrak{g}$ defines a continuous Riemannian metric on $\M$. In the small stroke regime, we can approximate the energy density by $\mathfrak{g}(\xi) = \mathfrak{g}(0) + o(1)$, where $\mathfrak{g}(0) \in M_{4 \times 4}(\R)$ is symmetric and positive definite. More precisely,
 \begin{equation}
 \label{eq: linearized energy functional}
 	\mathcal{G}(\xi) := \int_{J} Q_{\mathfrak{g}}(\dot{\xi}(t))\dd t,
@@ -59,7 +59,7 @@ These definitions then extend naturally to all higher dimensions. In particular,
 \end{equation}
 where we write $e_{ij} := e_i \wedge e_j$ to simplify the notation. More generally, the vectors, bivectors etc. of $\R^4$ all make part of a graded algebra, the \emph{exterior algebra}, defined by
 \begin{equation}
-\bigwedge \R^4 := \R \oplus \R^4 \oplus \bigwedge^3\R^4 \oplus \bigwedge^3 \R^4 \oplus \bigwedge^4 \R^4,
+\bigwedge \R^4 := \R \oplus \R^4 \oplus \bigwedge^2\R^4 \oplus \bigwedge^3 \R^4 \oplus \bigwedge^4 \R^4,
 \end{equation}
 whose product is given by the wedge product. As we shall see later, it is due to the fundamental differences between $\bigwedge^2 \R^3$ and $\bigwedge^2 \R^4$ that the structure of optimal control curves for \textsc{SPr3} and \spr are substantially different.
 
@@ -138,7 +138,7 @@ As a matter of fact, one peculiarity of the bivectors in $\R^3$ is that they are
 \label{eq: hodge star}
 u \wedge v = \star(u \times v),
 \end{equation}
-where $\times$ denotes the usual cross products. This entails two things: First, every bivector in $\R^3$ is \emph{simple}; that is, it can be written as the wegde product of two vectors. Second, every bivector in $\R^3$ defines one unique plane in $\R^3$. It is due to this underlying geometrical fact that in \cite{Alouges2017} one could always reduce the Fourier coefficients of an optimal control curve to one pair of vectors by which one attained the same net displacement at the same energy consumption. Furthermore, this implied that the optimal control curves are situated in a certain plane defined by the vector of the net displacement.
+where $\times$ denotes the usual cross product. This entails two things: First, every bivector in $\R^3$ is \emph{simple}; that is, it can be written as the wegde product of two vectors. Second, every bivector in $\R^3$ defines one unique plane in $\R^3$. It is due to this underlying geometrical fact that one can always reduce the Fourier coefficients of an optimal control curve to one pair of vectors, by which one attained the same net displacement at the same energy consumption in \cite{Alouges2017}. Furthermore, this implies that the optimal control curves are situated in a certain plane defined by the vector of the net displacement.
 
 Yet, in $\R^4$, the geometry of its bivectors proves to be more involved. As $\dim \bigwedge^2 \R^4 = 6$, it is already clear that the bivectors in $\R^4$ are not isomorphic to $\R^4$ itself. In particular, in $\R^4$ not all bivectors are simple. Indeed, the bivector $e_1 \wedge e_2 + e_3 \wedge e_4 \in \bigwedge^2 \R^4$ cannot be written as an exterior product of just two vectors in $\R^4$. In fact, we have the following criterion to determine whether a bivector is simple:
 
@@ -196,7 +196,7 @@ This is possible under the condition that the right hand side  of the previous e
 \end{equation}
 Finally, from (\ref{eq:reduction int1}) we obtain
 \begin{equation}
-\mathcal{F}(\mathbf{u_\star}, \mathbf{v_{\star}}) = \frac{1}{2} |u| + \frac{1}{2} |v| = \frac{1}{2} ||\mathbf{u}||_{\ell^2(\R^4)} + \frac{1}{2} ||\textbf{v}||_{\ell^2(\R^4)},
+\mathcal{F}(\mathbf{u_\star}, \mathbf{v_{\star}}) = \frac{1}{2} |u|^2 + \frac{1}{2} |v|^2 = \frac{1}{2} ||\mathbf{u}||_{\ell^2(\R^4)}^2 + \frac{1}{2} ||\textbf{v}||_{\ell^2(\R^4)}^2,
 \end{equation}
 which concludes the proof.
 \end{proof}
@@ -220,7 +220,7 @@ The minimization problem for $\mathcal{F}$ in $\ell^2(\R^4) \times \ell^2(\R^4)$
 \begin{proof}
 It suffices to observe that if $\mathcal{V}_{\omega}$ denotes the subset of $\ell^2(\R^4) \times \ell^2(\R^4)$ satisfying the constraint (\ref{eq:l2-constraint}) and by $V_{\omega}$ the subset of $(u, v)  \in \R^4 \times \R^4$ such that $u \times v = \omega$, then Proposition \ref{prop:simple reduction} yields
 \begin{equation}
-\min_{(\mathbf{u}, \mathbf{v}) \in \mathcal{V}_{\omega}}\mathcal{F}(\mathbf{u}, \mathbf{v}) = \min_{(u, v) \in V_\omega} \mathcal{F}(\mathbf{e}_1 u, \mathbf{e}_1, v) = \min_{(u,v) \in V_{\omega}} f(u,v).
+\min_{(\mathbf{u}, \mathbf{v}) \in \mathcal{V}_{\omega}}\mathcal{F}(\mathbf{u}, \mathbf{v}) = \min_{(u, v) \in V_\omega} \mathcal{F}(\mathbf{e}_1 u, \mathbf{e}_1 v) = \min_{(u,v) \in V_{\omega}} f(u,v).
 \end{equation}
 \end{proof}
 
@@ -259,7 +259,7 @@ whose stationary satisfy $\psi_{\star} = \frac{\pi}{2}$ and $|u_{\star}|^2 = |\o
 \end{equation}
 This proves the first statement. For the second part, we set $\hat{\omega} := \omega/|\omega|$ and we consider a vector $\sigma \in D_{ijk}$ such that
 \begin{equation}
-	\sigma \cdot \hat{\omega} \text{ and } |\sigma|^2 = |\omega|. 
+	\sigma \cdot \star\hat{\omega} = 0 \text{ and } |\sigma|^2 = |\omega|. 
 \end{equation}
 By a trivial computation, on finds that the vectors $v := \sigma \times \star \hat{\omega}$ and $u := \sigma$ satisfy the relations $u \cdot v = 0$, $|u|^2 = |v|^2 = |\omega|$ and $v \wedge u = \omega$. 
 \end{proof}
@@ -268,6 +268,7 @@ Pasting everything worked out above together leads to the final result of this s
 
 
 \begin{theorem}
+\label{thm:optimal control curves in the simple case}
 Let $\delta p \in \R^3 \times \so(3) \simeq \bigwedge^2 \R^4$ be a prescribed net displacement. Moreover, assume that $\delta p \in D_{ijk}^*$ for some combination of indices $i,j,k \in \N_4$. Then, any minimizer $\xi \in H_{\sharp}^1(J, \R^4)$ of the energy functional (\ref{eq: linearized energy functional}) subject to the constraint (\ref{eq: constraint}) is of the form
 \begin{equation}
 \xi(t) := (\cos t) a + (\sin t) b,
@@ -298,13 +299,13 @@ We then have $ v \wedge u = \omega$ and the minimum value of $\mathcal{G}$ is eq
 In addition, the vectors $a$ and $b$ are $\mathfrak{g}$-orthogonal, i.e. with respect to the inner product defined for every $x,y \in \R^4$ by $(x, y)_{\mathfrak{g}} := 2 \pi \Lambda_{\mathfrak{g}} x \cdot y$, and have the same $\mathfrak{g}$-norm $|a|_{\mathfrak{g}}^2 = |b|_{\mathfrak{g}}^2 = |\omega|$. 
 \end{theorem}
 
-%\begin{remark}
-%If $\delta p \mid \mid e_{ij}$, then $\star \hat{\omega} = e_{k}$. Consequently, we can take $u := - \sqrt{|\omega|} e_{j}$ to satisfy (\ref{eq:global minimizer condition}). Then we obtain from (\ref{eq:global minimizer form}) that
-%\begin{eqnarray}
-%	a := -\sqrt{\frac{|\omega|}{2 \pi \mathfrak{g}_k}} \tau_j &,& b := - \sqrt{\frac{|\omega|}{2 \pi \mathfrak{g}_{i}}} \tau_{i}.
-%\end{eqnarray}
-%Recalling that a net displacement along the $\hat{e}_1$-axis corresponds to $\delta p \mid \mid e_{14}$, the corresponding energy minimizing stroke is an ellipse with respect to the standard euclidean space $(\R^3, (\cdot, \cdot)_{2})$ orthogonal to the vector 
-%\end{remark}
+\begin{remark}
+Suppose that $\delta p \mid \mid e_{14}$, i.e. a net displacement along the $\hat{e}_1$-axis. Then we have both $\hat{\omega} \in D^{*}_{124}$ as well as $\hat{\omega} \in D_{134}^{*}$. In the first case, we have $\star \hat{\omega} = e_2$ and thus we can choose $u := \sqrt{|\omega|} e_4$ to satisfy (\ref{eq:global minimizer condition}). Then we have $v = -\sqrt{|\omega|} e_1$ and hence we get from (\ref{eq:global minimizer form}) that
+\begin{eqnarray}
+	a := \sqrt{\frac{|\omega|}{2 \pi \mathfrak{g}_4}} \tau_{4}&, & b := -\sqrt{\frac{|\omega|}{2 \pi \mathfrak{g}_{1}}} \tau_1.
+\end{eqnarray}
+In the case $\hat{\omega} \in D^{*}_{134}$ we have $\star\hat{\omega} = e_3$ and therefore we find the same vectors $a$ and $b$ from the relations (\ref{eq:global minimizer condition}) and (\ref{eq:global minimizer form}). Indeed, the resulting vectors are independent of the choice of one of the two possible spaces $D^*_{ijk}$ for any direction $\hat{\omega} = e_{ij}$. In other words, an energy minimizing net displacement along the $\hat{e}_1$-axis with respect to the standard euclidean space $(\R^4, (\cdot, \cdot)_2)$ is realized by an elliptic stroke contained in the plane spanned by the vectors $\tau_1$ and $\tau_4$. On the other hand, with respect to the inner-product space $(\R^4, (\cdot, \cdot)_{\mathfrak{g}})$, the energy optimizing strokes are circles of radius $\sqrt{|\omega|}$. More generally, if $\hat{\omega} = e_{ij}$, then the energy optimizing strokes describe ellipses with respect to the standard inner-product or $(\cdot, \cdot)_2$ circles of radius $\sqrt{|\omega|}$ with respect to the inner-product $(\cdot, \cdot)_{\mathfrak{g}}$ in the plane spanned by the vectors $\tau_i$ and $\tau_j$.
+\end{remark}
 
 \begin{proof}
 From Proposition \ref{prop:finite dim minimization}, Corollary \ref{cor:simple reduction} and then Proposition \ref{prop: l2-minimization}, we get that any $\sigma \in D_{ijk}$ satisfying the relations

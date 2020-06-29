@@ -1,9 +1,19 @@
 \label{sec:modeling}
-We restrict ourselves to considering the swimmer \spr proposed in \cite{Alouges2013}. Let $(S_1, S_2, S_3, S_4)$ be a regular reference tetrahedron centered at $c \in \R^3$ such that $\dist(c, S_i) = 1$ for all $i \in \N_4$. Then the swimmer consists of four balls $(B_i)_{i \in \N_4}$ of $\R^3$ centered at $b_i \in \R^3$, all of radius $a > 0$, such that the ball $B_i$ can move along the ray starting at $c$ and passing through $S_i$. This reflects the situation where the balls are linked together by think jacks that are able to elongate. However, the viscous resistance of these jacks is neglected and therefore the fluid is assumed to permeate the entire open set $\R^3 \setminus \bigcup_{i = 1}^{4} \overline{B}_i$. The balls do not rotate around their arms which implies that the shape of the swimmer is completely determined by the four lengths $\xi_1, \xi_2, \xi_3, \xi_4$ of its arms, measured from the $c$ to the center of each ball $b_i$. However, there are no restrictions for the rotation of the swimmer around the center $c$, i.e. for fixed arm lengths, the swimmer is considered to be a rigid body in a Stokesian fluid.
+We restrict ourselves to considering the swimmer \spr proposed in \cite{Alouges2013}. Let $(S_1, S_2, S_3, S_4)$ be a regular reference tetrahedron centered at $c \in \R^3$ such that $\dist(c, S_i) = 1$ for all $i \in \N_4$. Then the swimmer consists of four balls $(B_i)_{i \in \N_4}$ of $\R^3$ centered at $b_i \in \R^3$, all of radius $a > 0$, such that the ball $B_i$ can move along the ray starting at $c$ and passing through $S_i$.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width = 0.45\textwidth]{/Users/philipp/Documents/GitHub/stage_cmap/images/tetrahedron.png}
+	\caption{The reference tetrahedron. }
+	\label{fig:globalintensity_china}
+\end{figure}
+
+
+ This reflects the situation where the balls are linked together by thin jacks that are able to elongate and retract. However, the viscous resistance of these jacks is neglected and therefore the fluid is assumed to permeate the entire open set $\R^3 \setminus \bigcup_{i = 1}^{4} \overline{B}_i$. The balls do not rotate around their arms which implies that the shape of the swimmer is completely determined by the four lengths $\xi_1, \xi_2, \xi_3, \xi_4$ of its arms, measured from $c$ to the center of each ball $b_i$. However, there are no restrictions for the rotation of the swimmer around the center $c$, i.e. for fixed arm lengths, the swimmer is considered to be a rigid body in a Stokesian fluid.
 Hence, the geometrical configuration of the swimmer can be described by two sets of variables:
 \begin{enumerate}
 	\item The vector of \emph{shape variables} $\xi := (\xi_1, \xi_2, \xi_3, \xi_4) \in \M := (\sqrt{\tfrac{3}{2}}a, +\infty)^4 \subseteq \R_+^4$, from which one obtains the relative distances $(b_{ij})_{i,j \in \N_4}$ between the balls,  where the lower bound in the open intervals is chosen such that the balls cannot overlap.
-	\item The vector of \emph{position variables} $p = (c, R) \in \mathcal{P} :=  \R^3 \times \SO(3)$, which encode the global position and orientation in space of the swimmer.
+	\item The vector of \emph{position variables} $p = (c, R) \in \mathcal{P} :=  \R^3 \times \SO(3)$, which encodes the global position and orientation in space of the swimmer.
 \end{enumerate}
 To be more precise, we consider the reference tetrahedron convexly spanned by the four unit vectors $z_1 := (2 \sqrt{2}/3,0,-1/3)$, $z_2 := (-\sqrt{2}/3,-\sqrt{2/3},-1/3)$, $z_3 := (-\sqrt{2}/3,\sqrt{2/3},-1/3)$ and $z_4 := (0,0,1)$. Position and orientation in $\R^3$ are then described by the coordinates of the center $c \in \R^3$ and the rotation $R \in SO(3)$ of the swimmer with respect to the reference orientation induced by the reference tetrahedron, i.e. if the arms are aligned with the reference tetrahedron, then this corresponds to the identity matrix $I \in \SO(3)$. Thus, we set $b_i := c + \xi_i R z_i$ for the center of the ball $B_i$.
 
@@ -21,14 +31,13 @@ In \cite{Alouges2013} it is shown that the system \spr, i.e. both the shape $\xi
 \begin{equation}
 \label{eq: control system}
 	\dot{p} = F(R, \xi) \dot{\xi} := \left ( \begin{array}{c}
-	F_c(R, \xi) \\ 
-	\hline
+	F_c(R, \xi) \\
 	F_\theta(R, \xi)
 	\end{array}  \right ) \dot{\xi},
 \end{equation}
 where $\dot{c} = F_c(R, \xi) \dot{\xi}$ and $\dot{R} = F_\theta (R, \xi) \dot{\xi} $. 
 
-In preparation for what follows, let us note that we have $F(R, \xi) \in \mathcal{L}(\R^4, T_{p}\mathcal{P})$ for any $R \in \SO(3)$ and $\xi \in \R^4$, where $\mathcal{L}(V, W)$ denotes the linear maps between two vector spaces $V$ and $W$. We quickly recall the fact that at any point $R \in \SO(3)$, see e.g. \cite{Hall2015} for details, we have 
+In preparation for what follows, let us note that if we denote by $T_p \mathcal{P}$ the tangent space of the smooth manifold $\mathcal{P}$ at the point $p$, we have $F(R, \xi) \in \mathcal{L}(\R^4, T_{p}\mathcal{P})$ for any $R \in \SO(3)$ and $\xi \in \R^4$, where $\mathcal{L}(V, W)$ denotes the linear maps between two vector spaces $V$ and $W$. We quickly recall the fact that at any point $R \in \SO(3)$, see e.g. \cite{Hall2015} for details, we have 
 \begin{equation}
 	T_R \SO(3) = R^* \Skew_3(\R) = \{R M \mid M \in \Skew_3(\R)\},
 \end{equation}

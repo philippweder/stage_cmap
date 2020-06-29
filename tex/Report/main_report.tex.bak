@@ -11,7 +11,6 @@
 \usepackage{subfig}
 \usepackage[a4paper,width=140mm,top=25mm,bottom=25mm]{geometry}
 \author{Philipp Weder}
-\title{\textbf{Final Report - Research Internship}}
 \date{}
 
 
@@ -25,7 +24,6 @@
 \fancyhead[L]{\textit{\nouppercase{\leftmark}}}
 \fancyhead[R]{\thepage}
 
-\renewcommand{\headrulewidth}{0.5pt}
 
 %section titles
 \usepackage{titlesec}
@@ -97,7 +95,7 @@
 \DeclareMathOperator{\id}{id}
 \newcommand{\so}{\mathfrak{so}}
 \newcommand{\REF}{\mathrm{ref}}
-\newcommand{\spr}{\textsc{SPr4 }}
+\newcommand{\spr}{\textsc{SPr4}}
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\SO}{SO}
 \DeclareMathOperator{\sgn}{sgn}
@@ -109,9 +107,43 @@
 \newcommand{\dd}[1]{\mathrm{d}#1}
 \DeclareMathOperator{\ad}{ad}
 
-\renewcommand{\baselinestretch}{1.1} 
+
 \begin{document}
-\maketitle
+\begin{center}
+\begin{Large}
+\textbf{Final Report - Research Internship MAP592}\\
+\end{Large}
+\begin{Large}
+\textbf{Parking 4-sphere swimmer}\\
+\end{Large}
+\vspace{1em}
+Submitted by\\
+\textsc{Philipp Weder}\\
+under the supervision of\\
+\end{center}
+\vspace{1em}
+\begin{minipage}[t]{0.5\textwidth}
+\begin{center}
+\textsc{François Alouges}\\
+CMAP, École Polytechnique,\\
+route de Saclay,\\
+91128 Palaiseau Cedex,\\
+France
+\end{center}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\begin{center}
+\textsc{Aline Lefebvre-Lepot}\\
+CMAP, École Polytechnique,\\
+route de Saclay,\\
+91128 Palaiseau Cedex,\\
+France
+\end{center}
+\end{minipage}
+
+\begin{abstract}
+The article is about the parking 4-sphere swimmer (\spr). This is a low-Reynolds number swimmer composed of four balls or equal radii. The four balls can move along the four axes defined by the four corners of a tetrahedron and its midpoint. The balls do not rotate around their axes such that the shape of the swimmer is characterized by the length of the four arms, measured from the midpoint to the center of each ball. Yet, the swimmer may rotate freely around its center of mass. The governing dynamical system is presented and its geometric structure is revealed. Then it is shown that, in the first order range of small strokes, optimal periodic strokes for planar displacements with an additional rotation the axis orthogonal to the plane of movement are ellipses embedded in $4d$ space, i.e. closed curves of the form $t \in [0, 2 \pi] \mapsto (\cos t) a + (\sin t) b$ for suitable vectors $a, b \in \R^4$. A simple analytic expression for the vectors $a$ and $b$ is derived. Eventually, a conjecture about the general case is made.
+\end{abstract}
 
 \section{Introduction}
 \input{sec1_report.tex}
@@ -122,11 +154,14 @@
 \section{Symmetries}
 \input{sec3_report.tex}
 
-\section[The small strokes regime]{The small strokes regime}
+\section[The small strokes regime]{The small stroke regime}
 \input{sec4_report.tex}
 
 \section{Energy minimizing strokes}
 \input{sec5_report.tex}
+
+\section{Conclusion and outlook}
+\input{sec6_report.tex}
 
 
 \printbibliography[title = Bibliography]
