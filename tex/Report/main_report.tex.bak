@@ -109,6 +109,7 @@
 
 
 \begin{document}
+\thispagestyle{plain}
 \begin{center}
 \begin{Large}
 \textbf{Final Report - Research Internship MAP592}\\
