@@ -86,7 +86,7 @@ form a basis of $\so(3)$ consisting of the infinitesimal rotations around the co
 \begin{align}
 	\omega \cdot \mathbf{L} = \omega_1 L_1 + \omega_2 L_2 + \omega_3 L_3,
 \end{align}
-we find by direct computation that $\exp(\omega \cdot \mathbf{L}) = R$. This relationship allows us to formulate the behavior of the orientation of \spr under reflection and thus under permutation of two arms as we shall see later. Indeed, we have
+we find by direct computation that $\exp(\omega \cdot \mathbf{L}) = R$. This relationship allows us to formulate the behavior of the orientation of \textsc{SPr4} under reflection and thus under permutation of two arms as we shall see later. Indeed, we have
 
 \begin{lemma}
 \label{lem:mirror image of orientation}
@@ -115,7 +115,7 @@ If now $S'$ is an arbitrary reflection, we always find a rotation $Q \in \SO(3)$
 as desired.
 \end{proof}
 
-With this lemma at hand, we can now finally state the following
+With this lemma at hand, Stokes equations allow us to state the following
 
 \begin{condition}[Swap $(||i \leftrightsquigarrow ||j)$]
 \label{cond:swap}
@@ -128,6 +128,19 @@ and
 	\gamma_{\theta}(c_0, I, P_{ij} \xi ) = S_{ij} \gamma_{\theta} (S_{ij} c_0, I, \xi) S_{ij}.
 \end{equation}
 \end{condition}
+
+\begin{remark}
+In physical terms, the previous condition stems from the invariance of Stokes equations with respect to the observation point, see figure \ref{fig:reflection of swimmer}. In fact, an observer watching the dynamics of $\gamma(S_{ij}c_0, I, \xi)$ of \textsc{SPr4} in a mirror in the reflection plane of $S_{ij}$ sees the dynamics $\gamma(c_0, I, P_{ij} \xi)$ of a micro-swimmer obtained from \textsc{SPr4} by swapping arms $||i$ and $||j$.
+\end{remark}
+
+\begin{figure}[h]
+\label{fig:reflection of swimmer}
+\centering
+\includegraphics[width=0.9\textwidth]{/Users/philipp/Documents/GitHub/stage_cmap/images/reflection.png}
+\caption{The reflection $S_{12}$ applied to \textsc{SPr4} in the reference orientation corresponding to the swap $(||1 \leftrightsquigarrow ||2)$ }
+\end{figure}
+
+
 To avoid chaos in our notation, we treat the spatial and angular parts now separately. For the spatial part, we find
 
 \begin{proposition}
