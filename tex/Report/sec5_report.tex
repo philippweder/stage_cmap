@@ -131,7 +131,7 @@ where $\delta p \in \R^6$ is a prescribed net displacement of position and orien
 \end{proposition}
 
 \subsection{Bivectors in the fourth dimension}
-In this section we will point out some properties of the space $\bigwedge^2 \R^4$ and how it differs from $\bigwedge^2 \R^3$, which then illustrates why the optimal control curves for $\textsc{SPr3}$ and \spr in general do not have the same structure. Nevertheless, we will be able treat a simplified situation for \spr in the same manner as \textsc{SPr3} in \cite{Alouges2017}.
+In this section we will point out some properties of the space $\bigwedge^2 \R^4$ and how it differs from $\bigwedge^2 \R^3$, which then illustrates why the optimal control curves for $\textsc{SPr3}$ and \textsc{SPr4} in general do not have the same structure. Nevertheless, we will be able treat a simplified situation for \textsc{SPr4} in the same manner as \textsc{SPr3} in \cite{Alouges2017}.
 
 As a matter of fact, one peculiarity of the bivectors in $\R^3$ is that they are isomorphic to the space $\R^3$ itself. This is realized by the so-called \emph{Hodge dual operator} $\star$, c.f. \cite{Lounesto2006} p. 38, which is defined in a way such that for any two vectors $u,v \in \R^3$ one has
 \begin{equation}
@@ -140,7 +140,7 @@ u \wedge v = \star(u \times v),
 \end{equation}
 where $\times$ denotes the usual cross product. This entails two things: First, every bivector in $\R^3$ is \emph{simple}; that is, it can be written as the wegde product of two vectors. Second, every bivector in $\R^3$ defines one unique plane in $\R^3$. It is due to this underlying geometrical fact that one can always reduce the Fourier coefficients of an optimal control curve to one pair of vectors, by which one attained the same net displacement at the same energy consumption in \cite{Alouges2017}. Furthermore, this implies that the optimal control curves are situated in a certain plane defined by the vector of the net displacement.
 
-Yet, in $\R^4$, the geometry of its bivectors proves to be more involved. As $\dim \bigwedge^2 \R^4 = 6$, it is already clear that the bivectors in $\R^4$ are not isomorphic to $\R^4$ itself. In particular, in $\R^4$ not all bivectors are simple. Indeed, the bivector $e_1 \wedge e_2 + e_3 \wedge e_4 \in \bigwedge^2 \R^4$ cannot be written as an exterior product of just two vectors in $\R^4$. In fact, we have the following criterion to determine whether a bivector is simple:
+Yet, in $\R^4$, the geometry of its bivectors proves to be more involved. As $\dim \bigwedge^2 \R^4 = 6$, it is clear that the bivectors in $\R^4$ are not isomorphic to $\R^4$ itself. In particular, in $\R^4$ not all bivectors are simple. Indeed, the bivector $e_1 \wedge e_2 + e_3 \wedge e_4 \in \bigwedge^2 \R^4$ cannot be written as an exterior product of just two vectors in $\R^4$. Nevertheless, any bivector in $\R^4$ can be written as the sum of two orthogonal simple bivectors \cite{Lounesto2006}. Moreover, we have the following criterion to determine whether a bivector is simple:
 
 \begin{lemma}
 \label{lem:simple bivector}
