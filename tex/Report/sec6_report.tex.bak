@@ -9,4 +9,4 @@ In the general case, which for example is needed to determine optimal swimming s
 \label{eq:euler-lagrange}
 G \ddot{\xi} - \Omega(\mu) \dot{\xi} = 0,
 \end{equation}
-where $\mu \in \R^6$ and $\Omega(\mu) = \sum_{k = 1} \mu_k M_k$, with $M_k$ from section \ref{sec: symmetries}. The matrix $\Omega(\mu) \in M_{4 \times 4}(\R)$ being skew symmetric, exponentiation yields a rotation of $\R^4$ and therefore the solution to (\ref{eq:euler-lagrange}) must lie in 
+where $\mu \in \R^6$ and $\Omega(\mu) = \sum_{k = 1} \mu_k M_k$, with $M_k$ from section \ref{sec: symmetries}. The matrix $\Omega(\mu) \in M_{4 \times 4}(\R)$ being skew symmetric, exponentiation yields a rotation of $\R^4$ and therefore the solution to (\ref{eq:euler-lagrange}) must lie in two completely orthogonal planes by the canonical form of rotations in euclidean space.

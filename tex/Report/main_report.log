@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.20)  30 JUN 2020 14:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.20)  1 JUL 2020 11:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -670,16 +670,16 @@ Package biblatex Info: ... file 'main_report.bbl' found.
 Package biblatex Info: Reference section=0 on input line 111.
 Package biblatex Info: Reference segment=0 on input line 111.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 123--141
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 124--142
 [] [] 
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 143
+LaTeX Font Info:    Trying to load font information for U+msa on input line 144
 .
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 143
+LaTeX Font Info:    Trying to load font information for U+msb on input line 144
 .
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -706,33 +706,33 @@ Package pdftex.def Info: /Users/philipp/Documents/GitHub/stage_cmap/images/spr4
 .png  used on input line 12.
 (pdftex.def)             Requested size: 161.32492pt x 182.6542pt.
  [2 </Users/philipp/Documents/GitHub/stage_cmap/images/tetrahedron.png (PNG cop
-y)> </Users/philipp/Documents/GitHub/stage_cmap/images/spr4.png (PNG copy)>]) (
-./sec3_report.tex [3]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 61.
+y)> </Users/philipp/Documents/GitHub/stage_cmap/images/spr4.png (PNG copy)>]) [
+3] (./sec3_report.tex [4]
+LaTeX Font Info:    Trying to load font information for U+euf on input line 62.
 
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-) [4] [5]
+) [5]
 </Users/philipp/Documents/GitHub/stage_cmap/images/reflection.png, id=42, 474.6
 6936pt x 371.4678pt>
 File: /Users/philipp/Documents/GitHub/stage_cmap/images/reflection.png Graphic 
 file (type png)
 <use /Users/philipp/Documents/GitHub/stage_cmap/images/reflection.png>
 Package pdftex.def Info: /Users/philipp/Documents/GitHub/stage_cmap/images/refl
-ection.png  used on input line 134.
+ection.png  used on input line 135.
 (pdftex.def)             Requested size: 358.50227pt x 280.56134pt.
-
-[6 </Users/philipp/Documents/GitHub/stage_cmap/images/reflection.png (PNG copy)
->] [7]) (./sec4_report.tex [8] [9] [10] [11] [12]) (./sec5_report.tex [13]
-[14] [15] [16] [17] [18]) (./sec6_report.tex [19])
-Overfull \hbox (2.19911pt too wide) in paragraph at lines 165--165
+ [6 </Users/philipp/Documents/GitHub/stage_cmap/images/reflection.png (PNG copy
+)>] [7])
+(./sec4_report.tex [8] [9] [10] [11] [12]) (./sec5_report.tex [13] [14]
+[15] [16] [17] [18]) (./sec6_report.tex [19])
+Overfull \hbox (2.19911pt too wide) in paragraph at lines 166--166
 []\OT1/cmr/m/n/10 F. Alouges and G. D. Fratta, \  Park-ing 3-sphere swim-mer. i
 . en-ergy min-i-miz-ing strokes,"
  []
 
 
-Overfull \hbox (4.94356pt too wide) in paragraph at lines 165--165
+Overfull \hbox (4.94356pt too wide) in paragraph at lines 166--166
 \OT1/cmr/m/it/10 plied Math-e-mat-ics\OT1/cmr/m/n/10 , vol. 5, no. 2, pp. 109{1
 18, May 1952. \OT1/cmr/m/sc/10 doi\OT1/cmr/m/n/10 : $\OT1/cmtt/m/n/10 10 . 1002
  / cpa . 3160050201$\OT1/cmr/m/n/10 . 
@@ -750,7 +750,7 @@ Here is how much of TeX's memory you used:
  29271 multiletter control sequences out of 15000+600000
  547364 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,16n,45p,1296b,2740s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,16n,45p,1334b,2740s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></
@@ -781,7 +781,7 @@ ype1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2020/texmf-dist/fonts
 s/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2020/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2020/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main_report.pdf (21 pages, 1495223 bytes).
+Output written on main_report.pdf (21 pages, 1495408 bytes).
 PDF statistics:
  196 PDF objects out of 1000 (max. 8388607)
  138 compressed objects within 2 object streams

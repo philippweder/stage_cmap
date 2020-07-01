@@ -11,7 +11,7 @@ We restrict ourselves to considering the swimmer \spr proposed in \cite{Alouges2
         \centering
         \includegraphics[width=0.9\textwidth]{/Users/philipp/Documents/GitHub/stage_cmap/images/spr4.png} % second figure itself
     \end{minipage}
-    \caption{The reference tetrahedron and the parking 4-sphere swimmer (\spr).}
+    \caption{The reference tetrahedron and the parking 4-sphere swimmer (\textsc{SPr4}).}
     \label{fig:reference tetrahedron and spr4}
 \end{figure}
 
@@ -33,7 +33,7 @@ Note that the functions $(r_i)_{i \in \N_4}$ are analytic in $\M  \times \mathca
 \end{equation}
 where $\omega$ is the axial vector associated with the skew matrix $\dot{R} R$.
 
-In \cite{Alouges2013} it is shown that the system \spr, i.e. both the shape $\xi$ and the position $p$, is controllable only using the rate of change $\dot{\xi}$ of the shape. To do so, we have to understand how $p$ changes when we vary $\dot{\xi}$. To that end, the assumptions of \emph{self-propulsion} and \emph{negligible inertia of the swimmer} (which is equivalent to assuming a very low Reynolds number) are made. They imply that the total viscous force and torque exerted by the surrounding fluid on the swimmer must vanish. More precisely, the system can be written as
+In \cite{Alouges2013} it is shown that the system \textsc{SPr4}, i.e. both the shape $\xi$ and the position $p$, is controllable only using the rate of change $\dot{\xi}$ of the shape. To do so, we have to understand how $p$ responds to a variation in $\dot{\xi}$. To that end, the assumptions of \emph{self-propulsion} and \emph{negligible inertia of the swimmer} (which is equivalent to assuming a very low Reynolds number) are made. They imply that the total viscous force and torque exerted by the surrounding fluid on the swimmer must vanish. More precisely, for details see \cite{Alouges2013}, the system can be written as
 \begin{equation}
 \label{eq: control system}
 	\dot{p} = F(R, \xi) \dot{\xi} := \left ( \begin{array}{c}
@@ -56,7 +56,7 @@ where $\Skew_n(\R)$ denotes the set of skew-symmetric real matrices of size $n \
 and therefore we can express both $F_c(R, \xi)$ and $F_{\theta}(R, \xi)$ as real matrices of size $3 \times 4$ once we have chosen a basis for the corresponding tangent spaces. Indeed, one verifies quickly that $\Skew_3(\R)$ is a three-dimensional vector space over $\R$.
 
 
- In analogy to \cite{Alouges2017}, it is important to note here that the control system $F$ is independent of $c$ due to the translational invariance of the Stokes equations. However, the translational invariance is not the only symmetry property that \spr satisfies. The goal of the following section is to examine the structure of the control system $F$ in consequence of the symmetries it must satisfy being driven by the Stokes equations.
+ In analogy to \cite{Alouges2017}, it is important to note here that the control system $F$ is independent of $c$ due to the translational invariance of the Stokes equations. However, the translational invariance is not the only symmetry property that \textsc{SPr4} satisfies. The goal of the following section is to examine the structure of the control system $F$ in consequence of the symmetries it must fulfill being driven by the Stokes equations.
 
 
 
