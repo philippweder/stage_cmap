@@ -82,7 +82,7 @@ since $\det U = -1$. Eventually, we can express the determinants more elegantly 
 of $\bigwedge^2 \R^4$, where we write $e_{ij} := e_i \wedge e_j$, allows us to rewrite (\ref{eq: constraint}) as
 \begin{equation}
 \label{eq: G-orth constraint}
-\Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) \dd 1t,
+\Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) \dd t,
 \end{equation}
 with $\Lambda_{\mathfrak{h}} := \diag(\mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta})$.
 
@@ -218,7 +218,7 @@ The minimization problem for $\mathcal{F}$ in $\ell^2(\R^4) \times \ell^2(\R^4)$
 \end{corollary}
 
 \begin{proof}
-It suffices to observe that if $\mathcal{V}_{\omega}$ denotes the subset of $\ell^2(\R^4) \times \ell^2(\R^4)$ satisfying the constraint (\ref{eq:l2-constraint}) and by $V_{\omega}$ the subset of $(u, v)  \in \R^4 \times \R^4$ such that $u \times v = \omega$, then Proposition \ref{prop:simple reduction} yields
+It suffices to observe that if $\mathcal{V}_{\omega}$ denotes the subset of $\ell^2(\R^4) \times \ell^2(\R^4)$ satisfying the constraint (\ref{eq:l2-constraint}) and by $V_{\omega}$ the subset of $(u, v)  \in \R^4 \times \R^4$ such that $u \times v = \star\omega$, then Proposition \ref{prop:simple reduction} yields
 \begin{equation}
 \min_{(\mathbf{u}, \mathbf{v}) \in \mathcal{V}_{\omega}}\mathcal{F}(\mathbf{u}, \mathbf{v}) = \min_{(u, v) \in V_\omega} \mathcal{F}(\mathbf{e}_1 u, \mathbf{e}_1 v) = \min_{(u,v) \in V_{\omega}} f(u,v).
 \end{equation}
@@ -236,7 +236,7 @@ u_{\star}, v_{\star} \in D_{ijk}, &
 |u_{\star}|^2 = |v_{\star}|^2, & 
 u_{\star} \cdot v_{\star} = 0.
 \end{eqnarray}
-Therefore, for any $\sigma \in D_{ijk}$ such that $\sigma \cdot \hat{\omega} = 0$ and $|\sigma|^2 = |\omega|$, the couple
+Therefore, for any $\sigma \in D_{ijk}$ such that $\sigma \cdot \star\hat{\omega} = 0$ and $|\sigma|^2 = |\omega|$, the couple
 \begin{equation}
 (\sigma, \sigma \times \star \hat{\omega}) \in D_{ijk} \times D_{ijk} \subset \R^4 \times \R^4
 \end{equation}
@@ -261,7 +261,7 @@ This proves the first statement. For the second part, we set $\hat{\omega} := \o
 \begin{equation}
 	\sigma \cdot \star\hat{\omega} = 0 \text{ and } |\sigma|^2 = |\omega|. 
 \end{equation}
-By a trivial computation, on finds that the vectors $v := \sigma \times \star \hat{\omega}$ and $u := \sigma$ satisfy the relations $u \cdot v = 0$, $|u|^2 = |v|^2 = |\omega|$ and $v \wedge u = \omega$. 
+By a trivial computation, one finds that the vectors $v := \sigma \times \star \hat{\omega}$ and $u := \sigma$ satisfy the relations $u \cdot v = 0$, $|u|^2 = |v|^2 = |\omega|$ and $v \wedge u = \omega$. 
 \end{proof}
 
 Pasting everything worked out above together leads to the final result of this section. We have
@@ -310,7 +310,7 @@ In the case $\hat{\omega} \in D^{*}_{134}$ we have $\star\hat{\omega} = e_3$ and
 \begin{proof}
 From Proposition \ref{prop:finite dim minimization}, Corollary \ref{cor:simple reduction} and then Proposition \ref{prop: l2-minimization}, we get that any $\sigma \in D_{ijk}$ satisfying the relations
 \begin{eqnarray}
- u \cdot \star \hat{\omega}, & |u|^2 = |\omega|, & \omega := \sqrt{\det \Lambda_{\mathfrak{g}}} (\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p,
+ u \cdot \star \hat{\omega} = 0, & |u|^2 = |\omega|, & \omega := \sqrt{\det \Lambda_{\mathfrak{g}}} (\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p,
 \end{eqnarray}
 is associated to a (global) constrained minimizer for $\mathcal{G}_{U}$, via the curve $\eta(t) := (\cos t) \tilde{a} + (\sin t) \tilde{b}$, where the Fourier coefficients $\tilde{a}, \tilde{b} \in \R^4$ are related to $\omega$ (c.f. \ref{eq:relation Fourier coeffs of eta}) by $(\sqrt{2 \pi \Lambda_{\mathfrak{g}}}) \tilde{a} = u$ and $(\sqrt{2 \pi \Lambda_{\mathfrak{g}}}) \tilde{b} = (u \times \star\hat{\omega})$. The minimum value of the energy is then $\mathcal{G}_{U}(\eta) = |\omega|$.
 

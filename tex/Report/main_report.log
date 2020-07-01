@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.20)  1 JUL 2020 11:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.20)  1 JUL 2020 11:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -739,6 +739,9 @@ Overfull \hbox (4.94356pt too wide) in paragraph at lines 166--166
  []
 
 [20] [21] (./main_report.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package logreq Info: Writing requests to 'main_report.run.xml'.
 \openout1 = `main_report.run.xml'.
 

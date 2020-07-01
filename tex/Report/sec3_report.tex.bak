@@ -12,7 +12,7 @@ as well as $\gamma_c(c_0, R_0, \xi)$ and $\gamma_\theta(c_0, R_0, \xi)$ its proj
 \end{equation}
 
 \subsection{Rotational invariance}
-Rotational invariance of the Stokes equations expresses the fact that the solution of the dynamical system (\ref{eq:dynamical system}) is invariant under rotations, i.e., that for any rotation $R \in \SO(3)$ we have for the spatial part of the solution
+Rotational invariance of the Stokes equations expresses the fact that solution of the dynamical system (\ref{eq:dynamical system}) is invariant under rotations, i.e., that for any rotation $R \in \SO(3)$ we have for the spatial part of the solution
 \begin{equation}
 \label{eq:spatial rotational invariance}
 	\gamma_c(c_0, R R_0, \xi)(t) = R \gamma_c (c_0, R_0, \xi)(t) + (I - R) c_0
@@ -26,11 +26,11 @@ at any point in time $t \in I$. Eventually, we can rigorously state the followin
 
 \begin{condition}[Rotational invariance]
 \label{cond:rotational invariance}
-If $\gamma(c_0, R_0, \xi)$ is a solution of the control system (\ref{eq:dynamical system}) then so is $\gamma(c_0, R R_0, \xi)$ and (\ref{eq:spatial rotational invariance}) and (\ref{eq: angular rotational invariance}) hold.
+If $\gamma(c_0, R_0, \xi)$ is a solution of the control system (\ref{eq:dynamical system}), then so is $\gamma(c_0, R R_0, \xi)$ and (\ref{eq:spatial rotational invariance}) and (\ref{eq: angular rotational invariance}) hold.
 \end{condition}
 
 \begin{remark}
-To follow the reasoning of \cite{Alouges2017}, the symmetry relations satisfied by \textsc{SPr4} are stated as hypotheses on the solution $\gamma$. In so doing, the results work for any control system of the form (\ref{eq: control system}) and satisfying the hypotheses we state, independently of these hypotheses being guaranteed by the invariance of the Stokes equations under a certain group of transformations. 
+To follow the reasoning of \cite{Alouges2017}, the symmetry relations satisfied by \textsc{SPr4} are stated as hypotheses on the solution $\gamma$. In so doing, the results work for any control system of the form (\ref{eq: control system}) and satisfying the hypotheses we state, e.g. rotational invariance, independently of these hypotheses being guaranteed by the invariance of the Stokes equations under a certain group of transformations. 
 \end{remark}
 We then have
 \begin{proposition}
@@ -43,17 +43,18 @@ for every $(R, \xi) \in \SO(3) \times \M$, where $F_c(\xi) := F_{c}(I, \xi)$ and
 \end{proposition}
 
 \begin{proof}
-On the one hand, we have by definition of the dynamical system (\ref{eq:dynamical system}) that
+On the one hand, we have by definition of the dynamical system (\ref{eq: control system}) that
 \begin{equation}
 	\dot{\gamma}_c(c_0, R, \xi) = F_c(\gamma_{\theta}(c_0, R, \xi), \xi) \dot{\xi}.
 \end{equation}
-On the other hand, using equation (\ref{eq:spatial rotational invariance}) and once more the definition of the dynamical system (\ref{eq: control system}), we obtain
+On the other hand, using equation (\ref{eq:spatial rotational invariance}) and once more the definition of the dynamical system (\ref{eq:dynamical system}), we obtain
 \begin{equation}
 	\dot{\gamma}_c (c_0, R, \xi) = R  \dot{\gamma}_c(c_0, I, \xi) = 
 	R F_c(\gamma_{\theta}(c_0, I, \xi), \xi) \dot{\xi}.
 \end{equation}
 Therefore, $F_c(\gamma_{\theta}(c_0, R, \xi), \xi) \dot{\xi} = R F_{c}(\gamma_{\theta}(c_0, I, \xi), \xi) \dot{\xi}$ for every $R \in \SO(3)$. Since $T_{\xi_0} \M \simeq \R^4$, evaluation of the preceding expression at $t = 0$ yields $F_{c}(R, \xi_0) = R F_{c}(I, \xi_0)$, as desired. The proof for $F_{\theta}$ is completely analogous and thus is omitted.
 \end{proof}
+
 \subsection{Permutation of two arms}
 In this section, we investigate the effect of a swap of two arms on the generic solution of the dynamical system (\ref{eq:dynamical system}).
 To that end, let $P_{ij} \in M_{4 \times 4}(\R)$ denote the permutation matrix that interchanges the $i$-th and $j$-th index of a vector, which corresponds to the swap of the arms $||i$ and $||j$, denoted by $(||i\leftrightsquigarrow ||j$), if applied to the shape space $\M$. In addition, let $S_{ij}$ denote the reflection of $\R^3$ sending arm $||i$ onto arm $||j$ in the reference orientation $I$. Geometrical inspection of the reference tetrahedron shows that $S_{ij}$ is always a reflection at a plane containing the remaining arms $||k$ and $||l$.
@@ -108,14 +109,14 @@ and thus we have
 \end{equation}
 as $S_i^{-1} = S_i$.
 
-If now $S'$ is an arbitrary reflection, we always find a rotation $Q \in \SO(3)$ such that $S' = Q S_i Q^T$ for one of the elementary reflections $S_i$. Moreover, for any rotation $R' \in \SO(3)$ we find another $R \in \SO(3)$ such that $R' = Q R Q^T$. In particular, we have
+If now $S$ is an arbitrary reflection, we always find a rotation $Q \in \SO(3)$ such that $S = Q S_i Q^T$ for one of the elementary reflections $S_i$. Moreover, for any rotation $R' \in \SO(3)$ we find another $R \in \SO(3)$ such that $R' = Q R Q^T$. In particular, we have
 \begin{equation}
-\tilde{R}' = Q \tilde{R} Q^T = Q S_iRS_i Q^T = S' R' S'^T,
+\tilde{R}' = Q \tilde{R} Q^T = Q S_iRS_i Q^T = S R' S^T,
 \end{equation}
 as desired.
 \end{proof}
 
-With this lemma at hand, Stokes equations allow us to state the following
+With this lemma at hand, Stokes' equations allow us to state the following
 
 \begin{condition}[Swap $(||i \leftrightsquigarrow ||j)$]
 \label{cond:swap}
@@ -131,7 +132,7 @@ and
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{/Users/philipp/Documents/GitHub/stage_cmap/images/reflection.png}
+\includegraphics[width = 0.9\textwidth]{/Users/philipp/Documents/GitHub/stage_cmap/images/reflection.png}
 \caption{The reflection $S_{12}$ applied to \textsc{SPr4} in the reference orientation corresponding to the swap $(||1 \leftrightsquigarrow ||2)$ }
 \label{fig:reflection of swimmer}
 \end{figure}
@@ -145,14 +146,14 @@ To avoid chaos in our notation, we treat the spatial and angular parts now separ
 
 \begin{proposition}
 \label{prop: spatial permutation invariance}
-If the control system (\ref{eq:dynamical system}) is invariant under the swap $(||i \leftrightsquigarrow ||j)$ and $T_{\xi} \M \simeq \R^4$ for all $\xi \in \M$, then for all $\xi \in \M$
+If the control system (\ref{eq: control system}) is invariant under the swap $(||i \leftrightsquigarrow ||j)$ and $T_{\xi} \M \simeq \R^4$ for all $\xi \in \M$, then for all $\xi \in \M$
 \begin{align}
 	 F_c(P_{ij} \xi) = S_{ij} F_c(\xi) P_{ij}.
 \end{align}
 \end{proposition}
 
 \begin{proof}
-Let $\gamma_c(c_0, R_0, P_{ij} \xi)$ be the spatial part of any solution of the control problem (\ref{eq: control system}). The hypothesis of rotational invariance, i.e. (\ref{eq:spatial rotational invariance}), implies that
+Let $\gamma_c(c_0, R_0, P_{ij} \xi)$ be the spatial part of any solution of the control problem (\ref{eq:dynamical system}). The hypothesis of rotational invariance, i.e. (\ref{eq:spatial rotational invariance}), implies that
 \begin{equation}
 	\gamma_c(c_0, R_0, P_{ij} \xi) = R_0 \gamma_c(c_0, I, P_{ij} \xi) + (I - R_0)c_0.
 \end{equation}

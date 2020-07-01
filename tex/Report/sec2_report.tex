@@ -29,7 +29,7 @@ The swimmer is completely described by the parameters $(\xi, p) \in \M \times \m
 \end{equation}
 Note that the functions $(r_i)_{i \in \N_4}$ are analytic in $\M  \times \mathcal{P}$ and thus we can use them to calculate the instantaneous velocity on the $i$-th sphere $B_i$, which for any $(\xi, p, r) \in \M \times \mathcal{P} \times \partial B_a$ and every $i \in \N_4$ is given by
 \begin{equation}
-	u_i(\xi, p, r) = \dot{c} + \omega \times (\xi z_i + r) + R z_i \dot{\xi}_i,
+	u_i(\xi, p, r) = \dot{c} + \omega \times (\xi_i z_i + r) + R z_i \dot{\xi}_i,
 \end{equation}
 where $\omega$ is the axial vector associated with the skew matrix $\dot{R} R$.
 
@@ -45,12 +45,12 @@ where $\dot{c} = F_c(R, \xi) \dot{\xi}$ and $\dot{R} = F_\theta (R, \xi) \dot{\x
 
 In preparation for what follows, let us note that if we denote by $T_p \mathcal{P}$ the tangent space of the smooth manifold $\mathcal{P}$ at the point $p$, we have $F(R, \xi) \in \mathcal{L}(\R^4, T_{p}\mathcal{P})$ for any $R \in \SO(3)$ and $\xi \in \R^4$, where $\mathcal{L}(V, W)$ denotes the linear maps between two vector spaces $V$ and $W$. We quickly recall the fact that at any point $R \in \SO(3)$, see e.g. \cite{Hall2015} for details, we have 
 \begin{equation}
-	T_R \SO(3) = R^* \Skew_3(\R) = \{R M \mid M \in \Skew_3(\R)\},
+	T_R \SO(3)  = \{R M \mid M \in \Skew_3(\R)\},
 \end{equation}
 where $\Skew_n(\R)$ denotes the set of skew-symmetric real matrices of size $n \times n$. Hence, we have in particular that for any $R \in \SO(3)$ and $\xi \in \R^4$
 \begin{equation}
 \begin{aligned}
-	F_c(R, \xi) \in \mathcal{L}(\R^4, \R^3) \text{ and } F_{\theta}(R, \xi) \in \mathcal{L}(\R^4, R^* \Skew_3(\R))
+	F_c(R, \xi) \in \mathcal{L}(\R^4, \R^3) \text{ and } F_{\theta}(R, \xi) \in \mathcal{L}(\R^4,T_R \SO(3))
 \end{aligned}
 \end{equation}
 and therefore we can express both $F_c(R, \xi)$ and $F_{\theta}(R, \xi)$ as real matrices of size $3 \times 4$ once we have chosen a basis for the corresponding tangent spaces. Indeed, one verifies quickly that $\Skew_3(\R)$ is a three-dimensional vector space over $\R$.

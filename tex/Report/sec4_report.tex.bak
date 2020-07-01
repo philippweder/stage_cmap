@@ -12,7 +12,7 @@ with $F_{c}(\zeta) := F_c(I, \zeta)$ and $F_{\theta}(\zeta) := F_{\theta}(I, \ze
 	F_{\theta, \xi_0}(\xi) \eta &= F_{\theta, 0} \eta + \h_{c, 0}(\xi \otimes \eta) + \mathcal{O}(|\xi|)\eta,
 \end{align}
 where $F_{c,0} := F_{c}(\xi_0) \in M_{3 \times 4}(\R)$, $\h_{c,0}\in \mathcal{L}(\R^4 \otimes \R^4, \R^3)$ represents the first order derivative of $F_{c, \xi_0}$ at $\xi = 0$ and for $F_{\theta, \xi}$ the analogous definitions are made.
-The purpose of this section is to reveal the structure of the different terms in the expansions (\ref{eq: spatial control expansion}) and (\ref{eq: angular control expansion}) in light of the symmetry properties fulfilled by $F_{c}$ and $F_{\theta}$ due to Propositions (\ref{prop: spatial permutation invariance}) and (\ref{prop: angular permutation invariance}) , i.e.
+The purpose of this section is to reveal the structure of the different terms in the expansions (\ref{eq: spatial control expansion}) and (\ref{eq: angular control expansion}) in light of the symmetry properties fulfilled by $F_{c}$ and $F_{\theta}$ due to Propositions \ref{prop: spatial permutation invariance} and \ref{prop: angular permutation invariance} , i.e.
 \begin{align}
 \label{eq: spatial and angular first order expansion}
 	F_{c}(P_{ij} \xi) = S_{ij} F_{c}(\xi) P_{ij}& & \text{ and } & & 			F_{\theta}(P_{ij} \xi) = - S_{ij} F_{\theta}(\xi) P_{ij} & & \forall \xi \in \M.
@@ -160,7 +160,7 @@ M_3 = 2 \sqrt{2} \alpha \left (
 \end{align}
 Similarly, for the angular part, we find that
 \begin{equation}
-	\K_{\theta, 0}(e_i \otimes e_j) = - S_{kl} \K_{\theta}(e_i \otimes e_j)
+	\K_{\theta, 0}(e_i \otimes e_j) = - S_{kl} \K_{\theta,0}(e_i \otimes e_j)
 \end{equation}
 and therefore $\K_{\theta,0}(e_i \otimes e_j) = \delta_{ij} e_i \times e_j$. By noticing that this time the quantity $\K_{\theta,0}(e_i \otimes e_j) \cdot (z_i \times z_j)$ stays constant, a similar argument to the one above shows that
 \begin{equation}
@@ -228,25 +228,25 @@ In particular, if we fix $\xi \in H^1_{\sharp}(J, \R^4)$ and define $\Gamma := \
 
 To simplify equations  (\ref{eq: dynamics first approx}) further, we are interested in the solution of (\ref{eq: orientation ode}) in the regime of a small stroke $\xi \in H_{\sharp}^1(J, \R^4)$ or equivalently in the regime of a small vector field $\Gamma$. Intuitively, the solution $R$ of (\ref{eq: orientation ode}) should not deviate too much from the initial value $R_0$ if the vector field $\Gamma$ driving the differential equation is small. The solution of (\ref{eq: orientation ode}) and its relation to a small vector field $\Gamma$ as well as the notion of smallness for the vector field $\Gamma$ in the first place, are mathematically formalized by the concept of \emph{chronological calculus}. For details on the topic, we refer to \cite{Agrachev2004} but essentially it works as follows: First, one identifies any smooth manifold $M$ with the space $C^{\infty}(M)$, on which one defines a certain metric topology, the Whitney topology. Then, the solution of a differential equation $\dot{q}(t) = q(t) V(t)$ for $V$ a non-autonomous vector field on $M$ is given by
 \begin{equation}
-	q(t) = q(0)\,\chroexp \int_{J}^{t} V(s) \dd s,
+	q(t) = q(0)\,\chroexp \int_{0}^{t} V(s) \dd s,
 \end{equation}
-where $\chroexp$ is a special operator called the \emph{right chronological exponential}, which is defined as a limit of an iterated integral. For the series expansion
+where $\chroexp$ is a special operator called the \emph{right chronological exponential}. It is defined as a limit of an iterated integral, see \cite{Agrachev2004}. For the series expansion
 \begin{equation}
 \label{eq: chron exp series expansion}
 S_m(t) := I + \sum_{n = 1}^{m-1} \int_{\Delta_n(t)} \dotsm \int V(s_n) \circ \dotsm \circ V(s_1) \dd s_n \dotsm \dd s_1,
 \end{equation}
 with $\Delta_n(t) = \{(s_1, \dotsc, s_n) \in \R^n | 0 \leq s_n \leq \dotsm \leq s_1 \leq t\}$, we have
 \begin{align}
-q(t) = S_m(t) + \mathcal{O}(t), & & t \downarrow 0.
+q(t) = S_m(t) + \mathcal{O}(t^m), & & t \downarrow 0.
 \end{align}
 In particular, for an equation of the form $\dot{q}(t) = q(t) \varepsilon V(t)$, it is shown in \cite{Agrachev2004}, that
 \begin{align}
 \label{eq: estimation of chronological exponential}
 	q(t) = S_m^{\varepsilon}(t) + \mathcal{O}(\varepsilon^m), & & \varepsilon \downarrow 0,
 \end{align}
-where $S_{m}^{\varepsilon}$ denotes the series expansion (\ref{eq: chron exp series expansion})for the vector field $\varepsilon V$.
+where $S_{m}^{\varepsilon}$ denotes the series expansion (\ref{eq: chron exp series expansion}) for the vector field $\varepsilon V$.
 
-With the estimate (\ref{eq: estimation of chronological exponential}) at hand, let $\hat{\xi} \in H^1_{\sharp}(J, \R^4)$ a normalized stroke, i.e. $||\hat{\xi}||_{H_{\sharp}^1} = 1$, and $\varepsilon > 0$. Set $\xi := \varepsilon \hat{\xi}$ as well as $\Gamma_\varepsilon := \sum_{k \in \N_3}(B_k \dot{\xi} \cdot \xi) L_k$ such that $\Gamma_1 = \sum_{k \in \N_3}(B_k \dot{\hat{\xi}} \cdot \hat{\xi}) L_k$ and  $\Gamma_\varepsilon = \varepsilon^2 \Gamma_1$. Writing $S_{m}^{\epsilon}$ for the expansion (\ref{eq: chron exp series expansion}) of the vector field $\Gamma_\varepsilon$, we find by (\ref{eq: estimation of chronological exponential})
+With the estimate (\ref{eq: estimation of chronological exponential}) at hand, let $\hat{\xi} \in H^1_{\sharp}(J, \R^4)$ be a normalized stroke, i.e. $||\hat{\xi}||_{H_{\sharp}^1} = 1$, and $\varepsilon > 0$. Set $\xi := \varepsilon \hat{\xi}$ as well as $\Gamma_\varepsilon := \sum_{k \in \N_3}(B_k \dot{\xi} \cdot \xi) L_k$ such that $\Gamma_1 = \sum_{k \in \N_3}(B_k \dot{\hat{\xi}} \cdot \hat{\xi}) L_k$ and  $\Gamma_\varepsilon = \varepsilon^2 \Gamma_1$. Writing $S_{m}^{\epsilon}$ for the expansion (\ref{eq: chron exp series expansion}) of the vector field $\Gamma_\varepsilon$, we find by (\ref{eq: estimation of chronological exponential})
 \begin{align}
 	R(t) = R_0 \left ( I + \int_{0}^{t} \Gamma_\varepsilon(\tau) \dd\tau \right ) + \mathcal{O}(\epsilon^4), & & \varepsilon \downarrow 0.
 \end{align}
@@ -299,7 +299,7 @@ To end this section, we note that on the one hand, we have $\langle A_k \dot{\xi
   M_k \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\alpha \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}), & & k \in \N_3 \\
   M_{3 + k} \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\delta \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4}), & & k \in \N_3,
 \end{align}
-where $\det(\xi|\dot{\xi}|\tau_j|\tau_k)$ denotes the determinant of the matrix $(\xi|\dot{\xi}|\tau_j |\tau_k)$ and where the index $l$ is reduced mod 3 to simplify the notation. Ultimately, using that $\R^3 \times \so(3) \simeq \R^6$, we can write the net displacement in position and orientation simultaneously as
+where $\det(\xi|\dot{\xi}|\tau_j|\tau_k)$ denotes the determinant of the matrix $(\xi|\dot{\xi}|\tau_j |\tau_k)$ and the index $k$ is reduced mod 3 to simplify the notation. Ultimately, using that $\R^3 \times \so(3) \simeq \R^6$, we can write the net displacement in position and orientation simultaneously as
 \begin{equation}
 \label{eq: net displacement}
 \frac{\delta p}{2 \pi}= - 2  \sqrt{6} \alpha \sum_{k \in \N_3} \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}) f_k  - 2  \sqrt{6} \delta \sum_{k \in \N_3} \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4}) f_{k + 3},
