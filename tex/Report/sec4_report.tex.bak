@@ -99,7 +99,7 @@ and similarly
 	\h_{\theta, 0}(\xi \otimes \eta) = \sum_{k \in \N_3}(B_k \eta \cdot \xi) L_k.
 \end{equation}
 
-We could pursue the approach of \cite{Alouges2017} and directly calculate the matrices $A_k$ and $B_k$. However, as we shall see later, the dynamics of \textsc{SPr4}, up to higher order terms in the norm of the control curve $\xi$, will only be governed by their skew symmetric parts. Thus, we will evade this strenuous task and we determine the skew symmetric matrices $M_k := \tfrac{1}{2}(A_k - A_k^T)$ and $M_{k + 3}:= \tfrac{1}{2}(B_k - B_k^T)$ for $k \in \N_3$, up to two scalar parameters, using a geometric argument similar to the one used in the previous section.
+We could pursue the approach of \cite{Alouges2017} and directly calculate the matrices $A_k$ and $B_k$. However, as we shall see later, the dynamics of \textsc{SPr4}, up to higher order terms in the norm of the control curve $\xi$, will only be governed by their skew symmetric parts. Thus, we will evade this strenuous task and we determine the skew symmetric matrices $M_k := \tfrac{1}{2}(A_k - A_k^T)$ and $M_{k + 3}:= \tfrac{1}{2}(B_k - B_k^T)$ for $k \in \N_3$, up to two scalar parameters, using a geometric argument similar to the one used in the previous section. Nevertheless, it is possible to calculate the symmetric parts of the matrices $A_k$ and $B_k$ using similar geometric arguments, c.f. appendix, to obtain a complete description of the dynamics.
 
 
 To that end, we notice that Lemma \ref{lem: general symmetries of expansion terms} together with the fact that $(P_{ij})^2 = I$ yields for all $i,j \in \N_4$ and for all $\xi, \eta \in \N_4$
@@ -262,7 +262,7 @@ for $\varepsilon\downarrow 0$. By integrating the previous two relations over $J
 
 \begin{proposition}
 \label{prop:net displacement}
-For any $\xi \in H_\sharp^1(J, \R^4), \xi: J \to \R^4$, in a neighborhood of $0 \in H_{\sharp}^{1}(J, \R^4)$, the following estimates hold
+For any $\xi \in H_\sharp^1(J, \R^4)$, in a neighborhood of $0 \in H_{\sharp}^{1}(J, \R^4)$, the following estimates hold
 \begin{equation}
 \begin{aligned}
 \delta c(\xi) &= 2 \pi \sum_{k \in \N_3} \langle A_k \dot{\xi} \cdot \xi \rangle \hat{e}_k + \mathcal{O}(||\xi||_{H^1_{\sharp}}^3),\\

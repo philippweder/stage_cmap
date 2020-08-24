@@ -37,19 +37,19 @@ The goal of this section is the minimization of $\mathcal{G}$ in $H_{\sharp}^1(J
 with $\mathfrak{h}_c = - 2 \sqrt{6} \alpha$ and $\mathfrak{h}_{\theta} = - 2 \sqrt{6} \delta$.
 
 
-\subsection{Recall of the exterior algebra}
+\subsection{The exterior algebra and bivectors in four dimensions}
 Let us recall in this small section the basic definitions around the notion of the \emph{exterior algebra}, where we refer to \cite{Lounesto2006} for details. For our purposes, the abstract definition of $k$-vectors as alternating $k$-tensors is not very useful. We merely illustrate them in $\R^3$ since the notion then generalizes easily to higher dimensions. In $\R^3$, a bivector is an oriented plane segment; that is, a small piece of surface having a magnitude given by the area of the surface element as well as a direction given by the attitude of the plane the surface element lies in as well as a sense of rotation. Together, they form the vector space $\bigwedge^2 \R^3$. We can represent a bivector $\omega \in \bigwedge^2 \R^3$ as a small parallelogram which suggests that we can think of it as some product of the two vectors along its sides. This is realized by the \emph{exterior product}, also called \emph{wedge product}, $u \wedge v$ of two vectors $u$ and $v$. The product $u \wedge v$ then represents the bivector obtained by sweeping $v$ along $u$. This operation yields a direct link between $\R^3$ and the vector space $\bigwedge^2 \R^3$ of bivectors, a basis of which is given by
 \begin{equation}
  \{\hat{e}_1 \wedge \hat{e}_2, \hat{e}_1 \wedge \hat{e}_3, \hat{e}_2 \wedge \hat{e}_3\},
 \end{equation}
 if $\{\hat{e}_1, \hat{e}_2, \hat{e}_3\}$ is a basis of $\R^3$. In fact, the standard scalar product on $\R^3$ extends to a scalar product on $\bigwedge^2 \R^3$ by
 \begin{equation}
-\langle u_1 \wedge u_2 , v_1 \wedge v_2 \rangle = \det \left (\begin{array}{cc}
+( u_1 \wedge u_2 , v_1 \wedge v_2 ) = \det \left (\begin{array}{cc}
 u_1 \cdot v_1 & u_1 \cdot v_2 \\ 
 u_2 \cdot v_1 & u_2 \cdot v_2
 \end{array}  \right).
 \end{equation}
-In particular, $\langle u \wedge v, u \wedge v \rangle = |u|^2 |v|^2 \sin^2\psi$, where $\psi$ is the angle between the vectors $u$ and $v$. Eventually, the norm of a bivector $\omega = \omega_{12} \hat{e}_1 \wedge \hat{e}_2 + \omega_{13} \hat{e}_1 \wedge \hat{e}_3 + \omega_{23} \hat{e}_2 \wedge \hat{e}_3$ is given by
+In particular, $( u \wedge v, u \wedge v ) = |u|^2 |v|^2 \sin^2\psi$, where $\psi$ is the angle between the vectors $u$ and $v$. Eventually, the norm of a bivector $\omega = \omega_{12} \hat{e}_1 \wedge \hat{e}_2 + \omega_{13} \hat{e}_1 \wedge \hat{e}_3 + \omega_{23} \hat{e}_2 \wedge \hat{e}_3$ is given by
 \begin{equation}
 |\omega| = \sqrt{\omega_{12}^2 + \omega_{13}^2 + \omega_{23}^2}.
 \end{equation}
@@ -61,7 +61,31 @@ where we write $e_{ij} := e_i \wedge e_j$ to simplify the notation. More general
 \begin{equation}
 \bigwedge \R^4 := \R \oplus \R^4 \oplus \bigwedge^2\R^4 \oplus \bigwedge^3 \R^4 \oplus \bigwedge^4 \R^4,
 \end{equation}
-whose product is given by the wedge product. As we shall see later, it is due to the fundamental differences between $\bigwedge^2 \R^3$ and $\bigwedge^2 \R^4$ that the structure of optimal control curves for \textsc{SPr3} and \spr are substantially different.
+whose product is given by the wedge product.
+
+To finish this section, we will point out some properties of the space $\bigwedge^2 \R^4$ and how it differs from $\bigwedge^2 \R^3$, which at a later point will illustrate why the optimal control curves for $\textsc{SPr3}$ and \textsc{SPr4} in general do not have the same structure. Nevertheless, we will be able treat a simplified situation for \textsc{SPr4} in the same manner as \textsc{SPr3} in \cite{Alouges2017}.
+
+As a matter of fact, one peculiarity of the bivectors in $\R^3$ is that they are isomorphic to the space $\R^3$ itself. This is realized by the so-called \emph{Hodge dual operator} $\star$, c.f. \cite{Lounesto2006} p. 38, which is defined in a way such that for any two vectors $u,v \in \R^3$ one has
+\begin{equation}
+\label{eq: hodge star}
+u \wedge v = \star(u \times v),
+\end{equation}
+where $\times$ denotes the usual cross product. This entails two things: First, every bivector in $\R^3$ is \emph{simple}; that is, it can be written as the wegde product of two vectors. Second, every bivector in $\R^3$ defines one unique plane in $\R^3$. It is due to this underlying geometrical fact that one can always reduce the Fourier coefficients of an optimal control curve to one pair of vectors, by which one attained the same net displacement at the same energy consumption in \cite{Alouges2017}. Furthermore, this implies that the optimal control curves are situated in a certain plane defined by the vector of the net displacement.
+
+Yet, in $\R^4$, the geometry of its bivectors proves to be more involved. As $\dim \bigwedge^2 \R^4 = 6$, it is clear that the bivectors in $\R^4$ are not isomorphic to $\R^4$ itself. In particular, in $\R^4$ not all bivectors are simple. Indeed, the bivector $e_1 \wedge e_2 + e_3 \wedge e_4 \in \bigwedge^2 \R^4$ cannot be written as an exterior product of just two vectors in $\R^4$. Nevertheless, any bivector in $\R^4$ can be written as the sum of two orthogonal simple bivectors \cite{Lounesto2006}. Moreover, we have the following criterion to determine whether a bivector is simple:
+
+\begin{lemma}
+\label{lem:simple bivector}
+A bivector $\omega \in \bigwedge^2 \R^4$ is simple if and only if $\omega \wedge \omega = 0$.
+\end{lemma}
+
+\begin{proof}
+If $\omega \in \bigwedge^2 \R^4$ is a simple bivector, i.e. if there are vectors $u,v \in \R^4$ such that $\omega = u \wedge v$, then it is clear from the anticommutativity and associativity of the wedge product that
+\begin{equation}
+\omega \wedge \omega = (u \wedge v) \wedge (u \wedge v) = - u \wedge u \wedge v \wedge v = 0.
+\end{equation}
+The inverse requires a rather lengthy proof by induction, see the lecture notes on projective geometry by Nigel Hitchin, chapter 3, p.48 \cite{Hitchin2003}.
+\end{proof}
 
 
 \subsection{G-Orthogonalization}
@@ -82,7 +106,7 @@ since $\det U = -1$. Eventually, we can express the determinants more elegantly 
 of $\bigwedge^2 \R^4$, where we write $e_{ij} := e_i \wedge e_j$, allows us to rewrite (\ref{eq: constraint}) as
 \begin{equation}
 \label{eq: G-orth constraint}
-\Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) \dd 1t,
+\Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) \dd t,
 \end{equation}
 with $\Lambda_{\mathfrak{h}} := \diag(\mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta})$.
 
@@ -130,33 +154,7 @@ defined in the product Hilbert space $\ell^2(\R^4) \times \ell^2(\R^4)$ and subj
 where $\delta p \in \R^6$ is a prescribed net displacement of position and orientation.
 \end{proposition}
 
-\subsection{Bivectors in the fourth dimension}
-In this section we will point out some properties of the space $\bigwedge^2 \R^4$ and how it differs from $\bigwedge^2 \R^3$, which then illustrates why the optimal control curves for $\textsc{SPr3}$ and \textsc{SPr4} in general do not have the same structure. Nevertheless, we will be able treat a simplified situation for \textsc{SPr4} in the same manner as \textsc{SPr3} in \cite{Alouges2017}.
-
-As a matter of fact, one peculiarity of the bivectors in $\R^3$ is that they are isomorphic to the space $\R^3$ itself. This is realized by the so-called \emph{Hodge dual operator} $\star$, c.f. \cite{Lounesto2006} p. 38, which is defined in a way such that for any two vectors $u,v \in \R^3$ one has
-\begin{equation}
-\label{eq: hodge star}
-u \wedge v = \star(u \times v),
-\end{equation}
-where $\times$ denotes the usual cross product. This entails two things: First, every bivector in $\R^3$ is \emph{simple}; that is, it can be written as the wegde product of two vectors. Second, every bivector in $\R^3$ defines one unique plane in $\R^3$. It is due to this underlying geometrical fact that one can always reduce the Fourier coefficients of an optimal control curve to one pair of vectors, by which one attained the same net displacement at the same energy consumption in \cite{Alouges2017}. Furthermore, this implies that the optimal control curves are situated in a certain plane defined by the vector of the net displacement.
-
-Yet, in $\R^4$, the geometry of its bivectors proves to be more involved. As $\dim \bigwedge^2 \R^4 = 6$, it is clear that the bivectors in $\R^4$ are not isomorphic to $\R^4$ itself. In particular, in $\R^4$ not all bivectors are simple. Indeed, the bivector $e_1 \wedge e_2 + e_3 \wedge e_4 \in \bigwedge^2 \R^4$ cannot be written as an exterior product of just two vectors in $\R^4$. Nevertheless, any bivector in $\R^4$ can be written as the sum of two orthogonal simple bivectors \cite{Lounesto2006}. Moreover, we have the following criterion to determine whether a bivector is simple:
-
-\begin{lemma}
-\label{lem:simple bivector}
-A bivector $\omega \in \bigwedge^2 \R^4$ is simple if and only if $\omega \wedge \omega = 0$.
-\end{lemma}
-
-\begin{proof}
-If $\omega \in \bigwedge^2 \R^4$ is a simple bivector, i.e. if there are vectors $u,v \in \R^4$ such that $\omega = u \wedge v$, then it is clear from the anticommutativity and associativity of the wedge product that
-\begin{equation}
-\omega \wedge \omega = (u \wedge v) \wedge (u \wedge v) = - u \wedge u \wedge v \wedge v = 0.
-\end{equation}
-The inverse requires a rather lengthy proof by induction, see the lecture notes on projective geometry by Nigel Hitchin, chapter 3, p.48 \cite{Hitchin2003}.
-\end{proof}
-
-
-We note that the condition in Lemma \ref{lem:simple bivector} is in particular satisfied if all coefficients corresponding to a certain index are zero, e.g. $\omega_{i4} = 0$ for $i \in \N_4$. This yields four subspaces $D^*_{ijk}$ of $\bigwedge^2 \R^4$ consisting only of simple bivectors. Since net displacement $\delta p$ is merely scaled and multiplied by diagonal matrices to get the constraint vector in (\ref{eq:l2-constraint}), its structure is not changed and thus by inspection of the basis of $\bigwedge^2 \R^4$, we have the following correspondences:
+Since in (\ref{eq:l2-constraint}) we have that $\omega$ is an infinite sum of wedge products, it is natural to look for the consequences of $\omega$ being a simple or a non-simple bivector. We note that the condition in Lemma \ref{lem:simple bivector} is in particular satisfied if all coefficients corresponding to a certain index are zero, e.g. $\omega_{i4} = 0$ for $i \in \N_4$. This yields four subspaces $D^*_{ijk}$ of $\bigwedge^2 \R^4$ consisting only of simple bivectors. Since net displacement $\delta p$ is merely scaled and multiplied by diagonal matrices to get the constraint vector in (\ref{eq:l2-constraint}), its structure is not changed and thus by inspection of the basis of $\bigwedge^2 \R^4$, we have the following correspondences:
 \begin{align*}
 D^{*}_{123} &\longleftrightarrow\text{ rotations around all three axes } \hat{e}_1, \hat{e}_2, \hat{e}_3\\
 D^{*}_{124} &\longleftrightarrow \text{ translation in the $\hat{e}_1\hat{e}_2$-plane, rotation around the $\hat{e}_3$-axis }\\
@@ -170,7 +168,7 @@ In particular, the subspaces $D^{*}_{ijk}$ are of dimension three and correspond
 This especially allows us to relate cross products in the subspace $D_{ijk}$ to a unique bivector in $D_{ijk}^*$. More precisely, we have for $u, v \in D_{ijk}$ that $u \wedge v = \star(u \times v)$ just like in (\ref{eq: hodge star}), where the usual cross product is understood in the subspace $D_{ijk}$.
 
 \subsection[The simple case]{The simple case $\omega \in D_{ijk}^*$}
-With the remarks from the preceding section, we are able to solve the constrained minimization problem of Proposition \ref{prop: l2-minimization} in a similar manner to \cite{Alouges2017}. In fact, we retrieve essentially the same result, i.e. that the optimal control curves are ellipses in a certain plane defined by the net displacement. Let us prove
+With the preceding remarks, we are able to solve the constrained minimization problem of Proposition \ref{prop: l2-minimization} in a similar manner to \cite{Alouges2017}. In fact, we retrieve essentially the same result, i.e. that the optimal control curves are ellipses in a certain plane defined by the net displacement. Let us prove
 
 \begin{proposition}
 \label{prop:simple reduction}
@@ -218,7 +216,7 @@ The minimization problem for $\mathcal{F}$ in $\ell^2(\R^4) \times \ell^2(\R^4)$
 \end{corollary}
 
 \begin{proof}
-It suffices to observe that if $\mathcal{V}_{\omega}$ denotes the subset of $\ell^2(\R^4) \times \ell^2(\R^4)$ satisfying the constraint (\ref{eq:l2-constraint}) and by $V_{\omega}$ the subset of $(u, v)  \in \R^4 \times \R^4$ such that $u \times v = \omega$, then Proposition \ref{prop:simple reduction} yields
+It suffices to observe that if $\mathcal{V}_{\omega}$ denotes the subset of $\ell^2(\R^4) \times \ell^2(\R^4)$ satisfying the constraint (\ref{eq:l2-constraint}) and by $V_{\omega}$ the subset of $(u, v)  \in \R^4 \times \R^4$ such that $u \times v = \star\omega$, then Proposition \ref{prop:simple reduction} yields
 \begin{equation}
 \min_{(\mathbf{u}, \mathbf{v}) \in \mathcal{V}_{\omega}}\mathcal{F}(\mathbf{u}, \mathbf{v}) = \min_{(u, v) \in V_\omega} \mathcal{F}(\mathbf{e}_1 u, \mathbf{e}_1 v) = \min_{(u,v) \in V_{\omega}} f(u,v).
 \end{equation}
@@ -236,7 +234,7 @@ u_{\star}, v_{\star} \in D_{ijk}, &
 |u_{\star}|^2 = |v_{\star}|^2, & 
 u_{\star} \cdot v_{\star} = 0.
 \end{eqnarray}
-Therefore, for any $\sigma \in D_{ijk}$ such that $\sigma \cdot \hat{\omega} = 0$ and $|\sigma|^2 = |\omega|$, the couple
+Therefore, for any $\sigma \in D_{ijk}$ such that $\sigma \cdot \star\hat{\omega} = 0$ and $|\sigma|^2 = |\omega|$, the couple
 \begin{equation}
 (\sigma, \sigma \times \star \hat{\omega}) \in D_{ijk} \times D_{ijk} \subset \R^4 \times \R^4
 \end{equation}
@@ -261,7 +259,7 @@ This proves the first statement. For the second part, we set $\hat{\omega} := \o
 \begin{equation}
 	\sigma \cdot \star\hat{\omega} = 0 \text{ and } |\sigma|^2 = |\omega|. 
 \end{equation}
-By a trivial computation, on finds that the vectors $v := \sigma \times \star \hat{\omega}$ and $u := \sigma$ satisfy the relations $u \cdot v = 0$, $|u|^2 = |v|^2 = |\omega|$ and $v \wedge u = \omega$. 
+By a trivial computation, one finds that the vectors $v := \sigma \times \star \hat{\omega}$ and $u := \sigma$ satisfy the relations $u \cdot v = 0$, $|u|^2 = |v|^2 = |\omega|$ and $v \wedge u = \omega$. 
 \end{proof}
 
 Pasting everything worked out above together leads to the final result of this section. We have
@@ -310,7 +308,7 @@ In the case $\hat{\omega} \in D^{*}_{134}$ we have $\star\hat{\omega} = e_3$ and
 \begin{proof}
 From Proposition \ref{prop:finite dim minimization}, Corollary \ref{cor:simple reduction} and then Proposition \ref{prop: l2-minimization}, we get that any $\sigma \in D_{ijk}$ satisfying the relations
 \begin{eqnarray}
- u \cdot \star \hat{\omega}, & |u|^2 = |\omega|, & \omega := \sqrt{\det \Lambda_{\mathfrak{g}}} (\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p,
+ u \cdot \star \hat{\omega} = 0, & |u|^2 = |\omega|, & \omega := \sqrt{\det \Lambda_{\mathfrak{g}}} (\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p,
 \end{eqnarray}
 is associated to a (global) constrained minimizer for $\mathcal{G}_{U}$, via the curve $\eta(t) := (\cos t) \tilde{a} + (\sin t) \tilde{b}$, where the Fourier coefficients $\tilde{a}, \tilde{b} \in \R^4$ are related to $\omega$ (c.f. \ref{eq:relation Fourier coeffs of eta}) by $(\sqrt{2 \pi \Lambda_{\mathfrak{g}}}) \tilde{a} = u$ and $(\sqrt{2 \pi \Lambda_{\mathfrak{g}}}) \tilde{b} = (u \times \star\hat{\omega})$. The minimum value of the energy is then $\mathcal{G}_{U}(\eta) = |\omega|$.
 

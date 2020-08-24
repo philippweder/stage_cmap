@@ -83,35 +83,64 @@ It is clear that $\dim \Skew_3(\R) = 3$. In particular, if $R_1(\theta), R_2(\th
 	0 & 0 & 0
 	\end{array}  \right ),
 \end{align}
-form a basis of $\so(3)$ consisting of the infinitesimal rotations around the corresponding axes. If we now write $\textbf{L} := (L_1, L_2, L_3)^T$ and allow the slight abuse of notation
-\begin{align}
-	\omega \cdot \mathbf{L} = \omega_1 L_1 + \omega_2 L_2 + \omega_3 L_3,
-\end{align}
-we find by direct computation that $\exp(\omega \cdot \mathbf{L}) = R$. This relationship allows us to formulate the behavior of the orientation of \textsc{SPr4} under reflection and thus under permutation of two arms as we shall see later. Indeed, we have
+form a basis of $\so(3)$, denoted by $\mathcal{L}$, consisting of the infinitesimal rotations around the corresponding axes. A trivial computation then shows that $R = \exp\left ( \sum_{k \in \N_3} \omega_k L_k \right )$. 
+% If we now write $\textbf{L} := (L_1, L_2, L_3)^T$ and allow the slight abuse of notation
+%\begin{align}
+%	\omega \cdot \mathbf{L} = \omega_1 L_1 + \omega_2 L_2 + \omega_3 L_3,
+%\end{align}
+%we find by direct computation that $\exp(\omega \cdot \mathbf{L}) = R$. This relationship allows us to formulate the behavior of the orientation of \textsc{SPr4} under reflection and thus under permutation of two arms as we shall see later. Indeed, we have
+
+%\begin{lemma}
+%\label{lem:mirror image of orientation}
+%For any orientation of a rigid body characterized by $R \in \SO(3)$, the orientation of its mirror image under a reflection $S$ is given by
+%\begin{align}
+%	\tilde{R} = S R S.
+%\end{align}
+%\end{lemma}
+%
+%\begin{proof}
+%Let us first consider the simple case where $S_i$ is the reflection of the $\hat{e}_i$-axis. Let $\omega$ and $\tilde{\omega}$ be the rotation vectors corresponding to $R$ and $\tilde{R}$, respectively. They are related by $\tilde{\omega} = -S_i \omega$, where the gain of the minus sign stems from the fact that rotation vectors are in fact pseudovectors. In other words, we not only reflect the axis of rotation but we also reverse the sense of rotation around the axis. It follows then from direct computation that
+%\begin{equation}
+%\label{eq: transformation of rotation axis}
+% \tilde{\omega} \cdot \mathbf{L} = (-S_i\omega) \cdot \mathbf{L} = S_i(\omega \cdot \mathbf{L})S_i
+%\end{equation}
+%and thus we have
+%\begin{equation}
+%\tilde{R} = \exp(\tilde{\omega} \cdot \mathbf{L}) = \exp(S_i(\omega \cdot \mathbf{L})S_i) = S_iRS_i,
+%\end{equation}
+%as $S_i^{-1} = S_i$.
+%
+%If now $S$ is an arbitrary reflection, we always find a rotation $Q \in \SO(3)$ such that $S = Q S_i Q^T$ for one of the elementary reflections $S_i$. Moreover, for any rotation $R' \in \SO(3)$ we find another $R \in \SO(3)$ such that $R' = Q R Q^T$. In particular, we have
+%\begin{equation}
+%\tilde{R}' = Q \tilde{R} Q^T = Q S_iRS_i Q^T = S R' S^T,
+%\end{equation}
+%as desired.
+%\end{proof}
+However, to clearly state the relations between reflections and orientations, let us first fix some notation. We denote by $\mathcal{E} := (e_1, e_2, e_3, e_4)$ the canonical basis for $\R^4$. Then we denote the matrix representing an arbitrary linear map $T: V \to W$ between two vector spaces $V$ and $W$ with respect to two bases $\mathcal{B}$ and $\mathcal{C}$ by $[T]_{\mathcal{B}}^{\mathcal{C}}$. Subsequently, we will especially make use of the adjoint map on $\so(3)$ associated to an orthogonal transformation $Q$ of $\R^3$. More precisely, if $Q$ is an orthogonal transformation of $\R^3$, we define the adjoint map $\ad_Q : \so(3) \to \so(3)$ by
+\begin{equation}
+\ad_Q(M) := Q M Q^T,
+\end{equation}
+which is clearly a linear map. Then we have the following result about orthogonal transformations and their adjoint maps, which we state in a rather general fashion as this will be beneficial at a later stage.
 
 \begin{lemma}
 \label{lem:mirror image of orientation}
-For any orientation of a rigid body characterized by $R \in \SO(3)$, the orientation of its mirror image under a reflection $S$ is given by
-\begin{align}
-	\tilde{R} = S R S.
-\end{align}
+Let $S, Q:\R^3 \to \R^3$ be a reflection at a plane and a rotation of $\R^3$, respectively. Then the representation matrices of their adjoint maps are given by
+\begin{eqnarray}
+[\ad_{S}]_{\mathcal{L}} = -S & \text{and}  & [\ad_{Q}]_{\mathcal{L}} = Q.
+\end{eqnarray}
+In particular, if $R \in \SO(3)$ characterizes the orientation of a rigid body, the orientation $\tilde{R}$ of its mirror image under a reflection $S$ is characterized by $\tilde{R} = SRS$.
 \end{lemma}
 
 \begin{proof}
-Let us first consider the simple case where $S_i$ is the reflection of the $\hat{e}_i$-axis. Let $\omega$ and $\tilde{\omega}$ be the rotation vectors corresponding to $R$ and $\tilde{R}$, respectively. They are related by $\tilde{\omega} = -S_i \omega$, where the gain of the minus sign stems from the fact that rotation vectors are in fact pseudovectors. In other words, we not only reflect the axis of rotation but we also reverse the sense of rotation around the axis. It follows then from direct computation that
-\begin{equation}
-\label{eq: transformation of rotation axis}
- \tilde{\omega} \cdot \mathbf{L} = (-S_i\omega) \cdot \mathbf{L} = S_i(\omega \cdot \mathbf{L})S_i
-\end{equation}
-and thus we have
-\begin{equation}
-\tilde{R} = \exp(\tilde{\omega} \cdot \mathbf{L}) = \exp(S_i(\omega \cdot \mathbf{L})S_i) = S_iRS_i,
-\end{equation}
-as $S_i^{-1} = S_i$.
+Let us denote by $S_i$ the reflection of the $\hat{e}_i$ axis. Then one finds by a straightforward computation that the first statement is true for $S_i$ and $R_i(\theta)$ for all $\theta \in \R$ and $i \in \N_3$. Now the statement follows by decomposing any rotation $Q \in \SO(3)$ into its Euler angles and any reflection $S$ into $S = Q S_i Q^{T}$ for some rotation $Q$ and one of the elementary reflections $S_i$.
 
-If now $S$ is an arbitrary reflection, we always find a rotation $Q \in \SO(3)$ such that $S = Q S_i Q^T$ for one of the elementary reflections $S_i$. Moreover, for any rotation $R' \in \SO(3)$ we find another $R \in \SO(3)$ such that $R' = Q R Q^T$. In particular, we have
+For the second part, let $S$ be an arbitrary reflection in $\R^3$ and let us denote by $\tilde{\omega}$ the rotation vector of the mirror image. Since the rotation vector of a rigid body is a pseudovector, we have $\tilde{\omega} = -S\omega$. In other words, we reflect the rotation vector and change its sense of rotation. Finally, we have by the first part
+\begin{align}
+	\sum_{k \in \N_3} \tilde{\omega}_k L_k = \sum_{k \in \N_3}(- S \omega)_k L_k = S \left (\sum_{k \in \N_3} \omega_k L_k\right ) S,
+\end{align}
+and thus
 \begin{equation}
-\tilde{R}' = Q \tilde{R} Q^T = Q S_iRS_i Q^T = S R' S^T,
+\tilde{R} = \exp(\sum_{k \in \N_3} \tilde{\omega}_k L_k) = \exp \left (S \left [\sum_{k} \omega_k L_k \right ] S \right ) = S R S,
 \end{equation}
 as desired.
 \end{proof}
@@ -175,32 +204,32 @@ and on the other hand using (\ref{eq:spatial permutation invariance int1}) and o
 Equating (\ref{eq: spatial permutation invariance int2}) and (\ref{eq: spatial permutation invariance int3}) at $t = 0$ yields $ F_c(P_{ij} \xi_0) = S_{ij} F_c(\xi_0) P_{ij}$, since by hypothesis $T_{\xi_0} \M \simeq \R^4$. As $\xi_0$ was arbitrary, we conclude.
 \end{proof}
 
-For the angular part, we first have to choose a basis and fix some notation. Naturally, we choose the canonical basis $\mathcal{E} := (e_1, e_2, e_3, e_4)$ for $\R^4$. For $\so(3)$, we choose the basis $\mathcal{L} := (L_1, L_2, L_3)$, where the matrices $L_i$ are defined in (\ref{eq: L1}) - (\ref{eq: L3}). Then we denote the matrix representing an arbitrary linear map $T: V \to W$ between two vector spaces $V$ and $W$ with respect to two bases $\mathcal{B}$ and $\mathcal{B}'$ by $[T]_{\mathcal{B}}^{\mathcal{B}'}$. Subsequently, we will especially make use of the adjoint map on $\so(3)$ associated to an orthogonal transformation $Q$ of $\R^3$. More precisely, if $Q$ is an orthogonal transformation of $\R^3$, we define the adjoint map $\ad_Q : \so(3) \to \so(3)$ by
-\begin{equation}
-\ad_Q(M) := Q M Q^T,
-\end{equation}
-which is clearly a linear map.
-
-Thus, before we address the invariance property of the angular part of the control system under a swap of arms, let us prove the following
-
-\begin{lemma}
-\label{lem:representation matrix of adjoint of reflection}
-Let $S: \R^3 \to \R^3$ be an arbitrary reflection at a plane. Then the representation matrix of the adjoint map $\ad_S$ is given by $[\ad_S]_{\mathcal{L}} = -S$.
-\end{lemma}
-
-
-\begin{proof}
-We have already seen in the proof of Lemma \ref{lem:mirror image of orientation} that for the reflection $S_i$ of the $\hat{e}_i$-axis, we have $[\ad_{S_i}]_{\mathcal{L}} = -S_i$. Moreover, by direct calculation, we find for the elementary rotations $R_i(\theta)$ that $[\ad_{R_i(\theta)}]_{\mathcal{L}} = R_{i}(\theta)$. Now if $S$ is an arbitrary reflection, we find $Q \in SO(3)$ such that $S = Q S_i Q^T$ for one of the elementary reflections $S_i$. In particular, we find by Euler's rotation theorem three angles $\alpha, \beta, \gamma \in \R$ such that $Q = R_{3}(\gamma) R_{2}(\beta) R_{1}(\alpha)$ and therefore
-\begin{equation}
-\ad_Q = \ad_{R_3(\gamma)} \circ \ad_{R_{2}(\beta)} \circ \ad_{R_{1}(\alpha)},
-\end{equation}
-which implies that $[\ad_{Q}]_{\mathcal{L}} = Q$. Since we clearly have $\ad_{Q}^{-1} = \ad_{Q^{-1}} = \ad_{Q^T}$, we have $[\ad_{Q^T}]_{\mathcal{L}} = Q^T$. Hence, due to $\ad_S = \ad_Q \circ \ad_{S_i} \circ \ad_{Q^T}$, we find
-\begin{equation}
-[\ad_S]_{\mathcal{L}} = - Q S_i Q^T = -S,
-\end{equation}
-as desired.
-\end{proof}
-
+%For the angular part, we first have to choose a basis and fix some notation. Naturally, we choose the canonical basis $\mathcal{E} := (e_1, e_2, e_3, e_4)$ for $\R^4$. For $\so(3)$, we choose the basis $\mathcal{L} := (L_1, L_2, L_3)$, where the matrices $L_i$ are defined in (\ref{eq: L1}) - (\ref{eq: L3}). Then we denote the matrix representing an arbitrary linear map $T: V \to W$ between two vector spaces $V$ and $W$ with respect to two bases $\mathcal{B}$ and $\mathcal{B}'$ by $[T]_{\mathcal{B}}^{\mathcal{B}'}$. Subsequently, we will especially make use of the adjoint map on $\so(3)$ associated to an orthogonal transformation $Q$ of $\R^3$. More precisely, if $Q$ is an orthogonal transformation of $\R^3$, we define the adjoint map $\ad_Q : \so(3) \to \so(3)$ by
+%\begin{equation}
+%\ad_Q(M) := Q M Q^T,
+%\end{equation}
+%which is clearly a linear map.
+%
+%Thus, before we address the invariance property of the angular part of the control system under a swap of arms, let us prove the following
+%
+%\begin{lemma}
+%\label{lem:representation matrix of adjoint of reflection}
+%Let $S: \R^3 \to \R^3$ be an arbitrary reflection at a plane. Then the representation matrix of the adjoint map $\ad_S$ is given by $[\ad_S]_{\mathcal{L}} = -S$.
+%\end{lemma}
+%
+%
+%\begin{proof}
+%We have already seen in the proof of Lemma \ref{lem:mirror image of orientation} that for the reflection $S_i$ of the $\hat{e}_i$-axis, we have $[\ad_{S_i}]_{\mathcal{L}} = -S_i$. Moreover, by direct calculation, we find for the elementary rotations $R_i(\theta)$ that $[\ad_{R_i(\theta)}]_{\mathcal{L}} = R_{i}(\theta)$. Now if $S$ is an arbitrary reflection, we find $Q \in SO(3)$ such that $S = Q S_i Q^T$ for one of the elementary reflections $S_i$. In particular, we find by Euler's rotation theorem three angles $\alpha, \beta, \gamma \in \R$ such that $Q = R_{3}(\gamma) R_{2}(\beta) R_{1}(\alpha)$ and therefore
+%\begin{equation}
+%\ad_Q = \ad_{R_3(\gamma)} \circ \ad_{R_{2}(\beta)} \circ \ad_{R_{1}(\alpha)},
+%\end{equation}
+%which implies that $[\ad_{Q}]_{\mathcal{L}} = Q$. Since we clearly have $\ad_{Q}^{-1} = \ad_{Q^{-1}} = \ad_{Q^T}$, we have $[\ad_{Q^T}]_{\mathcal{L}} = Q^T$. Hence, due to $\ad_S = \ad_Q \circ \ad_{S_i} \circ \ad_{Q^T}$, we find
+%\begin{equation}
+%[\ad_S]_{\mathcal{L}} = - Q S_i Q^T = -S,
+%\end{equation}
+%as desired.
+%\end{proof}
+For the angular part, we have now the following result, in the proof of which we exploit the first, more general statement of Lemma \ref{lem:mirror image of orientation}:
 \begin{proposition}
 \label{prop: angular permutation invariance}
 If the control system (\ref{eq:dynamical system}) is invariant under the swap $(||i \leftrightsquigarrow ||j)$ and $T_{\xi}\M \simeq \R^4$ for all $\xi \in \M$, then for all $\xi \in \M$
@@ -233,7 +262,7 @@ Imposing equality of (\ref{eq: angular permutation invariance int2}) and (\ref{e
 \begin{equation}
 	F_{\theta}(P_{ij} \xi_0) P_{ij}  \dot{\xi}(0) = S_{ij} F_{\theta}(\xi_0) \dot{\xi}(0) S_{ij}.
 \end{equation}
-By choice of the canonical basis for $\R^4$ we clearly have $[P_{ij}]_{\mathcal{E}}^{\mathcal{E}} = P_{ij}$. Therefore, by Lemma \ref{lem:representation matrix of adjoint of reflection}, we have
+By choice of the canonical basis for $\R^4$ we clearly have $[P_{ij}]_{\mathcal{E}}^{\mathcal{E}} = P_{ij}$. Therefore, by Lemma \ref{lem:mirror image of orientation}, we have
 \begin{equation}
 	[F_{\theta}(P_{ij} \xi_0)]_{\mathcal{E}}^{\mathcal{L}}  P_{ij} [\dot{\xi}(0)]_{\mathcal{E}} = [S_{ij} F_{\theta}(\xi_0) \dot{\xi}(0) S_{ij}]_{\mathcal{L}} = -S_{ij} [F_{\theta}(\xi_0)]_{\mathcal{E}}^{\mathcal{L}} [\dot{\xi}(0)]_{\mathcal{E}}.
 \end{equation}

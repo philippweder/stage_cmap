@@ -1,0 +1,61 @@
+\subsection{Complete calculation of the first order term $\mathcal{H}_0$}
+ 
+ In analogy to the calculation of the matrices $M_k$, we define $\mathcal{T}_{0, c}(\xi \otimes \eta) := \tfrac{1}{2}  [\mathcal{H}_{c,0}(\xi \otimes \eta) + \mathcal{H}_{c,0}(\eta \otimes \xi)]$ and similarly $\mathcal{T}_{0, \theta}(\xi \otimes \eta)$ for $\xi, \eta \in \R^4$ such that $\T_{0,c}(\xi \otimes \eta) = \T_{0,c}(\eta \otimes \xi)$ as well as $\T_{0,\theta}(\xi \otimes \eta) = \T_{0,\theta}(\eta \otimes \xi)$. Clearly, $\T_{c,0}$ and $\T_{\theta,0}$ satisfy the same symmetry relations as $\h_{c,0}$ and $\h_{\theta,0}$ and thus we find for any permutation matrix $P_{ij}$ and the corresponding reflection $S_{ij}$ that
+\begin{align}
+\label{eq:even_position_first_order_condition}
+ S_{ij}\T_{c,0}(P_{ij} \xi \otimes P_{ij} \eta) &= \T_{c,0}(\xi \otimes \eta)\\
+ \label{eq:even_angle_first_order_condition}
+  -S_{ij}\T_{\theta,0}(P_{ij} \xi \otimes P_{ij} \eta) &= \T_{\theta,0}(\xi \otimes \eta)
+\end{align}
+We treat the spatial part first. Since the matrix $S_{ij}$ represents the reflection at the plane spanned by the remaining two arms $z_k$ and $z_l$, equation (\ref{eq:even_position_first_order_condition}) implies that $\T_{c,0}(e_i \otimes e_j) \in \Span\{z_k, z_l\}$. Next, we find, using again (\ref{eq:even_position_first_order_condition}) and the fact that the reflection $S_{kl}$ is an orthogonal transformation, that
+\begin{equation}
+\T_{c,0}(e_i \otimes e_j) \cdot z_k = S_{kl}\T_{c,0}(e_i \otimes e_j) \cdot S_{kl} z_k = \T_{c,0}(e_i \otimes e_j) \cdot z_l,
+\end{equation}
+from which we deduce that $\T_{c,0}(e_i \otimes e_j) = \beta_{ij} (z_k + z_l)$ for some scalar $\beta_{ij} \in \R$. However, the same holds for $\T_{c,0}(e_i \otimes e_k)$ and we find
+\begin{align}
+\beta_{ik} (z_j + z_l) = \T_{c,0}(e_i \otimes e_k) = S_{jk} \T_{c,0}(e_i \otimes e_j) = S_{jk} \beta_{ij} (z_k + z_l) = \beta_{ij} (z_j + z_l).
+\end{align}
+Since the vectors $z_1, z_2, z_3$ and $z_4$ are normalized and enclose pairwise the same angle, we can conclude that $\beta_{ik} = \beta_{ij}$ or more generally that $\T_{c,0}(e_i \otimes e_j) = \beta (z_k + z_l)$ for all $i \neq j \in \N_4$. Furthermore, for the term $\T_{c,0}(e_i \otimes e_i)$ we find in a similar fashion that $\T_{c,0}(e_i \otimes e_i) \in \Span\{z_i, z_j\}$, $\T_{c,0}(e_i \otimes e_i) \in \Span\{z_i, z_k\}$ and $\T_{c,0}(e_i \otimes e_i) \in \Span\{z_i, z_l\}$. By noting that the line of intersection of these three planes is $\{\lambda z_i | \lambda \in\R\}$, we obtain $\T_{c,0}(e_i \otimes e_i) = \lambda_i z_i$ for some $\lambda_i \in \R$. Again by using the orthogonality of the reflections $Sij$, we find that
+\begin{equation}
+\lambda_j = \T_{c,0}(e_j \otimes e_j) \cdot z_j = S_{ij} \T_{c,0}(e_j \otimes e_j) \cdot S_{ij} z_j = \T_{c,0}(e_i \otimes e_i) \cdot z_i = \lambda_i.
+\end{equation}
+Hence, we have $\T_{c,0}(e_i\otimes e_i) = \lambda z_i$ for all $i\in \N_4$ and some $\lambda \in \R$.
+
+For the rotational part, we observe that equation (\ref{eq:even_angle_first_order_condition}) implies that on the one hand we have $\T_{\theta,0}(e_i \otimes e_j) = - S_{ij} \T_{\theta,0}(e_i \otimes e_j)$ and on the other hand that $\T_{\theta,0}(e_i \otimes e_j) = -S_{kl} \T_{\theta,0}(e_i \otimes e_j)$. However, the first equation implies that $\T_{\theta,0}(e_i \otimes e_j)$ is proportional to $z_k \times z_l$, while the second implies that $\T_{\theta,0}(e_i \otimes e_j)$ is proportional to $z_i \times z_j$. Yet, from this we conclude that necessarily $\T_{\theta,0}(e_i \otimes e_j) = 0$ since $z_k \times z_l \in \Span\{e_i, e_j\}$ and vice-versa. The argument for $\T_{\theta,0}(e_i \otimes e_i)  = 0$ is very similar and thus omitted.
+
+In conclusion, the matrices $N_k :=( \T_{c,0}(e_i \otimes e_j)\cdot  \hat{e}_k)_{i,j \in \N_4}  = \tfrac{1}{2}(A_k + A_k^T), k \in \N_3$ and $N_{k + 3} := ( \T_{\theta,0}(e_i \otimes e_j)\cdot  \hat{e}_k)_{i,j \in \N_4}  = \tfrac{1}{2}(B_k + B_k^T), k \in \N_3$ are given by
+
+\renewcommand{\arraystretch}{1.2}
+\begin{align}
+ N_1 = \left(
+\begin{array}{cccc}
+ \frac{2 \sqrt{2} \lambda}{3} & -\frac{\sqrt{2} \beta}{3} & -\frac{\sqrt{2}  \beta}{3} & -\frac{2
+   \sqrt{2}  \beta}{3} \\
+ -\frac{\sqrt{2}  \beta}{3} & -\frac{\sqrt{2} \lambda}{3} & \frac{2 \sqrt{2}  \beta}{3} & \frac{\sqrt{2}
+    \beta}{3} \\
+ -\frac{\sqrt{2}  \beta}{3} & \frac{2 \sqrt{2}  \beta}{3} & -\frac{\sqrt{2} \lambda}{3} & \frac{\sqrt{2}
+    \beta}{3} \\
+ -\frac{2 \sqrt{2}  \beta}{3} & \frac{\sqrt{2}  \beta}{3} & \frac{\sqrt{2}  \beta}{3} & 0 \\
+\end{array}
+\right),
+\end{align}
+
+\begin{align}
+N_2 = \left(
+\begin{array}{cccc}
+ 0 & \sqrt{\frac{2}{3}} \beta & -\sqrt{\frac{2}{3}} \beta & 0 \\
+ \sqrt{\frac{2}{3}} \beta & -\sqrt{\frac{2}{3}} \lambda & 0 & \sqrt{\frac{2}{3}} \beta \\
+ -\sqrt{\frac{2}{3}} \beta & 0 & \sqrt{\frac{2}{3}}  \lambda & -\sqrt{\frac{2}{3}} \beta \\
+ 0 & \sqrt{\frac{2}{3}} \beta & -\sqrt{\frac{2}{3}} \beta & 0 \\
+\end{array}
+\right),
+ N_3 = \left(
+\begin{array}{cccc}
+ -\frac{\lambda}{3} & \frac{2 \beta}{3} & \frac{2 \beta}{3} & -\frac{2 \beta}{3} \\
+ \frac{2 \beta}{3} & -\frac{\lambda}{3} & \frac{2 \beta}{3} & -\frac{2 \beta}{3} \\
+ \frac{2 \beta}{3} & \frac{2 \beta}{3} & -\frac{\lambda}{3} & -\frac{2 \beta}{3} \\
+ -\frac{2 \beta}{3} & -\frac{2 \beta}{3} & -\frac{2 \beta}{3} & \lambda \\
+\end{array}
+\right)
+\end{align}
+\renewcommand{\arraystretch}{1}
