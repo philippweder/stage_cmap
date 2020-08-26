@@ -1,0 +1,22 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {french}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Mot de bienvenue}{1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Introduction}{1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Structure du projet}{1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Modélisation et symétries}{1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Régime des petites courbes de contrôle}{1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Introduction à l'optimisation}{1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}Bivecteurs en $\mathbb {R}^4$}{1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8}Optimisation II}{1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9}Cas simple}{1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10}Conclusion et perspectives}{1}%

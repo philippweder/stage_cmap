@@ -37,8 +37,9 @@ The goal of this section is the minimization of $\mathcal{G}$ in $H_{\sharp}^1(J
 with $\mathfrak{h}_c = - 2 \sqrt{6} \alpha$ and $\mathfrak{h}_{\theta} = - 2 \sqrt{6} \delta$.
 
 
-\subsection{The exterior algebra and bivectors in four dimensions}
-Let us recall in this small section the basic definitions around the notion of the \emph{exterior algebra}, where we refer to \cite{Lounesto2006} for details. For our purposes, the abstract definition of $k$-vectors as alternating $k$-tensors is not very useful. We merely illustrate them in $\R^3$ since the notion then generalizes easily to higher dimensions. In $\R^3$, a bivector is an oriented plane segment; that is, a small piece of surface having a magnitude given by the area of the surface element as well as a direction given by the attitude of the plane the surface element lies in as well as a sense of rotation. Together, they form the vector space $\bigwedge^2 \R^3$. We can represent a bivector $\omega \in \bigwedge^2 \R^3$ as a small parallelogram which suggests that we can think of it as some product of the two vectors along its sides. This is realized by the \emph{exterior product}, also called \emph{wedge product}, $u \wedge v$ of two vectors $u$ and $v$. The product $u \wedge v$ then represents the bivector obtained by sweeping $v$ along $u$. This operation yields a direct link between $\R^3$ and the vector space $\bigwedge^2 \R^3$ of bivectors, a basis of which is given by
+\subsection{Bivectors in four dimensions}
+\label{sec:bivectors}
+Let us recall in this section the basic definitions around the notion of \emph{bivectors}, where we refer to \cite{Lounesto2006} for details. As the abstract definition of general $k$-vectors is not very useful for our purposes, we merely illustrate them in $\R^3$, which then generalizes easily to higher dimensions. In $\R^3$, a bivector is an oriented plane segment; that is, a small piece of surface having a magnitude given by the area of the surface element as well as a direction given by the attitude of the plane the surface element lies in as well as a sense of rotation. Together, they form the vector space $\bigwedge^2 \R^3$. We can represent a bivector $\omega \in \bigwedge^2 \R^3$ as a small parallelogram which suggests that we can think of it as some product of the two vectors along its sides. This is realized by the \emph{exterior product}, also called \emph{wedge product}, $u \wedge v$ of two vectors $u$ and $v$. The product $u \wedge v$ then represents the bivector obtained by sweeping $v$ along $u$. This operation yields a direct link between $\R^3$ and the vector space $\bigwedge^2 \R^3$ of bivectors, a basis of which is given by
 \begin{equation}
  \{\hat{e}_1 \wedge \hat{e}_2, \hat{e}_1 \wedge \hat{e}_3, \hat{e}_2 \wedge \hat{e}_3\},
 \end{equation}
@@ -57,11 +58,7 @@ These definitions then extend naturally to all higher dimensions. In particular,
 \begin{equation}
 \{e_{12}, e_{13}, e_{14}, e_{23}, e_{24}, e_{34}\},
 \end{equation}
-where we write $e_{ij} := e_i \wedge e_j$ to simplify the notation. More generally, the vectors, bivectors etc. of $\R^4$ all make part of a graded algebra, the \emph{exterior algebra}, defined by
-\begin{equation}
-\bigwedge \R^4 := \R \oplus \R^4 \oplus \bigwedge^2\R^4 \oplus \bigwedge^3 \R^4 \oplus \bigwedge^4 \R^4,
-\end{equation}
-whose product is given by the wedge product.
+where we write $e_{ij} := e_i \wedge e_j$ to simplify the notation.
 
 To finish this section, we will point out some properties of the space $\bigwedge^2 \R^4$ and how it differs from $\bigwedge^2 \R^3$, which at a later point will illustrate why the optimal control curves for $\textsc{SPr3}$ and \textsc{SPr4} in general do not have the same structure. Nevertheless, we will be able treat a simplified situation for \textsc{SPr4} in the same manner as \textsc{SPr3} in \cite{Alouges2017}.
 
@@ -87,6 +84,7 @@ If $\omega \in \bigwedge^2 \R^4$ is a simple bivector, i.e. if there are vectors
 The inverse requires a rather lengthy proof by induction, see the lecture notes on projective geometry by Nigel Hitchin, chapter 3, p.48 \cite{Hitchin2003}.
 \end{proof}
 
+In what follows, we will find that the net displacement actually identifies with a bivector of $\R^4$ and the solution to the optimization problem in \cite{Alouges2017} then suggests that we should be able to find a similar solution for our optimization problem, at least in the case where the net displacement is a simple bivector. The preceding lemma then serves us to identify certain subspaces of $\bigwedge^2 \R^4$ consisting only of simple bivectors.
 
 \subsection{G-Orthogonalization}
 We begin by rewriting the energy functional (\ref{eq: linearized energy functional}) and the constraint (\ref{eq: constraint}) in terms of the orthonormal basis of eigenvectors $(\tau_i)_{i \in \N_4}$ of the matrix $G$. The change of variables $\eta(t) := U^T \xi(t) \in H_{\sharp}^{1}(J, \R^4)$, allows us to write
@@ -98,7 +96,7 @@ with $\mathcal{G}_{U}(\eta) := \mathcal{G}(\xi) = \mathcal{G}(U \eta)$. For the 
 \begin{equation}
 \det(\xi |\dot{\xi} | \tau_i | \tau_j) =  \det U \det (\eta | \dot{\eta} | e_i | e_j) = \det(\dot{\eta} | \eta | e_i |e_j),
 \end{equation}
-since $\det U = -1$. Eventually, we can express the determinants more elegantly in terms of exterior products. In fact, by direct calculation one obtains $\det(\dot{\eta} | \eta | e_k |e_4) = (\dot{\eta} \wedge \eta, e_{k + 1} \wedge e_{k+2})$ and $\det(\dot{\eta} |\eta | e_{k + 1} |e_{k + 2}) = (\dot{\eta} \wedge \eta, e_k \wedge e_4)$, for $k \in \N_3$ taken mod 3. Then, the isomorphism sending the basis $\{f_i\}_{i \in \N_6}$ of $\R^6$ onto the ordered basis 
+since $\det U = -1$. Eventually, we can express the determinants more elegantly in terms of exterior products. In fact, by direct calculation one obtains $\det(\dot{\eta} | \eta | e_k |e_4) = (\dot{\eta} \wedge \eta, e_{k + 1} \wedge e_{k+2})$ and $\det(\dot{\eta} |\eta | e_{k + 1} |e_{k + 2}) = (\dot{\eta} \wedge \eta, e_k \wedge e_4)$, for $k \in \N_3$ taken mod 3. Then, the isomorphism sending the standard basis $\{f_i\}_{i \in \N_6}$ of $\R^6$ onto the ordered basis 
 \begin{equation}
 \label{eq: basis of bivectors}
 (e_{14}, e_{24}, e_{34}, e_{23}, e_{31}, e_{12})
@@ -119,7 +117,7 @@ is finite. Consequently, we denote by $\dot{\ell}^2(\R^4)$ the Hilbert space of 
 \begin{equation}
 \eta(t) := \frac{1}{2} a_0 + \sum_{n \in \N} \cos(nt) a_n + \sin(n t) b_n,
 \end{equation}
-with $(a_n, b_n) \in \dot{\ell}^2(\R^4) \times \dot{\ell}^2(\R^4)$. Substitution of the Fourier series of $\dot{\eta}$ into the energy functional (\ref{eq: G-orth energy functional}) yields due to Parseval's equality
+with $(a_n, b_n)_{n \in \N} \in \dot{\ell}^2(\R^4) \times \dot{\ell}^2(\R^4)$. Substitution of the Fourier series of $\dot{\eta}$ into the energy functional (\ref{eq: G-orth energy functional}) yields due to Parseval's equality
 \begin{align}
 \mathcal{G}_{U} (\eta) := \int_{J} \Lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \dot{\eta} dt &= \pi \sum_{n  \in \N} n^2(\Lambda_{\mathfrak{g}} a_n \cdot a_n + \Lambda_{\mathfrak{g}} b_n \cdot b_n)  \\  &=
 \frac{1}{2} ||\mathbf{u}||_{\ell^2(\R^4)}^2 + \frac{1}{2} ||\mathbf{v}||_{\ell^2(\R^4)}^2,
@@ -154,25 +152,14 @@ defined in the product Hilbert space $\ell^2(\R^4) \times \ell^2(\R^4)$ and subj
 where $\delta p \in \R^6$ is a prescribed net displacement of position and orientation.
 \end{proposition}
 
-Since in (\ref{eq:l2-constraint}) we have that $\omega$ is an infinite sum of wedge products, it is natural to look for the consequences of $\omega$ being a simple or a non-simple bivector. We note that the condition in Lemma \ref{lem:simple bivector} is in particular satisfied if all coefficients corresponding to a certain index are zero, e.g. $\omega_{i4} = 0$ for $i \in \N_4$. This yields four subspaces $D^*_{ijk}$ of $\bigwedge^2 \R^4$ consisting only of simple bivectors. Since net displacement $\delta p$ is merely scaled and multiplied by diagonal matrices to get the constraint vector in (\ref{eq:l2-constraint}), its structure is not changed and thus by inspection of the basis of $\bigwedge^2 \R^4$, we have the following correspondences:
-\begin{align*}
-D^{*}_{123} &\longleftrightarrow\text{ rotations around all three axes } \hat{e}_1, \hat{e}_2, \hat{e}_3\\
-D^{*}_{124} &\longleftrightarrow \text{ translation in the $\hat{e}_1\hat{e}_2$-plane, rotation around the $\hat{e}_3$-axis }\\
-D^{*}_{134} &\longleftrightarrow  \text{ translation in the $\hat{e}_1\hat{e}_3$-plane, rotation around the $\hat{e}_2$-axis }\\
-D^{*}_{234} &\longleftrightarrow  \text{ translation in the $\hat{e}_2\hat{e}_3$-plane, rotation around the $\hat{e}_1$-axis }
-\end{align*}
-In particular, the subspaces $D^{*}_{ijk}$ are of dimension three and correspond to the subspaces $D_{ijk} := \Span\{e_i, e_j, e_k\} \subset \R^4$. In fact, we have $D^{*}_{ijk} = \bigwedge^2 D_{ijk}$ and furthermore the isomorphism given by the Hodge star operator $\star$, i.e.
-\begin{equation}
-\omega = \omega_{ij} e_{ij} + \omega_{ik} e_{ik} + \omega_{jk} e_{jk} \mapsto \omega_{ij} e_k + \omega_{ik} e_j + \omega_{jk} e_i.
-\end{equation}
-This especially allows us to relate cross products in the subspace $D_{ijk}$ to a unique bivector in $D_{ijk}^*$. More precisely, we have for $u, v \in D_{ijk}$ that $u \wedge v = \star(u \times v)$ just like in (\ref{eq: hodge star}), where the usual cross product is understood in the subspace $D_{ijk}$.
+We observe that we are in a very similar situation as in \cite{Alouges2017} with the fundamental difference however that this time the constraint is a bivector. Nevertheless, it is natural to try to generalize the approach in \cite{Alouges2017}, which in fact 
 
-\subsection[The simple case]{The simple case $\omega \in D_{ijk}^*$}
-With the preceding remarks, we are able to solve the constrained minimization problem of Proposition \ref{prop: l2-minimization} in a similar manner to \cite{Alouges2017}. In fact, we retrieve essentially the same result, i.e. that the optimal control curves are ellipses in a certain plane defined by the net displacement. Let us prove
+\subsection[The simple case]{The simple case}
+With the remarks from section \ref{sec:bivectors}, we are able to solve the constrained minimization problem of Proposition \ref{prop: l2-minimization} in a similar manner to \cite{Alouges2017} whenever the net displacvement is a simple bivector. In fact, we retrieve essentially the same result, i.e. that the optimal control curves are ellipses in a certain plane defined by the net displacement. Let us prove
 
 \begin{proposition}
 \label{prop:simple reduction}
-If $\omega = D_{ijk}$, then for any $(\mathbf{u}, \mathbf{v}) \in \ell^2(\R^4) \times \ell^2(\R^4)$ such that the constraint (\ref{eq:l2-constraint}) holds, there exist two vectors $u, v \in \R^4$ such that for the sequences $\mathbf{u_\star} := \mathbf{e}_1 u$ and $\mathbf{v_\star} := \mathbf{e}_1 v \in \ell^2(\R^4)$ one has
+If $\omega$ is a simple bivector, then for any $(\mathbf{u}, \mathbf{v}) \in \ell^2(\R^4) \times \ell^2(\R^4)$ such taht the constraint (\ref{eq:l2-constraint}) holds, there exist two vectors $u,v \in \R^4$ such that for the sequences $\mathbf{u}_{\star} := \mathbf{e}_1 u$ and $\mathbf{v}_\star := \mathbf{e}_1 v \in \ell^2(\R^4)$ one has 
 \begin{equation}
 \mathcal{F}(\mathbf{u_{\star}}, \mathbf{v_{\star}}) = \mathcal{F}(\mathbf{u}, \mathbf{v}) \text{ and } v \wedge u = \omega.
 \end{equation}
@@ -184,7 +171,7 @@ If $\omega = 0$, then the proof is trivial. Thus, let us denote by $\hat{\omega}
 \label{eq:reduction int1}
 	|u| = ||\mathbf{u} ||_{\ell^2(\R^4)}, &  |v| = ||\mathbf{v} ||_{\ell^2(\R^4)} , & \frac{u \wedge v}{|u \wedge v|} = \hat{\omega}.
 \end{eqnarray}
-The latter is possible since $\hat{\omega}$ is a simple bivector by hypothesis. Furthermore, we have $u \wedge v = ||\mathbf{u}||_{\ell^2(\R^4)} ||\mathbf{v}||_{\ell^2(\R^4)} (\sin\psi)\hat{\omega}$, where $\psi$ is the angle between $u$ and $v$. Therefore, the equality $u \wedge v = \omega$ can be satisfied by choosing the angle $\psi \in (0, \pi)$ such that
+The latter is possible since $\hat{\omega}$ is a simple bivector by hypothesis. Hence, there exist $x, y \in \R^4$ such that $\omega = x \wedge y$. Then we have for all $x', y' \in \Span\{x,y\}$ that $x' \wedge y'/|x' \wedge y'| = \hat{\omega}$. Furthermore, we have $u \wedge v = ||\mathbf{u}||_{\ell^2(\R^4)} ||\mathbf{v}||_{\ell^2(\R^4)} (\sin\psi)\hat{\omega}$, where $\psi$ is the angle between $u$ and $v$. Therefore, the equality $u \wedge v = \omega$ can be satisfied by choosing the angle $\psi \in (0, \pi)$ such that
 \begin{equation}
  \sin \psi = \frac{|\omega|}{||\mathbf{u}||_{\ell^2(\R^4)} ||\mathbf{v} ||_{\ell^2(\R^4)}}
  \end{equation}
@@ -203,7 +190,7 @@ We immediately have
 
 \begin{corollary}
 \label{cor:simple reduction}
-The minimization problem for $\mathcal{F}$ in $\ell^2(\R^4) \times \ell^2(\R^4)$, under the constraint (\ref{eq:l2-constraint}), is equivalent to the minimization in $\R^4 \times \R^4$ of the function
+If $\omega$ is a simple bivector, the minimization problem for $\mathcal{F}$ in $\ell^2(\R^4) \times \ell^2(\R^4)$, under the constraint (\ref{eq:l2-constraint}), is equivalent to the minimization in $\R^4 \times \R^4$ of the function
 \begin{equation}
 \label{eq:finite dim energy}
  	f(u,v) := \frac{1}{2}|u|^2 + \frac{1}{2} |v|^2
@@ -216,7 +203,7 @@ The minimization problem for $\mathcal{F}$ in $\ell^2(\R^4) \times \ell^2(\R^4)$
 \end{corollary}
 
 \begin{proof}
-It suffices to observe that if $\mathcal{V}_{\omega}$ denotes the subset of $\ell^2(\R^4) \times \ell^2(\R^4)$ satisfying the constraint (\ref{eq:l2-constraint}) and by $V_{\omega}$ the subset of $(u, v)  \in \R^4 \times \R^4$ such that $u \times v = \star\omega$, then Proposition \ref{prop:simple reduction} yields
+It suffices to observe that if $\mathcal{V}_{\omega}$ denotes the subset of $\ell^2(\R^4) \times \ell^2(\R^4)$ satisfying the constraint (\ref{eq:l2-constraint}) and by $V_{\omega}$ the subset of $(u, v)  \in \R^4 \times \R^4$ such that $u \wedge v = \omega$, then Proposition \ref{prop:simple reduction} yields
 \begin{equation}
 \min_{(\mathbf{u}, \mathbf{v}) \in \mathcal{V}_{\omega}}\mathcal{F}(\mathbf{u}, \mathbf{v}) = \min_{(u, v) \in V_\omega} \mathcal{F}(\mathbf{e}_1 u, \mathbf{e}_1 v) = \min_{(u,v) \in V_{\omega}} f(u,v).
 \end{equation}
@@ -227,27 +214,21 @@ Let us now prove the following
 
 \begin{proposition}
 \label{prop:finite dim minimization}
-Any couple of vectors $(u_{\star}, v_{\star}) \in \R^4 \times \R^4$ minimizing the function $f$ given in (\ref{eq:finite dim energy}) and subject to the constraint (\ref{eq:finite dim constraint}) with $\omega \in D_{ijk}^{*}$, is characterized by the following conditions:
+Any couple of vectors $(u_{\star}, v_{\star}) \in \R^4 \times \R^4$ minimizing the function $f$ given in (\ref{eq:finite dim energy}) and subject to the constraint (\ref{eq:finite dim constraint}) with $\omega = x \wedge y$ a simple bivector, is characterized by the following conditions:
 \begin{eqnarray}
 \label{eq:finite dim minimization conditions}
-u_{\star}, v_{\star} \in D_{ijk}, & 
-|u_{\star}|^2 = |v_{\star}|^2, & 
+|u_{\star}|^2 = |v_{\star}|^2 = |\omega|, & 
 u_{\star} \cdot v_{\star} = 0.
 \end{eqnarray}
-Therefore, for any $\sigma \in D_{ijk}$ such that $\sigma \cdot \star\hat{\omega} = 0$ and $|\sigma|^2 = |\omega|$, the couple
-\begin{equation}
-(\sigma, \sigma \times \star \hat{\omega}) \in D_{ijk} \times D_{ijk} \subset \R^4 \times \R^4
-\end{equation}
-is a (global) constrained minimizer for $f$.
+Therefore, any two vectors $\sigma, \mu \in \Span\{x, y\}$ such that $|\sigma|^2 = |\mu|^2 =|\omega|$ and $\sigma \cdot \mu = 0$, the couple $(\sigma, \mu) \in \R^4 \times \R^4$ is a (global) constrained minimizer for $f$.
 \end{proposition}
 
 \begin{remark}
-The construction of a couple of vectors satisfying relations (\ref{eq:finite dim minimization conditions}) is straightforward and very similar to the construction of the corresponding pair of vectors for \textsc{SPr3}, c.f. Remark 18 in \cite{Alouges2017}. It suffices to choose any vector $\mu \in D_{ijk}$ linearly independent from $\star \hat{\omega}$ and to set $\sigma := \mu \times \star\hat{\omega}$. In fact, setting $\hat{\mu} := \mu / |\mu|$ yields $|\mu|^2 = |\omega|/(1 - (\hat{\mu} \cdot \star\hat{\omega})^2)$ and therefore by choosing $|\mu|^2 = |\omega|/(1 - (\hat{\mu} \cdot \star \hat{\omega})^2)$ we get $|\sigma|^2 = |\omega|$.
+To construct such a couple, it suffices to scale $x$ to get $u$ and then find $v$ by Gram-Schmidt orthogonalization.
 \end{remark}
 
 \begin{proof}
-First, we note that it is clear that $u_{\star}, v_{\star} \in D_{ijk}$ by definition of $D_{ijk}^{*}$.
-Next, to find the minimizers of the problem (\ref{eq:finite dim energy}) - (\ref{eq:finite dim constraint}), we note that the constraint $u \wedge v = \omega$ implies the existence of a $\psi \in (0, \pi)$ such that $|u||v| \sin \psi= |\omega|$. Hence, the constrained minimization for $f$ is equivalent to the unconstrained minimization of the function $\hat{f}: \R^4 \times (0, \pi) \to \R$ defined by
+Note that to find the minimizers of the problem (\ref{eq:finite dim energy}) - (\ref{eq:finite dim constraint}), the constraint $u \wedge v = \omega$ implies the existence of a $\psi \in (0, \pi)$ such that $|u||v| \sin \psi= |\omega|$. Hence, the constrained minimization for $f$ is equivalent to the unconstrained minimization of the function $\hat{f}: \R^4 \times (0, \pi) \to \R$ defined by
 \begin{equation}
 (u, \psi) \mapsto \frac{1}{2} |u|^2 + \frac{1}{2} \frac{|\omega|^2}{|u|^2 \sin^2\psi},
 \end{equation}
@@ -255,11 +236,7 @@ whose stationary satisfy $\psi_{\star} = \frac{\pi}{2}$ and $|u_{\star}|^2 = |\o
 \begin{equation}
 \hat{f}(u, \psi) \geq \frac{1}{2} \frac{|u|^4 + |\omega|^2}{|u|^2} = |\omega| + \frac{1}{2}\frac{(|\omega| - |u|^2)^2}{|u|^2} \geq |\omega| = \hat{f}(u_{\star}, \psi_{\star}).
 \end{equation}
-This proves the first statement. For the second part, we set $\hat{\omega} := \omega/|\omega|$ and we consider a vector $\sigma \in D_{ijk}$ such that
-\begin{equation}
-	\sigma \cdot \star\hat{\omega} = 0 \text{ and } |\sigma|^2 = |\omega|. 
-\end{equation}
-By a trivial computation, one finds that the vectors $v := \sigma \times \star \hat{\omega}$ and $u := \sigma$ satisfy the relations $u \cdot v = 0$, $|u|^2 = |v|^2 = |\omega|$ and $v \wedge u = \omega$. 
+A straightforward calculation shows then that for such $\sigma$ and $\mu$, one has $\sigma \wedge \mu \mid \mid \hat{\omega}$ since they are in the plane given by $\Span\{x,y\}$. By construction, one has $|\sigma \wedge \mu| = |\sigma| |\mu| = |\omega|$.
 \end{proof}
 
 Pasting everything worked out above together leads to the final result of this section. We have
@@ -267,22 +244,21 @@ Pasting everything worked out above together leads to the final result of this s
 
 \begin{theorem}
 \label{thm:optimal control curves in the simple case}
-Let $\delta p \in \R^3 \times \so(3) \simeq \bigwedge^2 \R^4$ be a prescribed net displacement. Moreover, assume that $\delta p \in D_{ijk}^*$ for some combination of indices $i,j,k \in \N_4$. Then, any minimizer $\xi \in H_{\sharp}^1(J, \R^4)$ of the energy functional (\ref{eq: linearized energy functional}) subject to the constraint (\ref{eq: constraint}) is of the form
+Let $\delta p \in \R^3 \times \so(3) \simeq \bigwedge^2 \R^4$ be a prescribed net displacement. Moreover, assume that $\delta p = x \wedge y$ is a simple bivector. Then, any minimizer $\xi \in H_{\sharp}^1(J, \R^4)$ of the energy functional (\ref{eq: linearized energy functional}) subject to the constraint (\ref{eq: constraint}) is of the form
 \begin{equation}
 \xi(t) := (\cos t) a + (\sin t) b,
 \end{equation}
-i.e. an ellipse of $D_{ijk} \subset \R^4$ centered at the origin and contained in the plane spanned by the vectors $a$ and $b$. The vectors $a,b \in D_{ijk}$ are obtained as follows:
+i.e. an ellipse of $\R^4$ centered at the origin and contained in the plane spanned by the vectors $a$ and $b$. The vectors $a,b \in \R^4$ are obtained as follows:
 \begin{enumerate}
 \item We compute the vector $\omega$ via the relation
 \begin{equation}
-\omega := \diag \left (\frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta} \right ) \delta p \in D_{ijk}.
+\omega := \diag \left (\frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta} \right ) \delta p = \tilde{x} \wedge \tilde{y}.
 \end{equation}
-Then we consider a vector $u \in D_{ijk}$ in the plane orthogonal to $\star \omega$ in $D_{ijk}$ and such that
+Then we consider two vectors $u,v \in \Span\{\tilde{x}, \tilde{y}\}$ such that
 \begin{equation}
 \label{eq:global minimizer condition}
-|u|^2 = |\omega|,
+|u|^2 = |v|^2 = |\omega| \text{ and } u \cdot v = 0.
 \end{equation}
-e.g. $u := \sqrt{|\omega|} \frac{\mu \times \star \omega}{|\mu \times \star \omega|}$, with $\mu \in D_{ijk}$ linearly independent from $\star \omega$. Furthermore, we set $v := u \times \star \omega$.
 
 \item We set $\hat{\omega} := \omega/|\omega|$ and we calculate the vectors $a$ and $b$ via the relations
 \begin{equation}
@@ -297,20 +273,20 @@ We then have $ v \wedge u = \omega$ and the minimum value of $\mathcal{G}$ is eq
 In addition, the vectors $a$ and $b$ are $\mathfrak{g}$-orthogonal, i.e. with respect to the inner product defined for every $x,y \in \R^4$ by $(x, y)_{\mathfrak{g}} := 2 \pi \Lambda_{\mathfrak{g}} x \cdot y$, and have the same $\mathfrak{g}$-norm $|a|_{\mathfrak{g}}^2 = |b|_{\mathfrak{g}}^2 = |\omega|$. 
 \end{theorem}
 
-\begin{remark}
-Suppose that $\delta p \mid \mid e_{14}$, i.e. a net displacement along the $\hat{e}_1$-axis. Then we have both $\hat{\omega} \in D^{*}_{124}$ as well as $\hat{\omega} \in D_{134}^{*}$. In the first case, we have $\star \hat{\omega} = e_2$ and thus we can choose $u := \sqrt{|\omega|} e_4$ to satisfy (\ref{eq:global minimizer condition}). Then we have $v = -\sqrt{|\omega|} e_1$ and hence we get from (\ref{eq:global minimizer form}) that
-\begin{eqnarray}
-	a := \sqrt{\frac{|\omega|}{2 \pi \mathfrak{g}_4}} \tau_{4}&, & b := -\sqrt{\frac{|\omega|}{2 \pi \mathfrak{g}_{1}}} \tau_1.
-\end{eqnarray}
-In the case $\hat{\omega} \in D^{*}_{134}$ we have $\star\hat{\omega} = e_3$ and therefore we find the same vectors $a$ and $b$ from the relations (\ref{eq:global minimizer condition}) and (\ref{eq:global minimizer form}). Indeed, the resulting vectors are independent of the choice of one of the two possible spaces $D^*_{ijk}$ for any direction $\hat{\omega} = e_{ij}$. In other words, an energy minimizing net displacement along the $\hat{e}_1$-axis with respect to the standard euclidean space $(\R^4, (\cdot, \cdot)_2)$ is realized by an elliptic stroke contained in the plane spanned by the vectors $\tau_1$ and $\tau_4$. On the other hand, with respect to the inner-product space $(\R^4, (\cdot, \cdot)_{\mathfrak{g}})$, the energy optimizing strokes are circles of radius $\sqrt{|\omega|}$. More generally, if $\hat{\omega} = e_{ij}$, then the energy optimizing strokes describe ellipses with respect to the standard inner-product or $(\cdot, \cdot)_2$ circles of radius $\sqrt{|\omega|}$ with respect to the inner-product $(\cdot, \cdot)_{\mathfrak{g}}$ in the plane spanned by the vectors $\tau_i$ and $\tau_j$.
-\end{remark}
+%\begin{remark}
+%Suppose that $\delta p \mid \mid e_{14}$, i.e. a net displacement along the $\hat{e}_1$-axis. Then we have both $\hat{\omega} \in D^{*}_{124}$ as well as $\hat{\omega} \in D_{134}^{*}$. In the first case, we have $\star \hat{\omega} = e_2$ and thus we can choose $u := \sqrt{|\omega|} e_4$ to satisfy (\ref{eq:global minimizer condition}). Then we have $v = -\sqrt{|\omega|} e_1$ and hence we get from (\ref{eq:global minimizer form}) that
+%\begin{eqnarray}
+%	a := \sqrt{\frac{|\omega|}{2 \pi \mathfrak{g}_4}} \tau_{4}&, & b := -\sqrt{\frac{|\omega|}{2 \pi \mathfrak{g}_{1}}} \tau_1.
+%\end{eqnarray}
+%In the case $\hat{\omega} \in D^{*}_{134}$ we have $\star\hat{\omega} = e_3$ and therefore we find the same vectors $a$ and $b$ from the relations (\ref{eq:global minimizer condition}) and (\ref{eq:global minimizer form}). Indeed, the resulting vectors are independent of the choice of one of the two possible spaces $D^*_{ijk}$ for any direction $\hat{\omega} = e_{ij}$. In other words, an energy minimizing net displacement along the $\hat{e}_1$-axis with respect to the standard euclidean space $(\R^4, (\cdot, \cdot)_2)$ is realized by an elliptic stroke contained in the plane spanned by the vectors $\tau_1$ and $\tau_4$. On the other hand, with respect to the inner-product space $(\R^4, (\cdot, \cdot)_{\mathfrak{g}})$, the energy optimizing strokes are circles of radius $\sqrt{|\omega|}$. More generally, if $\hat{\omega} = e_{ij}$, then the energy optimizing strokes describe ellipses with respect to the standard inner-product or $(\cdot, \cdot)_2$ circles of radius $\sqrt{|\omega|}$ with respect to the inner-product $(\cdot, \cdot)_{\mathfrak{g}}$ in the plane spanned by the vectors $\tau_i$ and $\tau_j$.
+%\end{remark}
 
 \begin{proof}
-From Proposition \ref{prop:finite dim minimization}, Corollary \ref{cor:simple reduction} and then Proposition \ref{prop: l2-minimization}, we get that any $\sigma \in D_{ijk}$ satisfying the relations
+From Proposition \ref{prop:finite dim minimization}, Corollary \ref{cor:simple reduction} and then Proposition \ref{prop: l2-minimization}, we get that any $u, v \in \Span\{\tilde{x}, \tilde{y}\}$ satisfying the relations
 \begin{eqnarray}
- u \cdot \star \hat{\omega} = 0, & |u|^2 = |\omega|, & \omega := \sqrt{\det \Lambda_{\mathfrak{g}}} (\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p,
+ u \cdot v = 0, & |u|^2 = |v|^2 =  |\omega|, & \omega := \sqrt{\det \Lambda_{\mathfrak{g}}} (\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p,
 \end{eqnarray}
-is associated to a (global) constrained minimizer for $\mathcal{G}_{U}$, via the curve $\eta(t) := (\cos t) \tilde{a} + (\sin t) \tilde{b}$, where the Fourier coefficients $\tilde{a}, \tilde{b} \in \R^4$ are related to $\omega$ (c.f. \ref{eq:relation Fourier coeffs of eta}) by $(\sqrt{2 \pi \Lambda_{\mathfrak{g}}}) \tilde{a} = u$ and $(\sqrt{2 \pi \Lambda_{\mathfrak{g}}}) \tilde{b} = (u \times \star\hat{\omega})$. The minimum value of the energy is then $\mathcal{G}_{U}(\eta) = |\omega|$.
+is associated to a (global) constrained minimizer for $\mathcal{G}_{U}$, via the curve $\eta(t) := (\cos t) \tilde{a} + (\sin t) \tilde{b}$, where the Fourier coefficients $\tilde{a}, \tilde{b} \in \R^4$ are related to $\omega$ (c.f. \ref{eq:relation Fourier coeffs of eta}) by $(\sqrt{2 \pi \Lambda_{\mathfrak{g}}}) \tilde{a} = u$ and $(\sqrt{2 \pi \Lambda_{\mathfrak{g}}}) \tilde{b} = v$. The minimum value of the energy is then $\mathcal{G}_{U}(\eta) = |\omega|$.
 
 Finally, in the $\mathfrak{g}$-orthogonal reference frame, the inner product is defined by $(x, y)_{\mathfrak{g}} := 2 \pi \Lambda_{\mathfrak{g}}x \cdot y$ for $x,y \in \R^4$. Let us denote by $|\cdot|_{\mathfrak{g}}$ the associated norm. Then we have the following relations:
 \begin{align}
@@ -318,6 +294,18 @@ Finally, in the $\mathfrak{g}$-orthogonal reference frame, the inner product is 
 \end{align}
 Applying the orthogonal map $U$ to $\tilde{a}$ and $\tilde{b}$ finishes the proof.
 \end{proof}
+
+\subsection{Some examples of simple net displacements}
+In light of Theorem \ref{thm:optimal control curves in the simple case} presented above, one might ask whether there are concrete cases in which the net displacement happens to be a simple bivector. It turns out that there is convenient correspondence for engineering purposes between certain subspaces of $\bigwedge^2 \R^4$ consisting only of simple bivectors. Indeed, note that the condition in Lemma \ref{lem:simple bivector} is in particular satisfied if all coefficients corresponding to a certain index are zero, e.g. $\omega_{i4} = 0$ for $i \in \N_3$. This yields four subspaces $D^*_{ijk}$ of $\bigwedge^2 \R^4$ consisting only of simple bivectors. Since net displacement $\delta p$ is merely scaled and multiplied by diagonal matrices to get the constraint vector in (\ref{eq:l2-constraint}), its structure is not changed and thus by inspection of the basis of $\bigwedge^2 \R^4$, we have the following correspondences:
+\begin{align*}
+D^{*}_{123} &\longleftrightarrow\text{ rotations around all three axes } \hat{e}_1, \hat{e}_2, \hat{e}_3\\
+D^{*}_{124} &\longleftrightarrow \text{ translation in the $\hat{e}_1\hat{e}_2$-plane, rotation around the $\hat{e}_3$-axis }\\
+D^{*}_{134} &\longleftrightarrow  \text{ translation in the $\hat{e}_1\hat{e}_3$-plane, rotation around the $\hat{e}_2$-axis }\\
+D^{*}_{234} &\longleftrightarrow  \text{ translation in the $\hat{e}_2\hat{e}_3$-plane, rotation around the $\hat{e}_1$-axis }
+\end{align*}
+
+
+
 
 
 

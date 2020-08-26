@@ -1,0 +1,179 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[a4paper,width=133mm,top=25mm,bottom=25mm]{geometry}
+\author{Philipp Weder}
+\title{Soutenance de stage - dispotition}
+
+
+
+
+
+% packages for layout
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textit{\nouppercase{\leftmark}}}
+\fancyhead[R]{\thepage}
+
+\renewcommand{\headrulewidth}{0.5pt}
+
+
+%roman enumeration
+\renewcommand\labelenumi{(\roman{enumi})}
+\renewcommand\theenumi\labelenumi
+
+% font
+\usepackage{pxfonts}
+
+% bibliography
+\usepackage[style=authoryear]{biblatex}
+
+% environments
+% theorem
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+% corollary
+\theoremstyle{plain}
+\newtheorem{corollary}{Corollary}[theorem]
+% lemma
+\theoremstyle{plain}
+\newtheorem{lemma}[theorem]{Lemma}
+% remark
+\theoremstyle{definition}
+\newtheorem*{remark}{Remark}
+% definition
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+% example
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+% proposition
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[section]
+
+% additional packages
+\usepackage{appendix}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\h}{\mathcal{H}}
+\newcommand{\K}{\mathcal{K}}
+\DeclareMathOperator{\Skew}{Skew}
+\DeclareMathOperator{\id}{id}
+\newcommand{\so}{\mathfrak{so}}
+\newcommand{\REF}{\mathrm{ref}}
+\newcommand{\spr}{\textsc{SPr4}}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\chroexp}{\overset{\longrightarrow}{\exp}}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\Span}{span}
+\newcommand{\dd}[1]{\mathrm{d}#1}
+\DeclareMathOperator{\ad}{ad}
+\newcommand{\T}{\mathcal{T}}
+
+\begin{document}
+\renewcommand\labelitemi{--}
+\linespread{1.05}
+\maketitle
+\section{Mot de bienvenue}
+\begin{itemize}
+\item Dire bonjour à tout le monde
+\end{itemize}
+
+\section{Introduction}
+\begin{itemize}
+\item Introduction au sujet, mentionner Purcell
+\item Expliquer pourquoi le sujet est important
+\item Expliquer les questions mathématiques
+\item Montrer l'historique du sujet, montrer les différents nageurs, mentionner que la contrôlabilité a déjà été démontrée
+\end{itemize}
+
+\section{Structure du projet}
+\begin{itemize}
+\item Modélisation et symétries
+\item Approximation par petites courbes de contrôle (périodiques) et linéarisation
+\item Optimisation des courbes de contrôle
+\item Conjecture et perspectivess
+\end{itemize}
+
+\section{Modélisation et symétries}
+\emph{Cette partie n'est pas particulièrement intéressante car il n'y a rien de nouveau, i.e. économiser du temps!}
+\begin{itemize}
+\item Introduire le système de contrôle, la notation, les espaces etc.
+\item Montrer les condition de symétrie du système
+\item Montrer les résultats pour le système de contrôle
+\end{itemize}
+
+\section{Régime des petites courbes de contrôle}
+\emph{Cette partie n'est pas particulièrement intéressante car il n'y a rien de nouveau, i.e. économiser du temps!}
+\begin{itemize}
+\item Introduire la notation et le développement limité
+\item Montrer le résultat pour le développement limité
+\item Montrer le résultat pour les termes d'ordre zéro
+\item Introduire la notation pour les termes  de première ordre, matrices etc.
+\item Evtl. expliquer les calculs pour trouver la partie anti-symétrique
+\item Reprendre le système de contrôle, introduire la linéarisation
+\item Montrer le résultat sur le déplacement net
+\item Mentionner pourquoi la partie symétrique n'a pas d'influence, introduire les déterminantes
+\end{itemize}
+
+\section{Optimisation I}
+\begin{itemize}
+\item Introduire la notation et la linéarisation
+\item Réécrire le déplacement net
+\end{itemize}
+
+\section{Bivecteurs en $\R^4$}
+\begin{itemize}
+\item Introduire la notion de bivecteur en illustrant en $\R^3$ $\to$ figure!
+\item Montrer la différence entre $\bigwedge^2 \R^3$ et $\bigwedge^2 \R^4$, expliquer les implications
+\item Mentionner le lemme
+\end{itemize}
+
+\section{Optimisation II}
+\begin{itemize}
+\item Montrer le changement de variable et la passage en Fourier
+\item Présenter la Proposition 10 et ses implications: Le déplacement net est la somme infinie de bivecteurs et soi-même un bivecteur etc.
+\end{itemize}
+
+\section{Cas simple}
+\begin{itemize}
+\item Réduction à dimension finie
+\item Montrer que le reste passe aussi
+\item Présenter Thm. 14
+\end{itemize}
+
+\section{Le cas général}
+\begin{itemize}
+\item Montrer le point de difficulté $\to$ réduction à la dimension finie
+\item Montrer les approches pour la résolution du problème
+\item MPrésenter la conjecture et expliquer pourquoi nous sommes convaincus qu'elle est vraie
+\end{itemize}
+
+\section{Conclusion et perspectives}
+\begin{itemize}
+\item Résumé
+\item Conjecture
+\item Approximation par bras longs
+\end{itemize}
+
+\printbibliography
+
+
+\end{document}

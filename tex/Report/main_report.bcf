@@ -2227,7 +2227,9 @@
     <bcf:citekey order="40">Hitchin2003</bcf:citekey>
     <bcf:citekey order="41">Alouges2017</bcf:citekey>
     <bcf:citekey order="42">Alouges2017</bcf:citekey>
-    <bcf:citekey order="43">DeSimone2011</bcf:citekey>
+    <bcf:citekey order="43">Alouges2017</bcf:citekey>
+    <bcf:citekey order="44">Alouges2017</bcf:citekey>
+    <bcf:citekey order="45">DeSimone2011</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
