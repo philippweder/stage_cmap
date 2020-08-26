@@ -1,0 +1,401 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[a4paper,top=25mm,bottom=25mm]{geometry}
+\author{Philipp Weder}
+\title{Soutenance de stage - dispotition détaillée}
+
+
+
+
+
+% packages for layout
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textit{\nouppercase{\leftmark}}}
+\fancyhead[R]{\thepage}
+
+\renewcommand{\headrulewidth}{0.5pt}
+
+
+%roman enumeration
+\renewcommand\labelenumi{(\roman{enumi})}
+\renewcommand\theenumi\labelenumi
+
+% font
+%\usepackage{pxfonts}
+
+% bibliography
+\usepackage[style=ieee, sorting = nty, backend = biber]{biblatex}
+\bibliography{/Users/philipp/Documents/GitHub/stage_cmap/tex/Report/report.bib}
+\usepackage{csquotes}
+
+% environments
+% theorem
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+% corollary
+\theoremstyle{plain}
+\newtheorem{corollary}{Corollary}[theorem]
+% lemma
+\theoremstyle{plain}
+\newtheorem{lemma}[theorem]{Lemma}
+% remark
+\theoremstyle{definition}
+\newtheorem*{remark}{Remark}
+% definition
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+% example
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+% proposition
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[section]
+
+% additional packages
+\usepackage{appendix}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\h}{\mathcal{H}}
+\newcommand{\K}{\mathcal{K}}
+\DeclareMathOperator{\Skew}{Skew}
+\DeclareMathOperator{\id}{id}
+\newcommand{\so}{\mathfrak{so}}
+\newcommand{\REF}{\mathrm{ref}}
+\newcommand{\spr}{\textsc{SPr4}}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\chroexp}{\overset{\longrightarrow}{\exp}}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\Span}{span}
+\newcommand{\dd}[1]{\mathrm{d}#1}
+\DeclareMathOperator{\ad}{ad}
+\newcommand{\T}{\mathcal{T}}
+
+\begin{document}
+\renewcommand\labelitemi{--}
+\linespread{1.05}
+\maketitle
+\section{Mot de bienvenue}
+
+\section{Introduction}
+
+
+\section{Structure du projet}
+La structure du reste de la présentation est comme ce qui suit:
+\begin{enumerate}
+\item Tout d'abord, je vais vous présenter le modèle mathématique qui a été introduit dans \cite{Alouges2013} et je vais vous montrer les propriétés de symétrie satisfaites par le système de contrôle en question.
+
+\item Ensuite, je vais introduire l'hypothèse des courbes de contrôle petites et je vais présenter les implications qui en résultent pour notre système de contrôle. 
+
+\item Puis, je parlerai du problème d'optimisation associé dont on verra la solution dans un cas particulier.
+
+\item Finalement, j'aborderai les perspectives sur le sujet et je présenterai la conjecture sur le cas général, qu'on a faite à la fin du projet.
+\end{enumerate}
+
+
+\section{Modélisation et symétries}
+\subsection{Notation et modèle}
+\begin{itemize}
+
+\item Pour le modèle du nageur vu avant, on se donne un tétraèdre de référence avec sommets $(S_1, S_2, S_3, S_4)$ centré à $c \in \R^4$ tel que $\dist(c, S_i) = 1$.
+
+\item Alors le nageur \textsc{SPr4} consiste de quatre boules $B_i$ centrées à $b_i$ de rayon $a > 0$ telles que la boule $B_i$ peut bouger le long de la demi-droite d'origine $c$ passant par $S_i$.
+
+\item Donc, on est dans la situation où les quatre boules sont reliées à $c$ par des bras très fin, qui peuvent s'allonger et se rétracter. Or, on néglige la résistance visqueuse des bras. De plus, il n'y a aucune restriction pour l'orientation du nageur dans le fluide, c'est-à-dire à longueurs de bras fixés, le nageur est juste un corps rigide dans un fluide Stokesien.
+
+\item La configuration géométrique est complètement décrite par deux ensembles de variables:
+\begin{enumerate}
+\item \emph{Les variables de forme:} $\xi := (\xi_1, \xi_2, \xi_3, \xi_4) \in \M := (\sqrt{3/2}a, + \infty)^4$, où les $\xi_i$ sont les longueurs des bras.
+
+\item \emph{Les variables de position:} $p = (c, R) \in \mathcal{P} := \R^3 \times \SO(3)$.
+\end{enumerate}
+De plus, on pose $z_i := \overline{S_i c}$. En effet, ceci est une description complète du nageur, car si $r \in B_a$, la boule de rayon $a$ centrée à l'origine, le point actuel sur la boule $B_i$ est donné par
+\begin{equation}
+	r_i(\xi, p, r) :=  c + R(\xi_i z_i + r).
+\end{equation}
+Les fonctions $r_i$ sont analytique, par conséquent on peut en déduire la vitesse instantanée sur la boule $B_i$:
+\begin{equation}
+	u_i(\xi, p, r) = \dot{c} + \omega \times (\xi_i z_i + r) + R z_i \dot{\xi}_i,
+\end{equation}
+où $\omega$ est le vecteur axial associé à la matrice anti-symétrique $\dot{R}R$.
+
+\item Dans \cite{Alouges2013}, il a été montré comment $p$ change si on varie $\xi$. Plus précisément, on a le système dynamique suivant:
+\begin{equation}
+\label{eq: control system}
+	\dot{p} = F(R, \xi) \dot{\xi} := \left ( \begin{array}{c}
+	F_c(R, \xi) \\
+	F_\theta(R, \xi)
+	\end{array}  \right ) \dot{\xi},
+\end{equation}
+tel que $\dot{c} = F_{c}(R, \xi) \dot{\xi}$ et $\dot{R} = R_{\theta}(R, \xi) \dot{\xi}$.
+
+\item On remarque qu'on a
+\begin{equation}
+\begin{aligned}
+	F_c(R, \xi) \in \mathcal{L}(\R^4, \R^3) \text{ et } F_{\theta}(R, \xi) \in \mathcal{L}(\R^4,T_R \SO(3)).
+\end{aligned}
+\end{equation}
+De plus, on sait que pour $R \in \SO(3)$ fixé, on a
+\begin{align}
+T_{R}SO(3) = \{R M \mid M \in \Skew_3(\R)\}.
+\end{align}
+En particulier, on a $\dim T_R \SO(3) = 3$. Ainsi, dès qu'on a choisi une base pour les espaces tangents correspondants, on peut exprimer $F_{c}(R, \xi)$ et $F_{\theta}(R, \xi)$ comme des matrices de taille $4 \times 3$ pour $R$ et $\xi$ fixes.
+
+\end{itemize}
+
+\subsection{Symétries}
+Passons à l'investigation du système de contrôle \ref{eq: control system}. Pour ceci, choisissons une condition initiale $p_0 = (c_0, R_0) \in \mathcal{P}$ et une courbe de contrôle $\xi: J \subset \R \to \M$, avec $J$ un voisinage de zéro. Puis, notons $\gamma(c_0, R_0, \xi): I \to \mathcal{P}$ la solution associée au système dynamique
+\begin{equation}
+\label{eq:dynamical system}
+\begin{aligned}
+	&\dot{p} = F(R, \xi) \dot{\xi},& & p(0) := p_0.
+\end{aligned}
+\end{equation}
+On notera par $\gamma_c(c_0, R_0, \xi)$ et $\gamma_{\theta}(c_0, R_0, \xi)$ les projections à $\R^3$ et $\SO(3)$, respectivement. En particulier, on a par définition
+\begin{equation}
+	\dot{\gamma}(c_0, R_0, \xi)(t) = F(\gamma_\theta(c_0, R_0, \xi)(t), \xi(t))\dot{\xi}(t), \forall t \in J.
+\end{equation}
+
+\subsubsection{Invariance rotationelle}
+\begin{itemize}
+
+\item Les équations de Stokes sont invariant sous rotations, c'est-à-dire si on tourne tout le domaine géométrique, la solution se transforme de la même façon.
+
+\item Ceci implique pour la solution de notre système dynamique que
+\begin{equation}
+\label{eq:spatial rotational invariance}
+	\gamma_c(c_0, R R_0, \xi)(t) = R \gamma_c (c_0, R_0, \xi)(t) + (I - R) c_0, \forall t \in J
+\end{equation}
+et
+\begin{equation}
+\label{eq: angular rotational invariance}
+	\gamma_\theta(c_0, R R_0, \xi)(t) =  R \gamma_\theta(c_0, R_0, \xi)(t), \forall t \in J
+\end{equation}
+Ensuite, on trouve avec un calcul la propriété suivante du champs de vecteur $F$:
+\begin{proposition}
+\label{prop: rotational invariance}
+Soit $\xi_0 := \xi(0) \in \M$ le point initiale de la courbe de contrôle et notons $T_{\xi}\M$ l'espace tangent à $\xi$. Si le système de contrôle \ref{eq: control system} est invariant sous rotations et si pour tout $\xi \in \M$ on a $T_{\xi}\M \simeq \R^4$, alors
+\begin{equation}
+	F_c(R, \xi) = R F_c(\xi) \text { and } F_\theta(R, \xi) = R F_{\theta} (R, \xi), \forall (R, \xi) \in \SO(3) \times \M,
+\end{equation}
+où $F_c(\xi) := F_{c}(I, \xi)$ et $F_{\theta}(\xi) := F_{\theta}(I, \xi)$
+\end{proposition}
+
+\item Ceci signifie juste qu'on peut toujours factoriser l'orientation de $F$.
+
+\end{itemize}
+
+\subsubsection{Permutation des bras}
+\begin{itemize}
+\item Notons $P_{ij} \in Mat_{4 \times 4}(\R)$ la matrice de permutation qui échange les indices $i$ et $j$ d'un vecteur. Cette transformation appliquée à l'espace de contrôles $\M$ signifie la permutation des bras $i||$ et $j||$.
+
+\item Soit $S_{ij}$ la réflexion qui envoi $i ||$ sur $j||$ dans $\mathcal{P}$. Remarquons que la réflexion $S_{ij}$ se passe au plans qui passe par les bras $k||$ et $l||$.
+
+\item Les équations sont invariantes sous changement de point de vue, ce qui implique pour notre solution que pour la position initiale $p_0 := (c, I)$ on a
+\begin{equation}
+\label{eq:spatial_perm_inv}
+	\gamma_c(c_0, I, P_{ij} \xi) = S_{ij} \gamma_c(S_{ij}c_0, I, \xi)
+\end{equation}
+et
+\begin{equation}
+\label{eq:angular_perm_inv}
+	\gamma_{\theta}(c_0, I, P_{ij} \xi ) = S_{ij} \gamma_{\theta} (S_{ij} c_0, I, \xi) S_{ij}.
+\end{equation}
+
+\item À l'aide d'un calcul un peu plus technique, on trouve le résultat suivant:
+
+\begin{proposition}
+\label{prop: spatial permutation invariance}
+Si le système de contrôle (\ref{eq: control system}) satisfait les équations (\ref{eq:spatial_perm_inv}) et (\ref{eq:angular_perm_inv}) et $T_{\xi} \M \simeq \R^4$ pour tout $\xi \in \M$, alors
+\begin{align}
+	 F_c(P_{ij} \xi) = S_{ij} F_c(\xi) P_{ij} \text{ et } F_{\theta}(P_{ij} \xi) = - S_{ij} F_{\theta}(\xi) P_{ij}. \forall \xi \in \M.
+\end{align}
+\end{proposition}
+
+\item Attention: Il faut toujours choisir la base canonique $\mathcal{E} = (e_1, e_2,e_3, e_4$ pour $\R^4$ et la base $\mathcal{L} = (L_1, L_2, L_3)$ avec
+\begin{align}
+\label{eq: L1}
+	&L_1 = \frac{\dd}{\dd\theta}R_1(\theta)_{\mid \theta =0} = \left(\begin{array}{ccc}
+	0 & 0 & 0 \\ 
+	0 & 0 & -1 \\ 
+	0 & 1 & 0
+	\end{array}  \right ),\\
+\label{eq: L2}
+	&L_2 = \frac{\dd}{\dd\theta}R_2(\theta)_{\mid \theta =0} = \left (\begin{array}{ccc}
+	0 & 0 & 1 \\ 
+	0 & 0 & 0 \\ 
+	-1 & 0 & 0
+	\end{array}  \right ),\\
+\label{eq: L3}
+	&L_3 = \frac{\dd}{\dd\theta}R_3(\theta)_{\mid \theta =0} = \left (\begin{array}{ccc}
+	0 & -1 & 0 \\ 
+	1 & 0 & 0 \\ 
+	0 & 0 & 0
+	\end{array}  \right ),
+\end{align}
+pour justifier la notation dans l'équation à droite dans la proposition.
+\end{itemize}
+
+\section{Régime des petites courbes de contrôle}
+\begin{itemize}
+\item Maintenant, on a envie d'exploiter les propriétés de symétrie de $F$ de la partie précédente. Pour faire ceci, attaquons $F$ du côté analytique. 
+
+\item On part de la factorisation
+\begin{equation}
+\label{eq: reminder control system}
+	F_{c}(R, \zeta) = R F_{c}(\zeta) \text{ et } F_{\theta}(R, \xi) = R F_{\theta}(\zeta), \forall R \in \SO(3),
+\end{equation}
+où $F_{c}(\zeta) := F_c(I, \zeta)$ et $F_{\theta}(\zeta) := F_{\theta}(I, \zeta)$. Puis, supposons que $\zeta = \xi_0 + \xi$, où $\xi_0$ a toutes les composoantes égales. Finalement, posons $F_{c, \xi_0}(\xi) := F_{c}(\xi_0 + \xi)$ et $F_{\theta, \xi_0}(\xi) := F_{\theta}(\xi_0 + \xi)$.
+
+\item Il a été démontré dans \cite{Alouges2013} que $F$ et donc $F_{c, \xi_0}$ et $F_{\theta, \xi_0}$ sont analytiques. Par conséquents, nous avons le droit de faire le développement limité suivant:
+\begin{align}
+\label{eq: spatial control expansion}
+	F_{c, \xi_0}(\xi)\eta &= F_{c, 0} \eta  + \h_{c,0}(\xi \otimes \eta) + \mathcal{O}(|\xi|)\eta\\
+\label{eq: angular control expansion}
+	F_{\theta, \xi_0}(\xi) \eta &= F_{\theta, 0} \eta + \h_{c, 0}(\xi \otimes \eta) + \mathcal{O}(|\xi|)\eta,
+\end{align}
+où $F_{c,0} := F_{c}(\xi_0) \in M_{3 \times 4}(\R)$, $\h_{c,0}\in \mathcal{L}(\R^4 \otimes \R^4, \R^3)$ représent la dérivée d'ordre 1 de $F_{c, \xi_0}$ à $\xi = 0$. $F_{\theta, \xi}$ est défini de façon analogue.
+
+\item Pour les termes d'ordre zéro on peut montrer que
+\begin{align}
+\label{eq:zeroth_order_sym}
+	F_{c,0} &= S_{ij} F_{c,0} P_{ij}\\
+	F_{\theta, 0} &= -S_{ij} F_{\theta, 0} P_{ij}
+\end{align}
+ainsi que pour les termes d'ordre un que
+\begin{align}
+\label{eq:first_order_sym}
+\h_{c,0}(P_{ij} \xi\otimes \eta) &= S_{ij} \h_{c,0}(\xi \otimes P_{ij} \eta), &\forall \xi, \eta \in \R^4\\
+\h_{\theta,0}(P_{ij} \xi \otimes \eta) &= -S_{ij} \h_{\theta,0}(\xi \otimes P_{ij} \eta), &\forall \xi, \eta \in \R^4
+\end{align}
+\end{itemize}
+
+\subsection{Termes d'ordre zéro}
+\begin{itemize}
+\item Un calcul élémentaire, qui n'utilise que (\ref{eq:zeroth_order_sym}) et les propriétés des $S_{ij}$ montre que
+\begin{equation}
+	F_{c,0} = \mathfrak{a} (z_1 |z_2| z_3|z_4),
+\end{equation}
+avec $\mathfrak{a} \in \R$ ou bien
+\begin{equation}
+	F_{c,0} = - 3 \sqrt{3} \mathfrak{a} [\tau_1| \tau_2 |\tau_3]^T,
+\end{equation}
+où $\tau_1 : = \tfrac{1}{\sqrt{6}}(-2,1,1,0)^T$, $\tau_2 := \tfrac{1}{\sqrt{2}}(0,1,-1,0)^T$, $\tau_{3}:= \tfrac{1}{2 \sqrt{3}} (1,1,1,-3)^T$ forment une base orthonormale ensemble avec $\tau_4:= \tfrac{1}{2}(1,1,1,1)^T$. Cette base orthonormale sera utile plus tard.
+\end{itemize}
+
+\subsection{Termes d'ordre un}
+\begin{itemize}
+\item Pour déterminer les termes d'ordre un, on a suivi l'approche dans \cite{Alouges2017}, où on a évalué les tenseurs sur la base canonique et où on a posé
+\begin{align}
+A_k &:= (\h_{c,0}(e_i \otimes e_j)\cdot \hat{e}_k)_{i,j \in \N_4}, k \in \N_3\\
+B_k &:= (\h_{\theta,0}(e_i \otimes e_j)\cdot \hat{e}_k)_{i,j \in \N_4}, k \in \N_3.
+\end{align}
+Ainsi, on a pour tout $\xi, \eta \in \R^4$
+\begin{align}
+\label{eq: matrix representation of spatial first order term}
+	\h_{c,0}(\xi \otimes \eta) = \sum_{k \in \N_3}(A_k \eta \cdot \xi)\hat{e}_k, \\
+\label{eq: matrix representation of angular first order term}
+	\h_{\theta, 0}(\xi \otimes \eta) = \sum_{k \in \N_3}(B_k \eta \cdot \xi) L_k.
+\end{align}
+
+\item À lieu de calculer directement les matrices $A_k$ et $B_k$, on a calculé leurs parties symétriques et anti-symétriques en utilisant des arguments de symétrie. En fait, seulement les parties anti-symétriques seront importantes pour la suite. Notons-les
+\begin{align}
+M_k &:= \frac{1}{2}[A_k - A_k^T], k \in \N_3\\
+M_{k + 3} &:= \frac{1}{2}[B_k - B_k^T], k \in \N_3.
+\end{align}
+
+\item Finalement, il ne reste que 5 paramètres inconnus dans les matrices $A_k$ et $B_k$.
+\end{itemize}
+
+\subsection{Linéarisation}
+\begin{itemize}
+\item Maintenant, on se donne un espace pour les courbes, notamment $H^1_{\sharp}(J, \R^4)$, où $J := [0, 2\pi]$.
+
+\item On notera $\langle f \rangle := (2 \pi)^{-1 }\int_{J} f(t) d t$ pour $f \in H^1_{\sharp}(J, \R^4)$.
+
+\item Reprenons le système dynamique. Initialement, pour $\zeta \in \M$, le système dynamique s'écrivait
+\begin{align}
+\begin{cases}
+	\dot{c} &= R F_c(\zeta) \dot{\zeta}\\
+	\dot{R} &= R F_{\theta}(\zeta) \dot{\zeta}.
+\end{cases}
+\end{align}
+Puis dans la partie précédente, on a posé $\zeta = \xi_0 + \xi$ et un développement limité autour de $\xi = 0$ nous a fournit le système simplifié
+ \begin{align}
+ \label{eq: dynamics first approx}
+ \begin{cases}
+ 	\dot{c} &= R F_{c,0} \dot{\xi} + R \sum_{k \in \N_3}(A_k \dot{\xi} \cdot \xi)\hat{e_k}\\
+ 	\dot{R} &= R \sum_{k \in \N_3} (B_k \dot{\xi} \cdot \xi) L_k.
+ \end{cases}
+ \end{align}
+ 
+\item Définissons les déplacements nets
+\begin{align}
+	&\delta c: H_{\sharp}^1(J,\R^4) \to \R^3\\
+	&\xi \mapsto 2\pi \langle \dot{c} (\xi) \rangle \nonumber \\
+	&\delta p: H_{\sharp}^1(J,\R^4) \to \so(3)\\
+	&\xi \mapsto 2 \pi \langle \dot{R}(\xi) \rangle \nonumber
+\end{align}
+Il est impossible d'évaluer ses expressions exactement, mais un argument du calcul chronologique nous a permis de linéariser le système simplifié autour de $R_0 = I$. Ainsi, on est arrivé à établir le résultat suivant:
+\begin{proposition}
+\label{prop:net displacement}
+Pour tout $\xi \in H_\sharp^1(J, \R^4)$, dans un voisinage de $0 \in H_{\sharp}^{1}(J, \R^4)$, on a les estimes suivants
+\begin{equation}
+\begin{aligned}
+\delta c(\xi) &= 2 \pi \sum_{k \in \N_3} \langle A_k \dot{\xi} \cdot \xi \rangle \hat{e}_k + \mathcal{O}(||\xi||_{H^1_{\sharp}}^3),\\
+\delta R(\xi) &= 2 \pi \sum_{k \in \N_3} \langle B_k \dot{\xi} \cdot \xi \rangle L_k + \mathcal{O}(||\xi||^4_{H_\sharp^1}).
+\end{aligned}
+\end{equation}
+\end{proposition}
+
+\item Si $A$ est une matrice symétrique, on trouve par intégration par parties que $\langle A \xi \cdot \dot{\xi} \rangle = - \langle A \xi \cdot \dot{\xi} \rangle = 0$ et donc
+\begin{align}
+\langle A_k \dot{\xi} \cdot \xi \rangle &= \langle M_k \dot{\xi} \cdot \xi \rangle, &\forall k \in \N_3\\
+\langle B_k \dot{\xi} \cdot \xi \rangle &= \langle M_{k + 3} \dot{\xi} \cdot \xi \rangle, &\forall k \in \N_3
+\end{align}
+
+\item Par un calcul direct, on trouve
+\begin{align}
+  M_k \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\alpha \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}), & & k \in \N_3 \\
+  M_{3 + k} \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\delta \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4}), & & k \in \N_3,
+\end{align},
+où $\{\tau_l\}_{l \in \N_4}$ est la base orthonormée vue précédemment et $k$ est pris mod 3.
+\end{itemize}
+
+\section{Optimisation I}
+
+
+\section{Bivecteurs en $\R^4$}
+
+
+\section{Optimisation II}
+
+
+\section{Cas simple}
+
+
+\section{Conclusion et perspectives}
+
+
+\printbibliography
+
+
+\end{document}

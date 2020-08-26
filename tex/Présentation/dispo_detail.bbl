@@ -1,0 +1,77 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{Alouges2013}{article}{}
+      \name{author}{5}{}{%
+        {{hash=bbaa542e639eb60a359cc0adda7e7092}{%
+           family={Alouges},
+           familyi={A\bibinitperiod},
+           given={Fran{ç}ois},
+           giveni={F\bibinitperiod}}}%
+        {{hash=4beb38f8658966a7a3d53ed89c224d97}{%
+           family={DeSimone},
+           familyi={D\bibinitperiod},
+           given={Antonio},
+           giveni={A\bibinitperiod}}}%
+        {{hash=91837a43a3f55f83441a1b225b8e1bbf}{%
+           family={Heltai},
+           familyi={H\bibinitperiod},
+           given={Luca},
+           giveni={L\bibinitperiod}}}%
+        {{hash=0009aa36ce365bd2d38f4ac4445af800}{%
+           family={Lefebvre-Lepot},
+           familyi={L\bibinithyphendelim L\bibinitperiod},
+           given={Aline},
+           giveni={A\bibinitperiod}}}%
+        {{hash=4df746f615a21ef14d54c0b646153fc3}{%
+           family={and},
+           familyi={a\bibinitperiod},
+           given={Beno{ı̂}t\bibnamedelima Merlet},
+           giveni={B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Institute of Mathematical Sciences ({AIMS})}%
+      }
+      \strng{namehash}{f0978c47c286f96287cb6445b9bd2def}
+      \strng{fullhash}{21f98a974dd0aa018975933504885725}
+      \strng{bibnamehash}{21f98a974dd0aa018975933504885725}
+      \strng{authorbibnamehash}{21f98a974dd0aa018975933504885725}
+      \strng{authornamehash}{f0978c47c286f96287cb6445b9bd2def}
+      \strng{authorfullhash}{21f98a974dd0aa018975933504885725}
+      \field{sortinit}{A}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Discrete {\&} Continuous Dynamical Systems - B}
+      \field{number}{5}
+      \field{title}{Optimally swimming stokesian robots}
+      \field{volume}{18}
+      \field{year}{2013}
+      \field{pages}{1189\bibrangedash 1215}
+      \range{pages}{27}
+      \verb{doi}
+      \verb 10.3934/dcdsb.2013.18.1189
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
