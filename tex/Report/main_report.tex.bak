@@ -163,6 +163,9 @@ This article is about the parking 4-sphere swimmer (\spr). This is a low-Reynold
 \section{Conclusion and outlook}
 \input{sec6_report.tex}
 
+\section{Acknowledgments}
+\input{acknowledgements.tex}
+
 \section{Appendix}
 \input{appendix_report.tex}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.20)  26 AUG 2020 18:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.20)  27 AUG 2020 17:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -741,14 +741,15 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [6] [7 </Users/philipp/Documents/GitHub/stage_cmap/images/reflection.png (PNG c
 opy)>]) (./sec4_report.tex [8] [9] [10] [11] [12]) (./sec5_report.tex [13]
-[14] [15] [16] [17]) (./sec6_report.tex [18]) (./appendix_report.tex [19])
-Overfull \hbox (2.19911pt too wide) in paragraph at lines 170--170
+[14] [15] [16] [17]) (./sec6_report.tex [18]) (./acknowledgements.tex)
+(./appendix_report.tex [19])
+Overfull \hbox (2.19911pt too wide) in paragraph at lines 173--173
 []\OT1/cmr/m/n/10 F. Alouges and G. D. Fratta, \  Park-ing 3-sphere swim-mer. i
 . en-ergy min-i-miz-ing strokes,"
  []
 
 [20]
-Overfull \hbox (4.94356pt too wide) in paragraph at lines 170--170
+Overfull \hbox (4.94356pt too wide) in paragraph at lines 173--173
 \OT1/cmr/m/it/10 plied Math-e-mat-ics\OT1/cmr/m/n/10 , vol. 5, no. 2, pp. 109{1
 18, May 1952. \OT1/cmr/m/sc/10 doi\OT1/cmr/m/n/10 : $\OT1/cmtt/m/n/10 10 . 1002
  / cpa . 3160050201$\OT1/cmr/m/n/10 . 
@@ -760,13 +761,13 @@ Package logreq Info: Writing requests to 'main_report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 13588 strings out of 480608
- 234980 string characters out of 5903630
- 897995 words of memory out of 5000000
- 29279 multiletter control sequences out of 15000+600000
+ 13592 strings out of 480608
+ 235058 string characters out of 5903630
+ 898995 words of memory out of 5000000
+ 29280 multiletter control sequences out of 15000+600000
  547364 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,16n,58p,1334b,2790s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,16n,58p,1334b,2807s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></
@@ -795,7 +796,7 @@ onts/type1/public/amsfonts/euler/eufm7.pfb></usr/local/texlive/2020/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2020/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2020/tex
 mf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main_report.pdf (21 pages, 1711788 bytes).
+Output written on main_report.pdf (21 pages, 1712467 bytes).
 PDF statistics:
  189 PDF objects out of 1000 (max. 8388607)
  132 compressed objects within 2 object streams

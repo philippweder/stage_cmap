@@ -1,63 +1,38 @@
-\documentclass[10pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[french]{babel}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage[a4paper,top=25mm,bottom=25mm]{geometry}
+\documentclass[10pt, envcountsect]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+\title{Micro-nageurs Stokesiens}
+\subtitle{Analyse du micro-nageur "parking 4-sphere swimmer" (SPr4)}
+% \date{\today}
+\date{}
 \author{Philipp Weder}
-\title{Soutenance de stage - dispotition détaillée}
-
-
-
-
-
-% packages for layout
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\textit{\nouppercase{\leftmark}}}
-\fancyhead[R]{\thepage}
-
-\renewcommand{\headrulewidth}{0.5pt}
-
-
-%roman enumeration
-\renewcommand\labelenumi{(\roman{enumi})}
-\renewcommand\theenumi\labelenumi
-
-% font
-%\usepackage{pxfonts}
+\institute{CMAP - Ecole Polytechnique}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
 
 % bibliography
-\usepackage[style=ieee, sorting = nty, backend = biber]{biblatex}
+\usepackage[style = ieee, sorting = nty, backend = biber]{biblatex}
 \bibliography{/Users/philipp/Documents/GitHub/stage_cmap/tex/Report/report.bib}
 \usepackage{csquotes}
 
 % environments
-% theorem
-\theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[section]
-% corollary
-\theoremstyle{plain}
-\newtheorem{corollary}{Corollary}[theorem]
-% lemma
-\theoremstyle{plain}
-\newtheorem{lemma}[theorem]{Lemma}
-% remark
-\theoremstyle{definition}
-\newtheorem*{remark}{Remark}
-% definition
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
-% example
-\theoremstyle{definition}
-\newtheorem{example}{Example}[section]
+
 % proposition
 \theoremstyle{plain}
 \newtheorem{proposition}{Proposition}[section]
+
+\setbeamertemplate{theorems}[numbered]
+
 
 % additional packages
 \usepackage{appendix}
@@ -90,54 +65,76 @@
 \newcommand{\T}{\mathcal{T}}
 
 \begin{document}
-\renewcommand\labelitemi{--}
-\linespread{1.05}
+
 \maketitle
-\section{Mot de bienvenue}
-
-\section{Introduction}
 
 
-\section{Structure du projet}
-La structure du reste de la présentation est comme ce qui suit:
-\begin{enumerate}
-\item Tout d'abord, je vais vous présenter le modèle mathématique qui a été introduit dans \cite{Alouges2013} et je vais vous montrer les propriétés de symétrie satisfaites par le système de contrôle en question.
 
-\item Ensuite, je vais introduire l'hypothèse des courbes de contrôle petites et je vais présenter les implications qui en résultent pour notre système de contrôle. 
+\section[Introduction]{Introduction}
 
-\item Puis, je parlerai du problème d'optimisation associé dont on verra la solution dans un cas particulier.
+\begin{frame}{Introduction}
 
-\item Finalement, j'aborderai les perspectives sur le sujet et je présenterai la conjecture sur le cas général, qu'on a faite à la fin du projet.
-\end{enumerate}
+\end{frame}
+
+\begin{frame}{Table of contents}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents[hideallsubsections]
+\end{frame}
 
 
 \section{Modélisation et symétries}
-\subsection{Notation et modèle}
+
+\begin{frame}{Notation et modèle}
 \begin{itemize}
-
-\item Pour le modèle du nageur vu avant, on se donne un tétraèdre de référence avec sommets $(S_1, S_2, S_3, S_4)$ centré à $c \in \R^4$ tel que $\dist(c, S_i) = 1$.
-
-\item Alors le nageur \textsc{SPr4} consiste de quatre boules $B_i$ centrées à $b_i$ de rayon $a > 0$ telles que la boule $B_i$ peut bouger le long de la demi-droite d'origine $c$ passant par $S_i$.
-
-\item Donc, on est dans la situation où les quatre boules sont reliées à $c$ par des bras très fin, qui peuvent s'allonger et se rétracter. Or, on néglige la résistance visqueuse des bras. De plus, il n'y a aucune restriction pour l'orientation du nageur dans le fluide, c'est-à-dire à longueurs de bras fixés, le nageur est juste un corps rigide dans un fluide Stokesien.
-
-\item La configuration géométrique est complètement décrite par deux ensembles de variables:
+\item Tétraèdre de référence avec sommets $(S_1, S_2, S_3, S_4)$ centré à $c \in \R^4$ tel que $\dist(c, S_i) = 1$
+\item Quatre boules $B_i$, centrées à $b_i$ de rayon $a > 0$ peuvent bouger le long de la demi-droite d'origine $c$ passant par $S_i$
+\item La résistance visqueuse des bras est négligée
+\item Description complète par deux ensembles de variables:
 \begin{enumerate}
 \item \emph{Les variables de forme:} $\xi := (\xi_1, \xi_2, \xi_3, \xi_4) \in \M := (\sqrt{3/2}a, + \infty)^4$, où les $\xi_i$ sont les longueurs des bras.
 
 \item \emph{Les variables de position:} $p = (c, R) \in \mathcal{P} := \R^3 \times \SO(3)$.
 \end{enumerate}
-De plus, on pose $z_i := \overline{S_i c}$. En effet, ceci est une description complète du nageur, car si $r \in B_a$, la boule de rayon $a$ centrée à l'origine, le point actuel sur la boule $B_i$ est donné par
+\item $z_i := \overline{c S_i}$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Notation et modèle}
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{/Users/philipp/Documents/GitHub/stage_cmap/images/tetrahedron.png}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{/Users/philipp/Documents/GitHub/stage_cmap/images/spr4.png} % second figure itself
+    \end{minipage}
+    \caption{Le tétraèdre de référence et le "parking 4-sphere swimmer" (\textsc{SPr4}).}
+    \label{fig:reference tetrahedron and spr4}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Notation et modèle}
+\begin{itemize}
+\item Soit $r \in B_a$, la boule centrée à l'origine de rayon $a > 0$. Le point actuel sur $B_i$ est donné par
 \begin{equation}
 	r_i(\xi, p, r) :=  c + R(\xi_i z_i + r).
 \end{equation}
-Les fonctions $r_i$ sont analytique, par conséquent on peut en déduire la vitesse instantanée sur la boule $B_i$:
+\item Les $r_i$ sont analytiques $\to$ déduire la vitesse instantanée
 \begin{equation}
 	u_i(\xi, p, r) = \dot{c} + \omega \times (\xi_i z_i + r) + R z_i \dot{\xi}_i,
 \end{equation}
 où $\omega$ est le vecteur axial associé à la matrice anti-symétrique $\dot{R}R$.
+\end{itemize}
 
-\item Dans \cite{Alouges2013}, il a été montré comment $p$ change si on varie $\xi$. Plus précisément, on a le système dynamique suivant:
+\end{frame}
+
+\begin{frame}{Notation et modèle}
+\begin{itemize}
+\item Système dynamique trouvé dans \cite{Alouges2013}
 \begin{equation}
 \label{eq: control system}
 	\dot{p} = F(R, \xi) \dot{\xi} := \left ( \begin{array}{c}
@@ -146,40 +143,47 @@ où $\omega$ est le vecteur axial associé à la matrice anti-symétrique $\dot{
 	\end{array}  \right ) \dot{\xi},
 \end{equation}
 tel que $\dot{c} = F_{c}(R, \xi) \dot{\xi}$ et $\dot{R} = R_{\theta}(R, \xi) \dot{\xi}$.
-
-\item On remarque qu'on a
-\begin{equation}
+\item \begin{equation}
 \begin{aligned}
 	F_c(R, \xi) \in \mathcal{L}(\R^4, \R^3) \text{ et } F_{\theta}(R, \xi) \in \mathcal{L}(\R^4,T_R \SO(3)).
 \end{aligned}
 \end{equation}
-De plus, on sait que pour $R \in \SO(3)$ fixé, on a
+
+\item Pour $R \in \SO(3)$ fixé, on a
 \begin{align}
 T_{R}SO(3) = \{R M \mid M \in \Skew_3(\R)\}.
 \end{align}
-En particulier, on a $\dim T_R \SO(3) = 3$. Ainsi, dès qu'on a choisi une base pour les espaces tangents correspondants, on peut exprimer $F_{c}(R, \xi)$ et $F_{\theta}(R, \xi)$ comme des matrices de taille $4 \times 3$ pour $R$ et $\xi$ fixes.
-
+\item $\dim T_{R}\SO(3) = 3 \implies$ on peut exprimer $F_{c}(R, \xi), F_{\theta}(R,\xi)$ des matrices de taille $4 \times 3$, dès qu'on a choisi des bases
 \end{itemize}
 
-\subsection{Symétries}
-Passons à l'investigation du système de contrôle \ref{eq: control system}. Pour ceci, choisissons une condition initiale $p_0 = (c_0, R_0) \in \mathcal{P}$ et une courbe de contrôle $\xi: J \subset \R \to \M$, avec $J$ un voisinage de zéro. Puis, notons $\gamma(c_0, R_0, \xi): I \to \mathcal{P}$ la solution associée au système dynamique
+\end{frame}
+
+
+\begin{frame}{Symétries}
+\begin{itemize}
+\item Condition initiale $p_0 = (c_0, R_0) \in \mathcal{P}$
+\item Courbe de contrôle $\xi: J \subset \R \to \M$, avec $J$ un voisinage de zéro
+
+\item $\gamma(c_0, R_0, \xi): I \to \mathcal{P}$ solution associée au système dynamique
 \begin{equation}
 \label{eq:dynamical system}
 \begin{aligned}
 	&\dot{p} = F(R, \xi) \dot{\xi},& & p(0) := p_0.
 \end{aligned}
 \end{equation}
-On notera par $\gamma_c(c_0, R_0, \xi)$ et $\gamma_{\theta}(c_0, R_0, \xi)$ les projections à $\R^3$ et $\SO(3)$, respectivement. En particulier, on a par définition
+
+\item $\gamma_c(c_0, R_0, \xi)$ et $\gamma_{\theta}(c_0, R_0, \xi)$ les projections à $\R^3$ et $\SO(3)$
+
+\item Par définition, on a
 \begin{equation}
 	\dot{\gamma}(c_0, R_0, \xi)(t) = F(\gamma_\theta(c_0, R_0, \xi)(t), \xi(t))\dot{\xi}(t), \forall t \in J.
 \end{equation}
+\end{itemize}
+\end{frame}
 
-\subsubsection{Invariance rotationelle}
+\begin{frame}{Symétries - Invariance rotationnelle}
 \begin{itemize}
-
-\item Les équations de Stokes sont invariant sous rotations, c'est-à-dire si on tourne tout le domaine géométrique, la solution se transforme de la même façon.
-
-\item Ceci implique pour la solution de notre système dynamique que
+\item Invariance rotationnelle des équations de Stokes $\implies$
 \begin{equation}
 \label{eq:spatial rotational invariance}
 	\gamma_c(c_0, R R_0, \xi)(t) = R \gamma_c (c_0, R_0, \xi)(t) + (I - R) c_0, \forall t \in J
@@ -189,7 +193,7 @@ et
 \label{eq: angular rotational invariance}
 	\gamma_\theta(c_0, R R_0, \xi)(t) =  R \gamma_\theta(c_0, R_0, \xi)(t), \forall t \in J
 \end{equation}
-Ensuite, on trouve avec un calcul la propriété suivante du champs de vecteur $F$:
+\item Un calcul montre
 \begin{proposition}
 \label{prop: rotational invariance}
 Soit $\xi_0 := \xi(0) \in \M$ le point initiale de la courbe de contrôle et notons $T_{\xi}\M$ l'espace tangent à $\xi$. Si le système de contrôle \ref{eq: control system} est invariant sous rotations et si pour tout $\xi \in \M$ on a $T_{\xi}\M \simeq \R^4$, alors
@@ -198,18 +202,17 @@ Soit $\xi_0 := \xi(0) \in \M$ le point initiale de la courbe de contrôle et not
 \end{equation}
 où $F_c(\xi) := F_{c}(I, \xi)$ et $F_{\theta}(\xi) := F_{\theta}(I, \xi)$
 \end{proposition}
-
-\item Ceci signifie juste qu'on peut toujours factoriser l'orientation de $F$.
-
 \end{itemize}
 
-\subsubsection{Permutation des bras}
+\end{frame}
+
+
+\begin{frame}{Symétries - Permutation des bras}
 \begin{itemize}
-\item Notons $P_{ij} \in M{4 \times 4}(\R)$ la matrice de permutation qui échange les indices $i$ et $j$ d'un vecteur. Cette transformation appliquée à l'espace de contrôles $\M$ signifie la permutation des bras $i||$ et $j||$.
+\item $P_{ij} \in M_{4 \times 4}(\R)$ matrice de permutation t.q. les indices $i$ et $j$ sont échangés
+\item $S_{ij}$ la réflexion t.q. $||i \mapsto ||j$ et vice-versa dans l'orientation de référence $I$. En fait, $S_{ij}$ est la réflexion au plan défini par les autres bras $||k$ et $||l$.
 
-\item Soit $S_{ij}$ la réflexion qui envoie $i ||$ sur $j||$ dans $\mathcal{P}$. Remarquons que la réflexion $S_{ij}$ se passe au plans qui passe par les bras $k||$ et $l||$.
-
-\item Les équations sont invariantes sous changement de point de vue, ce qui implique pour notre solution que pour la position initiale $p_0 := (c, I)$ on a
+\item Les équations de Stokes sont invariantes sous changement de point de vue. Avec la position initiale $p_0 := (c, I)$ on en déduit que
 \begin{equation}
 \label{eq:spatial_perm_inv}
 	\gamma_c(c_0, I, P_{ij} \xi) = S_{ij} \gamma_c(S_{ij}c_0, I, \xi)
@@ -220,7 +223,22 @@ et
 	\gamma_{\theta}(c_0, I, P_{ij} \xi ) = S_{ij} \gamma_{\theta} (S_{ij} c_0, I, \xi) S_{ij}.
 \end{equation}
 
-\item À l'aide d'un calcul un peu plus technique, on trouve le résultat suivant:
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Symétries - Permutation des bras}
+\begin{figure}[h]
+\centering
+\includegraphics[scale = 0.5]{/Users/philipp/Documents/GitHub/stage_cmap/images/reflection.png}
+\caption{The reflection $S_{12}$ applied to \textsc{SPr4} in the reference orientation corresponding to the swap $(||1 \leftrightsquigarrow ||2)$ }
+\label{fig:reflection of swimmer}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Symétries - Permutation des bras}
+\begin{itemize}
+\item On trouve par un calcul technique
 
 \begin{proposition}
 \label{prop: spatial permutation invariance}
@@ -231,68 +249,75 @@ Si le système de contrôle (\ref{eq: control system}) satisfait les équations 
 \end{proposition}
 
 \item Attention: Il faut toujours choisir la base canonique $\mathcal{E} = (e_1, e_2,e_3, e_4$ pour $\R^4$ et la base $\mathcal{L} = (L_1, L_2, L_3)$ avec
+
+\renewcommand{\arraystretch}{0.7}
 \begin{align}
-\label{eq: L1}
-	&L_1 = \frac{\dd}{\dd\theta}R_1(\theta)_{\mid \theta =0} = \left(\begin{array}{ccc}
+	&L_1 =  \left(\begin{array}{ccc}
 	0 & 0 & 0 \\ 
 	0 & 0 & -1 \\ 
 	0 & 1 & 0
-	\end{array}  \right ),\\
-\label{eq: L2}
-	&L_2 = \frac{\dd}{\dd\theta}R_2(\theta)_{\mid \theta =0} = \left (\begin{array}{ccc}
+	\end{array}  \right ),
+	&L_2 =  \left (\begin{array}{ccc}
 	0 & 0 & 1 \\ 
 	0 & 0 & 0 \\ 
 	-1 & 0 & 0
 	\end{array}  \right ),\\
-\label{eq: L3}
-	&L_3 = \frac{\dd}{\dd\theta}R_3(\theta)_{\mid \theta =0} = \left (\begin{array}{ccc}
+	&L_3 = \left (\begin{array}{ccc}
 	0 & -1 & 0 \\ 
 	1 & 0 & 0 \\ 
 	0 & 0 & 0
 	\end{array}  \right ),
 \end{align}
-pour justifier la notation dans l'équation à droite dans la proposition.
+\renewcommand{\arraystretch}{1}
+pour justifier la notation!
 \end{itemize}
+\end{frame}
 
-\section{Régime des petites courbes de contrôle}
+
+\section[Petites courbes]{Régime des petites courbes de contrôle}
+
+\begin{frame}{Petites courbes - Développement limité}
 \begin{itemize}
-\item Maintenant, on a envie d'exploiter les propriétés de symétrie de $F$ de la partie précédente. Pour faire ceci, attaquons $F$ du côté analytique. 
-
-\item On part de la factorisation
+\item On a la factorisation
 \begin{equation}
 \label{eq: reminder control system}
 	F_{c}(R, \zeta) = R F_{c}(\zeta) \text{ et } F_{\theta}(R, \xi) = R F_{\theta}(\zeta), \forall R \in \SO(3),
 \end{equation}
-où $F_{c}(\zeta) := F_c(I, \zeta)$ et $F_{\theta}(\zeta) := F_{\theta}(I, \zeta)$. Puis, supposons que $\zeta = \xi_0 + \xi$, où $\xi_0$ a toutes les composoantes égales. Finalement, posons $F_{c, \xi_0}(\xi) := F_{c}(\xi_0 + \xi)$ et $F_{\theta, \xi_0}(\xi) := F_{\theta}(\xi_0 + \xi)$.
-
-\item Il a été démontré dans \cite{Alouges2013} que $F$ et donc $F_{c, \xi_0}$ et $F_{\theta, \xi_0}$ sont analytiques. Par conséquents, nous avons le droit de faire le développement limité suivant:
+où $F_{c}(\zeta) := F_c(I, \zeta)$ et $F_{\theta}(\zeta) := F_{\theta}(I, \zeta)$.
+\item On suppose que $\zeta = \xi_0 + \xi$, $\xi_0$ avec toutes les composantes égales
+\item $F_{c, \xi_0}(\xi) := F_{c}(\xi_0 + \xi)$, $F_{\theta, \xi_0}(\xi) := F_{\theta}(\xi_0 + \xi)$
+\item Résultat de \cite{Alouges2013}: $F$ et donc aussi $F_{c, \xi_0}, F_{\theta, \xi_0}$ analytiques
+\item On fait le développement limité
 \begin{align}
 \label{eq: spatial control expansion}
 	F_{c, \xi_0}(\xi)\eta &= F_{c, 0} \eta  + \h_{c,0}(\xi \otimes \eta) + \mathcal{O}(|\xi|)\eta\\
 \label{eq: angular control expansion}
 	F_{\theta, \xi_0}(\xi) \eta &= F_{\theta, 0} \eta + \h_{c, 0}(\xi \otimes \eta) + \mathcal{O}(|\xi|)\eta,
 \end{align}
-où $F_{c,0} := F_{c}(\xi_0) \in M_{3 \times 4}(\R)$, $\h_{c,0}\in \mathcal{L}(\R^4 \otimes \R^4, \R^3)$ représent la dérivée d'ordre 1 de $F_{c, \xi_0}$ à $\xi = 0$. $F_{\theta, \xi}$ est défini de façon analogue.
+pour tout $\eta \in \R^4$.
+\end{itemize}
+\end{frame}
 
-\item Pour les termes d'ordre zéro on peut montrer que
+\begin{frame}{Petites courbes - Développement limité}
+\begin{itemize}
+\item Substitution des conditions de symétrie de $F$ dans le développement limité fournit
 \begin{align}
 \label{eq:zeroth_order_sym}
 	F_{c,0} &= S_{ij} F_{c,0} P_{ij}\\
 	F_{\theta, 0} &= -S_{ij} F_{\theta, 0} P_{ij}
 \end{align}
-ainsi que pour les termes d'ordre un que
 \begin{align}
 \label{eq:first_order_sym}
 \h_{c,0}(P_{ij} \xi\otimes \eta) &= S_{ij} \h_{c,0}(\xi \otimes P_{ij} \eta), &\forall \xi, \eta \in \R^4\\
 \h_{\theta,0}(P_{ij} \xi \otimes \eta) &= -S_{ij} \h_{\theta,0}(\xi \otimes P_{ij} \eta), &\forall \xi, \eta \in \R^4
 \end{align}
-
-\item Donc, on dispose de deux grands systèmes d'équations vectorielles, dont on veut déterminer l'espace de solutions.
+\item On veut déterminer les espaces de solutions de ces systèmes d'équations vectorielles.
 \end{itemize}
+\end{frame}
 
-\subsection{Termes d'ordre zéro}
+\begin{frame}{Petites courbes - Termes d'ordre zéro}
 \begin{itemize}
-\item Un calcul élémentaire, qui n'utilise que (\ref{eq:zeroth_order_sym}) et les propriétés des $S_{ij}$ montre que
+\item Calcul élémentaire pour trouver 
 \begin{equation}
 	F_{c,0} = \mathfrak{a} (z_1 |z_2| z_3|z_4),
 \end{equation}
@@ -300,17 +325,20 @@ avec $\mathfrak{a} \in \R$ ou bien
 \begin{equation}
 	F_{c,0} = - 3 \sqrt{3} \mathfrak{a} [\tau_1| \tau_2 |\tau_3]^T,
 \end{equation}
-où $\tau_1 : = \tfrac{1}{\sqrt{6}}(-2,1,1,0)^T$, $\tau_2 := \tfrac{1}{\sqrt{2}}(0,1,-1,0)^T$, $\tau_{3}:= \tfrac{1}{2 \sqrt{3}} (1,1,1,-3)^T$ forment une base orthonormale ensemble avec $\tau_4:= \tfrac{1}{2}(1,1,1,1)^T$. Cette base orthonormale sera utile plus tard.
+où $\tau_1 : = \tfrac{1}{\sqrt{6}}(-2,1,1,0)^T$, $\tau_2 := \tfrac{1}{\sqrt{2}}(0,1,-1,0)^T$, $\tau_{3}:= \tfrac{1}{2 \sqrt{3}} (1,1,1,-3)^T$ forment une base orthonormale ensemble avec $\tau_4:= \tfrac{1}{2}(1,1,1,1)^T$. Cette base sera utile plus tard.
+\item Des arguments similaires montrent que $F_{\theta, 0} = 0$, ce qui est intuitivement clair
 \end{itemize}
+\end{frame}
 
-\subsection{Termes d'ordre un}
+\begin{frame}{Petites courbes - Termes d'ordre un}
 \begin{itemize}
-\item Pour déterminer les termes d'ordre un, on a suivi l'approche dans \cite{Alouges2017}, où on a évalué les tenseurs sur la base canonique et où on a posé
+\item Même approche que \cite{Alouges2017}
 \begin{align}
 A_k &:= (\h_{c,0}(e_i \otimes e_j)\cdot \hat{e}_k)_{i,j \in \N_4}, k \in \N_3\\
 B_k &:= (\h_{\theta,0}(e_i \otimes e_j)\cdot \hat{e}_k)_{i,j \in \N_4}, k \in \N_3.
 \end{align}
-Ainsi, on a pour tout $\xi, \eta \in \R^4$
+
+\item Ainsi, on a pour tout $\xi, \eta \in \R^4$
 \begin{align}
 \label{eq: matrix representation of spatial first order term}
 	\h_{c,0}(\xi \otimes \eta) = \sum_{k \in \N_3}(A_k \eta \cdot \xi)\hat{e}_k, \\
@@ -318,29 +346,88 @@ Ainsi, on a pour tout $\xi, \eta \in \R^4$
 	\h_{\theta, 0}(\xi \otimes \eta) = \sum_{k \in \N_3}(B_k \eta \cdot \xi) L_k.
 \end{align}
 
-\item À lieu de calculer directement les matrices $A_k$ et $B_k$, on a calculé leurs parties symétriques et anti-symétriques en utilisant des arguments de symétrie. En fait, seulement les parties anti-symétriques seront importantes pour la suite. Notons-les
+\item À lieu de calculer directement les matrices $A_k$ et $B_k$, on a calculé leurs parties symétriques et anti-symétriques en utilisant des arguments de symétrie. Notons les parties anti-symmétriques
 \begin{align}
 M_k &:= \frac{1}{2}[A_k - A_k^T], k \in \N_3\\
-M_{k + 3} &:= \frac{1}{2}[B_k - B_k^T], k \in \N_3.
+M_{k + 3} &:= \frac{1}{2}[B_k - B_k^T], k \in \N_3,
 \end{align}
+et de façon similaire les parties symétriques $N_k, k \in \N_6$.
 
 \item Finalement, il ne reste que 5 paramètres inconnus dans les matrices $A_k$ et $B_k$.
 \end{itemize}
+\end{frame}
 
-\subsection{Linéarisation}
+\begin{frame}{Petites courbes - Termes d'ordre un}
+Dans la suite seulement les parties anti-symétrique seront importantes:
+\renewcommand{\arraystretch}{0.7}
+\begin{align}
+\label{eq: M1 and M2}
+&M_1 = \alpha \left ( \begin{array}{cccc}
+0 & 3 & 3 & 2 \\ 
+-3 & 0 & 0 & -1 \\ 
+-3 & 0 & 0 & -1 \\ 
+-2 & 1 & 1 & 0
+\end{array} \right ) ,\\
+&M_2 = \sqrt{3} \alpha \left (
+\begin{array}{cccc}
+0 & 1 & -1 & 0 \\ 
+-1 & 0 & -2 & -1 \\ 
+1 & 2 & 0 & 1 \\ 
+0 & 1 & -1 & 0
+\end{array} \right),\\
+&M_3 = 2 \sqrt{2} \alpha \left (
+\begin{array}{cccc}
+0 & 0 & 0 & -1 \\ 
+0 & 0 & 0 & -1 \\ 
+0 & 0 & 0 & -1 \\ 
+1 & 1 & 1 & 0
+\end{array} 
+\right ).
+\end{align}
+\renewcommand{\arraystretch}{1}
+\end{frame}
+
+\begin{frame}{Petites courbes - Termes d'ordre un}
+\renewcommand{\arraystretch}{0.7}
+\begin{align}
+\label{eq: M4 and M5}
+	&M_4 = \delta \left (
+	\begin{array}{cccc}
+	0 & 1 & 1 & 0 \\ 
+	-1 & 0 & -2 & 3 \\ 
+	1 & 2 & 0 & -3 \\ 
+	0 & -3 & 3 & 0
+	\end{array} 
+	\right ),\\
+	&M_5 = \sqrt{3} \delta \left ( \begin{array}{cccc}
+	0 & -1 & -1 & 2 \\ 
+	1 & 0 & 0 & -1 \\ 
+	1 & 0 & 0 & -1 \\ 
+	-2 & 1 & 1 & 0
+	\end{array} \right ) ,\\
+&M_6 = 2 \sqrt{2} \delta \left (\begin{array}{cccc}
+0 & 1 & -1 & 0 \\ 
+-1 & 0 & 1 & 0 \\ 
+1 & -1 & 0 & 0 \\ 
+0 & 0 & 0 & 0
+\end{array}  \right )
+\end{align}
+\renewcommand{\arraystretch}{1}
+\end{frame}
+
+\begin{frame}{Petites courbes - Linéarisation}
 \begin{itemize}
-\item Maintenant, on se donne un espace pour les courbes, notamment $H^1_{\sharp}(J, \R^4)$, où $J := [0, 2\pi]$.
-
-\item On notera $\langle f \rangle := (2 \pi)^{-1 }\int_{J} f(t) d t$ pour $f \in H^1_{\sharp}(J, \R^4)$ la moyenne d'une fonction.
-
-\item Reprenons le système dynamique. Initialement, pour $\zeta \in \M$, le système dynamique s'écrivait
+\item Restriction de l'espace des contrôles à $H^1_{\sharp}(J, \R^4)$, où $J := [0, 2\pi]$
+\item $\langle f \rangle := (2 \pi)^{-1 }\int_{J} f(t) d t$ pour $f \in H^1_{\sharp}(J, \R^4)$
+\item Initialement, pour $\zeta \in \M$, le système dynamique s'écrivait
 \begin{align}
 \begin{cases}
 	\dot{c} &= R F_c(\zeta) \dot{\zeta}\\
 	\dot{R} &= R F_{\theta}(\zeta) \dot{\zeta}.
 \end{cases}
 \end{align}
-Puis dans la partie précédente, on a posé $\zeta = \xi_0 + \xi$ et un développement limité autour de $\xi = 0$ nous a fournit le système simplifié
+
+\item Avec $\zeta = \xi_0 + \xi$, on a autour de $\xi = 0$
  \begin{align}
  \label{eq: dynamics first approx}
  \begin{cases}
@@ -348,15 +435,23 @@ Puis dans la partie précédente, on a posé $\zeta = \xi_0 + \xi$ et un dévelo
  	\dot{R} &= R \sum_{k \in \N_3} (B_k \dot{\xi} \cdot \xi) L_k.
  \end{cases}
  \end{align}
- 
-\item Définissons les déplacements nets
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Petites courbes - Linéarisation}
+\begin{itemize}
+\item On définit les déplacements nets par
 \begin{align}
-	&\delta c: H_{\sharp}^1(J,\R^4) \to \R^3\\
-	&\xi \mapsto 2\pi \langle \dot{c} (\xi) \rangle \nonumber \\
-	&\delta p: H_{\sharp}^1(J,\R^4) \to \so(3)\\
+	\delta c: &H_{\sharp}^1(J,\R^4) \to \R^3, &
+	\delta p: & H_{\sharp}^1(J,\R^4) \to \so(3)\\
+	&\xi \mapsto 2\pi \langle \dot{c} (\xi) \rangle \nonumber, &
 	&\xi \mapsto 2 \pi \langle \dot{R}(\xi) \rangle \nonumber
 \end{align}
-Il est impossible d'évaluer ses expressions exactement, mais un argument du calcul chronologique nous a permis de linéariser le système simplifié autour de $R_0 = I$. Ainsi, on est arrivé à établir le résultat suivant:
+\item Impossible d'évaluer ces expressions exactement à cause du $R$ dans (\ref{eq: dynamics first approx})!
+
+\item Un argument du \emph{calcul chronologique} permet de linéariser autour de $R_0 = I$. Ainsi, on trouve
+
 \begin{proposition}
 \label{prop:net displacement}
 Pour tout $\xi \in H_\sharp^1(J, \R^4)$, dans un voisinage de $0 \in H_{\sharp}^{1}(J, \R^4)$, on a les estimes suivants
@@ -367,52 +462,71 @@ Pour tout $\xi \in H_\sharp^1(J, \R^4)$, dans un voisinage de $0 \in H_{\sharp}^
 \end{aligned}
 \end{equation}
 \end{proposition}
+\end{itemize}
 
-\item Si $A$ est une matrice symétrique, on trouve par intégration par parties que $\langle A \xi \cdot \dot{\xi} \rangle = - \langle A \xi \cdot \dot{\xi} \rangle = 0$ et donc
+\end{frame}
+
+\begin{frame}{Petites courbes - Linéarisation}
+\begin{itemize}
+\item $A$ symétrique $\overset{I.P.P.}{\implies} \langle A \xi \cdot \dot{\xi} \rangle = - \langle A \xi \cdot \dot{\xi} \rangle = 0$ et donc
 \begin{align}
 \langle A_k \dot{\xi} \cdot \xi \rangle &= \langle M_k \dot{\xi} \cdot \xi \rangle, &\forall k \in \N_3\\
 \langle B_k \dot{\xi} \cdot \xi \rangle &= \langle M_{k + 3} \dot{\xi} \cdot \xi \rangle, &\forall k \in \N_3
 \end{align}
 
-\item Par un calcul direct, on trouve
+\item Par un calcul on obtient
 \begin{align}
-  M_k \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\alpha \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}), & & k \in \N_3 \\
+  M_k \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\alpha \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}),  & & k \in \N_3\\
   M_{3 + k} \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\delta \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4}), & & k \in \N_3,
 \end{align}
 où $\{\tau_l\}_{l \in \N_4}$ est la base orthonormée vue précédemment et $k$ est pris mod 3.
+\end{itemize}
+\end{frame}
 
-\item Si on note $\{f_k\}_{k \in \N_6}$ la base canonique de $\R^6$, ceci fournit finalement
+\begin{frame}{Petites courbes - Linéarisation}
+\begin{itemize}
+\item Soit $\{f_k\}_{k \in \N_6}$ la base canonique de $\R^6$
+\item Finalement, on trouve
 \begin{equation}
 \label{eq: net displacement}
 \frac{\delta p}{2 \pi}= - 2  \sqrt{6} \alpha \sum_{k \in \N_3} \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}) f_k  - 2  \sqrt{6} \delta \sum_{k \in \N_3} \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4}) f_{k + 3},
 \end{equation}
 où $k$ est de nouveau pris mod 3.
 
-\item En résumé, jusque là on a établit la dynamique du nageur dans le régime de petites courbes de contrôle à cinq paramètres près et on sait exprimer le déplacement net à 3 paramètres près.
+\item Parce que dans (\ref{eq: net displacement}), il n'y a que les $M_k$, le déplacement net est décrit à trois paramètres scalaires près.
 \end{itemize}
+\end{frame}
 
-\section{Optimisation I}
+
+
+\section{Optimisation}
+
+\begin{frame}{Optimisation - Notation}
 \begin{itemize}
-\item On adopte la définition d'efficacité selon Lighthill \cite{Lighthill1952}: Les mouvements optimaux sont ceux qui minimisent la dissipation d'énergie cinétique en atteignant un déplacement net prescrit.
+\item Définition d'efficacité selon Lighthill \cite{Lighthill1952}: \emph{Les mouvements optimaux sont ceux qui minimisent la dissipation d'énergie cinétique en atteignant un déplacement net prescrit.}
 
-\item En termes mathématiques, la dissipation d'énergie due à un mouvement $\xi \in H^1_{\sharp}(J, \R^4)$ s'écrit par une fonctionnelle d'énergie appropriée
+\item La dissipation d'énergie due à un mouvement $\xi \in H^1_{\sharp}(J, \R^4)$ s'écrit par une fonctionnelle d'énergie appropriée
 \begin{equation}
- \mathcal{G}(\xi) := \int_{J} \mathfrak{g}(\xi(t))\dot{\xi}(t) \cdot \dot{\xi}(t) \dd t,
+ \mathcal{G}(\xi) := \int_{J} \mathfrak{g}(\xi(t))\dot{\xi}(t) \cdot \dot{\xi}(t) \dd t.
 \end{equation}
-où la densité d'énergie $\mathfrak{g} \in C^1(\R^4)$ est une fonction à valeurs dans les matrices symétriques et définies positives de $M_{4 \times 4}(\R)$. (En fait, c'est une métrique Riemannienne)
 
 \item Sous l'hypothèse des petites courbes de contrôle, on peut supposer que $\mathfrak{g}(\xi) = \mathfrak{g}(0) + o(1)$, avec $\mathfrak{g}(0)$ une matrice symétrique définie positive dans $M_{4 \times 4}(\R)$. Ainsi, l'énergie s'écrit
 \begin{equation}
 \label{eq: linearized energy functional}
 	\mathcal{G}(\xi) := \int_{J} Q_{\mathfrak{g}}(\dot{\xi}(t))\dd t,
 \end{equation}
-avec $Q_{\mathfrak{g}}$ la forme quadratique associée à la matrice $\mathfrak{g}(0)$, i.e. $Q_{\mathfrak{g}}(\eta) := \mathfrak{g}(0)\eta \cdot \eta$.
+avec $Q_{\mathfrak{g}}(\eta) := \mathfrak{g}(0)\eta \cdot \eta$.
+\end{itemize}
+\end{frame}
 
+\begin{frame}{Optimisation - Notation}
+\begin{itemize}
 \item Les propriétés de symétrie des équations Stokes impliquent en particulier que
 \begin{align}
 	Q_{\mathfrak{g}}(P_{ij} \eta) = Q_{\mathfrak{g}}(\eta),\; i,j \in \N_4.
 \end{align}
-On en déduit avec un petit calcul que la matrice $G$ qui représente $Q_{\mathfrak{g}}$ est de la forme suivante:
+
+\item La matrice $G$ représentant $Q_{\mathfrak{g}}$ est de la forme suivante:
 \begin{equation}
 G = \left ( \begin{array}{cccc}
 \kappa & h & h & h \\ 
@@ -421,39 +535,55 @@ h & h & \kappa & h \\
 h & h & h & \kappa
 \end{array} \right ),
 \end{equation}
-pour deux paramètres $h$ et $\kappa > \max(h, -3h)$. En particulier, on observe que $G \tau_k = (\kappa - h ) \tau_k$ pour $k \in  \N_3$ et $G \tau_4 = (\kappa + 3h) \tau_4$. Dans la suite on notera $\mathfrak{g}_1 := \mathfrak{g}_2 := \mathfrak{g}_3 := \kappa - h$ et $\mathfrak{g}_4 := \kappa + 3h$ les valeurs propres de $G$. Ensuite, on diagonalise $G$:
+pour deux paramètres $h$ et $\kappa > \max(h, -3h)$.
+\item On a $G \tau_k = (\kappa - h ) \tau_k$ pour $k \in  \N_3$ et $G \tau_4 = (\kappa + 3h) \tau_4$
+\item On notera $\mathfrak{g}_1 := \mathfrak{g}_2 := \mathfrak{g}_3 := \kappa - h$ et $\mathfrak{g}_4 := \kappa + 3h$ t.q.
 \begin{eqnarray}
 G = U \Lambda_{\mathfrak{g}} U^T, & U := [\tau_1 | \tau_2 |\tau_3 |\tau_4], & \Lambda_{\mathfrak{g}} := \diag(\mathfrak{g}_i).
 \end{eqnarray}
-
-\item Donc, on face le problème d'optimisation suivant: Trouver $ \inf_{\xi \in H_{\sharp}^1(J, \R^4)} \int_{J} Q_{\mathfrak{g}}(\dot{\xi}(t)) \dd t$ sous la contrainte $\delta p = \mathfrak{h}_{c} \sum_{k \in \N_3}\left ( \int_{J} \det( \xi(t) | \dot{\xi}(t) | \tau_{k+1} | \tau_{k+2}) \dd t \right ) f_k\\
-	+ \mathfrak{h}_{\theta}  \sum_{k \in \N_3}\left ( \int_{J} \det ( \xi(t) | \dot{\xi}(t) | \tau_{k} | \tau_{4}) \dd t\right ) f_{k + 3}$ avec $\mathfrak{h}_c = - 2 \sqrt{6} \alpha$ et $\mathfrak{h}_{\theta} = - 2 \sqrt{6} \delta$.
 \end{itemize}
+\end{frame}
 
 
-\section{Bivecteurs en $\R^4$}
-\begin{itemize}
-\item Pour bien révéler la structure du problème ainsi que pour bien comprendre les différences entre le nageur \textsc{SPr3} de \cite{Alouges2017} et \textsc{SPr4}, on aura besoin de la notion de bivecteur.
+\begin{frame}{Optimisation - Notation}
+On face le problème d'optimisation:
+Trouver $ \inf_{\xi \in H_{\sharp}^1(J, \R^4)} \int_{J} Q_{\mathfrak{g}}(\dot{\xi}(t)) \dd t$ sous la contrainte
+\begin{align}
+\label{eq: constraint}
+\delta p = \mathfrak{h}_{c} \sum_{k \in \N_3}\left ( \int_{J} \det( \xi(t) | \dot{\xi}(t) | \tau_{k+1} | \tau_{k+2}) \dd t \right ) f_k\\
+	+ \mathfrak{h}_{\theta}  \sum_{k \in \N_3}\left ( \int_{J} \det ( \xi(t) | \dot{\xi}(t) | \tau_{k} | \tau_{4}) \dd t\right ) f_{k + 3} \nonumber
+\end{align}
+avec $\mathfrak{h}_c = - 2 \sqrt{6} \alpha$ et $\mathfrak{h}_{\theta} = - 2 \sqrt{6} \delta$.
+\end{frame}
 
-\item Sans entrer dans les détails, je vais illustrer la notion sur la base du cas $\R^3$. Un bivecteur dans $\R^3$ est juste un petit parallélogramme avec magnitude donnée par la surface et la direction donnée par l'orientation du parallélogramme dans $\R^3$ ensemble avec l'orientation des vecteurs aux bords. De plus, on a envie de comprendre un bivecteur comme un produit des vecteurs aux bords, ce qui est exactement réalisé par le produit "wedge".
 
+\begin{frame}{Optimisation - Bivecteurs de $\R^4$}
 \begin{figure}[h]
 \center
 \includegraphics[scale=0.5]{/Users/philipp/Documents/GitHub/stage_cmap/tex/Présentation/images/bivecteurs.png}
+\caption{Affichage d'un bivecteur dans $\R^3$ \cite{Lounesto2006}}
 \end{figure}
-
-\item Ainsi, les bivecteurs forment un espace vectoriel $\bigwedge^2 \R^3$ avec une base donnée par
+\begin{itemize}
+\item Les bivecteurs forment un espace vectoriel $\bigwedge^2 \R^3$ avec une base donnée par
 \begin{equation}
  \{\hat{e}_1 \wedge \hat{e}_2, \hat{e}_1 \wedge \hat{e}_3, \hat{e}_2 \wedge \hat{e}_3\},
 \end{equation}
-si $\{\hat{e}_1, \hat{e}_2, \hat{e}_3\}$ est une base de $\R^3$. En outre, le produit scalaire est donné par
+si $\{\hat{e}_1, \hat{e}_2, \hat{e}_3\}$ est une base de $\R^3$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Optimisation - Bivecteurs de $\R^4$}
+\begin{itemize}
+\item Le produit scalaire est donné par
 \begin{equation}
 ( u_1 \wedge u_2 , v_1 \wedge v_2 ) = \det \left (\begin{array}{cc}
 u_1 \cdot v_1 & u_1 \cdot v_2 \\ 
 u_2 \cdot v_1 & u_2 \cdot v_2
 \end{array}  \right).
 \end{equation}
-Finalement, la norme d'un bivecteur $\omega = \omega_{12} \hat{e}_1 \wedge \hat{e}_2 + \omega_{13} \hat{e}_1 \wedge \hat{e}_3 + \omega_{23} \hat{e}_2 \wedge \hat{e}_3$ est donnée par
+
+\item La norme d'un bivecteur $\omega = \omega_{12} \hat{e}_1 \wedge \hat{e}_2 + \omega_{13} \hat{e}_1 \wedge \hat{e}_3 + \omega_{23} \hat{e}_2 \wedge \hat{e}_3$ est donnée par
 \begin{equation}
 |\omega| = \sqrt{\omega_{12}^2 + \omega_{13}^2 + \omega_{23}^2}.
 \end{equation}
@@ -462,30 +592,35 @@ Finalement, la norme d'un bivecteur $\omega = \omega_{12} \hat{e}_1 \wedge \hat{
 \begin{equation}
 \{e_{12}, e_{13}, e_{14}, e_{23}, e_{24}, e_{34}\},
 \end{equation}
-où on a défini $e_{ij} := e_i \wedge e_j$ pour alléger la notation.
+où  $e_{ij} := e_i \wedge e_j$.
+\end{itemize}
+\end{frame}
 
-\item Ceci indique déjà la différence fondamentale entre les deux espaces $\bigwedge^2 \R^3$ et $\bigwedge^2  \R^4$ car ce premier est isomorphe à $\R^3$, tandis que ce dernier n'est pas isomorphe à $\R^4$.
+\begin{frame}{Optimisation - Bivecteurs de $\R^4$}
+\begin{itemize}
+\item Différence fondamentale: $\bigwedge^2 \R^3 \simeq \R^3$, mais $\bigwedge^2 \R^4 \not \simeq \R^4$
 
-\item Une conséquence de $\bigwedge^2  \R^3 \simeq \R^3$ est que tout bivecteur de $\R^3$ est \emph{simple}, c'est-à-dire que
+\item $\bigwedge^2  \R^3 \simeq \R^3$ implique que tout $\omega \in \bigwedge^2 \R^3$ est \emph{simple}, c'est-à-dire que
 \begin{equation}
 \forall \omega \in \bigwedge^2 \R^3 \exists u,v \in \R^3: \omega = u \wedge v.
 \end{equation}
-Ceci n'est plus le cas pour $\bigwedge^2\R^4$, e.g. $e_{12} + e_{34} \in \bigwedge^2\R^4$ n'est pas simple. Néanmoins, tout bivecteur de $\R^4$ est la somme d'au plus deux bivecteurs simples et orthogonaux.
 
-\item En fait, après passage en Fourier, c'est un point clé dans la solution du problème d'optimisation pour \textsc{SPr3} que le déplacement net s'identifie à un bivecteur de $\R^3$ qui est a fortiori simple. De manière analogue, on trouvera que le déplacement net de \textsc{SPr4} s'identifie à un bivecteur de $\R^4$ qui n'est plus nécessairement simple. Or, dans le cas où le déplacement net s'identifie à un bivecteur simple de $\R^4$, on pourra résoudre le problème d'optimisation de façon similaire.
+\item Ceci n'est plus le cas pour $\bigwedge^2\R^4$, e.g. $e_{12} + e_{34} \in \bigwedge^2\R^4$ n'est pas simple
 
-\item Finalement, pour identifier certains sous-espaces de $\bigwedge^2\R^4$ qui ne consistent que de bivecteurs simples, on se servira du critère suivant:
+\item Tout bivecteur de $\R^4$ est la somme d'au plus deux bivecteurs simples et orthogonaux
+
+\item Après passage en Fourier, la contrainte s'identifiera à un bivecteur de $\R^4$. Si celui-ci est simple, nous pourrons résoudre le problème d'optimisaton de façon similaire à \cite{Alouges2017}.
+
+\item Critère pour trouver des bivecteurs simples:
 \begin{lemma}
 \label{lem:simple bivector}
 un bivecteur $\omega \in \bigwedge^2 \R^4$ est simple si et seulement si $\omega \wedge \omega = 0$.
 \end{lemma}
 \end{itemize}
+\end{frame}
 
-\section{Optimisation II}
-\subsection{G-Orthogonalisation}
+\begin{frame}{Optimisation - G-Orthogonalisation}
 \begin{itemize}
-\item On réécrit la fonctionnelle d'énergie et la contrainte en termes de la base de vecteurs propres $\{\tau_i\}_{i\in \N_4}$ de la matrice $G$.
-
 \item On pose $\eta(t) := U^T \xi(t) \in H^1_{\sharp}(J, R^4)$, ce qui permet d'écrire
 \begin{equation}
 \label{eq: G-orth energy functional}
@@ -493,47 +628,53 @@ un bivecteur $\omega \in \bigwedge^2 \R^4$ est simple si et seulement si $\omega
 \end{equation}
 avec $\mathcal{G}_{U}(\eta) := \mathcal{G}(\xi) = \mathcal{G}(U \eta)$.
 
-
 \item Pour la contrainte, on observe que
 \begin{eqnarray}
 \det(\xi |\dot{\xi} | \tau_i | \tau_j) =  \det U \det (\eta | \dot{\eta} | e_i | e_j) = \det(\dot{\eta} | \eta | e_i |e_j),& \det U = -1.
 \end{eqnarray}
 
-Puis, un calcul montre que
+\item Puis, un calcul montre que
 \begin{align}
 \det(\dot{\eta} | \eta | e_k |e_4) &= (\dot{\eta} \wedge \eta, e_{k + 1} \wedge e_{k+2}), & k \in \N_3\\
 \det(\dot{\eta} |\eta | e_{k + 1} |e_{k + 2}) &= (\dot{\eta} \wedge \eta, e_k \wedge e_4), & k \in \N_3
 \end{align}
-Si on envoie maintenant la base canonique $\{f_k\}_{k \in \N_6}$ sur la base ordonnée 
-\begin{equation}
-\label{eq: basis of bivectors}
-(e_{14}, e_{24}, e_{34}, e_{23}, e_{31}, e_{12})
-\end{equation}
+\item Si on envoie maintenant la base canonique $\{f_k\}_{k \in \N_6}$ sur la base ordonnée $(e_{14}, e_{24}, e_{34}, e_{23}, e_{31}, e_{12})$ 
 de $\bigwedge^2 \R^4$, la contrainte s'écrit
 \begin{equation}
 \label{eq: G-orth constraint}
 \Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) \dd t,
 \end{equation}
-avec $\Lambda_{\mathfrak{h}} := \diag(\mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta})$. En particulier, on a séparé tous les paramètres inconnus de la courbe de contrôle. (De plus, on observe que la contrôle est l'intégrale d'une 2-forme.)
-
-\item Ainsi, le problème d'optimisation devient: Trouver $\inf_{\eta \in H^1_{\sharp}(J, \R^4)} \int_{J}\lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \eta(t) \dd t $ sous la contrainte $\Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) \dd t.$
-
-
-\item Ce problème n'est pas trivial, donc on a envie de le réduire à un problème d'optimisation facile à résoudre.
+avec $\Lambda_{\mathfrak{h}} := \diag(\mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta})$.
 \end{itemize}
-\subsection{Passage en Fourier}
+\end{frame}
+
+\begin{frame}{Optimisation - G-Orthogonalisation}
 \begin{itemize}
-\item Pour commencer, on passe en Fourier car les courbes de contrôle sont $2 \pi$- périodiques par définition. On notera
+\item Ainsi, le problème d'optimisation devient: Trouver $\inf_{\eta \in H^1_{\sharp}(J, \R^4)} \int_{J}\lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \eta(t) \dd t $ sous la contrainte 
+\begin{equation}
+\Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) \dd t.
+\end{equation}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Optimisation - Passage en Fourier}
+\begin{itemize}
+\item On passe en Fourier car les courbes de contrôle sont $2 \pi$- périodiques par définition. On notera
 \begin{equation}
 \dot{\ell}^2(\R^4) := \{\mathbf{u} = (u_n)_{n \in \N} \mid (n u_n)_{n \in \N} \in \ell^2(\R^4)\}.
 \end{equation}
-Puis, on peut écrire
+
+\item Expansion en série de Fourier:
 \begin{equation}
 \eta(t) := \frac{1}{2} a_0 + \sum_{n \in \N} \cos(nt) a_n + \sin(n t) b_n,
 \end{equation}
 avec $(a_n, b_n)_{n \in \N} \in \dot{\ell}^2(\R^4) \times \dot{\ell}^2(\R^4)$.
+\end{itemize}
+\end{frame}
 
-\item En substituant cette expansion dans la fonctionnelle d'énergie et la contrainte, on trouve
+\begin{frame}{Optimisation - Passage en Fourier}
+\begin{itemize}
+\item Substitution dans la fonctionnelle d'énergie et la contrainte fournit
 \begin{align}
 \mathcal{G}_{U} (\eta) := \int_{J} \Lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \dot{\eta} dt &= \pi \sum_{n  \in \N} n^2(\Lambda_{\mathfrak{g}} a_n \cdot a_n + \Lambda_{\mathfrak{g}} b_n \cdot b_n)  \\  &=
 \frac{1}{2} ||\mathbf{u}||_{\ell^2(\R^4)}^2 + \frac{1}{2} ||\mathbf{v}||_{\ell^2(\R^4)}^2,
@@ -547,7 +688,13 @@ et
 \begin{equation}
 \sqrt{\det \Lambda_{\mathfrak{g}}} (\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p = \sum_{n \in \N} \frac{v_n  \wedge u_n}{n},
 \end{equation}
-avec $\tilde{\Lambda}_{\mathfrak{g}} := \diag(\mathfrak{g}_c, \mathfrak{g}_c, \mathfrak{g}_c, \sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}, \sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}, \sqrt{\mathfrak{g}_c  \mathfrak{g}_{\theta}})$, où $\mathfrak{g}_1 :=\mathfrak{g}_2 := \mathfrak{g}_3 := \mathfrak{g}_c$ et $\mathfrak{g}_4 := \mathfrak{g}_\theta$. En résumé, on a démontré ainsi le résultat suivant:
+avec $\tilde{\Lambda}_{\mathfrak{g}} := \diag(\mathfrak{g}_c, \mathfrak{g}_c, \mathfrak{g}_c, \sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}, \sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}, \sqrt{\mathfrak{g}_c  \mathfrak{g}_{\theta}})$, où $\mathfrak{g}_1 :=\mathfrak{g}_2 := \mathfrak{g}_3 := \mathfrak{g}_c$ et $\mathfrak{g}_4 := \mathfrak{g}_\theta$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Optimisation - Passage en Fourier}
+\begin{itemize}
+\item Ceci prouve le résultat suivant:
 \begin{proposition}
 \label{prop: l2-minimization}
 La $H_{\sharp}^1(J, \R^4)$-minimisation de la fonctionelle $\mathcal{G}_U$ donnée par (\ref{eq: G-orth energy functional}) sous la contrainte (\ref{eq: G-orth constraint}) équivaut la minimisation de la fonctionnelle
@@ -563,18 +710,24 @@ définie sur l'espace produit $\ell^2(\R^4) \times \ell^2(\R^4)$ et sous la cont
 où $\delta p \in \R^3 \times \so(3)$ est un déplacement net préscrit un position.
 \end{proposition}
 
-\item On observe que $\omega$ est la somme infinie des bivecteurs de $\R^4$ et car cette somme converge absolument, on a $\omega \in \bigwedge^2\R^2$. De plus, on remarque que $\omega$ est simple si et seulement si $\delta p$ est simple.
-
-\item Dans l'esprit de \cite{Alouges2017}, on a envie de réduire ce problème à dimension finie. Pour faire ceci, on veut trouver pour toute paire de suites de coefficients de Fourier $(\mathbf{u}, \mathbf{v}) \in \dot{\ell}^2(\R^4) \times \dot{\ell}^2(\R^4)$ un nombre fini de coefficients de Fourier, i.e. $(\mathbf{\tilde{u}}, \mathbf{\tilde{v}}) \in c_{00}(\R^4) \times c_{00}(\R^4)$ tel  que
-\begin{align}
-	\mathcal{F}(\mathbf{\tilde{u}}, \mathbf{\tilde{v}}) = \mathcal{F}(\mathbf{u}, \mathbf{v}) \text{ et }  \sum_{n = 1}^{N} \frac{1}{n} \tilde{v}_n \wedge \tilde{u}_n = \sum_{n \in \N} \frac{1}{n} v_n \wedge u_n.
-\end{align}
-Ainsi, on se ramènerait à un problème d'optimisation en $\R^N$.
+\item On observe que  $\omega \in \bigwedge^2\R^2$. et que $\omega$ est simple si et seulement si $\delta p$ est simple.
 \end{itemize}
+\end{frame}
 
-\section{Cas simple}
+\begin{frame}{Optimisation - Passage en Fourier}
 \begin{itemize}
-\item Supposons que $\omega = x\wedge y$ est un bivecteur simple. En effet, de manière similaire à \cite{Alouges2017}, on trouve le résultat suivant:
+\item On veut réduire ce problème à un problème en dimension finie (c.f. \cite{Alouges2017}), i.e. trouver pour toute paire de suites de coefficients de Fourier $(\mathbf{u}, \mathbf{v}) \in \dot{\ell}^2(\R^4) \times \dot{\ell}^2(\R^4)$ un nombre fini de coefficients de Fourier, i.e. $(\tilde{\mathbf{u}}, \tilde{\mathbf{v}}) \in c_{00}(\R^4) \times c_{00}(\R^4)$ tel  que
+\begin{align}
+	\mathcal{F}(\tilde{\mathbf{u}}, \tilde{\mathbf{v}}) = \mathcal{F}(\mathbf{u}, \mathbf{v}) \text{ et }  \sum_{n = 1}^{N} \frac{1}{n} \tilde{v}_n \wedge \tilde{u}_n = \sum_{n \in \N} \frac{1}{n} v_n \wedge u_n.
+\end{align}
+\item $\to$ Problème d'optimisation dans $\R^N$
+\end{itemize}
+\end{frame}
+
+\section{Le cas simple}
+
+\begin{frame}{Le cas simple - Réduction à dimension finie}
+Supposons que $\omega = x\wedge y$ est un bivecteur simple. En effet, de manière similaire à \cite{Alouges2017}, on trouve le résultat suivant:
 
 \begin{proposition}
 \label{prop:simple reduction}
@@ -583,10 +736,10 @@ Si $\omega$ est un bivecteur simple, alors pour tout$(\mathbf{u}, \mathbf{v}) \i
 \mathcal{F}(\mathbf{u_{\star}}, \mathbf{v_{\star}}) = \mathcal{F}(\mathbf{u}, \mathbf{v}) \text{ and } v \wedge u = \omega.
 \end{equation}
 \end{proposition}
+\end{frame}
 
-\item Ensuite, on résout le problème d'optimisation en dimension finie pour aboutir au résultat final:
-
-
+\begin{frame}{Le cas simple - Théorème final}
+Ensuite, la résolution du problème d'optimisation en dimension finie fournit le résultat final:
 \begin{theorem}
 \label{thm:optimal control curves in the simple case}
 Soit $\delta p \in \R^3 \times \so(3) \simeq \bigwedge^2 \R^4$ un déplacement net prescrit. De plus, supposons que $\delta p = x \wedge y$ soit un bivecteur simple. Alors, tout minimiseur $\xi \in H_{\sharp}^1(J, \R^4)$ de la fonctionnelle d'énergie (\ref{eq: linearized energy functional}) sous la contrainte (\ref{eq: constraint}) est de la forme
@@ -594,6 +747,11 @@ Soit $\delta p \in \R^3 \times \so(3) \simeq \bigwedge^2 \R^4$ un déplacement n
 \xi(t) := (\cos t) a + (\sin t) b,
 \end{equation}
 i.e. une ellipse de $\R^4$ centrée à l'origine et contenu dans le plan défini par les vecteurs $a$ et $b$. On obtient les vecteurs $a,b \in \R^4$ comme ce qui suit:
+
+\end{theorem}
+\end{frame}
+
+\begin{frame}{Le cas simple - Théorème final}
 \begin{enumerate}
 \item On calcule le vecteur $\omega$ via la relation
 \begin{equation}
@@ -616,9 +774,15 @@ a := \frac{U \Lambda_{\mathfrak{g}}^{-1/2}}{\sqrt{2 \pi}} u,&& b := \frac{U \Lam
 Alors, on a $ v \wedge u = \omega$ et the la valeur minimum de $\mathcal{G}$ est égale à $|\omega|$.
 
 En outre, les vecteurs $a$ et $b$ sont $\mathfrak{g}$-orthogonaux, i.e. par rapport au produit scalaire défini pour tout $x,y \in \R^4$ par $(x, y)_{\mathfrak{g}} := 2 \pi \Lambda_{\mathfrak{g}} x \cdot y$, et ils on la même $\mathfrak{g}$-norme $|a|_{\mathfrak{g}}^2 = |b|_{\mathfrak{g}}^2 = |\omega|$. 
-\end{theorem}
+\end{frame}
 
-\item Naturellement, on se pose la question dans quelles situations $\omega$ est simple. Il se trouve qu'il y a une correspondance assez utile: Reprenons le critère du Lemme \ref{lem:simple bivector}. On remarque que ce critère est un particulier toujours satisfait dès que les composantes de $\omega$ correspondant à un certain indice valent zéro, e.g. $\omega_{i4} = 0$ pour $i \in \N_3$. Ceci fournit quatre sous-espaces $D^*_{ijk}$ de $\bigwedge^2 \R^4$ consistant uniquement de bivecteurs simples. Par inspection de notre base choisie pour $\bigwedge^2 \R^4$, on trouve les correspondances suivantes:
+\begin{frame}{Le cas simple - Exemples de cas simples}
+\begin{itemize}
+\item Naturellement, on se pose la question dans quelles situations $\omega$ est simple
+
+\item On remarque que ce critère est un particulier toujours satisfait dès que les composantes de $\omega$ correspondant à un certain indice valent zéro, e.g. $\omega_{i4} = 0$ pour $i \in \N_3$
+
+\item Ceci fournit quatre sous-espaces $D^*_{ijk}$ de $\bigwedge^2 \R^4$ consistant uniquement de bivecteurs simples. Par inspection de notre base choisie pour $\bigwedge^2 \R^4$, on trouve les correspondances suivantes:
 \begin{align*}
 D^{*}_{123} &\longleftrightarrow\text{ rotations autour toutes les trois axes } \hat{e}_1, \hat{e}_2, \hat{e}_3\\
 D^{*}_{124} &\longleftrightarrow \text{ translation dans le plan de $\hat{e}_1$ et $\hat{e}_2$, rotation autour de $\hat{e}_3$}\\
@@ -626,24 +790,39 @@ D^{*}_{134} &\longleftrightarrow  \text{ translation dans le plan de $\hat{e}_1$
 D^{*}_{234} &\longleftrightarrow  \text{ translation dans le plan de $\hat{e}_2$ et $\hat{e}_3$, rotation autour de $\hat{e}_1$ }
 \end{align*}
 
-En revanche, le bivecteur non-simple $e_{12} + e_{34}$ correspond au déplacement net $e_3 + L_3$, c'est-à-dire un mouvement de vis. Pour ce genre de mouvements on a besoin d'une solution pour le cas général.
+\item En revanche, le bivecteur non-simple $e_{12} + e_{34}$ correspond au déplacement net $e_3 + L_3$, c'est-à-dire un mouvement de vis. Pour ce genre de mouvements on a besoin d'une solution pour le cas général.
 \end{itemize}
+\end{frame}
 
+\section{Conclusions et perspectives}
 
-\section{Conclusion et perspectives}
+\begin{frame}{Conclusions}
 \begin{itemize}
 \item On a révélé les symétries du système dynamique qui décrit le micro-nageur \textsc{SPr4} à l'aide des propriétés des équations de Stokes.
 
 \item On a identifié la dynamique de \textsc{SPr4} à termes d'ordre élevé  près ainsi que le déplacement net. Il reste cinq paramètres scalaires inconnus.
 
 \item On a trouvé la structure des courbes de contrôle optimales dans un cas particulier qui décrit déjà une variétés de déplacements nets.
+\end{itemize}
 
+\end{frame}
+
+
+\begin{frame}{Conjecture}
+\begin{itemize}
 \item On n'a pas trouvé la solution au problème d'optimisation jusque là. Or, on fait la conjecture suivante: En général, les courbes de contrôle optimales sont des ellipses situées dans un ou au plus deux plans totalement orthogonaux de $\R^4$. En outre, la fréquence de la rotation dans un des deux plans et le double de la fréquence dans l'autre plan.
 
 On a les raisons suivantes pour cette conjecture:
 \begin{enumerate}
 \item Dans le cas simple $\omega$ définit le plan dans lequel la courbe optimale est située. Or, un bivecteur non-simple représente deux plans totalement orthogonaux. Donc, on estime qu'il y a moyen de construire les coefficients de Fourier qui définissent la courbe optimale à partir de $\omega$ aussi dans le cas général.
+\end{enumerate}
+\end{itemize}
 
+\end{frame}
+
+\begin{frame}
+\begin{enumerate}
+\setcounter{enumi}{1}
 \item Si on considère l'équation d'Euler-Lagrange associée au problème d'optimisation (c.f. \cite{DeSimone2011}), on trouve qu'elle s'écrit
 \begin{equation}
 G \ddot{\xi} - \Omega(\mu) \dot{\xi} = 0,
@@ -652,12 +831,27 @@ avec $\Omega(\mu) = \sum_{k \in \N_6} \mu_k M_k$. La matrice $\Omega(\mu)$ étan
 
 \item La dernière partie de la conjecture suit d'un argument de regroupement des suites $\mathbf{u}$ et $\mathbf{v}$.
 \end{enumerate}
+\end{frame}
 
-\item Dans l'avenir, on a d'une part envie de prouver cette conjecture bien sûr. D'autre part, on a aussi envie de faire une approximation de bras longs pour encore une fois réduire le nombre de paramètres inconnus dans le système dynamique approximé et après faire des simulations plus précises que dans \cite{Alouges2013}.
+\begin{frame}{Perspectives}
+\begin{itemize}
+\item Prouver la conjecture ci-dessus
+
+\item Faire l'approximation des bras longs pour simplifier le système encore une fois
 \end{itemize}
+\end{frame}
+
+\section{Questions ?}
 
 
-\printbibliography
 
+\appendix
+
+
+\begin{frame}[allowframebreaks]{References}
+
+  \printbibliography
+
+\end{frame}
 
 \end{document}

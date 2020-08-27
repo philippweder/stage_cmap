@@ -138,4 +138,16 @@ url="https://doi.org/10.1007/978-1-4614-1806-1_3"
   url    = {http://people.maths.ox.ac.uk/hitchin/files/LectureNotes/Projective_geometry/Chapter_3_Exterior.pdf},
 }
 
+@Article{Avron2004,
+  author    = {J. E. Avron and O. Gat and O. Kenneth},
+  title     = {Optimal Swimming at Low Reynolds Numbers},
+  journal   = {Physical Review Letters},
+  year      = {2004},
+  volume    = {93},
+  number    = {18},
+  month     = {oct},
+  doi       = {10.1103/physrevlett.93.186001},
+  publisher = {American Physical Society ({APS})},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

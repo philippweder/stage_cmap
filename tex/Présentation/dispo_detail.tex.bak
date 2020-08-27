@@ -205,9 +205,9 @@ où $F_c(\xi) := F_{c}(I, \xi)$ et $F_{\theta}(\xi) := F_{\theta}(I, \xi)$
 
 \subsubsection{Permutation des bras}
 \begin{itemize}
-\item Notons $P_{ij} \in Mat_{4 \times 4}(\R)$ la matrice de permutation qui échange les indices $i$ et $j$ d'un vecteur. Cette transformation appliquée à l'espace de contrôles $\M$ signifie la permutation des bras $i||$ et $j||$.
+\item Notons $P_{ij} \in M{4 \times 4}(\R)$ la matrice de permutation qui échange les indices $i$ et $j$ d'un vecteur. Cette transformation appliquée à l'espace de contrôles $\M$ signifie la permutation des bras $i||$ et $j||$.
 
-\item Soit $S_{ij}$ la réflexion qui envoi $i ||$ sur $j||$ dans $\mathcal{P}$. Remarquons que la réflexion $S_{ij}$ se passe au plans qui passe par les bras $k||$ et $l||$.
+\item Soit $S_{ij}$ la réflexion qui envoie $i ||$ sur $j||$ dans $\mathcal{P}$. Remarquons que la réflexion $S_{ij}$ se passe au plans qui passe par les bras $k||$ et $l||$.
 
 \item Les équations sont invariantes sous changement de point de vue, ce qui implique pour notre solution que pour la position initiale $p_0 := (c, I)$ on a
 \begin{equation}
@@ -286,6 +286,8 @@ ainsi que pour les termes d'ordre un que
 \h_{c,0}(P_{ij} \xi\otimes \eta) &= S_{ij} \h_{c,0}(\xi \otimes P_{ij} \eta), &\forall \xi, \eta \in \R^4\\
 \h_{\theta,0}(P_{ij} \xi \otimes \eta) &= -S_{ij} \h_{\theta,0}(\xi \otimes P_{ij} \eta), &\forall \xi, \eta \in \R^4
 \end{align}
+
+\item Donc, on dispose de deux grands systèmes d'équations vectorielles, dont on veut déterminer l'espace de solutions.
 \end{itemize}
 
 \subsection{Termes d'ordre zéro}
@@ -329,7 +331,7 @@ M_{k + 3} &:= \frac{1}{2}[B_k - B_k^T], k \in \N_3.
 \begin{itemize}
 \item Maintenant, on se donne un espace pour les courbes, notamment $H^1_{\sharp}(J, \R^4)$, où $J := [0, 2\pi]$.
 
-\item On notera $\langle f \rangle := (2 \pi)^{-1 }\int_{J} f(t) d t$ pour $f \in H^1_{\sharp}(J, \R^4)$.
+\item On notera $\langle f \rangle := (2 \pi)^{-1 }\int_{J} f(t) d t$ pour $f \in H^1_{\sharp}(J, \R^4)$ la moyenne d'une fonction.
 
 \item Reprenons le système dynamique. Initialement, pour $\zeta \in \M$, le système dynamique s'écrivait
 \begin{align}
@@ -376,23 +378,283 @@ Pour tout $\xi \in H_\sharp^1(J, \R^4)$, dans un voisinage de $0 \in H_{\sharp}^
 \begin{align}
   M_k \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\alpha \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}), & & k \in \N_3 \\
   M_{3 + k} \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\delta \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4}), & & k \in \N_3,
-\end{align},
+\end{align}
 où $\{\tau_l\}_{l \in \N_4}$ est la base orthonormée vue précédemment et $k$ est pris mod 3.
+
+\item Si on note $\{f_k\}_{k \in \N_6}$ la base canonique de $\R^6$, ceci fournit finalement
+\begin{equation}
+\label{eq: net displacement}
+\frac{\delta p}{2 \pi}= - 2  \sqrt{6} \alpha \sum_{k \in \N_3} \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}) f_k  - 2  \sqrt{6} \delta \sum_{k \in \N_3} \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4}) f_{k + 3},
+\end{equation}
+où $k$ est de nouveau pris mod 3.
+
+\item En résumé, jusque là on a établit la dynamique du nageur dans le régime de petites courbes de contrôle à cinq paramètres près et on sait exprimer le déplacement net à 3 paramètres près.
 \end{itemize}
 
 \section{Optimisation I}
+\begin{itemize}
+\item On adopte la définition d'efficacité selon Lighthill \cite{Lighthill1952}: Les mouvements optimaux sont ceux qui minimisent la dissipation d'énergie cinétique en atteignant un déplacement net prescrit.
+
+\item En termes mathématiques, la dissipation d'énergie due à un mouvement $\xi \in H^1_{\sharp}(J, \R^4)$ s'écrit par une fonctionnelle d'énergie appropriée
+\begin{equation}
+ \mathcal{G}(\xi) := \int_{J} \mathfrak{g}(\xi(t))\dot{\xi}(t) \cdot \dot{\xi}(t) \dd t,
+\end{equation}
+où la densité d'énergie $\mathfrak{g} \in C^1(\R^4)$ est une fonction à valeurs dans les matrices symétriques et définies positives de $M_{4 \times 4}(\R)$. (En fait, c'est une métrique Riemannienne)
+
+\item Sous l'hypothèse des petites courbes de contrôle, on peut supposer que $\mathfrak{g}(\xi) = \mathfrak{g}(0) + o(1)$, avec $\mathfrak{g}(0)$ une matrice symétrique définie positive dans $M_{4 \times 4}(\R)$. Ainsi, l'énergie s'écrit
+\begin{equation}
+\label{eq: linearized energy functional}
+	\mathcal{G}(\xi) := \int_{J} Q_{\mathfrak{g}}(\dot{\xi}(t))\dd t,
+\end{equation}
+avec $Q_{\mathfrak{g}}$ la forme quadratique associée à la matrice $\mathfrak{g}(0)$, i.e. $Q_{\mathfrak{g}}(\eta) := \mathfrak{g}(0)\eta \cdot \eta$.
+
+\item Les propriétés de symétrie des équations Stokes impliquent en particulier que
+\begin{align}
+	Q_{\mathfrak{g}}(P_{ij} \eta) = Q_{\mathfrak{g}}(\eta),\; i,j \in \N_4.
+\end{align}
+On en déduit avec un petit calcul que la matrice $G$ qui représente $Q_{\mathfrak{g}}$ est de la forme suivante:
+\begin{equation}
+G = \left ( \begin{array}{cccc}
+\kappa & h & h & h \\ 
+h & \kappa & h & h \\ 
+h & h & \kappa & h \\ 
+h & h & h & \kappa
+\end{array} \right ),
+\end{equation}
+pour deux paramètres $h$ et $\kappa > \max(h, -3h)$. En particulier, on observe que $G \tau_k = (\kappa - h ) \tau_k$ pour $k \in  \N_3$ et $G \tau_4 = (\kappa + 3h) \tau_4$. Dans la suite on notera $\mathfrak{g}_1 := \mathfrak{g}_2 := \mathfrak{g}_3 := \kappa - h$ et $\mathfrak{g}_4 := \kappa + 3h$ les valeurs propres de $G$. Ensuite, on diagonalise $G$:
+\begin{eqnarray}
+G = U \Lambda_{\mathfrak{g}} U^T, & U := [\tau_1 | \tau_2 |\tau_3 |\tau_4], & \Lambda_{\mathfrak{g}} := \diag(\mathfrak{g}_i).
+\end{eqnarray}
+
+\item Donc, on face le problème d'optimisation suivant: Trouver $ \inf_{\xi \in H_{\sharp}^1(J, \R^4)} \int_{J} Q_{\mathfrak{g}}(\dot{\xi}(t)) \dd t$ sous la contrainte $\delta p = \mathfrak{h}_{c} \sum_{k \in \N_3}\left ( \int_{J} \det( \xi(t) | \dot{\xi}(t) | \tau_{k+1} | \tau_{k+2}) \dd t \right ) f_k\\
+	+ \mathfrak{h}_{\theta}  \sum_{k \in \N_3}\left ( \int_{J} \det ( \xi(t) | \dot{\xi}(t) | \tau_{k} | \tau_{4}) \dd t\right ) f_{k + 3}$ avec $\mathfrak{h}_c = - 2 \sqrt{6} \alpha$ et $\mathfrak{h}_{\theta} = - 2 \sqrt{6} \delta$.
+\end{itemize}
 
 
 \section{Bivecteurs en $\R^4$}
+\begin{itemize}
+\item Pour bien révéler la structure du problème ainsi que pour bien comprendre les différences entre le nageur \textsc{SPr3} de \cite{Alouges2017} et \textsc{SPr4}, on aura besoin de la notion de bivecteur.
 
+\item Sans entrer dans les détails, je vais illustrer la notion sur la base du cas $\R^3$. Un bivecteur dans $\R^3$ est juste un petit parallélogramme avec magnitude donnée par la surface et la direction donnée par l'orientation du parallélogramme dans $\R^3$ ensemble avec l'orientation des vecteurs aux bords. De plus, on a envie de comprendre un bivecteur comme un produit des vecteurs aux bords, ce qui est exactement réalisé par le produit "wedge".
+
+\begin{figure}[h]
+\center
+\includegraphics[scale=0.5]{/Users/philipp/Documents/GitHub/stage_cmap/tex/Présentation/images/bivecteurs.png}
+\end{figure}
+
+\item Ainsi, les bivecteurs forment un espace vectoriel $\bigwedge^2 \R^3$ avec une base donnée par
+\begin{equation}
+ \{\hat{e}_1 \wedge \hat{e}_2, \hat{e}_1 \wedge \hat{e}_3, \hat{e}_2 \wedge \hat{e}_3\},
+\end{equation}
+si $\{\hat{e}_1, \hat{e}_2, \hat{e}_3\}$ est une base de $\R^3$. En outre, le produit scalaire est donné par
+\begin{equation}
+( u_1 \wedge u_2 , v_1 \wedge v_2 ) = \det \left (\begin{array}{cc}
+u_1 \cdot v_1 & u_1 \cdot v_2 \\ 
+u_2 \cdot v_1 & u_2 \cdot v_2
+\end{array}  \right).
+\end{equation}
+Finalement, la norme d'un bivecteur $\omega = \omega_{12} \hat{e}_1 \wedge \hat{e}_2 + \omega_{13} \hat{e}_1 \wedge \hat{e}_3 + \omega_{23} \hat{e}_2 \wedge \hat{e}_3$ est donnée par
+\begin{equation}
+|\omega| = \sqrt{\omega_{12}^2 + \omega_{13}^2 + \omega_{23}^2}.
+\end{equation}
+
+\item Ces idées se généralisent facilement à dimension supérieure. En effet, si $\{e_1, e_2, e_3, e_4\}$ est la base canonique de $\R^4$, alors une base de l'espace $\bigwedge^2 \R^4$ est donnée par
+\begin{equation}
+\{e_{12}, e_{13}, e_{14}, e_{23}, e_{24}, e_{34}\},
+\end{equation}
+où on a défini $e_{ij} := e_i \wedge e_j$ pour alléger la notation.
+
+\item Ceci indique déjà la différence fondamentale entre les deux espaces $\bigwedge^2 \R^3$ et $\bigwedge^2  \R^4$ car ce premier est isomorphe à $\R^3$, tandis que ce dernier n'est pas isomorphe à $\R^4$.
+
+\item Une conséquence de $\bigwedge^2  \R^3 \simeq \R^3$ est que tout bivecteur de $\R^3$ est \emph{simple}, c'est-à-dire que
+\begin{equation}
+\forall \omega \in \bigwedge^2 \R^3 \exists u,v \in \R^3: \omega = u \wedge v.
+\end{equation}
+Ceci n'est plus le cas pour $\bigwedge^2\R^4$, e.g. $e_{12} + e_{34} \in \bigwedge^2\R^4$ n'est pas simple. Néanmoins, tout bivecteur de $\R^4$ est la somme d'au plus deux bivecteurs simples et orthogonaux.
+
+\item En fait, après passage en Fourier, c'est un point clé dans la solution du problème d'optimisation pour \textsc{SPr3} que le déplacement net s'identifie à un bivecteur de $\R^3$ qui est a fortiori simple. De manière analogue, on trouvera que le déplacement net de \textsc{SPr4} s'identifie à un bivecteur de $\R^4$ qui n'est plus nécessairement simple. Or, dans le cas où le déplacement net s'identifie à un bivecteur simple de $\R^4$, on pourra résoudre le problème d'optimisation de façon similaire.
+
+\item Finalement, pour identifier certains sous-espaces de $\bigwedge^2\R^4$ qui ne consistent que de bivecteurs simples, on se servira du critère suivant:
+\begin{lemma}
+\label{lem:simple bivector}
+un bivecteur $\omega \in \bigwedge^2 \R^4$ est simple si et seulement si $\omega \wedge \omega = 0$.
+\end{lemma}
+\end{itemize}
 
 \section{Optimisation II}
+\subsection{G-Orthogonalisation}
+\begin{itemize}
+\item On réécrit la fonctionnelle d'énergie et la contrainte en termes de la base de vecteurs propres $\{\tau_i\}_{i\in \N_4}$ de la matrice $G$.
 
+\item On pose $\eta(t) := U^T \xi(t) \in H^1_{\sharp}(J, R^4)$, ce qui permet d'écrire
+\begin{equation}
+\label{eq: G-orth energy functional}
+\mathcal{G}_{U}(\eta) = \int_{J} \Lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \dot{\eta}(t) \dd t,
+\end{equation}
+avec $\mathcal{G}_{U}(\eta) := \mathcal{G}(\xi) = \mathcal{G}(U \eta)$.
+
+
+\item Pour la contrainte, on observe que
+\begin{eqnarray}
+\det(\xi |\dot{\xi} | \tau_i | \tau_j) =  \det U \det (\eta | \dot{\eta} | e_i | e_j) = \det(\dot{\eta} | \eta | e_i |e_j),& \det U = -1.
+\end{eqnarray}
+
+Puis, un calcul montre que
+\begin{align}
+\det(\dot{\eta} | \eta | e_k |e_4) &= (\dot{\eta} \wedge \eta, e_{k + 1} \wedge e_{k+2}), & k \in \N_3\\
+\det(\dot{\eta} |\eta | e_{k + 1} |e_{k + 2}) &= (\dot{\eta} \wedge \eta, e_k \wedge e_4), & k \in \N_3
+\end{align}
+Si on envoie maintenant la base canonique $\{f_k\}_{k \in \N_6}$ sur la base ordonnée 
+\begin{equation}
+\label{eq: basis of bivectors}
+(e_{14}, e_{24}, e_{34}, e_{23}, e_{31}, e_{12})
+\end{equation}
+de $\bigwedge^2 \R^4$, la contrainte s'écrit
+\begin{equation}
+\label{eq: G-orth constraint}
+\Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) \dd t,
+\end{equation}
+avec $\Lambda_{\mathfrak{h}} := \diag(\mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta})$. En particulier, on a séparé tous les paramètres inconnus de la courbe de contrôle. (De plus, on observe que la contrôle est l'intégrale d'une 2-forme.)
+
+\item Ainsi, le problème d'optimisation devient: Trouver $\inf_{\eta \in H^1_{\sharp}(J, \R^4)} \int_{J}\lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \eta(t) \dd t $ sous la contrainte $\Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) \dd t.$
+
+
+\item Ce problème n'est pas trivial, donc on a envie de le réduire à un problème d'optimisation facile à résoudre.
+\end{itemize}
+\subsection{Passage en Fourier}
+\begin{itemize}
+\item Pour commencer, on passe en Fourier car les courbes de contrôle sont $2 \pi$- périodiques par définition. On notera
+\begin{equation}
+\dot{\ell}^2(\R^4) := \{\mathbf{u} = (u_n)_{n \in \N} \mid (n u_n)_{n \in \N} \in \ell^2(\R^4)\}.
+\end{equation}
+Puis, on peut écrire
+\begin{equation}
+\eta(t) := \frac{1}{2} a_0 + \sum_{n \in \N} \cos(nt) a_n + \sin(n t) b_n,
+\end{equation}
+avec $(a_n, b_n)_{n \in \N} \in \dot{\ell}^2(\R^4) \times \dot{\ell}^2(\R^4)$.
+
+\item En substituant cette expansion dans la fonctionnelle d'énergie et la contrainte, on trouve
+\begin{align}
+\mathcal{G}_{U} (\eta) := \int_{J} \Lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \dot{\eta} dt &= \pi \sum_{n  \in \N} n^2(\Lambda_{\mathfrak{g}} a_n \cdot a_n + \Lambda_{\mathfrak{g}} b_n \cdot b_n)  \\  &=
+\frac{1}{2} ||\mathbf{u}||_{\ell^2(\R^4)}^2 + \frac{1}{2} ||\mathbf{v}||_{\ell^2(\R^4)}^2,
+\end{align}
+où on a posé
+\begin{align}
+\label{eq:relation Fourier coeffs of eta}
+	\mathbf{u} := (u_n)_{n \in \N} := \sqrt{2 \pi \Lambda_{\mathfrak{g}}}(n a_n)_{n \in \N} \text{ et } \mathbf{v} := (v_n)_{n \in \N} := \sqrt{2 \pi \Lambda_{\mathfrak{g}}} (n b_n)_{n \in \N}.
+\end{align}
+et
+\begin{equation}
+\sqrt{\det \Lambda_{\mathfrak{g}}} (\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p = \sum_{n \in \N} \frac{v_n  \wedge u_n}{n},
+\end{equation}
+avec $\tilde{\Lambda}_{\mathfrak{g}} := \diag(\mathfrak{g}_c, \mathfrak{g}_c, \mathfrak{g}_c, \sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}, \sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}, \sqrt{\mathfrak{g}_c  \mathfrak{g}_{\theta}})$, où $\mathfrak{g}_1 :=\mathfrak{g}_2 := \mathfrak{g}_3 := \mathfrak{g}_c$ et $\mathfrak{g}_4 := \mathfrak{g}_\theta$. En résumé, on a démontré ainsi le résultat suivant:
+\begin{proposition}
+\label{prop: l2-minimization}
+La $H_{\sharp}^1(J, \R^4)$-minimisation de la fonctionelle $\mathcal{G}_U$ donnée par (\ref{eq: G-orth energy functional}) sous la contrainte (\ref{eq: G-orth constraint}) équivaut la minimisation de la fonctionnelle
+\begin{equation}
+\label{eq:l2-energy}
+	\mathcal{F}(\mathbf{u}, \mathbf{v}) := \frac{1}{2} ||\mathbf{u} ||^2_{\ell^2(\R^4)} + \frac{1}{2} ||\mathbf{v}||^2_{\ell^2(\R^4)},
+\end{equation}
+définie sur l'espace produit $\ell^2(\R^4) \times \ell^2(\R^4)$ et sous la contrainte
+\begin{equation}
+\label{eq:l2-constraint}
+\sum_{n \in \N} \frac{1}{n} v_n \wedge u_n = \omega \text{ with } \omega := \sqrt{\det \Lambda_{\mathfrak{g}}}(\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p,
+\end{equation}
+où $\delta p \in \R^3 \times \so(3)$ est un déplacement net préscrit un position.
+\end{proposition}
+
+\item On observe que $\omega$ est la somme infinie des bivecteurs de $\R^4$ et car cette somme converge absolument, on a $\omega \in \bigwedge^2\R^2$. De plus, on remarque que $\omega$ est simple si et seulement si $\delta p$ est simple.
+
+\item Dans l'esprit de \cite{Alouges2017}, on a envie de réduire ce problème à dimension finie. Pour faire ceci, on veut trouver pour toute paire de suites de coefficients de Fourier $(\mathbf{u}, \mathbf{v}) \in \dot{\ell}^2(\R^4) \times \dot{\ell}^2(\R^4)$ un nombre fini de coefficients de Fourier, i.e. $(\mathbf{\tilde{u}}, \mathbf{\tilde{v}}) \in c_{00}(\R^4) \times c_{00}(\R^4)$ tel  que
+\begin{align}
+	\mathcal{F}(\mathbf{\tilde{u}}, \mathbf{\tilde{v}}) = \mathcal{F}(\mathbf{u}, \mathbf{v}) \text{ et }  \sum_{n = 1}^{N} \frac{1}{n} \tilde{v}_n \wedge \tilde{u}_n = \sum_{n \in \N} \frac{1}{n} v_n \wedge u_n.
+\end{align}
+Ainsi, on se ramènerait à un problème d'optimisation en $\R^N$.
+\end{itemize}
 
 \section{Cas simple}
+\begin{itemize}
+\item Supposons que $\omega = x\wedge y$ est un bivecteur simple. En effet, de manière similaire à \cite{Alouges2017}, on trouve le résultat suivant:
+
+\begin{proposition}
+\label{prop:simple reduction}
+Si $\omega$ est un bivecteur simple, alors pour tout$(\mathbf{u}, \mathbf{v}) \in \ell^2(\R^4) \times \ell^2(\R^4)$ tel que la contrainte (\ref{eq:l2-constraint}) soit satisfaite, il existe deux vecteurs $u,v \in \R^4$ tels que pour les suites $\mathbf{u}_{\star} := \mathbf{e}_1 u$ et $\mathbf{v}_\star := \mathbf{e}_1 v \in \ell^2(\R^4)$ on ait 
+\begin{equation}
+\mathcal{F}(\mathbf{u_{\star}}, \mathbf{v_{\star}}) = \mathcal{F}(\mathbf{u}, \mathbf{v}) \text{ and } v \wedge u = \omega.
+\end{equation}
+\end{proposition}
+
+\item Ensuite, on résout le problème d'optimisation en dimension finie pour aboutir au résultat final:
+
+
+\begin{theorem}
+\label{thm:optimal control curves in the simple case}
+Soit $\delta p \in \R^3 \times \so(3) \simeq \bigwedge^2 \R^4$ un déplacement net prescrit. De plus, supposons que $\delta p = x \wedge y$ soit un bivecteur simple. Alors, tout minimiseur $\xi \in H_{\sharp}^1(J, \R^4)$ de la fonctionnelle d'énergie (\ref{eq: linearized energy functional}) sous la contrainte (\ref{eq: constraint}) est de la forme
+\begin{equation}
+\xi(t) := (\cos t) a + (\sin t) b,
+\end{equation}
+i.e. une ellipse de $\R^4$ centrée à l'origine et contenu dans le plan défini par les vecteurs $a$ et $b$. On obtient les vecteurs $a,b \in \R^4$ comme ce qui suit:
+\begin{enumerate}
+\item On calcule le vecteur $\omega$ via la relation
+\begin{equation}
+\omega := \diag \left (\frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta} \right ) \delta p = \tilde{x} \wedge \tilde{y}.
+\end{equation}
+Puis on considère deux vecteurs $u,v \in \Span\{\tilde{x}, \tilde{y}\}$ tels que
+\begin{equation}
+\label{eq:global minimizer condition}
+|u|^2 = |v|^2 = |\omega| \text{ and } u \cdot v = 0.
+\end{equation}
+
+\item On pose $\hat{\omega} := \omega/|\omega|$ et on calcule les vecteurs a$a$ et $b$ via les relations
+\begin{equation}
+\label{eq:global minimizer form}
+\begin{aligned}
+a := \frac{U \Lambda_{\mathfrak{g}}^{-1/2}}{\sqrt{2 \pi}} u,&& b := \frac{U \Lambda_{\mathfrak{g}}^{-1/2}}{\sqrt{2 \pi}} v.
+\end{aligned}
+\end{equation}
+\end{enumerate}
+Alors, on a $ v \wedge u = \omega$ et the la valeur minimum de $\mathcal{G}$ est égale à $|\omega|$.
+
+En outre, les vecteurs $a$ et $b$ sont $\mathfrak{g}$-orthogonaux, i.e. par rapport au produit scalaire défini pour tout $x,y \in \R^4$ par $(x, y)_{\mathfrak{g}} := 2 \pi \Lambda_{\mathfrak{g}} x \cdot y$, et ils on la même $\mathfrak{g}$-norme $|a|_{\mathfrak{g}}^2 = |b|_{\mathfrak{g}}^2 = |\omega|$. 
+\end{theorem}
+
+\item Naturellement, on se pose la question dans quelles situations $\omega$ est simple. Il se trouve qu'il y a une correspondance assez utile: Reprenons le critère du Lemme \ref{lem:simple bivector}. On remarque que ce critère est un particulier toujours satisfait dès que les composantes de $\omega$ correspondant à un certain indice valent zéro, e.g. $\omega_{i4} = 0$ pour $i \in \N_3$. Ceci fournit quatre sous-espaces $D^*_{ijk}$ de $\bigwedge^2 \R^4$ consistant uniquement de bivecteurs simples. Par inspection de notre base choisie pour $\bigwedge^2 \R^4$, on trouve les correspondances suivantes:
+\begin{align*}
+D^{*}_{123} &\longleftrightarrow\text{ rotations autour toutes les trois axes } \hat{e}_1, \hat{e}_2, \hat{e}_3\\
+D^{*}_{124} &\longleftrightarrow \text{ translation dans le plan de $\hat{e}_1$ et $\hat{e}_2$, rotation autour de $\hat{e}_3$}\\
+D^{*}_{134} &\longleftrightarrow  \text{ translation dans le plan de $\hat{e}_1$ et $\hat{e}_3$, rotation autour de $\hat{e}_2$ }\\
+D^{*}_{234} &\longleftrightarrow  \text{ translation dans le plan de $\hat{e}_2$ et $\hat{e}_3$, rotation autour de $\hat{e}_1$ }
+\end{align*}
+
+En revanche, le bivecteur non-simple $e_{12} + e_{34}$ correspond au déplacement net $e_3 + L_3$, c'est-à-dire un mouvement de vis. Pour ce genre de mouvements on a besoin d'une solution pour le cas général.
+\end{itemize}
 
 
 \section{Conclusion et perspectives}
+\begin{itemize}
+\item On a révélé les symétries du système dynamique qui décrit le micro-nageur \textsc{SPr4} à l'aide des propriétés des équations de Stokes.
+
+\item On a identifié la dynamique de \textsc{SPr4} à termes d'ordre élevé  près ainsi que le déplacement net. Il reste cinq paramètres scalaires inconnus.
+
+\item On a trouvé la structure des courbes de contrôle optimales dans un cas particulier qui décrit déjà une variétés de déplacements nets.
+
+\item On n'a pas trouvé la solution au problème d'optimisation jusque là. Or, on fait la conjecture suivante: En général, les courbes de contrôle optimales sont des ellipses situées dans un ou au plus deux plans totalement orthogonaux de $\R^4$. En outre, la fréquence de la rotation dans un des deux plans et le double de la fréquence dans l'autre plan.
+
+On a les raisons suivantes pour cette conjecture:
+\begin{enumerate}
+\item Dans le cas simple $\omega$ définit le plan dans lequel la courbe optimale est située. Or, un bivecteur non-simple représente deux plans totalement orthogonaux. Donc, on estime qu'il y a moyen de construire les coefficients de Fourier qui définissent la courbe optimale à partir de $\omega$ aussi dans le cas général.
+
+\item Si on considère l'équation d'Euler-Lagrange associée au problème d'optimisation (c.f. \cite{DeSimone2011}), on trouve qu'elle s'écrit
+\begin{equation}
+G \ddot{\xi} - \Omega(\mu) \dot{\xi} = 0,
+\end{equation}
+avec $\Omega(\mu) = \sum_{k \in \N_6} \mu_k M_k$. La matrice $\Omega(\mu)$ étant toujours anti-symétrique, la solution est une rotation dans $R^4$, c'est-ä-dire elle est située dans deux plans totalement orthogonaux.
+
+\item La dernière partie de la conjecture suit d'un argument de regroupement des suites $\mathbf{u}$ et $\mathbf{v}$.
+\end{enumerate}
+
+\item Dans l'avenir, on a d'une part envie de prouver cette conjecture bien sûr. D'autre part, on a aussi envie de faire une approximation de bras longs pour encore une fois réduire le nombre de paramètres inconnus dans le système dynamique approximé et après faire des simulations plus précises que dans \cite{Alouges2013}.
+\end{itemize}
 
 
 \printbibliography

@@ -198,6 +198,41 @@
       \verb 10.1002/cpa.3160050201
       \endverb
     \endentry
+    \entry{Lounesto2006}{book}{}
+      \name{author}{1}{}{%
+        {{hash=08912714a900be5acc363dce68d5a4d6}{%
+           family={Lounesto},
+           familyi={L\bibinitperiod},
+           given={Pertti},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{08912714a900be5acc363dce68d5a4d6}
+      \strng{fullhash}{08912714a900be5acc363dce68d5a4d6}
+      \strng{bibnamehash}{08912714a900be5acc363dce68d5a4d6}
+      \strng{authorbibnamehash}{08912714a900be5acc363dce68d5a4d6}
+      \strng{authornamehash}{08912714a900be5acc363dce68d5a4d6}
+      \strng{authorfullhash}{08912714a900be5acc363dce68d5a4d6}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{15}
+      \field{isbn}{0521005515}
+      \field{month}{6}
+      \field{pagetotal}{352}
+      \field{title}{Clifford Algebras and Spinors}
+      \field{year}{2006}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.ebook.de/de/product/2991827/pertti_lounesto_clifford_algebras_and_spinors.html
+      \endverb
+      \verb{url}
+      \verb https://www.ebook.de/de/product/2991827/pertti_lounesto_clifford_algebras_and_spinors.html
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

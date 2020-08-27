@@ -149,17 +149,17 @@ defined in the product Hilbert space $\ell^2(\R^4) \times \ell^2(\R^4)$ and subj
 \label{eq:l2-constraint}
 \sum_{n \in \N} \frac{1}{n} v_n \wedge u_n = \omega \text{ with } \omega := \sqrt{\det \Lambda_{\mathfrak{g}}}(\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p,
 \end{equation}
-where $\delta p \in \R^6$ is a prescribed net displacement of position and orientation.
+where $\delta p \in \R^3 \times \so(3)$ is a prescribed net displacement of position and orientation.
 \end{proposition}
 
-We observe that we are in a very similar situation as in \cite{Alouges2017} with the fundamental difference however that this time the constraint is a bivector. Nevertheless, it is natural to try to generalize the approach in \cite{Alouges2017}, which in fact 
+We observe that we are in a very similar situation as in \cite{Alouges2017} with the fundamental difference however that this time the constraint is a bivector. Nevertheless, it is natural to try to generalize the approach in \cite{Alouges2017}, which in fact is true at least in the case of $\omega$ being simple.
 
 \subsection[The simple case]{The simple case}
 With the remarks from section \ref{sec:bivectors}, we are able to solve the constrained minimization problem of Proposition \ref{prop: l2-minimization} in a similar manner to \cite{Alouges2017} whenever the net displacvement is a simple bivector. In fact, we retrieve essentially the same result, i.e. that the optimal control curves are ellipses in a certain plane defined by the net displacement. Let us prove
 
 \begin{proposition}
 \label{prop:simple reduction}
-If $\omega$ is a simple bivector, then for any $(\mathbf{u}, \mathbf{v}) \in \ell^2(\R^4) \times \ell^2(\R^4)$ such taht the constraint (\ref{eq:l2-constraint}) holds, there exist two vectors $u,v \in \R^4$ such that for the sequences $\mathbf{u}_{\star} := \mathbf{e}_1 u$ and $\mathbf{v}_\star := \mathbf{e}_1 v \in \ell^2(\R^4)$ one has 
+If $\omega$ is a simple bivector, then for any $(\mathbf{u}, \mathbf{v}) \in \ell^2(\R^4) \times \ell^2(\R^4)$ such that the constraint (\ref{eq:l2-constraint}) holds, there exist two vectors $u,v \in \R^4$ such that for the sequences $\mathbf{u}_{\star} := \mathbf{e}_1 u$ and $\mathbf{v}_\star := \mathbf{e}_1 v \in \ell^2(\R^4)$ one has 
 \begin{equation}
 \mathcal{F}(\mathbf{u_{\star}}, \mathbf{v_{\star}}) = \mathcal{F}(\mathbf{u}, \mathbf{v}) \text{ and } v \wedge u = \omega.
 \end{equation}
@@ -296,13 +296,14 @@ Applying the orthogonal map $U$ to $\tilde{a}$ and $\tilde{b}$ finishes the proo
 \end{proof}
 
 \subsection{Some examples of simple net displacements}
-In light of Theorem \ref{thm:optimal control curves in the simple case} presented above, one might ask whether there are concrete cases in which the net displacement happens to be a simple bivector. It turns out that there is convenient correspondence for engineering purposes between certain subspaces of $\bigwedge^2 \R^4$ consisting only of simple bivectors. Indeed, note that the condition in Lemma \ref{lem:simple bivector} is in particular satisfied if all coefficients corresponding to a certain index are zero, e.g. $\omega_{i4} = 0$ for $i \in \N_3$. This yields four subspaces $D^*_{ijk}$ of $\bigwedge^2 \R^4$ consisting only of simple bivectors. Since net displacement $\delta p$ is merely scaled and multiplied by diagonal matrices to get the constraint vector in (\ref{eq:l2-constraint}), its structure is not changed and thus by inspection of the basis of $\bigwedge^2 \R^4$, we have the following correspondences:
+In light of Theorem \ref{thm:optimal control curves in the simple case} presented above, one might ask whether there are concrete cases in which the net displacement happens to be a simple bivector. It turns out that there is convenient correspondence for engineering purposes between certain subspaces of $\bigwedge^2 \R^4$ consisting only of simple bivectors and certain net displacements. Indeed, note that the condition in Lemma \ref{lem:simple bivector} is in particular satisfied if all coefficients corresponding to a certain index are zero, e.g. $\omega_{i4} = 0$ for $i \in \N_3$. This yields four subspaces $D^*_{ijk}$ of $\bigwedge^2 \R^4$ consisting only of simple bivectors. Then, by inspection of the basis of $\bigwedge^2 \R^4$, we have the following correspondences:
 \begin{align*}
 D^{*}_{123} &\longleftrightarrow\text{ rotations around all three axes } \hat{e}_1, \hat{e}_2, \hat{e}_3\\
 D^{*}_{124} &\longleftrightarrow \text{ translation in the $\hat{e}_1\hat{e}_2$-plane, rotation around the $\hat{e}_3$-axis }\\
 D^{*}_{134} &\longleftrightarrow  \text{ translation in the $\hat{e}_1\hat{e}_3$-plane, rotation around the $\hat{e}_2$-axis }\\
 D^{*}_{234} &\longleftrightarrow  \text{ translation in the $\hat{e}_2\hat{e}_3$-plane, rotation around the $\hat{e}_1$-axis }
 \end{align*}
+By comparison, the non-simple bivector $e_{12} + e_{34}$ corresponds to the net displacement $e_3 + L_3$, i.e. a screw motion. This kind of movement requires a solution to the general problem.
 
 
 

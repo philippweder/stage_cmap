@@ -1,17 +1,17 @@
 [0] Config.pm:304> INFO - This is Biber 2.14
 [0] Config.pm:307> INFO - Logfile is 'dispo_detail.blg'
-[81] biber-darwin:322> INFO - === Wed Aug 26, 2020, 15:59:04
-[96] Biber.pm:415> INFO - Reading 'dispo_detail.bcf'
-[191] Biber.pm:943> INFO - Found 1 citekeys in bib section 0
-[205] Biber.pm:4256> INFO - Processing section 0
-[205] Utils.pm:75> INFO - Globbing data source '/Users/philipp/Documents/GitHub/stage_cmap/tex/Report/report.bib'
-[205] Utils.pm:91> INFO - Globbed data source '/Users/philipp/Documents/GitHub/stage_cmap/tex/Report/report.bib' to /Users/philipp/Documents/GitHub/stage_cmap/tex/Report/report.bib
-[215] Biber.pm:4455> INFO - Looking for bibtex format file '/Users/philipp/Documents/GitHub/stage_cmap/tex/Report/report.bib' for section 0
-[218] bibtex.pm:1653> INFO - LaTeX decoding ...
-[237] bibtex.pm:1471> INFO - Found BibTeX data source '/Users/philipp/Documents/GitHub/stage_cmap/tex/Report/report.bib'
-[269] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[269] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
-[269] Biber.pm:4084> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'fr-FR'
-[269] Biber.pm:4090> INFO - No sort tailoring available for locale 'fr-FR'
-[272] bbl.pm:652> INFO - Writing 'dispo_detail.bbl' with encoding 'UTF-8'
-[273] bbl.pm:755> INFO - Output to dispo_detail.bbl
+[97] biber-darwin:322> INFO - === Thu Aug 27, 2020, 10:21:14
+[122] Biber.pm:415> INFO - Reading 'dispo_detail.bcf'
+[216] Biber.pm:943> INFO - Found 4 citekeys in bib section 0
+[229] Biber.pm:4256> INFO - Processing section 0
+[230] Utils.pm:75> INFO - Globbing data source '/Users/philipp/Documents/GitHub/stage_cmap/tex/Report/report.bib'
+[230] Utils.pm:91> INFO - Globbed data source '/Users/philipp/Documents/GitHub/stage_cmap/tex/Report/report.bib' to /Users/philipp/Documents/GitHub/stage_cmap/tex/Report/report.bib
+[244] Biber.pm:4455> INFO - Looking for bibtex format file '/Users/philipp/Documents/GitHub/stage_cmap/tex/Report/report.bib' for section 0
+[245] bibtex.pm:1653> INFO - LaTeX decoding ...
+[264] bibtex.pm:1471> INFO - Found BibTeX data source '/Users/philipp/Documents/GitHub/stage_cmap/tex/Report/report.bib'
+[345] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[345] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[345] Biber.pm:4084> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'fr-FR'
+[345] Biber.pm:4090> INFO - No sort tailoring available for locale 'fr-FR'
+[358] bbl.pm:652> INFO - Writing 'dispo_detail.bbl' with encoding 'UTF-8'
+[362] bbl.pm:755> INFO - Output to dispo_detail.bbl
