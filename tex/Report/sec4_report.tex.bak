@@ -9,7 +9,7 @@ with $F_{c}(\zeta) := F_c(I, \zeta)$ and $F_{\theta}(\zeta) := F_{\theta}(I, \ze
 \label{eq: spatial control expansion}
 	F_{c, \xi_0}(\xi)\eta &= F_{c, 0} \eta  + \h_{c,0}(\xi \otimes \eta) + \mathcal{O}(|\xi|)\eta\\
 \label{eq: angular control expansion}
-	F_{\theta, \xi_0}(\xi) \eta &= F_{\theta, 0} \eta + \h_{c, 0}(\xi \otimes \eta) + \mathcal{O}(|\xi|)\eta,
+	F_{\theta, \xi_0}(\xi) \eta &= F_{\theta, 0} \eta + \h_{\theta, 0}(\xi \otimes \eta) + \mathcal{O}(|\xi|)\eta,
 \end{align}
 where $F_{c,0} := F_{c}(\xi_0) \in M_{3 \times 4}(\R)$, $\h_{c,0}\in \mathcal{L}(\R^4 \otimes \R^4, \R^3)$ represents the first order derivative of $F_{c, \xi_0}$ at $\xi = 0$ and for $F_{\theta, \xi}$ the analogous definitions are made.
 The purpose of this section is to reveal the structure of the different terms in the expansions (\ref{eq: spatial control expansion}) and (\ref{eq: angular control expansion}) in light of the symmetry properties fulfilled by $F_{c}$ and $F_{\theta}$ due to Propositions \ref{prop: spatial permutation invariance} and \ref{prop: angular permutation invariance} , i.e.
@@ -88,7 +88,7 @@ First, we observe that the upper left corner of $F_{c,0}$ corresponding to the a
 %\end{remark}
 
 \subsection{The first order terms $\h_{c,0}$ and $\h_{\theta,0}$}
-Following the approach in \cite{Alouges2017}, we evaluate the tensors $\h_{c,0}$ and $\h_{\theta,0}$ on the basis $(e_{i} \otimes e_{j})_{i,j \in \N_4}$. Setting $A_k := (\h_{c,0}(e_i \otimes e_j)\cdot \hat{e}_k)_{i,j \in \N_4}$ and $B_k:= (\h_{\theta,0}(e_i \otimes e_j)\cdot \hat{e}_k)_{i,j \in \N_4}$ for $k \in \N_3$, we can write the vectors $\h_{c,0}(\xi \otimes \eta), \h_{\theta,0}(\xi \otimes \eta) \in \R^3$ for any $\xi, \eta \in \R^3$ as
+Following the approach in \cite{Alouges2017}, we evaluate the tensors $\h_{c,0}$ and $\h_{\theta,0}$ on the basis $(e_{i} \otimes e_{j})_{i,j \in \N_4}$. Setting $A_k := (\h_{c,0}(e_i \otimes e_j)\cdot \hat{e}_k)_{i,j \in \N_4}$ and $B_k:= (\h_{\theta,0}(e_i \otimes e_j)\cdot L_k)_{i,j \in \N_4}$ for $k \in \N_3$, we can write the vectors $\h_{c,0}(\xi \otimes \eta), \h_{\theta,0}(\xi \otimes \eta) \in \R^3$ for any $\xi, \eta \in \R^3$ as
 \begin{equation}
 \label{eq: matrix representation of spatial first order term}
 	\h_{c,0}(\xi \otimes \eta) = \sum_{k \in \N_3}(A_k \eta \cdot \xi)\hat{e}_k, 
@@ -112,7 +112,7 @@ as well as
 \end{equation}
 Next, we define $\mathcal{K}_{c,0}(\xi \otimes \eta) := \tfrac{1}{2}[\h_{c,0}(\xi \otimes \eta) - \h_{c,0}(\eta \otimes \xi)]$ and similarly $\mathcal{K}_{\theta,0}$ such that
 \begin{equation}
-	M_k = (\mathcal{K}_{c,0}(e_i \otimes e_j) \cdot \hat{e}_k)_{i,j \in \N_4} \text{ and } M_{k + 3} = (\mathcal{K}_{\theta,0}(e_i \otimes e_j) \cdot \hat{e}_k)_{i,j \in \N_4},\;\; k \in \N_3.
+	M_k = (\mathcal{K}_{c,0}(e_i \otimes e_j) \cdot \hat{e}_k)_{i,j \in \N_4} \text{ and } M_{k + 3} = (\mathcal{K}_{\theta,0}(e_i \otimes e_j) \cdot L_k)_{i,j \in \N_4},\;\; k \in \N_3.
 \end{equation} 
 In particular, it is clear that $\mathcal{K}_{c,0}$ and $\mathcal{K}_{\theta,0}$ satisfy the same symmetry relations as $\h_{c,0}$ and $\h_{\theta, 0}$, respectively, and additionally, we have $\mathcal{K}_{c,0}(e_i \otimes e_j) = - \mathcal{K}_{c,0}(e_j \otimes e_i)$ and $\mathcal{K}_{\theta,0}(e_i \otimes e_j) = - \mathcal{K}_{\theta,0}(e_j \otimes e_i)$.
 
@@ -302,6 +302,6 @@ To end this section, we note that on the one hand, we have $\langle A_k \dot{\xi
 where $\det(\xi|\dot{\xi}|\tau_j|\tau_k)$ denotes the determinant of the matrix $(\xi|\dot{\xi}|\tau_j |\tau_k)$ and the index $k$ is reduced mod 3 to simplify the notation. Ultimately, using that $\R^3 \times \so(3) \simeq \R^6$, we can write the net displacement in position and orientation simultaneously as
 \begin{equation}
 \label{eq: net displacement}
-\frac{\delta p}{2 \pi}= - 2  \sqrt{6} \alpha \sum_{k \in \N_3} \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}) f_k  - 2  \sqrt{6} \delta \sum_{k \in \N_3} \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4}) f_{k + 3},
+\frac{\delta p}{2 \pi}= - 2  \sqrt{6} \alpha \sum_{k \in \N_3}\langle \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}) \rangle f_k  - 2  \sqrt{6} \delta \sum_{k \in \N_3}\langle \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4})\rangle f_{k + 3},
 \end{equation}
 where $\{f_i\}_{i \in \N_6}$ denotes the canonical Basis of $\R^6$ and the index $k$ is once more reduced mod 3. This representation will prove particularly useful in the following section.

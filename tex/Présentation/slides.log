@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.5.20)  30 AUG 2020 17:14
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.5.20)  30 AUG 2020 21:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1737,6 +1737,8 @@ File: beamericonarticle.pdf Graphic file (type pdf)
 <use beamericonarticle.pdf>
 File: beamericonarticle.pdf Graphic file (type pdf)
 <use beamericonarticle.pdf>
+File: beamericonarticle.pdf Graphic file (type pdf)
+<use beamericonarticle.pdf>
  [47
 
 ] [48
@@ -1764,10 +1766,10 @@ Package logreq Info: Writing requests to 'slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46347 strings out of 479418
- 1085848 string characters out of 5884585
- 1866091 words of memory out of 5000000
- 63001 multiletter control sequences out of 15000+600000
+ 46349 strings out of 479418
+ 1085935 string characters out of 5884585
+ 1866142 words of memory out of 5000000
+ 63003 multiletter control sequences out of 15000+600000
  543424 words of font info for 100 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  71i,16n,117p,1829b,5045s stack positions out of 5000i,500n,10000p,200000b,80000s

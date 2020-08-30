@@ -364,7 +364,7 @@ où $\tau_1 : = \tfrac{1}{\sqrt{6}}(-2,1,1,0)^T$, $\tau_2 := \tfrac{1}{\sqrt{2}}
 \item Même approche que \cite{Alouges2017}
 \begin{align}
 A_k &:= (\h_{c,0}(e_i \otimes e_j)\cdot \hat{e}_k)_{i,j \in \N_4}, k \in \N_3\\
-B_k &:= (\h_{\theta,0}(e_i \otimes e_j)\cdot \hat{e}_k)_{i,j \in \N_4}, k \in \N_3.
+B_k &:= (\h_{\theta,0}(e_i \otimes e_j)\cdot L_k)_{i,j \in \N_4}, k \in \N_3.
 \end{align}
 
 \item Ainsi, on a pour tout $\xi, \eta \in \R^4$
@@ -724,13 +724,13 @@ définie sur l'espace produit $\ell^2(\R^4) \times \ell^2(\R^4)$ et sous la cont
 où $\delta p \in \R^3 \times \so(3)$ est un déplacement net préscrit en position.
 \end{proposition}
 
-\item On observe que  $\omega \in \bigwedge^2\R^4$. et que $\omega$ est simple si et seulement si $\delta p$ est simple.
+\item On observe que  $\omega \in \bigwedge^2\R^4$ et que $\omega$ est simple si et seulement si $\delta p$ est simple.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Optimisation - Passage en Fourier}
 \begin{itemize}
-\item On veut réduire ce problème à un problème en dimension finie (c.f. \cite{Alouges2017}), i.e. trouver pour toute paire de suites de coefficients de Fourier $(\mathbf{u}, \mathbf{v}) \in \dot{\ell}^2(\R^4) \times \dot{\ell}^2(\R^4)$ un nombre fini de coefficients de Fourier, i.e. $(\tilde{\mathbf{u}}, \tilde{\mathbf{v}}) \in c_{00}(\R^4) \times c_{00}(\R^4)$ tel  que
+\item On veut réduire ce problème à un problème en dimension finie (c.f. \cite{Alouges2017}), i.e. trouver pour toute paire de suites de coefficients de Fourier $(\mathbf{u}, \mathbf{v}) \in \ell^2(\R^4) \times \ell^2(\R^4)$ un nombre fini de coefficients de Fourier, i.e. $(\tilde{\mathbf{u}}, \tilde{\mathbf{v}}) \in c_{00}(\R^4) \times c_{00}(\R^4)$ tel  que
 \begin{align}
 	\mathcal{F}(\tilde{\mathbf{u}}, \tilde{\mathbf{v}}) = \mathcal{F}(\mathbf{u}, \mathbf{v}) \text{ et }  \sum_{n = 1}^{N} \frac{1}{n} \tilde{v}_n \wedge \tilde{u}_n = \sum_{n \in \N} \frac{1}{n} v_n \wedge u_n.
 \end{align}
@@ -852,7 +852,7 @@ avec $\Omega(\mu) = \sum_{k \in \N_6} \mu_k M_k$. La matrice $\Omega(\mu)$ étan
 \begin{itemize}
 \item Prouver la conjecture ci-dessus
 
-\item Faire l'approximation des bras longs pour simplifier le système encore une fois et déterminer les paramètres inconnus en termes de $\xi_0$ et $a$
+\item Faire l'approximation des bras longs comme dans \cite{Alouges2020} pour simplifier le système encore une fois et déterminer les paramètres inconnus en termes de $\xi_0$ et $a$
 \end{itemize}
 \end{frame}
 

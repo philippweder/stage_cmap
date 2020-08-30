@@ -173,7 +173,7 @@ If $\omega = 0$, then the proof is trivial. Thus, let us denote by $\hat{\omega}
 \label{eq:reduction int1}
 	|u| = ||\mathbf{u} ||_{\ell^2(\R^4)}, &  |v| = ||\mathbf{v} ||_{\ell^2(\R^4)} , & \frac{u \wedge v}{|u \wedge v|} = \hat{\omega}.
 \end{eqnarray}
-The latter is possible since $\hat{\omega}$ is a simple bivector by hypothesis. Hence, there exist $x, y \in \R^4$ such that $\omega = x \wedge y$. Then we have for all $x', y' \in \Span\{x,y\}$ that $x' \wedge y'/|x' \wedge y'| = \hat{\omega}$. Furthermore, we have $u \wedge v = ||\mathbf{u}||_{\ell^2(\R^4)} ||\mathbf{v}||_{\ell^2(\R^4)} (\sin\psi)\hat{\omega}$, where $\psi$ is the angle between $u$ and $v$. Therefore, the equality $u \wedge v = \omega$ can be satisfied by choosing the angle $\psi \in (0, \pi)$ such that
+The latter is possible since $\hat{\omega}$ is a simple bivector by hypothesis. Hence, there exist $x, y \in \R^4$ such that $\omega = x \wedge y$. Then we have for all $x', y' \in \Span\{x,y\}$ such that $x' \wedge y' \neq 0$ that $x' \wedge y'/|x' \wedge y'| = \hat{\omega}$. Furthermore, we have $u \wedge v = ||\mathbf{u}||_{\ell^2(\R^4)} ||\mathbf{v}||_{\ell^2(\R^4)} (\sin\psi)\hat{\omega}$, where $\psi$ is the angle between $u$ and $v$. Therefore, the equality $u \wedge v = \omega$ can be satisfied by choosing the angle $\psi \in (0, \pi)$ such that
 \begin{equation}
  \sin \psi = \frac{|\omega|}{||\mathbf{u}||_{\ell^2(\R^4)} ||\mathbf{v} ||_{\ell^2(\R^4)}}
  \end{equation}
@@ -254,7 +254,7 @@ i.e. an ellipse of $\R^4$ centered at the origin and contained in the plane span
 \begin{enumerate}
 \item We compute the vector $\omega$ via the relation
 \begin{equation}
-\omega := \diag \left (\frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta} \right ) \delta p = \tilde{x} \wedge \tilde{y}.
+\omega := \diag \left (\frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\sqrt{\mathfrak{g}_c \mathfrak{g}_{\theta}}}{\mathfrak{h}_c}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta}, \frac{\mathfrak{g}_c}{\mathfrak{g}_\theta} \right ) \delta p \simeq \tilde{x} \wedge \tilde{y}.
 \end{equation}
 Then we consider two vectors $u,v \in \Span\{\tilde{x}, \tilde{y}\}$ such that
 \begin{equation}
