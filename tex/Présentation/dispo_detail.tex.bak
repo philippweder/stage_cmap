@@ -91,11 +91,29 @@
 
 \begin{document}
 \renewcommand\labelitemi{--}
-\linespread{1.05}
+\linespread{1.1}
 \maketitle
 \section{Mot de bienvenue}
-
+\begin{itemize}
+\item Bonjour à tous....
+\item Pendant mon stage, je me suis occupé du sujet de la \emph{natation à l'échelle microscopique}. Plus précisement, j'ai analysé un micro-nageur, qu'on a appelé "parking 4-sphere swimmer"(\textsc{SPr4}) que je vais vous présenter tout de suite. Mais commençons par le début...
+\end{itemize}
 \section{Introduction}
+\begin{itemize}
+\item Edward Purcell était le premier à publier ses idées sur la natation à l'échelle microscopique en 1977 dans son papier "Life at low Reynolds number" \cite{Purcell1977}. En particulier, il a démontré le fameux "scallop theorem" qui dit qu'une coquille Saint Jacques microscopique ne peut pas nager.
+
+\item Cette observation a motivé la recherche pour le mécanisme le plus simple de natation à l'échelle microscopique. Jusque là, des nombreux tels mécanismes ont été analysés, au moins partiellement. Voici, trois exemple: Le nageur \textsc{3S} à gauche qui ne peut se déplacer sur une droite, le nageur \textsc{SPr3} dont on sait de \cite{Alouges2017} qu'il peut se déplacer dans un plan et puis le nageur \textsc{SPr4} qui a été traité dans ce projet.
+
+\item Le problème mathématique principal est qu'à l'échelle microscopique le nombre de Reynolds $\re = \rho u L/\mu$ est très bas, ce qui entraîne que dans les équations de Navier-Stokes les forces d'inertie deviennent négligeables. Par conséquent, un micro-nageur ne peut utiliser que les forces visqueuses pour se déplacer. Plus précisément, un micro-nageur est régit par les équations de Stokes qui sont linéaires et réversibles par rapport au temps. Ceci implique en particulier qu'un mouvement réciproque ne contribuera pas au déplacement!
+
+\item En termes mathématiques, on face on problème de contrôlabilité, c'est-à-dire on veut trouver un mécanisme pour nager avec un nombre le plus petit possible de contrôles tel que l'on puisse atteindre n'importe quelle position dans l'espace avec une suite de mouvements périodiques.
+
+\item Une question supplémentaire naturelle est celle de la natation optimale, c'est-à-dire trouver les mouvements optimaux par rapport à la consommation d'énergie.
+
+\item Pour le nageur \textsc{SPr4}, le problème de contrôlabilité a déjà été résolu dans \cite{Alouges2013}. Or, on n'a pas encore des expressions explicites.
+
+\item Dans mon projet, j'ai analysé le nageur \textsc{SPr4} analytiquement sous l'hypothèse que les mouvements soient petits. Ensuite, j'ai essayé sous la même hypothèse de trouver la structure des courbes de contrôle optimales. Portant, je n'y suis parvenu que pour une classe particulière de déplacements prescrits. Bien sûr, on a également exploré le cas général.
+\end{itemize}
 
 
 \section{Structure du projet}
@@ -127,15 +145,7 @@ La structure du reste de la présentation est comme ce qui suit:
 
 \item \emph{Les variables de position:} $p = (c, R) \in \mathcal{P} := \R^3 \times \SO(3)$.
 \end{enumerate}
-De plus, on pose $z_i := \overline{S_i c}$. En effet, ceci est une description complète du nageur, car si $r \in B_a$, la boule de rayon $a$ centrée à l'origine, le point actuel sur la boule $B_i$ est donné par
-\begin{equation}
-	r_i(\xi, p, r) :=  c + R(\xi_i z_i + r).
-\end{equation}
-Les fonctions $r_i$ sont analytique, par conséquent on peut en déduire la vitesse instantanée sur la boule $B_i$:
-\begin{equation}
-	u_i(\xi, p, r) = \dot{c} + \omega \times (\xi_i z_i + r) + R z_i \dot{\xi}_i,
-\end{equation}
-où $\omega$ est le vecteur axial associé à la matrice anti-symétrique $\dot{R}R$.
+De plus, on pose $z_i := \overline{S_i c}$. 
 
 \item Dans \cite{Alouges2013}, il a été montré comment $p$ change si on varie $\xi$. Plus précisément, on a le système dynamique suivant:
 \begin{equation}
@@ -153,99 +163,106 @@ tel que $\dot{c} = F_{c}(R, \xi) \dot{\xi}$ et $\dot{R} = R_{\theta}(R, \xi) \do
 	F_c(R, \xi) \in \mathcal{L}(\R^4, \R^3) \text{ et } F_{\theta}(R, \xi) \in \mathcal{L}(\R^4,T_R \SO(3)).
 \end{aligned}
 \end{equation}
-De plus, on sait que pour $R \in \SO(3)$ fixé, on a
-\begin{align}
-T_{R}SO(3) = \{R M \mid M \in \Skew_3(\R)\}.
-\end{align}
-En particulier, on a $\dim T_R \SO(3) = 3$. Ainsi, dès qu'on a choisi une base pour les espaces tangents correspondants, on peut exprimer $F_{c}(R, \xi)$ et $F_{\theta}(R, \xi)$ comme des matrices de taille $4 \times 3$ pour $R$ et $\xi$ fixes.
+Donc, dès qu'on a fixé des bases, on peut les exprimer comme des matrices de taille $3 \times 4$.
 
 \end{itemize}
 
 \subsection{Symétries}
-Passons à l'investigation du système de contrôle \ref{eq: control system}. Pour ceci, choisissons une condition initiale $p_0 = (c_0, R_0) \in \mathcal{P}$ et une courbe de contrôle $\xi: J \subset \R \to \M$, avec $J$ un voisinage de zéro. Puis, notons $\gamma(c_0, R_0, \xi): I \to \mathcal{P}$ la solution associée au système dynamique
-\begin{equation}
-\label{eq:dynamical system}
-\begin{aligned}
-	&\dot{p} = F(R, \xi) \dot{\xi},& & p(0) := p_0.
-\end{aligned}
-\end{equation}
-On notera par $\gamma_c(c_0, R_0, \xi)$ et $\gamma_{\theta}(c_0, R_0, \xi)$ les projections à $\R^3$ et $\SO(3)$, respectivement. En particulier, on a par définition
-\begin{equation}
-	\dot{\gamma}(c_0, R_0, \xi)(t) = F(\gamma_\theta(c_0, R_0, \xi)(t), \xi(t))\dot{\xi}(t), \forall t \in J.
-\end{equation}
+%Passons à l'investigation du système de contrôle \ref{eq: control system}. Pour ceci, choisissons une condition initiale $p_0 = (c_0, R_0) \in \mathcal{P}$ et une courbe de contrôle $\xi: J \subset \R \to \M$, avec $J$ un voisinage de zéro. Puis, notons $\gamma(c_0, R_0, \xi): I \to \mathcal{P}$ la solution associée au système dynamique
+%\begin{equation}
+%\label{eq:dynamical system}
+%\begin{aligned}
+%	&\dot{p} = F(R, \xi) \dot{\xi},& & p(0) := p_0.
+%\end{aligned}
+%\end{equation}
+%On notera par $\gamma_c(c_0, R_0, \xi)$ et $\gamma_{\theta}(c_0, R_0, \xi)$ les projections à $\R^3$ et $\SO(3)$, respectivement. En particulier, on a par définition
+%\begin{equation}
+%	\dot{\gamma}(c_0, R_0, \xi)(t) = F(\gamma_\theta(c_0, R_0, \xi)(t), \xi(t))\dot{\xi}(t), \forall t \in J.
+%\end{equation}
+
+\begin{itemize}
+\item Passons à l'investigation du système de contrôle (\ref{eq: control system}) sur la base des symétries satisfaites par les équations de Stokes.
+
+\item Notamment, les équations de Stokes sont invariantes sous rotations et sous changement de point de vue.
+
+\item Donc, on a appliqué les transformations correspondantes à une solution du système dynamique et puis on a déterminée comment $F$ se transforme par différentiation. 
+\end{itemize}
 
 \subsubsection{Invariance rotationelle}
-\begin{itemize}
+%\begin{itemize}
+%
+%\item Les équations de Stokes sont invariant sous rotations, c'est-à-dire si on tourne tout le domaine géométrique, la solution se transforme de la même façon.
+%
+%\item Ceci implique pour la solution de notre système dynamique que
+%\begin{equation}
+%\label{eq:spatial rotational invariance}
+%	\gamma_c(c_0, R R_0, \xi)(t) = R \gamma_c (c_0, R_0, \xi)(t) + (I - R) c_0, \forall t \in J
+%\end{equation}
+%et
+%\begin{equation}
+%\label{eq: angular rotational invariance}
+%	\gamma_\theta(c_0, R R_0, \xi)(t) =  R \gamma_\theta(c_0, R_0, \xi)(t), \forall t \in J
+%\end{equation}
+%Ensuite, on trouve avec un calcul la propriété suivante du champs de vecteur $F$:
+%\begin{eqnarray}
+%	F_c(R, \xi) = R F_c(\xi) \text { and } F_\theta(R, \xi) = R F_{\theta} (R, \xi),&  \forall (R, \xi) \in \SO(3) \times \M,
+%\end{eqnarray}
+%où $F_c(\xi) := F_{c}(I, \xi)$ et $F_{\theta}(\xi) := F_{\theta}(I, \xi)$.
+%
+%\item Ceci signifie juste qu'on peut toujours factoriser l'orientation de $F$.
+%
+%\end{itemize}
 
-\item Les équations de Stokes sont invariant sous rotations, c'est-à-dire si on tourne tout le domaine géométrique, la solution se transforme de la même façon.
+De l'invariance rotationnelle des équations de Stokes, on déduit que pour toute rotation $R \in \SO(3)$, on a
+\begin{eqnarray}
+	F_c(R, \xi) = R F_c(\xi) \text { and } F_\theta(R, \xi) = R F_{\theta} (R, \xi),&  \forall (R, \xi) \in \SO(3) \times \M,
+\end{eqnarray}
+où $F_c(\xi) := F_{c}(I, \xi)$ et $F_{\theta}(\xi) := F_{\theta}(I, \xi)$.
 
-\item Ceci implique pour la solution de notre système dynamique que
-\begin{equation}
-\label{eq:spatial rotational invariance}
-	\gamma_c(c_0, R R_0, \xi)(t) = R \gamma_c (c_0, R_0, \xi)(t) + (I - R) c_0, \forall t \in J
-\end{equation}
-et
-\begin{equation}
-\label{eq: angular rotational invariance}
-	\gamma_\theta(c_0, R R_0, \xi)(t) =  R \gamma_\theta(c_0, R_0, \xi)(t), \forall t \in J
-\end{equation}
-Ensuite, on trouve avec un calcul la propriété suivante du champs de vecteur $F$:
-\begin{proposition}
-\label{prop: rotational invariance}
-Soit $\xi_0 := \xi(0) \in \M$ le point initiale de la courbe de contrôle et notons $T_{\xi}\M$ l'espace tangent à $\xi$. Si le système de contrôle \ref{eq: control system} est invariant sous rotations et si pour tout $\xi \in \M$ on a $T_{\xi}\M \simeq \R^4$, alors
-\begin{equation}
-	F_c(R, \xi) = R F_c(\xi) \text { and } F_\theta(R, \xi) = R F_{\theta} (R, \xi), \forall (R, \xi) \in \SO(3) \times \M,
-\end{equation}
-où $F_c(\xi) := F_{c}(I, \xi)$ et $F_{\theta}(\xi) := F_{\theta}(I, \xi)$
-\end{proposition}
-
-\item Ceci signifie juste qu'on peut toujours factoriser l'orientation de $F$.
-
-\end{itemize}
 
 \subsubsection{Permutation des bras}
 \begin{itemize}
+\item On veut profiter de l'invariance des équations de Stokes sous changement de point de vue pour déterminer comment $F$ se transforme lors d'une permutations de deux bras.
+
 \item Notons $P_{ij} \in M{4 \times 4}(\R)$ la matrice de permutation qui échange les indices $i$ et $j$ d'un vecteur. Cette transformation appliquée à l'espace de contrôles $\M$ signifie la permutation des bras $i||$ et $j||$.
 
-\item Soit $S_{ij}$ la réflexion qui envoie $i ||$ sur $j||$ dans $\mathcal{P}$. Remarquons que la réflexion $S_{ij}$ se passe au plans qui passe par les bras $k||$ et $l||$.
+\item Soit $S_{ij}$ la réflexion qui envoie $i ||$ sur $j||$ dans $\mathcal{P}$. 
 
-\item Les équations sont invariantes sous changement de point de vue, ce qui implique pour notre solution que pour la position initiale $p_0 := (c, I)$ on a
-\begin{equation}
-\label{eq:spatial_perm_inv}
-	\gamma_c(c_0, I, P_{ij} \xi) = S_{ij} \gamma_c(S_{ij}c_0, I, \xi)
-\end{equation}
-et
-\begin{equation}
-\label{eq:angular_perm_inv}
-	\gamma_{\theta}(c_0, I, P_{ij} \xi ) = S_{ij} \gamma_{\theta} (S_{ij} c_0, I, \xi) S_{ij}.
-\end{equation}
+%\item Les équations sont invariantes sous changement de point de vue, ce qui implique pour notre solution que pour la position initiale $p_0 := (c, I)$ on a
+%\begin{equation}
+%\label{eq:spatial_perm_inv}
+%	\gamma_c(c_0, I, P_{ij} \xi) = S_{ij} \gamma_c(S_{ij}c_0, I, \xi)
+%\end{equation}
+%et
+%\begin{equation}
+%\label{eq:angular_perm_inv}
+%	\gamma_{\theta}(c_0, I, P_{ij} \xi ) = S_{ij} \gamma_{\theta} (S_{ij} c_0, I, \xi) S_{ij}.
+%\end{equation}
+
+\item En effet, la permutation des bras $||i$ et$||j$ correspond à regarder la trajectoire dans un miroir qui envoie le bras $||i$ sur $||j$, i.e. qui correspond à $S_{ij}$. Ainsi, on peut exploiter l'invariance des équations de Stokes.
 
 \item À l'aide d'un calcul un peu plus technique, on trouve le résultat suivant:
-
-\begin{proposition}
-\label{prop: spatial permutation invariance}
-Si le système de contrôle (\ref{eq: control system}) satisfait les équations (\ref{eq:spatial_perm_inv}) et (\ref{eq:angular_perm_inv}) et $T_{\xi} \M \simeq \R^4$ pour tout $\xi \in \M$, alors
 \begin{align}
 	 F_c(P_{ij} \xi) = S_{ij} F_c(\xi) P_{ij} \text{ et } F_{\theta}(P_{ij} \xi) = - S_{ij} F_{\theta}(\xi) P_{ij}. \forall \xi \in \M.
 \end{align}
-\end{proposition}
+
 
 \item Attention: Il faut toujours choisir la base canonique $\mathcal{E} = (e_1, e_2,e_3, e_4$ pour $\R^4$ et la base $\mathcal{L} = (L_1, L_2, L_3)$ avec
 \begin{align}
 \label{eq: L1}
-	&L_1 = \frac{\dd}{\dd\theta}R_1(\theta)_{\mid \theta =0} = \left(\begin{array}{ccc}
+	&L_1 = \left(\begin{array}{ccc}
 	0 & 0 & 0 \\ 
 	0 & 0 & -1 \\ 
 	0 & 1 & 0
 	\end{array}  \right ),\\
 \label{eq: L2}
-	&L_2 = \frac{\dd}{\dd\theta}R_2(\theta)_{\mid \theta =0} = \left (\begin{array}{ccc}
+	&L_2  = \left (\begin{array}{ccc}
 	0 & 0 & 1 \\ 
 	0 & 0 & 0 \\ 
 	-1 & 0 & 0
 	\end{array}  \right ),\\
 \label{eq: L3}
-	&L_3 = \frac{\dd}{\dd\theta}R_3(\theta)_{\mid \theta =0} = \left (\begin{array}{ccc}
+	&L_3  = \left (\begin{array}{ccc}
 	0 & -1 & 0 \\ 
 	1 & 0 & 0 \\ 
 	0 & 0 & 0
@@ -333,13 +350,6 @@ M_{k + 3} &:= \frac{1}{2}[B_k - B_k^T], k \in \N_3.
 
 \item On notera $\langle f \rangle := (2 \pi)^{-1 }\int_{J} f(t) d t$ pour $f \in H^1_{\sharp}(J, \R^4)$ la moyenne d'une fonction.
 
-\item Reprenons le système dynamique. Initialement, pour $\zeta \in \M$, le système dynamique s'écrivait
-\begin{align}
-\begin{cases}
-	\dot{c} &= R F_c(\zeta) \dot{\zeta}\\
-	\dot{R} &= R F_{\theta}(\zeta) \dot{\zeta}.
-\end{cases}
-\end{align}
 Puis dans la partie précédente, on a posé $\zeta = \xi_0 + \xi$ et un développement limité autour de $\xi = 0$ nous a fournit le système simplifié
  \begin{align}
  \label{eq: dynamics first approx}
@@ -351,9 +361,9 @@ Puis dans la partie précédente, on a posé $\zeta = \xi_0 + \xi$ et un dévelo
  
 \item Définissons les déplacements nets
 \begin{align}
-	&\delta c: H_{\sharp}^1(J,\R^4) \to \R^3\\
-	&\xi \mapsto 2\pi \langle \dot{c} (\xi) \rangle \nonumber \\
-	&\delta p: H_{\sharp}^1(J,\R^4) \to \so(3)\\
+	\delta c: &H_{\sharp}^1(J,\R^4) \to \R^3, &
+	\delta p: & H_{\sharp}^1(J,\R^4) \to \so(3)\\
+	&\xi \mapsto 2\pi \langle \dot{c} (\xi) \rangle \nonumber, &
 	&\xi \mapsto 2 \pi \langle \dot{R}(\xi) \rangle \nonumber
 \end{align}
 Il est impossible d'évaluer ses expressions exactement, mais un argument du calcul chronologique nous a permis de linéariser le système simplifié autour de $R_0 = I$. Ainsi, on est arrivé à établir le résultat suivant:
@@ -374,19 +384,12 @@ Pour tout $\xi \in H_\sharp^1(J, \R^4)$, dans un voisinage de $0 \in H_{\sharp}^
 \langle B_k \dot{\xi} \cdot \xi \rangle &= \langle M_{k + 3} \dot{\xi} \cdot \xi \rangle, &\forall k \in \N_3
 \end{align}
 
-\item Par un calcul direct, on trouve
-\begin{align}
-  M_k \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\alpha \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}), & & k \in \N_3 \\
-  M_{3 + k} \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\delta \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4}), & & k \in \N_3,
-\end{align}
-où $\{\tau_l\}_{l \in \N_4}$ est la base orthonormée vue précédemment et $k$ est pris mod 3.
-
-\item Si on note $\{f_k\}_{k \in \N_6}$ la base canonique de $\R^6$, ceci fournit finalement
+\item Si on note $\{f_k\}_{k \in \N_6}$ la base canonique de $\R^6$, un calcul montre que
 \begin{equation}
 \label{eq: net displacement}
-\frac{\delta p}{2 \pi}= - 2  \sqrt{6} \alpha \sum_{k \in \N_3} \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}) f_k  - 2  \sqrt{6} \delta \sum_{k \in \N_3} \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4}) f_{k + 3},
+\frac{\delta p}{2 \pi}= - 2  \sqrt{6} \alpha \sum_{k \in \N_3}\langle \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2})\rangle f_k  - 2  \sqrt{6} \delta \sum_{k \in \N_3}\langle \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4})\rangle f_{k + 3},
 \end{equation}
-où $k$ est de nouveau pris mod 3.
+où $k$ pris mod 3.
 
 \item En résumé, jusque là on a établit la dynamique du nageur dans le régime de petites courbes de contrôle à cinq paramètres près et on sait exprimer le déplacement net à 3 paramètres près.
 \end{itemize}
@@ -426,8 +429,13 @@ pour deux paramètres $h$ et $\kappa > \max(h, -3h)$. En particulier, on observe
 G = U \Lambda_{\mathfrak{g}} U^T, & U := [\tau_1 | \tau_2 |\tau_3 |\tau_4], & \Lambda_{\mathfrak{g}} := \diag(\mathfrak{g}_i).
 \end{eqnarray}
 
-\item Donc, on face le problème d'optimisation suivant: Trouver $ \inf_{\xi \in H_{\sharp}^1(J, \R^4)} \int_{J} Q_{\mathfrak{g}}(\dot{\xi}(t)) \dd t$ sous la contrainte $\delta p = \mathfrak{h}_{c} \sum_{k \in \N_3}\left ( \int_{J} \det( \xi(t) | \dot{\xi}(t) | \tau_{k+1} | \tau_{k+2}) \dd t \right ) f_k\\
-	+ \mathfrak{h}_{\theta}  \sum_{k \in \N_3}\left ( \int_{J} \det ( \xi(t) | \dot{\xi}(t) | \tau_{k} | \tau_{4}) \dd t\right ) f_{k + 3}$ avec $\mathfrak{h}_c = - 2 \sqrt{6} \alpha$ et $\mathfrak{h}_{\theta} = - 2 \sqrt{6} \delta$.
+\item Donc, on face le problème d'optimisation suivant: Trouver $ \inf_{\xi \in H_{\sharp}^1(J, \R^4)} \int_{J} Q_{\mathfrak{g}}(\dot{\xi}(t)) \dd t$ sous la contrainte 
+\begin{align}
+\label{eq: constraint}
+\delta p = \mathfrak{h}_{c} \sum_{k \in \N_3}\left ( \int_{J} \det( \xi(t) | \dot{\xi}(t) | \tau_{k+1} | \tau_{k+2}) \dd t \right ) f_k\\
+	+ \mathfrak{h}_{\theta}  \sum_{k \in \N_3}\left ( \int_{J} \det ( \xi(t) | \dot{\xi}(t) | \tau_{k} | \tau_{4}) \dd t\right ) f_{k + 3} \nonumber,
+\end{align}
+	avec $\mathfrak{h}_c = - 2 \sqrt{6} \alpha$ et $\mathfrak{h}_{\theta} = - 2 \sqrt{6} \delta$.
 \end{itemize}
 
 
@@ -470,15 +478,16 @@ où on a défini $e_{ij} := e_i \wedge e_j$ pour alléger la notation.
 \begin{equation}
 \forall \omega \in \bigwedge^2 \R^3 \exists u,v \in \R^3: \omega = u \wedge v.
 \end{equation}
-Ceci n'est plus le cas pour $\bigwedge^2\R^4$, e.g. $e_{12} + e_{34} \in \bigwedge^2\R^4$ n'est pas simple. Néanmoins, tout bivecteur de $\R^4$ est la somme d'au plus deux bivecteurs simples et orthogonaux.
+Ceci n'est plus le cas pour $\bigwedge^2\R^4$, e.g. $e_{12} + e_{34} \in \bigwedge^2\R^4$ n'est pas simple. 
+%Néanmoins, tout bivecteur de $\R^4$ est la somme d'au plus deux bivecteurs simples et orthogonaux.
 
 \item En fait, après passage en Fourier, c'est un point clé dans la solution du problème d'optimisation pour \textsc{SPr3} que le déplacement net s'identifie à un bivecteur de $\R^3$ qui est a fortiori simple. De manière analogue, on trouvera que le déplacement net de \textsc{SPr4} s'identifie à un bivecteur de $\R^4$ qui n'est plus nécessairement simple. Or, dans le cas où le déplacement net s'identifie à un bivecteur simple de $\R^4$, on pourra résoudre le problème d'optimisation de façon similaire.
 
-\item Finalement, pour identifier certains sous-espaces de $\bigwedge^2\R^4$ qui ne consistent que de bivecteurs simples, on se servira du critère suivant:
-\begin{lemma}
-\label{lem:simple bivector}
-un bivecteur $\omega \in \bigwedge^2 \R^4$ est simple si et seulement si $\omega \wedge \omega = 0$.
-\end{lemma}
+%\item Finalement, pour identifier certains sous-espaces de $\bigwedge^2\R^4$ qui ne consistent que de bivecteurs simples, on se servira du critère suivant:
+%\begin{lemma}
+%\label{lem:simple bivector}
+%un bivecteur $\omega \in \bigwedge^2 \R^4$ est simple si et seulement si $\omega \wedge \omega = 0$.
+%\end{lemma}
 \end{itemize}
 
 \section{Optimisation II}
@@ -493,30 +502,32 @@ un bivecteur $\omega \in \bigwedge^2 \R^4$ est simple si et seulement si $\omega
 \end{equation}
 avec $\mathcal{G}_{U}(\eta) := \mathcal{G}(\xi) = \mathcal{G}(U \eta)$.
 
+\item Si on envoie $\{f_k\}_{k \in \N_6}$ vers une certaine base de $\bigwedge^2 \R^4$, on trouve
 
-\item Pour la contrainte, on observe que
-\begin{eqnarray}
-\det(\xi |\dot{\xi} | \tau_i | \tau_j) =  \det U \det (\eta | \dot{\eta} | e_i | e_j) = \det(\dot{\eta} | \eta | e_i |e_j),& \det U = -1.
-\end{eqnarray}
-
-Puis, un calcul montre que
-\begin{align}
-\det(\dot{\eta} | \eta | e_k |e_4) &= (\dot{\eta} \wedge \eta, e_{k + 1} \wedge e_{k+2}), & k \in \N_3\\
-\det(\dot{\eta} |\eta | e_{k + 1} |e_{k + 2}) &= (\dot{\eta} \wedge \eta, e_k \wedge e_4), & k \in \N_3
-\end{align}
-Si on envoie maintenant la base canonique $\{f_k\}_{k \in \N_6}$ sur la base ordonnée 
-\begin{equation}
-\label{eq: basis of bivectors}
-(e_{14}, e_{24}, e_{34}, e_{23}, e_{31}, e_{12})
-\end{equation}
-de $\bigwedge^2 \R^4$, la contrainte s'écrit
+%
+%\item Pour la contrainte, on observe que
+%\begin{eqnarray}
+%\det(\xi |\dot{\xi} | \tau_i | \tau_j) =  \det U \det (\eta | \dot{\eta} | e_i | e_j) = \det(\dot{\eta} | \eta | e_i |e_j),& \det U = -1.
+%\end{eqnarray}
+%
+%Puis, un calcul montre que
+%\begin{align}
+%\det(\dot{\eta} | \eta | e_k |e_4) &= (\dot{\eta} \wedge \eta, e_{k + 1} \wedge e_{k+2}), & k \in \N_3\\
+%\det(\dot{\eta} |\eta | e_{k + 1} |e_{k + 2}) &= (\dot{\eta} \wedge \eta, e_k \wedge e_4), & k \in \N_3
+%\end{align}
+%Si on envoie maintenant la base canonique $\{f_k\}_{k \in \N_6}$ sur la base ordonnée 
+%\begin{equation}
+%\label{eq: basis of bivectors}
+%(e_{14}, e_{24}, e_{34}, e_{23}, e_{31}, e_{12})
+%\end{equation}
+%de $\bigwedge^2 \R^4$, la contrainte s'écrit
 \begin{equation}
 \label{eq: G-orth constraint}
 \Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) \dd t,
 \end{equation}
 avec $\Lambda_{\mathfrak{h}} := \diag(\mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta})$. En particulier, on a séparé tous les paramètres inconnus de la courbe de contrôle. (De plus, on observe que la contrôle est l'intégrale d'une 2-forme.)
 
-\item Ainsi, le problème d'optimisation devient: Trouver $\inf_{\eta \in H^1_{\sharp}(J, \R^4)} \int_{J}\lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \eta(t) \dd t $ sous la contrainte $\Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) \dd t.$
+\item Ainsi, le problème d'optimisation devient: Trouver $\inf_{\eta \in H^1_{\sharp}(J, \R^4)} \int_{J}\Lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \eta(t) \dd t $ sous la contrainte $\Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) \dd t.$
 
 
 \item Ce problème n'est pas trivial, donc on a envie de le réduire à un problème d'optimisation facile à résoudre.
@@ -618,15 +629,15 @@ Alors, on a $ v \wedge u = \omega$ et the la valeur minimum de $\mathcal{G}$ est
 En outre, les vecteurs $a$ et $b$ sont $\mathfrak{g}$-orthogonaux, i.e. par rapport au produit scalaire défini pour tout $x,y \in \R^4$ par $(x, y)_{\mathfrak{g}} := 2 \pi \Lambda_{\mathfrak{g}} x \cdot y$, et ils on la même $\mathfrak{g}$-norme $|a|_{\mathfrak{g}}^2 = |b|_{\mathfrak{g}}^2 = |\omega|$. 
 \end{theorem}
 
-\item Naturellement, on se pose la question dans quelles situations $\omega$ est simple. Il se trouve qu'il y a une correspondance assez utile: Reprenons le critère du Lemme \ref{lem:simple bivector}. On remarque que ce critère est un particulier toujours satisfait dès que les composantes de $\omega$ correspondant à un certain indice valent zéro, e.g. $\omega_{i4} = 0$ pour $i \in \N_3$. Ceci fournit quatre sous-espaces $D^*_{ijk}$ de $\bigwedge^2 \R^4$ consistant uniquement de bivecteurs simples. Par inspection de notre base choisie pour $\bigwedge^2 \R^4$, on trouve les correspondances suivantes:
-\begin{align*}
-D^{*}_{123} &\longleftrightarrow\text{ rotations autour toutes les trois axes } \hat{e}_1, \hat{e}_2, \hat{e}_3\\
-D^{*}_{124} &\longleftrightarrow \text{ translation dans le plan de $\hat{e}_1$ et $\hat{e}_2$, rotation autour de $\hat{e}_3$}\\
-D^{*}_{134} &\longleftrightarrow  \text{ translation dans le plan de $\hat{e}_1$ et $\hat{e}_3$, rotation autour de $\hat{e}_2$ }\\
-D^{*}_{234} &\longleftrightarrow  \text{ translation dans le plan de $\hat{e}_2$ et $\hat{e}_3$, rotation autour de $\hat{e}_1$ }
-\end{align*}
-
-En revanche, le bivecteur non-simple $e_{12} + e_{34}$ correspond au déplacement net $e_3 + L_3$, c'est-à-dire un mouvement de vis. Pour ce genre de mouvements on a besoin d'une solution pour le cas général.
+%\item Naturellement, on se pose la question dans quelles situations $\omega$ est simple. Il se trouve qu'il y a une correspondance assez utile: Reprenons le critère du Lemme \ref{lem:simple bivector}. On remarque que ce critère est un particulier toujours satisfait dès que les composantes de $\omega$ correspondant à un certain indice valent zéro, e.g. $\omega_{i4} = 0$ pour $i \in \N_3$. Ceci fournit quatre sous-espaces $D^*_{ijk}$ de $\bigwedge^2 \R^4$ consistant uniquement de bivecteurs simples. Par inspection de notre base choisie pour $\bigwedge^2 \R^4$, on trouve les correspondances suivantes:
+%\begin{align*}
+%D^{*}_{123} &\longleftrightarrow\text{ rotations autour toutes les trois axes } \hat{e}_1, \hat{e}_2, \hat{e}_3\\
+%D^{*}_{124} &\longleftrightarrow \text{ translation dans le plan de $\hat{e}_1$ et $\hat{e}_2$, rotation autour de $\hat{e}_3$}\\
+%D^{*}_{134} &\longleftrightarrow  \text{ translation dans le plan de $\hat{e}_1$ et $\hat{e}_3$, rotation autour de $\hat{e}_2$ }\\
+%D^{*}_{234} &\longleftrightarrow  \text{ translation dans le plan de $\hat{e}_2$ et $\hat{e}_3$, rotation autour de $\hat{e}_1$ }
+%\end{align*}
+%
+%En revanche, le bivecteur non-simple $e_{12} + e_{34}$ correspond au déplacement net $e_3 + L_3$, c'est-à-dire un mouvement de vis. Pour ce genre de mouvements on a besoin d'une solution pour le cas général.
 \end{itemize}
 
 

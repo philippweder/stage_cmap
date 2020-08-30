@@ -1,23 +1,11 @@
 \defcounter {refsection}{0}\relax 
-\beamer@slide {fig:reference tetrahedron and spr4}{7}
+\beamer@slide {fig:swimmers}{3}
+\defcounter {refsection}{0}\relax 
+\beamer@slide {fig:reference tetrahedron and spr4}{8}
 \defcounter {refsection}{0}\relax 
 \beamer@slide {eq: control system}{9}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {eq:dynamical system}{10}
-\defcounter {refsection}{0}\relax 
-\beamer@slide {eq:spatial rotational invariance}{11}
-\defcounter {refsection}{0}\relax 
-\beamer@slide {eq: angular rotational invariance}{11}
-\defcounter {refsection}{0}\relax 
-\beamer@slide {prop: rotational invariance}{11}
-\defcounter {refsection}{0}\relax 
-\beamer@slide {eq:spatial_perm_inv}{12}
-\defcounter {refsection}{0}\relax 
-\beamer@slide {eq:angular_perm_inv}{12}
-\defcounter {refsection}{0}\relax 
 \beamer@slide {fig:reflection of swimmer}{13}
-\defcounter {refsection}{0}\relax 
-\beamer@slide {prop: spatial permutation invariance}{14}
 \defcounter {refsection}{0}\relax 
 \beamer@slide {eq: reminder control system}{16}
 \defcounter {refsection}{0}\relax 
@@ -41,30 +29,28 @@
 \defcounter {refsection}{0}\relax 
 \beamer@slide {prop:net displacement}{23}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {eq: net displacement}{25}
+\beamer@slide {eq: net displacement}{24}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {eq: linearized energy functional}{27}
+\beamer@slide {eq: linearized energy functional}{26}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {eq: constraint}{29}
+\beamer@slide {eq: constraint}{28}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {lem:simple bivector}{32}
+\beamer@slide {eq: G-orth energy functional}{32}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {eq: G-orth energy functional}{33}
+\beamer@slide {eq: G-orth constraint}{32}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {eq: G-orth constraint}{33}
+\beamer@slide {eq:relation Fourier coeffs of eta}{34}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {eq:relation Fourier coeffs of eta}{36}
+\beamer@slide {prop: l2-minimization}{35}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {prop: l2-minimization}{37}
+\beamer@slide {eq:l2-energy}{35}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {eq:l2-energy}{37}
+\beamer@slide {eq:l2-constraint}{35}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {eq:l2-constraint}{37}
+\beamer@slide {prop:simple reduction}{38}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {prop:simple reduction}{40}
+\beamer@slide {thm:optimal control curves in the simple case}{39}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {thm:optimal control curves in the simple case}{41}
+\beamer@slide {eq:global minimizer condition}{40}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {eq:global minimizer condition}{42}
-\defcounter {refsection}{0}\relax 
-\beamer@slide {eq:global minimizer form}{42}
+\beamer@slide {eq:global minimizer form}{40}

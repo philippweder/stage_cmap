@@ -103,6 +103,44 @@
       \verb 10.3934/dcdsb.2013.18.1189
       \endverb
     \endentry
+    \entry{Alouges2020}{article}{}
+      \name{author}{2}{}{%
+        {{hash=bbaa542e639eb60a359cc0adda7e7092}{%
+           family={Alouges},
+           familyi={A\bibinitperiod},
+           given={Fran{ç}ois},
+           giveni={F\bibinitperiod}}}%
+        {{hash=afeb9c4b568a0a9ea411428a30a5ef2e}{%
+           family={Fratta},
+           familyi={F\bibinitperiod},
+           given={Giovanni\bibnamedelima Di},
+           giveni={G\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Springer Science}%
+        {Business Media {LLC}}%
+      }
+      \strng{namehash}{d4816d1c37f46ae98d5088873af63078}
+      \strng{fullhash}{d4816d1c37f46ae98d5088873af63078}
+      \strng{bibnamehash}{d4816d1c37f46ae98d5088873af63078}
+      \strng{authorbibnamehash}{d4816d1c37f46ae98d5088873af63078}
+      \strng{authornamehash}{d4816d1c37f46ae98d5088873af63078}
+      \strng{authorfullhash}{d4816d1c37f46ae98d5088873af63078}
+      \field{extraname}{1}
+      \field{sortinit}{A}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The European Physical Journal E}
+      \field{month}{2}
+      \field{number}{2}
+      \field{title}{Parking 3-sphere swimmer: {II}. The long-arm asymptotic regime}
+      \field{volume}{43}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.1140/epje/i2020-11932-5
+      \endverb
+    \endentry
     \entry{Alouges2017}{article}{}
       \name{author}{2}{}{%
         {{hash=bbaa542e639eb60a359cc0adda7e7092}{%
@@ -125,6 +163,7 @@
       \strng{authorbibnamehash}{d4816d1c37f46ae98d5088873af63078}
       \strng{authornamehash}{d4816d1c37f46ae98d5088873af63078}
       \strng{authorfullhash}{d4816d1c37f46ae98d5088873af63078}
+      \field{extraname}{2}
       \field{sortinit}{A}
       \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
       \field{labelnamesource}{author}

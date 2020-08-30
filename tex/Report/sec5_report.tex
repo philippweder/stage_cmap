@@ -58,7 +58,7 @@ These definitions then extend naturally to all higher dimensions. In particular,
 \begin{equation}
 \{e_{12}, e_{13}, e_{14}, e_{23}, e_{24}, e_{34}\},
 \end{equation}
-where we write $e_{ij} := e_i \wedge e_j$ to simplify the notation.
+where we write $e_{ij} := e_i \wedge e_j$ to simplify notation.
 
 To finish this section, we will point out some properties of the space $\bigwedge^2 \R^4$ and how it differs from $\bigwedge^2 \R^3$, which at a later point will illustrate why the optimal control curves for $\textsc{SPr3}$ and \textsc{SPr4} in general do not have the same structure. Nevertheless, we will be able treat a simplified situation for \textsc{SPr4} in the same manner as \textsc{SPr3} in \cite{Alouges2017}.
 
@@ -67,9 +67,11 @@ As a matter of fact, one peculiarity of the bivectors in $\R^3$ is that they are
 \label{eq: hodge star}
 u \wedge v = \star(u \times v),
 \end{equation}
-where $\times$ denotes the usual cross product. This entails two things: First, every bivector in $\R^3$ is \emph{simple}; that is, it can be written as the wegde product of two vectors. Second, every bivector in $\R^3$ defines one unique plane in $\R^3$. It is due to this underlying geometrical fact that one can always reduce the Fourier coefficients of an optimal control curve to one pair of vectors, by which one attained the same net displacement at the same energy consumption in \cite{Alouges2017}. Furthermore, this implies that the optimal control curves are situated in a certain plane defined by the vector of the net displacement.
+where $\times$ denotes the usual cross product. This entails two things: First, every bivector in $\R^3$ is \emph{simple}; that is, it can be written as the wegde product of two vectors. Second, every bivector in $\R^3$ defines one unique plane in $\R^3$. It is due to this underlying geometrical fact that one can always reduce the Fourier coefficients of an optimal control curve to one pair of vectors, by which one attains the same net displacement at the same energy consumption in \cite{Alouges2017}, c.f. Proposition 15. Furthermore, this implies that the optimal control curves are situated in a certain plane defined by the vector of the net displacement.
 
 Yet, in $\R^4$, the geometry of its bivectors proves to be more involved. As $\dim \bigwedge^2 \R^4 = 6$, it is clear that the bivectors in $\R^4$ are not isomorphic to $\R^4$ itself. In particular, in $\R^4$ not all bivectors are simple. Indeed, the bivector $e_1 \wedge e_2 + e_3 \wedge e_4 \in \bigwedge^2 \R^4$ cannot be written as an exterior product of just two vectors in $\R^4$. Nevertheless, any bivector in $\R^4$ can be written as the sum of two orthogonal simple bivectors \cite{Lounesto2006}. Moreover, we have the following criterion to determine whether a bivector is simple:
+
+\newpage
 
 \begin{lemma}
 \label{lem:simple bivector}
@@ -87,7 +89,7 @@ The inverse requires a rather lengthy proof by induction, see the lecture notes 
 In what follows, we will find that the net displacement actually identifies with a bivector of $\R^4$ and the solution to the optimization problem in \cite{Alouges2017} then suggests that we should be able to find a similar solution for our optimization problem, at least in the case where the net displacement is a simple bivector. The preceding lemma then serves us to identify certain subspaces of $\bigwedge^2 \R^4$ consisting only of simple bivectors.
 
 \subsection{G-Orthogonalization}
-We begin by rewriting the energy functional (\ref{eq: linearized energy functional}) and the constraint (\ref{eq: constraint}) in terms of the orthonormal basis of eigenvectors $(\tau_i)_{i \in \N_4}$ of the matrix $G$. The change of variables $\eta(t) := U^T \xi(t) \in H_{\sharp}^{1}(J, \R^4)$, allows us to write
+We begin by rewriting the energy functional (\ref{eq: linearized energy functional}) and the constraint (\ref{eq: constraint}) in terms of the orthonormal basis of eigenvectors $(\tau_i)_{i \in \N_4}$ of the matrix $G$. The change of variable $\eta(t) := U^T \xi(t) \in H_{\sharp}^{1}(J, \R^4)$, allows us to write
 \begin{equation}
 \label{eq: G-orth energy functional}
 \mathcal{G}_{U}(\eta) = \int_{J} \Lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \dot{\eta}(t) \dd t,
@@ -119,7 +121,7 @@ is finite. Consequently, we denote by $\dot{\ell}^2(\R^4)$ the Hilbert space of 
 \end{equation}
 with $(a_n, b_n)_{n \in \N} \in \dot{\ell}^2(\R^4) \times \dot{\ell}^2(\R^4)$. Substitution of the Fourier series of $\dot{\eta}$ into the energy functional (\ref{eq: G-orth energy functional}) yields due to Parseval's equality
 \begin{align}
-\mathcal{G}_{U} (\eta) := \int_{J} \Lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \dot{\eta} dt &= \pi \sum_{n  \in \N} n^2(\Lambda_{\mathfrak{g}} a_n \cdot a_n + \Lambda_{\mathfrak{g}} b_n \cdot b_n)  \\  &=
+\mathcal{G}_{U} (\eta) := \int_{J} \Lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \dot{\eta} dt &= \pi \sum_{n  \in \N} n^2(\Lambda_{\mathfrak{g}} a_n \cdot a_n + \Lambda_{\mathfrak{g}} b_n \cdot b_n) \\  &=
 \frac{1}{2} ||\mathbf{u}||_{\ell^2(\R^4)}^2 + \frac{1}{2} ||\mathbf{v}||_{\ell^2(\R^4)}^2,
 \end{align}
 where we have set
@@ -236,7 +238,7 @@ whose stationary satisfy $\psi_{\star} = \frac{\pi}{2}$ and $|u_{\star}|^2 = |\o
 \begin{equation}
 \hat{f}(u, \psi) \geq \frac{1}{2} \frac{|u|^4 + |\omega|^2}{|u|^2} = |\omega| + \frac{1}{2}\frac{(|\omega| - |u|^2)^2}{|u|^2} \geq |\omega| = \hat{f}(u_{\star}, \psi_{\star}).
 \end{equation}
-A straightforward calculation shows then that for such $\sigma$ and $\mu$, one has $\sigma \wedge \mu \mid \mid \hat{\omega}$ since they are in the plane given by $\Span\{x,y\}$. By construction, one has $|\sigma \wedge \mu| = |\sigma| |\mu| = |\omega|$.
+A straightforward calculation shows then that for such $\sigma$ and $\mu$, one has $\sigma \wedge \mu \mid \mid \hat{\omega}$ since they are in the plane spanned by the vectors $x$ and $y$. By construction, one has $|\sigma \wedge \mu| = |\sigma| |\mu| = |\omega|$.
 \end{proof}
 
 Pasting everything worked out above together leads to the final result of this section. We have
@@ -244,7 +246,7 @@ Pasting everything worked out above together leads to the final result of this s
 
 \begin{theorem}
 \label{thm:optimal control curves in the simple case}
-Let $\delta p \in \R^3 \times \so(3) \simeq \bigwedge^2 \R^4$ be a prescribed net displacement. Moreover, assume that $\delta p = x \wedge y$ is a simple bivector. Then, any minimizer $\xi \in H_{\sharp}^1(J, \R^4)$ of the energy functional (\ref{eq: linearized energy functional}) subject to the constraint (\ref{eq: constraint}) is of the form
+Let $\delta p \in \R^3 \times \so(3) \simeq \bigwedge^2 \R^4$ be a prescribed net displacement. Moreover, assume that $\delta p \simeq x \wedge y$ identifies with a simple bivector. Then, any minimizer $\xi \in H_{\sharp}^1(J, \R^4)$ of the energy functional (\ref{eq: linearized energy functional}) subject to the constraint (\ref{eq: constraint}) is of the form
 \begin{equation}
 \xi(t) := (\cos t) a + (\sin t) b,
 \end{equation}

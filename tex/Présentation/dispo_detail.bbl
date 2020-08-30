@@ -198,6 +198,39 @@
       \verb 10.1002/cpa.3160050201
       \endverb
     \endentry
+    \entry{Purcell1977}{article}{}
+      \name{author}{1}{}{%
+        {{hash=6c864a5d1f1695b310d2cab6b3a8dd37}{%
+           family={Purcell},
+           familyi={P\bibinitperiod},
+           given={E.\bibnamedelimi M.},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Association of Physics Teachers ({AAPT})}%
+      }
+      \strng{namehash}{6c864a5d1f1695b310d2cab6b3a8dd37}
+      \strng{fullhash}{6c864a5d1f1695b310d2cab6b3a8dd37}
+      \strng{bibnamehash}{6c864a5d1f1695b310d2cab6b3a8dd37}
+      \strng{authorbibnamehash}{6c864a5d1f1695b310d2cab6b3a8dd37}
+      \strng{authornamehash}{6c864a5d1f1695b310d2cab6b3a8dd37}
+      \strng{authorfullhash}{6c864a5d1f1695b310d2cab6b3a8dd37}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Journal of Physics}
+      \field{month}{1}
+      \field{number}{1}
+      \field{title}{Life at low Reynolds number}
+      \field{volume}{45}
+      \field{year}{1977}
+      \field{pages}{3\bibrangedash 11}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1119/1.10903
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
