@@ -171,7 +171,7 @@ for all $i \neq j \in \N_4$. Again, we have $\K_{\theta}(e_i \otimes e_i) = 0$ f
 \label{eq: M4 and M5}
 	M_4 = \delta \left (
 	\begin{array}{cccc}
-	0 & 1 & 1 & 0 \\ 
+	0 & 1 & -1 & 0 \\ 
 	-1 & 0 & -2 & 3 \\ 
 	1 & 2 & 0 & -3 \\ 
 	0 & -3 & 3 & 0

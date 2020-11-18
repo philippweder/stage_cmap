@@ -1,0 +1,420 @@
+\documentclass[11pt]{beamer}
+\usetheme{Boadilla}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\author{Philipp Weder}
+\title{Minimax Theorems in Hilbert Spaces}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+%\institute{} 
+%\date{} 
+%\subject{} 
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[font=small]{caption}
+\usepackage{wrapfig}
+\usepackage{subfig}
+
+\setbeamertemplate{theorems}[numbered]
+
+
+
+
+
+% remark
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{plain}
+\newtheorem{proposition}[theorem]{Proposition}
+
+
+\theoremstyle{plain}
+\newtheorem{condition}[theorem]{Condition}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\h}{\mathcal{H}}
+\newcommand{\K}{\mathcal{K}}
+\DeclareMathOperator{\Skew}{Skew}
+\DeclareMathOperator{\id}{id}
+\newcommand{\so}{\mathfrak{so}}
+\newcommand{\REF}{\mathrm{ref}}
+\newcommand{\spr}{\textsc{SPr4}}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\chroexp}{\overset{\longrightarrow}{\exp}}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\Span}{span}
+\newcommand{\dd}[1]{\mathrm{d}#1}
+\DeclareMathOperator{\ad}{ad}
+\newcommand{\T}{\mathcal{T}}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\begin{frame}
+%\tableofcontents
+%\end{frame}
+
+\begin{frame}{Preliminaries}
+Let $A,B$ be nonempty sets and $L: A \times B \to \R$ a function. We set
+\begin{itemize}
+\item $\alpha = \inf_{u \in A} \sup_{p \in B}L(u,p)$
+
+\item $\beta = \sup_{p \in B} \inf_{u \in A} L(u,p)$
+
+\item $F(u) := \sup_{p \in B} L(u,p)$
+
+\item $G(p) := \inf_{u \in A}L(u,p)$
+\end{itemize}
+
+\begin{proposition}
+\label{prop:apriori_bounds}
+We have the following a priori results:
+\begin{enumerate}
+\item $- \infty \leq \beta \leq \alpha \leq \infty$
+
+\item For all $u \in A, p  \in B$ we have
+\begin{equation}
+G(p) \leq \beta \leq \alpha \leq F(u)
+\end{equation}
+
+\item Suppose that there exist two points $u_0 \in A, p_0 \in B$ such that $G(p_0) \geq F(u_0)$. Then $(u_0, p_0)$ is a saddle point of $L$.
+\end{enumerate}
+\end{proposition}
+\end{frame}
+
+\begin{frame}{Hypotheses}
+Consider the following hypotheses:
+\begin{enumerate}
+\item[(H1)] Suppose that $A$ and $B$ are nonempty, closed and convex subsets of real Hilbert spaces.
+
+
+\item[(H2)] The map $u \mapsto L(u,p)$ is \emph{convex} and lower semi-continuous on $A$ for all $p \in B$.
+
+\item[(H3)] The map $p \mapsto L(u,p)$ is concave and upper semi-continuous on $B$ for all $u \in A$.
+
+\item[(H4)] The sets $A$ and $B$ are bounded.
+\end{enumerate}
+
+\begin{remark}
+Eventually, we can relax (H4) to (H4'):
+\begin{itemize}
+\item If $A$ is not bounded, then there exists a point $q \in B$ such that $L(u,q) \to \infty$ as $||u|| \to \infty$ in $A$.
+\item If $B$ is not bounded, then there exists a point $v \in A$ such that $L(v,p) \to \infty$ for $||p|| \to + \infty$ in $B$.
+\end{itemize}
+\end{remark}
+\end{frame}
+
+\begin{frame}{Strong Duality Result}
+\begin{theorem}
+Under the hypotheses (H1) - (H4) we have strong dualty, i.e. $\alpha = \beta$.
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}{Ingredients for the proof}
+\begin{definition}
+Let $F: M \subset X \to \R$ be a functional on $M \subset X$, where $X$ is a real normed space. Then we say that $F$ is \emph{weakly sequentially lower semi-continuous} if $u_n \rightharpoonup u$ for $u_n, u \in M$ implies that
+\begin{equation}
+F(u) \leq \liminf_n F(u_n).
+\end{equation}
+Furthermore, we say that $F$ is weakly coercive, if
+\begin{eqnarray}
+F(u) \to \infty & \text{ as } & ||u|| \to \infty \text{ on } M.
+\end{eqnarray}
+\end{definition}
+\end{frame}
+
+\begin{frame}
+\begin{theorem}
+Suppose $F: M \to \R$ has the following properties:
+\begin{enumerate}
+\item $M$ nonempty, closed and convex subset of a real Hilbert space $X$;
+\item $F$ weakly sequentially lower semi-continuous;
+\item if $M$ is unbounded, then suppose that $F$ is weakly coercive.
+\end{enumerate}
+Then the minimization problem
+\begin{eqnarray}
+F(u) = \min!, & u \in M
+\end{eqnarray}
+has a solution.
+\end{theorem}
+
+\begin{corollary}
+If $F$ is strictly convex, the solution is unique.
+\end{corollary}
+\end{frame}
+
+\begin{frame}
+\begin{definition}
+Let $F: M \subset X \to \R$ be a functional on $M \subset X$, where $X$ is a real normed space and $M$ is closed and convex. For each $r \in \R$ set
+\begin{equation}
+\mathcal{M}_r := \{u \in M \mid F(u) \leq r\}.
+\end{equation}
+Then we say that
+\begin{enumerate}
+\item $F$ is \emph{lower semi-continuous} on the closed set $M$ if the set $\mathcal{M}_r$ is closed for all $r \in \R$;
+
+\item $F$ is \emph{quasi-convex} on the convex set $M$ if $\mathcal{M}_r$ is convex for all $r \in \R$. Equivalently, we can say that $F(\alpha u + (1 - \alpha)v) \leq \max\{F(u), F(v)\}$ for $u,v \in M$ and $\alpha \in [0,1]$.
+\end{enumerate}
+\end{definition}
+\end{frame}
+
+\begin{frame}
+\begin{proposition}
+\label{prop:existence_for_qc_and_lsci}
+Suppose that $F: M \subset X \to \R$ has the following properties:
+\begin{enumerate}
+\item $M$ nonempty, closed and convex subset of a real Hilbert space $X$;
+
+\item $F$ \emph{quasi-convex} and lower semi-continuous;
+
+\item if $F$ is unbounded, suppose that $F$ is weakly coercive.
+Then the minimization problem
+\begin{eqnarray}
+F(u) = \min!, & u \in M
+\end{eqnarray}
+has a solution. This solution is unique if $F$ is strictly convex.
+\end{enumerate}
+\end{proposition}
+
+\begin{lemma}
+\label{lemma:lsci_and_qc_implies_wslsci}
+Let $F: M \subset X \to \R$ be lower semi-continuous and \emph{quasi-convex} on the nonempty, closed and convex set $M$. Then $F$ is weakly sequentially lower semi-continuous on $M$.
+\end{lemma}
+\end{frame}
+
+\begin{frame}{Proof of the duality theorem - prologue}
+Note that by (H2) and Lemma \ref{lemma:lsci_and_qc_implies_wslsci}, we have that whenever $u_n \rightharpoonup u$ in $A$, then
+\begin{eqnarray}
+L(u,p) \leq \liminf_n L(u_n, p), & \forall p \in B.
+\end{eqnarray}
+Similarly by (H3), $-L$ is convex and lower semi-continuous in $p$ and therefore $p_n \rightharpoonup p$ in $B$ implies
+
+\begin{eqnarray}
+L(u,p) \geq \limsup_n L(u,p_n), & \forall u \in A.
+\end{eqnarray}
+\end{frame}
+
+\begin{frame}{Proof of the duality theorem - step 1}
+We set
+\begin{align}
+G(p) := \min_{u \in A} L(u,p),& &p\in B\\
+F(u) := \max_{p \in B} L(u,p), & &u \in A.
+\end{align}
+By Proposition \ref{prop:existence_for_qc_and_lsci}, (H2) and (H3), both optimization problems above have a solution, so the definitions make sense. Note that we used the \emph{quasi-convexity} of $L$ in the first argument.
+\end{frame}
+
+\begin{frame}{Proof of the duality theorem - step 2}
+We show that $F: A \to \R$ is lower semi-continuous and quasi-convex.
+
+Put $A_r := \{u \in A \mid F(u) \leq r\}$ for $r \in \R$. Let $v,w \in A_r, \alpha \in [0,1]$. Set $z := \alpha v + (1- \alpha)w$. Then by convexity of $L$ in the first argument, we find
+\begin{equation}
+L(u,p) \leq \alpha L(v, p) + (1- \alpha) L(w, p) \leq r,
+\end{equation}
+for all $p \in B$. This shows the quasi-convexity.
+
+Let $u_n \in A_r, n \geq 1$ such that $u_n \to u$. Then, $L(u_n, p) \leq r$ for all $n \in \N$ and $p \in B$. Since $L$ is lower semi-continuous in the first argument by (H2), we get $L(u,p) \leq r$ for all $p \in B$. This shows that $F$ is lower semi-continuous.
+
+A similar argument shows that $G$ is quasi-concave and upper semi-continuous. Hence, application of Proposition \ref{prop:existence_for_qc_and_lsci} yields solutions $u_\star, p_0$ such that
+\begin{align*}
+F(u_\star) &= \min_{u \in A} F(u)\\
+G(p_0) &= \max_{p \in B} G(p).
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Proof of the duality theorem - step 3}
+\begin{enumerate}
+\item[(H)] Suppose that $u \mapsto L(u,p)$ is \emph{strictly convex}.
+\end{enumerate}
+Under (H), the solution to the minimization problem $G(p) = \min_{u \in A}F(u,p)$ is unique for all $p \in B$. Let us denote it by $u := \phi(p)$, i.e.
+\begin{eqnarray}
+\label{eq:minLinu}
+G(p) = L(\phi(p), p), & p \in B,
+\end{eqnarray}
+and set $u_0 := \phi(p_0)$. By (\ref{eq:minLinu}), we have
+\begin{eqnarray}
+G(p_0) \leq L(u, p_0), & \forall u \in A.
+\end{eqnarray}
+Now we show the decisive inequality
+\begin{eqnarray}
+\label{eq:decisive}
+G(p_0) \geq L(u_0, p), & \forall p \in B.
+\end{eqnarray}
+From inequalities (\ref{eq:minLinu}) and (\ref{eq:decisive}), it then follows that $G(p_0) = L(u_0, p_0)$ and therefore
+\begin{equation}
+L(u_0, p) \leq L(u_0, p_0) \leq L(u, p_0),
+\end{equation}
+for all $u \in A, p \in B$, which is the desired result.
+\end{frame}
+
+\begin{frame}{Proof of the duality theorem - step 4}
+Take $p \in B$, put
+\begin{eqnarray}
+p_n := (1 - \tfrac{1}{n}) p_0 + \tfrac{1}{n} p, &u_n := \phi(p_n),& n \in \N.
+\end{eqnarray}
+By definition of $G$, we have
+\begin{eqnarray}
+G(p_0) \geq G(p_n) = L(u_n, p_n), & \forall n \in \N.
+\end{eqnarray}
+Since $p \mapsto L(u,p)$ is concave, we have
+\begin{equation}
+G(p_0) \geq (1 - \tfrac{1}{n})L(u_n, p_0) + \tfrac{1}{n} L(u_n, p).
+\end{equation}
+By (\ref{eq:minLinu}), $G(p_0) \leq L(u_n, p_0)$ and thus
+\begin{eqnarray}
+G(p_0) \geq L(u_n, p),& \forall n \in \N.
+\end{eqnarray}
+\end{frame}
+
+\begin{frame}
+Since $u_n \in A$ for $n \in \N$, the sequence is bounded and thus there exists a subsequence again denoted by $u_n$ such that $u_n \rightharpoonup w$ for some $w \in A$.
+
+By (H2), $u \mapsto L(u, p)$ is lower semi-continuous, which implies 
+\begin{eqnarray}
+\label{eq:upper_bound_w}
+G(p_0) \geq \liminf_n L(u_n, p) \geq L(w, p).
+\end{eqnarray}
+It remains to show that $w = u_0$. By deifnition of the $u_n$, we have
+\begin{align*}
+&L(u_n, p_n) \leq L(u, p_n),& \forall u \in A, n \in \N.
+\end{align*}
+Again, using the concavity of $p \mapsto L(u, p)$, we have
+\begin{align*}
+&(1 - \tfrac{1}{n}) L(u_n, p_0) + \tfrac{1}{n} L(u_n, p) \leq L(u, p_n), &\forall u \in A, n \in \N.
+\end{align*}
+By (\ref{eq:minLinu}), we have $G(p) \leq L(u_n, p)$, and therefore
+\begin{eqnarray}
+(1 - \tfrac{1}{n}) L(u_n, p_0) + \tfrac{1}{n}  G(p) \leq L(u, p_n),& &\forall u \in A, n \in \N.
+\end{eqnarray}
+\end{frame}
+
+\begin{frame}
+In the limit $n \to \infty$ we find together with (\ref{eq:upper_bound_w}) that
+\begin{eqnarray}
+L(w, p_0) \leq \liminf_n L(u, p_n),& & \forall u \in A.
+\end{eqnarray}
+As $p_n \to p_0$ and by (H3) the map $p \mapsto L(u,p)$ is upper semicontinuous, we have
+\begin{eqnarray}
+\limsup_n L(u, p_n) \leq L(u, p_0), & & \forall u \in A.
+\end{eqnarray}
+So finally, we have
+\begin{eqnarray*}
+L(w, p_0) \leq L(u, p_0), & & \forall u \in A,
+\end{eqnarray*}
+so by definition of $u_0$, we must have $w = u_0$.
+\end{frame}
+
+\begin{frame}{Proof of the duality theorem - step 5}
+Eventually, we have to discard the additional assumption (H). Consider the regularized functions
+\begin{eqnarray}
+L_n(u,p) := L(u, p) + \tfrac{1}{n}||u||, & &n \in \N.
+\end{eqnarray}
+Since $X$ is a real Hilbert space, $u \mapsto ||u||$ is strictly convex, which carries over to $L_n$. Therefore, we have (H) for every such $L_n$.
+
+\begin{remark}
+Note that the sum of convex functions always stays convex. However, the sum of quasi-convex functions need not be quasi-convex. 
+\end{remark}
+\end{frame}
+
+\begin{frame}
+By the preceding arguments, there exists a saddle point $(u_n, p_n)$ for every $L_n$ in $A \times B$. Hence,
+\begin{eqnarray}
+L(u_n, p) + \tfrac{1}{n} ||u_n|| \leq L(u_n, p_n) + \tfrac{1}{n} ||u_n||  \leq L(u, p_n) + \tfrac{1}{n} ||u||,
+\end{eqnarray}
+for all $u \in A, p \in B, n \in \N$. The sequences $(u_n)_n, (p_n)_n$ are bounded and therefore we can extract subsequences again denoted by $(u_n)_n$ and $(p_n)_n$ such that
+\begin{eqnarray}
+	u_n \rightharpoonup u_0 & \text{ and } & p_n \rightharpoonup p_0
+\end{eqnarray}
+for some $u_0 \in A$ and $p_0 \in B$, since the latter two sets are closed and convex. In particular, in the limit $n \to \infty$, we have
+\begin{eqnarray}
+L(u_0, p) \leq \liminf_n L(u_n, p) \leq \limsup_n L(u, p_n) \leq L(u,p_0), &  &\forall u \in A, p \in B.
+\end{eqnarray}
+Hence, we have
+\begin{eqnarray}
+L(u_0, p) \leq L(u_0, p_0) \leq L(u,p_0), &  &\forall u \in A, p \in B,
+\end{eqnarray}
+as desired.
+\end{frame}
+
+\begin{frame}{Generalized duality theorem}
+The following generalization can be found in Zeidler 1986, Vol. I., p. 458:
+\begin{theorem}
+Suppose that $A$ and $B$ are nonempty, closed, bounded convex subsets in reflexive Banach spaces $X$ and $Y$, respectively. Let $L: A \times B \to \R$ be a function such that
+\begin{enumerate}
+\item $u \mapsto L(u,p)$ is lower semi-continuous and \emph{quasi-convex} on $A$ for all $p \in B$;
+\item $p \mapsto L(u,p)$ is upper semi-continuous and quasi-concave on $B$ for all $u \in A$.
+\end{enumerate}
+Then $L$ has a saddle point and we have strong duality.
+\end{theorem}
+\end{frame}
+
+\begin{frame}{Ingredients for the proof}
+\begin{proposition}[Fixed point theorem]
+\label{prop:fixed_point}
+A mapping $T:K \to 2^{K}$, where $K \subset X$, has a fixed point if the following conditions hold:
+\begin{enumerate}
+\item $X$ is locally convex, $K$ is nonempty, compact and convex;
+\item the set $T(x)$ is nonempty and \emph{convex} for all $x \in K$, and the preimages $T^{-1}(\{y\})$ are relatively open with respect to $K$ for all $y \in K$.
+\end{enumerate}
+\end{proposition}
+\end{frame}
+
+\begin{frame}{Proof of the generalized duality theorem}
+We set again $\alpha = \min_{u \in A} \max_{p \in B} L(u,p)$ and $\beta = \max_{p \in B} \min_{u \in A} L(u,p)$. The well-definition of the minimax problem follows very similarly to steps 1 and 2 of the previous proof. 
+
+Futhermore, from Proposition  \ref{prop:apriori_bounds} it follows already that $\beta \leq \alpha$. So it only remains to show that $\alpha \leq \beta$.
+
+Let $s = \alpha - \varepsilon, t = \beta + \varepsilon$ for $\varepsilon > 0$. We construct the map $T: A \times B \to 2^{A \times B}$ by setting
+\begin{equation}
+T(u,p) = \{(v,q) \in A \times B \mid L(v,p) < t, L(u,q) > s\}.
+\end{equation}
+
+\end{frame}
+
+
+
+\begin{frame}
+Note that
+\begin{enumerate}
+\item $T(u,p) \neq \emptyset$ follows from the definition of $\alpha$ and $\beta$;
+
+\item the set $T(u,p)$ is convex since $L$ is \emph{quasi-convex} in $u$ and quasi-concave in $p$;
+
+\item the preimage
+\begin{equation}
+T^{-1}(\{(u,p)\}) = \{(v,q) \in A \times B \mid L(u,q) < t, L(v,p) > s\}
+\end{equation}
+is weakly relatively open in $A \times B$. For the sets
+\begin{eqnarray*}
+\{v \in A \mid L(v,p) \leq s\} & \text\{ and \} & \{q \in B \mid L(u,q) \geq t\}
+\end{eqnarray*}
+are closed and convex by assumption on $L$ and therefore are weakly closed with respect to $A \times B$.
+
+Thus, Proposition \ref{prop:fixed_point} applies and we find $(u_0, p_0) \in A \times B$ such that 
+\begin{equation}
+\alpha - \varepsilon = s < L(u_0, p_0) < t = \beta + \varepsilon,
+\end{equation}
+and since $\varepsilon > 0$ was arbitrary, this proves the theorem.
+
+\end{enumerate}
+\end{frame}
+
+\end{document}

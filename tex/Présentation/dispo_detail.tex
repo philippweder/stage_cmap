@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[12pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
 \usepackage{amsmath}
@@ -66,6 +66,7 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{booktabs}
+\usepackage[onehalfspacing]{setspace}
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\M}{\mathcal{M}}
@@ -91,12 +92,12 @@
 
 \begin{document}
 \renewcommand\labelitemi{--}
-\linespread{1.1}
+
 \maketitle
 \section{Mot de bienvenue}
 \begin{itemize}
-\item Bonjour à tous....
-\item Pendant mon stage, je me suis occupé du sujet de la \emph{natation à l'échelle microscopique}. Plus précisement, j'ai analysé un micro-nageur, qu'on a appelé "parking 4-sphere swimmer"(\textsc{SPr4}) que je vais vous présenter tout de suite. Mais commençons par le début...
+\item Bonjour à tous, je suis très content de pouvoir vous présenter mon projet de stage sur place finalement.
+\item Dans ce projet, j'ai travaillé sur la \emph{natation à l'échelle microscopique}, plus précisément, j'ai analysé une structure de natation, un micro-nageur, qu'on a appelé "parking 4-sphere swimmer" ou juste \textsc{SPr4}. Je vais vous présenter le modèle et les résultat qu'on a trouvé tout de suite. Mais commençons par le début de l'histoire...
 \end{itemize}
 \section{Introduction}
 \begin{itemize}
@@ -104,13 +105,13 @@
 
 \item Cette observation a motivé la recherche pour le mécanisme le plus simple de natation à l'échelle microscopique. Jusque là, des nombreux tels mécanismes ont été analysés, au moins partiellement. Voici, trois exemple: Le nageur \textsc{3S} à gauche qui ne peut se déplacer sur une droite, le nageur \textsc{SPr3} dont on sait de \cite{Alouges2017} qu'il peut se déplacer dans un plan et puis le nageur \textsc{SPr4} qui a été traité dans ce projet.
 
-\item Le problème mathématique principal est qu'à l'échelle microscopique le nombre de Reynolds $\re = \rho u L/\mu$ est très bas, ce qui entraîne que dans les équations de Navier-Stokes les forces d'inertie deviennent négligeables. Par conséquent, un micro-nageur ne peut utiliser que les forces visqueuses pour se déplacer. Plus précisément, un micro-nageur est régit par les équations de Stokes qui sont linéaires et réversibles par rapport au temps. Ceci implique en particulier qu'un mouvement réciproque ne contribuera pas au déplacement!
+\item Le problème mathématique principal est qu'à l'échelle microscopique le nombre de Reynolds $\re = \rho u L/\mu$ est très bas, ce qui entraîne que dans les équations de Navier-Stokes les forces d'inertie deviennent négligeables. Par conséquent, un micro-nageur ne peut utiliser que les forces visqueuses pour se déplacer. Plus précisément, un micro-nageur est régit par les équations de Stokes qui sont linéaires et réversibles par rapport au temps. Ceci implique en particulier qu'un mouvement réciproque ne contribuera jamais au déplacement!
 
-\item En termes mathématiques, on face on problème de contrôlabilité, c'est-à-dire on veut trouver un mécanisme pour nager avec un nombre le plus petit possible de contrôles tel que l'on puisse atteindre n'importe quelle position dans l'espace avec une suite de mouvements périodiques.
+\item En termes mathématiques, on face on problème de contrôlabilité, c'est-à-dire on veut trouver un mécanisme pour nager, assez simple si possible, tel que l'on puisse atteindre n'importe quel position et orientation dans l'espace à l'aide d'un changement de forme. Intuitivement, on s'imagine une suite de mouvements périodiques.
 
 \item Une question supplémentaire naturelle est celle de la natation optimale, c'est-à-dire trouver les mouvements optimaux par rapport à la consommation d'énergie.
 
-\item Pour le nageur \textsc{SPr4}, le problème de contrôlabilité a déjà été résolu dans \cite{Alouges2013}. Or, on n'a pas encore des expressions explicites.
+\item Le problème de contrôlabilité a déjà été résolu pour \textsc{SPr4} dans \cite{Alouges2013}. Or, on n'a pas encore des expressions explicites pour la dynamique.
 
 \item Dans mon projet, j'ai analysé le nageur \textsc{SPr4} analytiquement sous l'hypothèse que les mouvements soient petits. Ensuite, j'ai essayé sous la même hypothèse de trouver la structure des courbes de contrôle optimales. Portant, je n'y suis parvenu que pour une classe particulière de déplacements prescrits. Bien sûr, on a également exploré le cas général.
 \end{itemize}
@@ -341,12 +342,15 @@ M_k &:= \frac{1}{2}[A_k - A_k^T], k \in \N_3\\
 M_{k + 3} &:= \frac{1}{2}[B_k - B_k^T], k \in \N_3.
 \end{align}
 
-\item Finalement, il ne reste que 5 paramètres inconnus dans les matrices $A_k$ et $B_k$.
+\item Finalement, il ne reste que 5 paramètres inconnus dans les matrices $A_k$ et $B_k$. Pourtant, on connaît maintenant la dynamique du nageur beaucoup mieux.
 \end{itemize}
 
 \subsection{Linéarisation}
 \begin{itemize}
-\item Maintenant, on se donne un espace pour les courbes, notamment $H^1_{\sharp}(J, \R^4)$, où $J := [0, 2\pi]$.
+
+\item Pour préparer le traitement du problème d'optimisation, on a besoin de d'une expression explicite pour les déplacements nets suite à un changement de forme, au moins approximativement.
+
+\item Pour ceci, on se donne un espace pour les courbes, notamment $H^1_{\sharp}(J, \R^4)$, où $J := [0, 2\pi]$.
 
 \item On notera $\langle f \rangle := (2 \pi)^{-1 }\int_{J} f(t) d t$ pour $f \in H^1_{\sharp}(J, \R^4)$ la moyenne d'une fonction.
 
@@ -527,7 +531,7 @@ avec $\mathcal{G}_{U}(\eta) := \mathcal{G}(\xi) = \mathcal{G}(U \eta)$.
 \end{equation}
 avec $\Lambda_{\mathfrak{h}} := \diag(\mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{c}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta}, \mathfrak{h}_{\theta})$. En particulier, on a séparé tous les paramètres inconnus de la courbe de contrôle. (De plus, on observe que la contrôle est l'intégrale d'une 2-forme.)
 
-\item Ainsi, le problème d'optimisation devient: Trouver $\inf_{\eta \in H^1_{\sharp}(J, \R^4)} \int_{J}\Lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \eta(t) \dd t $ sous la contrainte $\Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\eta(t) \dd t.$
+\item Ainsi, le problème d'optimisation devient: Trouver $\inf_{\eta \in H^1_{\sharp}(J, \R^4)} \int_{J}\Lambda_{\mathfrak{g}} \dot{\eta}(t) \cdot \eta(t) \dd t $ sous la contrainte $\Lambda_{\mathfrak{h}}^{-1} \delta p = \int_{J} \dot{\eta}(t) \wedge\dot{\eta}(t) \dd t.$
 
 
 \item Ce problème n'est pas trivial, donc on a envie de le réduire à un problème d'optimisation facile à résoudre.
