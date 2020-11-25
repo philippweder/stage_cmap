@@ -8,8 +8,9 @@ Created on Wed Nov 18 21:07:26 2020
 
 import numpy as np
 import clifford as cf
-from numpy.linalg import norm
+from numpy.linalg import norm, det
 from scipy.integrate import quad
+import matplotlib.pyplot as plt
 
 
 
@@ -40,6 +41,9 @@ ehat2 = np.array([0,1,0])
 ehat3 = np.array([0,0,1])
 
 basis_r3 = (ehat1, ehat2, ehat3)
+
+a = 1.0
+xi0 = 10.0
 
 
 
@@ -127,7 +131,7 @@ def check_is_simple(coeffs, tol = 10E-13):
         return False
     
     
-def decompose4d(coeffs, basis, tol = 10E-13):
+def decompose4d(coeffs, basis, tol = 10E-13, trace=False):
     """
     Parameters
     ----------
@@ -155,6 +159,9 @@ def decompose4d(coeffs, basis, tol = 10E-13):
     
     u1 = (a14*e1 + a24*e2 + a34*e3)
     v1 = e4
+    
+    if trace:
+        print("a31= " , a31)
     
     if np.abs(a31) < tol:
         u2 = a12*e1 - a23*e3
@@ -189,6 +196,42 @@ def check_lin_dep(u,v, tol = 10E-13):
     else:
         return False
 
+def check_decomposition(u1, v1, u2, v2, w, tol=10E-13):
+    
+    
+    layout, blades = cf.Cl(4)
+    
+    
+    ee1 = blades['e1']
+    ee2 = blades['e2']
+    ee3 = blades['e3']
+    ee4 = blades['e4']
+    
+    ee12 = blades['e12']
+    ee31 = -blades['e13']
+    ee14 = blades['e14']
+    ee23 = blades['e23']
+    ee24 = blades['e24']
+    ee34 = blades['e34']
+    
+    ww = w[0]*ee14 + w[1]*ee24 + w[2]*ee34 + \
+        w[3]*ee23 + w[4]*ee31 + w[5]*ee12
+
+        
+    uu1 = u1[0]*ee1 + u1[1]*ee2 + u1[2]*ee3 + u1[3]*ee4
+    uu2 = u2[0]*ee1 + u2[1]*ee2 + u2[2]*ee3 + u2[3]*ee4
+    
+    vv1 = v1[0]*ee1 + v1[1]*ee2 + v1[2]*ee3 + v1[3]*ee4
+    vv2 = v2[0]*ee1 + v2[1]*ee2 + v2[2]*ee3 + v2[3]*ee4
+    
+    if abs(ww - (uu1^vv1) - (uu2^vv2)) <= tol:
+        return True
+    
+    else:
+        print("u1^v1 = ", uu1^vv1)
+        print("u2^v2 = ", uu2^vv2)
+        print((ww) - ((uu1^vv1) + (uu2^vv2)))
+        return False
 
 
 
@@ -233,7 +276,7 @@ def decompose4d_simple(coeffs, basis, tol=10E-13, trace = False):
         
     else:
         u1 = a23*e2 - a31*e1 
-        u2 = e3 - (a12/a34)*e2
+        u2 = e3 - (a12/a31)*e2
         
     if trace:
         print("u1 = ", u1)
@@ -332,7 +375,11 @@ def build_params(a, xi0):
     
     delta = (81*a**2 - 240*np.sqrt(6)*a*xi0 + 256*xi0**2)/(64*xi0**2*(-27*np.sqrt(6)*a**2 - 252*a*xi0 + 64*np.sqrt(6)*xi0**2))
     
-    energy_params = (kappa, h, gc, gt)
+    hc = -2*np.sqrt(6)*alpha
+    
+    ht = -2*np.sqrt(6)*delta
+    
+    energy_params = (kappa, h, gc, gt, hc, ht)
     
     control_params = (aa, alpha, beta, lam, delta)
     
@@ -340,7 +387,7 @@ def build_params(a, xi0):
     
     tau2 = (1/np.sqrt(2))*np.array([0, 1, -1, 0])
     
-    tau3 = (1/2*np.sqrt(3))*np.array([1, 1, 1, -3])
+    tau3 = (1/(2*np.sqrt(3)))*np.array([1, 1, 1, -3])
     
     tau4 = (1/2)*np.array([1, 1, 1, 1])
     
@@ -488,117 +535,217 @@ def build_control_matrices(control_params, tau_basis, full=False):
     
 
 
-def simulate_net_displacement(xi,dxidt, xi0, a):
+def net_displacement(xi, dxidt, xi0, a, split=False):
     
     
     energy_params, _ , tau_basis = build_params(a, xi0)
     
-        
+    tau1, tau2, tau3, tau4 = tau_basis
     _, _, _, _, hc, ht = energy_params
     
     
-    integrand1 = lambda t: np.det(np.array([xi(t), dxidt(t), tau_basis[1], tau_basis[2]]))
-    integrand2 = lambda t: np.det(np.array([xi(t), dxidt(t), tau_basis[2], tau_basis[3]]))
-    integrand3 = lambda t: np.det(np.array([xi(t), dxidt(t), tau_basis[3], tau_basis[0]]))
+    integrand1 = lambda t: hc * det(np.array([xi(t), dxidt(t), tau2, tau3]))
+    integrand2 = lambda t: hc * det(np.array([xi(t), dxidt(t), tau3, tau4]))
+    integrand3 = lambda t: hc * det(np.array([xi(t), dxidt(t), tau4, tau1]))
     
-    integrand4 = lambda t: np.det(np.array([xi(t), dxidt(t), tau_basis[0], tau_basis[3]]))
-    integrand5 = lambda t: np.det(np.array([xi(t), dxidt(t), tau_basis[1], tau_basis[3]]))
-    integrand6 = lambda t: np.det(np.array([xi(t), dxidt(t), tau_basis[2], tau_basis[3]]))
+    integrand4 = lambda t: ht * det(np.array([xi(t), dxidt(t), tau1, tau4]))
+    integrand5 = lambda t: ht * det(np.array([xi(t), dxidt(t), tau2, tau4]))
+    integrand6 = lambda t: ht * det(np.array([xi(t), dxidt(t), tau3, tau4]))
     
     position_integrands = [integrand1, integrand2, integrand3]
     orientation_integrands = [integrand4, integrand5, integrand6]
+    integrands = [integrand1, integrand2, integrand3,integrand4, integrand5, integrand6]
 
+    if split:
+
+        dc = [ quad(integrand, 0, 2*np.pi)[0] for integrand in position_integrands]
+        dR = [ quad(integrand, 0, 2*np.pi)[0] for integrand in orientation_integrands]
     
-    dc = [hc * quad(integrand, 0, 2*np.pi)*basis_vector for (integrand, basis_vector) in zip(position_integrands, basis_r3)]
-    dR = [ht * quad(integrand, 0, 2*np.pi)*basis_vector for (integrand, basis_vector) in zip(orientation_integrands, basis_so3)]
-    
-    return (dc, dR)
-    
-    
-            
-def compute_optimal_curve(net_displacement):
-    pass
-    
+        return  (np.array(dc), np.array(dR))
 
-layout, blades = cf.Cl(4)
-
-
-ee1 = blades['e1']
-ee2 = blades['e2']
-ee3 = blades['e3']
-ee4 = blades['e4']
-
-ee12 = blades['e12']
-ee31 = -blades['e13']
-ee14 = blades['e14']
-ee23 = blades['e23']
-ee24 = blades['e24']
-ee34 = blades['e34']
-
-
-test_coeffs = np.array([1.0, 1.0, 0.0, 0.0, 0.0, 1.0])
-
-w = test_coeffs[0]*ee14 + test_coeffs[1]*ee24 + test_coeffs[2]*ee34 + \
-        test_coeffs[3]*ee23 + test_coeffs[4]*ee31 + test_coeffs[5]*ee12
+    else:
         
+        dp = [quad(integrand, 0, 2*np.pi)[0] for integrand in integrands]
+        
+        return np.array(dp)
+
+            
+def compute_optimal_curve(dp, xi0, a, derivative=False):
+   
+    energy_params, control_params, tau_basis = build_params(a, xi0)
+    
+    kappa, h, gc, gt, hc, ht = energy_params
+
+    G, U, Lg, tildeLg, Lh = build_energy_matrices(energy_params, tau_basis)
+    
+    D = np.array([1/np.sqrt(gc), 1/np.sqrt(gc), 1/np.sqrt(gc), 1/np.sqrt(gt)])
+    Lginv12 = np.diag(D)
+    ULginv12 = np.matmul(U, Lginv12)
+    
+    LLinv = np.linalg.inv(np.matmul(Lh, tildeLg))
+    
+    w = np.sqrt(det(Lg))*np.dot(LLinv, dp)
+
+    
+    if check_is_simple(w):
+                
+        u2 = np.array([0,0,0,0])
+        v2 = np.array([0,0,0,0])
+        
+        vraw, uraw = decompose4d_simple(w, basis_r4)
+        
+        
+        print(vraw, uraw)
+        
+        print(check_decomposition(vraw, uraw, u2, v2, w))
+        
+        v, u = post_processor(vraw, uraw)
+
+        print(check_decomposition(v, u, u2, v2, w))
+        
+        a = (1/np.sqrt(2*np.pi))*np.dot(ULginv12, u)
+        b = (1/np.sqrt(2*np.pi))*np.dot(ULginv12, v)
+        
+        xi = lambda t: np.cos(t)*a + np.sin(t)*b
+
+        if derivative:
+            dxidt = lambda t: -np.sin(t)*a + np.cos(t)*b
+            return (xi, dxidt)
+        else:    
+            return xi
+        
+        
+    
+    else:
+        
+        v1raw, u1raw, v2raw, u2raw = decompose4d(w, basis_r4)
+        
+        print(check_decomposition(u1raw, v1raw, u2raw, v2raw, w))
+        
+        v1, u1 = post_processor(v1raw, u1raw)
+        v2, u2 = post_processor(v2raw, u2raw)
+        
+        print(check_decomposition(v1, u1, v2, u2, w))
+        
+        if norm(u2)**2 + norm(v2)**2 <= norm(u1)**2 + norm(v1)**2:
+            a1 = (1/np.sqrt(2*np.pi))*np.dot(ULginv12, u1)
+            b1 = (1/np.sqrt(2*np.pi))*np.dot(ULginv12, v1)
+            
+            a2 = (1/np.sqrt(4*np.pi))*np.dot(ULginv12, u2)
+            b2 = (1/np.sqrt(4*np.pi))*np.dot(ULginv12, v2)
+    
+        else:
+            a1 = (1/np.sqrt(2*np.pi))*np.dot(ULginv12, u2)
+            b1 = (1/np.sqrt(2*np.pi))*np.dot(ULginv12, v2)
+            
+            a2 = (1/np.sqrt(4*np.pi))*np.dot(ULginv12, u1)
+            b2 = (1/np.sqrt(4*np.pi))*np.dot(ULginv12, v1)
+        
+        xi = lambda t: np.cos(t)*a1 + np.sin(t)*b1 + np.cos(2*t)*a2 + np.sin(2*t)*b2
+        
+        if derivative:
+            dxidt = lambda t: -np.sin(t)*a1 + np.cos(t)*b1 -2*np.sin(2*t)*a2 + 2*np.cos(2*t)*b2
+            
+            return (xi, dxidt)
+        
+        else:
+            
+            return xi
+    
+
+    
+
+
+# test_coeffs = np.array([1.0, 1.0, 0.0, 0.0, 0.0, 1.0])
 
 
 
 
 
-# print(check_is_simple(test_coeffs))
 
-# if check_is_simple(test_coeffs):
-#     u,v = decompose4d_simple(test_coeffs, (e1, e2, e3, e4), trace=True)
+        
+energy_params, control_params, tau_basis = build_params(a, xi0)
+kappa, h, gc, gt, hc, ht = energy_params
+
+
+G, U, Lg, tildeLg, Lh = build_energy_matrices(energy_params, tau_basis)
+
+
+# u1 = np.array([1,1,1,1])
+# # u1 = np.array([1,1,0,0])
+# v1 = np.array([1, 1, 1,1])
+
+# # u2 = np.array([0,0,1,1])
+# u2 = np.array([-1,1,1,1])
+# v2 = np.array([-1,1,1, 1])
+
+# a1 = np.dot(Lg, u1)
+# b1 = np.dot(Lg, v1)
+
+# a2 = np.dot(Lg, u2)
+# b2 = np.dot(Lg, v2)
+
+# xi = lambda t: np.cos(t)*a1 + np.sin(t)*b1 + np.cos(2*t)*a2 + np.sin(2*t)*b2
+# dxidt  = lambda t: -np.sin(t)*a1 + np.cos(t)*b1 - 2*np.sin(2*t)*a2 + 2*np.cos(2*t)*b2
+
+# res_dp = net_displacement(xi, dxidt, xi0, a)
+
+
+eps = 1.0
+dp1 = eps*np.array([1,1,1,1,1,1])
+
+# if check_is_simple(dp1):
+#     print("SIMPLE CASE")
+#     u,v = decompose4d_simple(dp1, basis_r4, trace=False)
 #     print(u,v)
-
-#     uu = u[0]*ee1 + u[1]*ee2 + u[2]*ee3 + u[3]*ee4
-#     vv = v[0]*ee1 + v[1]*ee2 + v[2]*ee3 + v[3]*ee4
     
-#     print(uu^vv)
-
-#     print((uu^vv) - w)
+#     u2 = np.array([0,0,0,0])
+#     v2 = np.array([0,0,0,0])
     
+#     print(check_decomposition(u, v, u2, v2, dp1))
     
+#     upp, vpp = post_processor(u, v)
+    
+#     print(check_decomposition(upp, vpp, u2, v2, dp1))
 # else:
-#     u1, v1, u2, v2 = decompose4d(test_coeffs, (e1, e2, e3, e4))
+#     print("NON-SIMPLE CASE")
+#     u1, v1, u2, v2 = decompose4d(dp1, basis_r4, trace=False)
 #     print(u1, v1)
 #     print(u2, v2)
-          
-          
-# rand_coeffs = 2* np.random.randint(low = 0, high = 10, size = (6,))
-
-# rand_coeffs = 2*np.random.rand(6)
-# print(rand_coeffs)
-
-
-# print(check_is_simple(rand_coeffs))
-# w = rand_coeffs[0]*ee14 + rand_coeffs[1]*ee24 + rand_coeffs[2]*ee34 + \
-#         rand_coeffs[3]*ee23 + rand_coeffs[4]*ee31 + rand_coeffs[5]*ee12
-
-# if check_is_simple(rand_coeffs):
-#     u,v = decompose4d_simple(rand_coeffs, (e1, e2, e3, e4), trace=True)
-#     print(u,v)
-#     uu = u[0]*ee1 + u[1]*ee2 + u[2]*ee3 + u[3]*ee4
-#     vv = v[0]*ee1 + v[1]*ee2 + v[2]*ee3 + v[3]*ee4
-
-#     print(abs((uu^vv) - w))
     
-# else:
-#     u1, v1, u2, v2 = decompose4d(rand_coeffs, (e1, e2, e3, e4))
-#     print(u1, v1)
-#     print(u2, v2)
-#     uu1 = u1[0]*ee1 + u1[1]*ee2 + u1[2]*ee3 + u1[3]*ee4
-#     vv1 = v1[0]*ee1 + v1[1]*ee2 + v1[2]*ee3 + v1[3]*ee4
-    
-#     uu2 = u2[0]*ee1 + u2[1]*ee2 + u2[2]*ee3 + u2[3]*ee4
-#     vv2 = v2[0]*ee1 + v2[1]*ee2 + v2[2]*ee3 + v2[3]*ee4
-    
-#     print(abs((uu1^vv1) + (uu2^vv2) - w))
+#     print(check_decomposition(u1, v1, u2, v2, dp1))
 
+xi, dxidt  = compute_optimal_curve(dp1, xi0, a, derivative=True)
 
+dp2 = net_displacement(xi, dxidt, xi0, a)
 
+print(dp2)
+# for k in range(6):
+#     print(np.abs(dp1[k] + dp2[k]))
     
     
+# print(abs(dp1 - dp2))
 
-    
+print(norm(dp1- dp2))
+
+T = np.linspace(0, 2*np.pi, 1000)
+
+hist = []
+
+for t in T:
+    newpoint = xi(t)
+    hist.append(newpoint)
+
+hist = np.array(hist)
+
+plt.figure()
+plt.plot(hist[:,0],hist[:,1])
+plt.show()
+
+plt.figure()
+plt.plot(hist[:,2], hist[:,3])
+plt.show()
+
+
+
+

@@ -331,6 +331,33 @@
       \verb http://people.maths.ox.ac.uk/hitchin/files/LectureNotes/Projective_geometry/Chapter_3_Exterior.pdf
       \endverb
     \endentry
+    \entry{Kielhoefer2018}{book}{}
+      \name{author}{1}{}{%
+        {{hash=1dcfdcaff9a2b31b572b5b5bfd86d712}{%
+           family={Kielhöfer},
+           familyi={K\bibinitperiod},
+           given={Hansjörg},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer International Publishing}%
+      }
+      \strng{namehash}{1dcfdcaff9a2b31b572b5b5bfd86d712}
+      \strng{fullhash}{1dcfdcaff9a2b31b572b5b5bfd86d712}
+      \strng{bibnamehash}{1dcfdcaff9a2b31b572b5b5bfd86d712}
+      \strng{authorbibnamehash}{1dcfdcaff9a2b31b572b5b5bfd86d712}
+      \strng{authornamehash}{1dcfdcaff9a2b31b572b5b5bfd86d712}
+      \strng{authorfullhash}{1dcfdcaff9a2b31b572b5b5bfd86d712}
+      \field{sortinit}{K}
+      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Calculus of Variations}
+      \field{year}{2018}
+      \verb{doi}
+      \verb 10.1007/978-3-319-71123-2
+      \endverb
+    \endentry
     \entry{Lighthill1952}{article}{}
       \name{author}{1}{}{%
         {{hash=eea1108242f9788f484f1806161a8e45}{%

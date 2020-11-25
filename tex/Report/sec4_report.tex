@@ -199,7 +199,8 @@ At this point, let us point out the apparent similarity between the matrices $M_
 \end{remark}
 
 \subsection{The linearized control equations}
-Herein, we denote by $J$ the closed interval  $[0,2\pi] \subset \R$ and we define the so-called \emph{strokes space} as $H_\sharp^1(J, \R^4)$, i.e. the Sobolev space of $2\pi$-periodic vector valued functions of $L_{\sharp}^2(J, \R^4)$ having first order weak derivative in $L_{\sharp}^2(\R^4)$. For every $f \in L^{2}_{\sharp}(J, \R^4)$ we denote by $\langle f \rangle := (2\pi)^{-1} \int_{J} f(s) \dd s$ the average of $f$ on $J$.
+Herein, we denote by $J$ the closed interval  $[0,2\pi] \subset \R$ and for every $f \in L^{2}_{\sharp}(J, \R^4)$ we denote by $\langle f \rangle := (2\pi)^{-1} \int_{J} f(s) \dd s$ the average of $f$ on $J$.
+We define the so-called \emph{strokes space} as $\dot{H}_\sharp^1(J, \R^4)$, i.e. the Sobolev space of $2\pi$-periodic vector valued functions of $L_{\sharp}^2(J, \R^4)$ having first order weak derivative in $L_{\sharp}^2(\R^4)$ and average zero. Indeed, we can assume a control curve $\xi \in H^1_{\sharp}(J, \R^4)$ without loss of generality since we can add any non-zero average to the initial shape $\xi_0$.
 
 In the previous section, we have seen that the control system governing the evolution of \textsc{SPr4} under the action of the control parameters $\zeta \in \M$ is given by
 \begin{align}

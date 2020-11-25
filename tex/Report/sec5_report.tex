@@ -1,7 +1,7 @@
 \label{sec: optimization}
 In the spirit of \cite{Alouges2013} and \cite{Alouges2017}, we follow the notion of swimming efficiency suggested by Lighthill \cite{Lighthill1952} and we adopt the following notion of optimality: energy minimizing strokes are the ones that minimize the kinematic energy dissipated while trying to reach a given net displacement $\delta p \in \R^3 \times \so(3) \simeq \R^6$. Mathematically speaking, the total energy dissipation due to a stroke $\xi \in H^1_{\sharp}(J, \R^4)$ can be evaluated through an adequate quadratic energy functional, c.f. \cite{Alouges2013},
 \begin{equation}
- \mathcal{G}_S(\xi) := \int_{J} \mathfrak{g}(\xi(t))\dot{\xi}(t) \cdot \dot{\xi}(t) \dd t,
+ \mathcal{G}(\xi) := \int_{J} \mathfrak{g}(\xi(t))\dot{\xi}(t) \cdot \dot{\xi}(t) \dd t,
 \end{equation}
 where the energy density $\mathfrak{g} \in C^1(\R^4)$ is a function with values in the space of symmetric and positive definite matrices $M_{4 \times 4}(\R)$. In other words, $\mathfrak{g}$ defines a continuous Riemannian metric on $\M$. In the small stroke regime, we can approximate the energy density by $\mathfrak{g}(\xi) = \mathfrak{g}(0) + o(1)$, where $\mathfrak{g}(0) \in M_{4 \times 4}(\R)$ is symmetric and positive definite. More precisely,
 \begin{equation}
@@ -34,7 +34,7 @@ The goal of this section is the minimization of $\mathcal{G}$ in $H_{\sharp}^1(J
 	+ \mathfrak{h}_{\theta}  \sum_{k \in \N_3}\left ( \int_{J} \det ( \xi(t) | \dot{\xi}(t) | \tau_{k} | \tau_{4}) \dd t\right ) f_{k + 3},
 \end{aligned}
 \end{equation}
-with $\mathfrak{h}_c = - 2 \sqrt{6} \alpha$ and $\mathfrak{h}_{\theta} = - 2 \sqrt{6} \delta$.
+with $\mathfrak{h}_c = - 2 \sqrt{6} \alpha$ and $\mathfrak{h}_{\theta} = - 2 \sqrt{6} \delta$. The existence of such solutions follows readily by the direct method of variational calculus.
 
 
 \subsection{Bivectors in four dimensions}
@@ -308,6 +308,189 @@ D^{*}_{234} &\longleftrightarrow  \text{ translation in the $\hat{e}_2\hat{e}_3$
 By comparison, the non-simple bivector $e_{12} + e_{34}$ corresponds to the net displacement $e_3 + L_3$, i.e. a screw motion. This kind of movement requires a solution to the general problem.
 
 
+\subsection{The general case}
+
+Let us now address the case of a general net displacement, i.e. $\delta p \in \R^6 \simeq \bigwedge^2 \R^4$ which identifies to a non-simple bivector. The observations from section \ref{sec:bivectors} suggest that the optimal curve in the general case consist of two ellipses in certain planes reflecting the fact that $\delta p$ is the sum of two orthogonal simple bivectors and any simple bivector represents a plane in $\R^4$. We will indeed be able to prove this result. However, we have to return to variational calculus to do so.
+
+
+\subsubsection{The optimization problem in the variational setting}
+More precisely, we will establish the structure of the optimal control curves using the Euler-Lagrange equation associated with the optimization problem. To that end, let us quickly recast the optimization problem in its original form:
+
+\begin{align}
+\label{eq:original_optimization_problem}
+\begin{cases}
+ \text{Find } \min_{\xi \in \dot{H}^1_{\sharp}} \int_{J} G \dot{\xi}(t) \cdot \dot{\xi}(t) \dd t\\
+ \text{under the constraints }\\
+ \int_{J} M_i \xi(t) \cdot \dot{\xi}(t) \dd t = \delta p_i, i \in \N_6.
+ \end{cases}
+\end{align}
+
+So, we are in the setting of a variational problem with six isoperimetric constraints. For $i \in \N_6$, denote by $K_i: \strokes \times \strokes \times J \to \R$ the map
+\begin{align}
+	K_i(\xi, \eta, t) := M_i \xi(t) \cdot \eta(t).
+\end{align}
+Furthermore, denote by $\mathcal{K}_i : \strokes \to \R$ the functional
+\begin{align}
+	\mathcal{K}_i(\xi) := \int_{J} K_i(\xi, \dot{\xi}, t) \dd t.
+\end{align}
+Then, the six isoperimetric constraints read $\mathcal{K}_i(\xi) = \delta p_i$ for $i \in \N_6$. Now, let us denote by $\delta \mathcal{G}$ and $\delta \mathcal{K}_i$ the first variations of $\mathcal{G}$ and the $\mathcal{K}_i$, respectively. Then a slight adaptation of Proposition 2.1.3. in \cite{Kielhoefer2018} shows that $\xi \in \strokes$ is a minimizer of (\ref{eq:original_optimization_problem}) and if $\xi$ is not critical for the constraints, i.e. $\delta \mathcal{K}_1(\xi), \dotsc, \delta \mathcal{K}_6(\xi)$ are linearly independent, then $\xi$ satisfies the Euler-Lagrange equation:
+
+\begin{align}
+\label{eq:euler_lagrange}
+\frac{\dd}{\dd t} \frac{\partial}{\partial \dot{\xi}} \left ( G \dot{\xi}(t) \cdot \dot{\xi}(t) + \sum_{i \in \N_6} \mu_i K_i(\xi, \dot{\xi}, t)\right ) = \frac{\partial}{\partial \xi} \left ( G \dot{\xi}(t) \cdot \dot{\xi}(t) + \sum_{i \in \N_6} \mu_i K_i(\xi, \dot{\xi}, t)\right ),
+\end{align}
+for some $\mu \in \R^6$. To make use use of equation (\ref{eq:euler_lagrange}), let us prove the following
+
+\begin{proposition}
+\label{prop:linearly_independent_constraints}
+Let $\delta p \in \R^6 \simeq \bigwedge^2 \R^4$ be non-simple and $\xi \in \strokes$ a minimizer of (\ref{eq:original_optimization_problem}). Then the functionals $\delta \mathcal{K}_1(\xi), \dotsc, \delta \mathcal{K}_6(\xi)$ are linearly independent.
+\end{proposition}
+
+\begin{proof}
+Let $\lambda_1, \dotsc, \lambda_6 \in \R$ be such taht $\sum_{i \in \N_6} \lambda_i \delta \mathcal{K}_i(\xi) $ is the zero functional in $(\strokes)^*$. Note that by the periodicity of $\xi$ and integration by parts, we have for $h \in \strokes$ that
+\begin{align}
+	\delta \mathcal{K}_i(\xi) h =  2 \int_J M_i \dot{\xi}(t) \cdot h(t) \dd t.
+\end{align}
+Setting $\Omega(\lambda) := \sum_{i \in \N_6} \lambda_i M_i$ for $\lambda \in \R^6$, we have that the functional $h \in \strokes \mapsto \int_J \Omega(\lambda) \dot{\xi}(t) \cdot h(t) \dd t$ is the zero functional. Let us take for the time being $h = \Omega(\lambda) \dot{\xi}$ but note that $h$ is not necessarily in $\strokes$. Then we have
+\begin{align}
+	0 = \int_J \Omega(\lambda) \dot{\xi}(t) \cdot h(t) \dd t = ||h||_{L^2}^{2},
+\end{align}
+i.e. $h \equiv 0$. This can only happen in the two cases $\xi(t) \in \ker \Omega(\lambda)$ for all $t \in J$ or $\lambda_1 = \dotsm = \lambda_6 = 0$, in the latter of which we are done. So let us suppose that we are in the former case. Note that the matrix $\Omega(\lambda)$ is skew symmetric. Hence, we find an orthogonal transformation $S$ such that $\Omega(\lambda) = S \Sigma(\lambda) S^T$ with
+
+\begin{align}
+\Sigma(\lambda) = \diag \left (\left( \begin{array}{cc}
+0 & \nu_+(\lambda) \\ 
+- \nu_+ (\lambda) & 0
+\end{array} \right ) , \left ( \begin{array}{cc}
+0 & \nu_{-}(\lambda) \\ 
+- \nu_{-}(\lambda) & 0
+\end{array} \right ) \right ).
+\end{align}
+Denoting by $P$ and $Q$ the projections $\R^6 \to \R^3$ on the first and the last three coordinates, respectively, the scalars $\nu_{pm}$ are given by
+\begin{align}
+	\nu_{\pm} = 2 \sqrt{3} \sqrt{A \pm \sqrt{A^2 - K}},
+\end{align}
+with $A := \alpha^2 |P \lambda|^2 + \delta^2 |Q \lambda|^2$ and $K := 4 \alpha^2 \delta^2 |P\lambda \cdot Q \lambda|^2$. Hence, only $\nu_-$ can vanish, which implies that $\ker \Omega(\lambda)$ is at most of dimension two. However, this is excluded by the Lemma below, as $\delta p$ is assumed to be non-simple. Thus, we have $||h||_{L^2} > 0$. Now, approximation of $\dot{\xi}$ by smooth functions shows that $h \in \strokes \mapsto \int_J \Omega(\lambda) \dot{\xi}(t) \cdot h(t) \dd t$ cannot be the zero functional. Therefore, we must have $\lambda_1 = \dotsm = \lambda_6 = 0$, which finishes the proof.
+\end{proof}
+
+To complete the proof of Proposition \ref{prop:linearly_independent_constraints}, let us prove the following
+\begin{lemma}
+	Let $\xi \in \strokes$ be a control curve. Suppose that $\xi(t) \in D$ for all $t \in J$, where $D \subset \R^4$ is a plane through the origin. Then, the net displacement due to $\xi$ is a simple bivector.
+\end{lemma}
+
+\begin{proof}
+Note that if $\xi$ only takes values in the plane $D$, then the rescaled Fourier coefficients in relation (\ref{eq:l2-constraint}) must also lie in a plane $D'$ (not necessarily the same). Hence, the net displacement due to $\xi$ lies in fact in $\bigwedge^2 D'$. Thus, it must be simple as $D'$ is of dimension two.
+\end{proof}
+
+\subsubsection{Structure of the solutions to the Euler-Lagrange equation}
+
+By direct computation, one finds that that after integration and utilizing the fact that $\xi$ has average, that the Euler-Lagrange equation (\ref{eq:euler_lagrange}) reads
+\begin{equation}
+\label{eq:euler_lagrange_integrated}
+G \dot{\xi} - \Omega(\mu) \xi = 0,
+\end{equation}
+where $\Omega(\mu)$ is the same skew symmetric matrix as above. To reveal the structure of the solutions to (\ref{eq:euler_lagrange_integrated}), we need to apply two basis transformations: First, setting $\eta := G^{1/2} \xi$ yields
+\begin{equation}
+\dot{\eta} - \tilde{\Omega}(\mu) \eta = 0,
+\end{equation}
+where $\tilde{\Omega}(\mu) := \sum_{i \in \N_6} \mu_i G^{-1/2} M_i G^{-1/2}$, which is still a skew symmetric matrix. Hence, we find an orthogonal transformation $Q$ such that $\tilde{\Omega} = Q \tilde{\Sigma}(\mu) Q^T$ with
+\begin{align}
+	\tilde{\Sigma}(\mu) \diag \left (\left( \begin{array}{cc}
+0 & \sigma_1(\mu) \\ 
+- \sigma_1(\mu) & 0
+\end{array} \right ) , \left ( \begin{array}{cc}
+0 & \sigma_2(\mu) \\
+- \sigma_2(\mu) & 0
+\end{array} \right ) \right ).
+\end{align}
+
+So setting $\phi := Q \eta$, we have the equation $\dot{\phi} = \tilde{\Sigma}(\mu) \phi$, the solution of which is given by $\phi(t) = \exp \left ( \tilde{\Sigma}(\mu) t \right )\phi_0$ with $\phi_0 := QG^{1/2}\xi(0)$. By defining the vectors
+\begin{align}
+	\phi_1 := (\phi_{0,1}, \phi_{0,2}, 0, 0)^T, & & \phi_1' := (\phi_{0,2}, - \phi_{0,1}, 0, 0)^T\\
+	\phi_2 := (0,0,\phi_{0,3}, \phi_{0, 4})^T, & & \phi_2' := (0,0,- \phi_{0,4}, \phi_{0,3})^T,
+\end{align}
+we can recast the curve $\phi$ as
+\begin{eqnarray}
+\phi(t) = \sum_{i \in \N_2} [\cos(\sigma_i(\mu)t) \phi_i + \sin(\sigma_i(\mu)t) \phi_i'], & & t \in J.
+\end{eqnarray}
+
+Resubstituting the basis transformations, we find that $\xi$ must be of the form
+\begin{eqnarray}
+\label{eq:general_optimal_curve}
+\xi(t) = \sum_{i \in \N_2} [\cos(\sigma_i(\mu)t) a_i + \sin(\sigma_i(\mu)t) a_i'], & & t \in J.
+\end{eqnarray}
+Note that the vectors $\phi_1, \phi_1', \phi_2$ and $\phi_2'$ are pairwise orthogonal. So, $\phi$ is in fact a rotation in two completely orthogonal planes of $\R^4$. In particular, this implies that the vectors $a_1, a_1', a_2$ and $a_2'$ are orthogonal in the reference system of $G$.
+
+\subsubsection{Existence of integer eigenvalues}
+It is clear that the eigenvalues $\sigma_1(\mu)$ and $\sigma_2(\mu)$ must be integers for the curve $\xi$ in (\ref{eq:general_optimal_curve}) to be periodic. Hence, we must be able to choose $\mu \in \R^6$ such that $\sigma_1(\mu), \sigma_2(\mu) \in \N$. This question is addressed in this subsection.
+
+First, note that we cannot have $sigma_1(\mu) = \sigma_2(\mu)$ since then the relation (\ref{eq:l2-constraint}) would imply that $\delta p$ is simple. Next, one finds that the eigenvalues are given by
+\begin{align}
+	\sigma_{1,2}(\mu) = \frac{2 \sqrt{3}}{g_c \sqrt{g_\theta}} \sqrt{A \mp \sqrt{A^2 - K}},
+\end{align}
+where this time $A := \alpha^2 g_c |P \mu|^2 + \delta^2 g_{\delta} |Q \mu|^2 > 0$ and $K := 4 \alpha^2 \delta^2 g_c g_\theta |P\mu \cdot Q \mu|^2 > 0$. Clearly, we have $\sigma_2(\mu) \geq \sigma_1(\mu)$. So let us find the values for $\mu \in \R^6$ such that
+\begin{align}
+\label{eq:integer_condition}
+	\sigma_1(\mu) = k \in \N \text{ and } \sigma_2(\mu) = lk, l \in \N.
+\end{align}
+This does not cover all possible pairs of integers. However, we will see in the next subsection that this is sufficient.
+
+Imposing the above equations on the eigenvalues leads to the definition of the quadratic form associated to the positive definite matrix
+\begin{align}
+	\Gamma := \frac{48}{g_c^2 g_\theta} \left (\begin{array}{cc}
+	\alpha^2 g_c I_3 & 0 \\ 
+	0 & \delta^2 g_\theta I_3
+	\end{array}  \right ).
+\end{align}
+
+Indeed, one can show that the solution sets to (\ref{eq:integer_condition}) are given by $E_+^{k,l} \cup E_{-}^{k,l}$, where
+\begin{align}
+E_+^{k,l} := \{\mu \in \R^6 \mid \Gamma \mu \cdot \mu = \frac{(1 + l^2)k^2}{l^2}\} \text{ and } E_{-}^{k,l} := \{\mu \in \R^6 \mid \Gamma \mu \cdot \mu = (1 + l^2)k^2\},
+\end{align}
+i.e. the solutions are the union of two specific ellipsoids in $\R^6$. Note in particular, that this calculation covers the case $\sigma_1(\mu) = 1$ and $\sigma_2(\mu) = 2$. So, we have assured the existence of periodic solutions to the Euler-Lagrange equation and we will show in the following subsection that the latter choice of values for the eigenvalues is indeed optimal.
+
+\subsubsection{The optimal control curves}
+Up to now, the geometric structure of the optimal control curves is clear from (\ref{eq:general_optimal_curve}). So, let us now settle their explicit construction from a given non-simple net displacement. To that end, let us transform the Fourier modes $a_1, a_1', a_2$ and $a_2'$ to the $G$-orthogonal by setting $\tilde{a}_1 := U^Ta_1$ and similarly for the others. Then, substituting the curve into the energy functional $G$ yields
+\begin{align}
+\label{eq:optimal_energy}
+	\mathcal{G}(\xi) = \sigma_1(\mu)^2[\Lambda_{\mathfrak{g}}\tilde{a}_1 \cdot \tilde{a}_1 + \Lambda_\mathfrak{g} \tilde{a}_1' \cdot \tilde{a}_1'] + \sigma_2(\mu)^2[\Lambda_{\mathfrak{g}} \tilde{a}_2 \cdot \tilde{a}_2 + \Lambda_{\mathfrak{g}}\tilde{a}_2' \cdot \tilde{a}_2']\\
+	=\frac{\sigma_1(\mu)}{2 \pi} [|u_{\sigma_1}|^2 + |v_{\sigma_1}|^2] + \frac{\sigma_2(\mu)}{2 \pi}[|u_{\sigma_2}|^2 + |v_{\sigma_2}|^2],
+\end{align}
+with 
+\begin{align}
+	u_{\sigma_i} := \sqrt{2 \pi \sigma_i(\mu) \Lambda_\mathfrak{g}}\tilde{a}_i &\text{ and }& v_{\sigma_i} := \sqrt{2 \pi \sigma_i(\mu) \Lambda_{\mathfrak{g}}} \tilde{a}_i',
+\end{align}
+for $i \in \N_2$. In particular, it follows from relation (\ref{eq:l2-constraint}) that
+\begin{equation}
+	\sqrt{\det \Lambda_{\mathfrak{g}}}(\Lambda_{\mathfrak{h}} \Lambda_{\mathfrak{g}})^{-1} \delta p = v_{\sigma_1} \wedge u_{\sigma_1} + v_{\sigma_2} \wedge u_{\sigma_2}.
+\end{equation}
+We observe that the latter relation in the sense of (\ref{eq:l2-constraint}) is independent of the indices $\sigma_1$ and $\sigma_2$.  So, we can choose $\sigma_1(\mu) = 1$ and $ \sigma_2(\mu) = 2$ up to permutation such that $|u_{\sigma_1}|^2 + |v_{\sigma_1}|^2 \geq |u_{\sigma_2}|^2 + |v_{\sigma_2}|^2$.
+
+Moreover\footnote{Recall that we have shown in the section \ref{sec:bivectors} that the reverse is also true.}, note that the vectors $u_1, v_1, u_2,$ and $v_2$ are pairwise orthogonal due to the $G$-orthogonality of $a_1, a_1', a_2,$ and $a_2'$. Eventually, due to the bilinearity of the exterior product, we can always suppose that $|u_1| = |v_1|$ and $|u_2| = |v_2|$, which further minimizes the energy. Finally, we can summarize the argument above in the following
+
+\begin{theorem}
+Let $\delta p \in \R^6 \simeq \bigwedge^2 \R^4$ a net displacement identifying to a non-simple bivector, then the energy minimizing curve which attains $\delta p$ is given by
+\begin{align}
+\xi(t) := cos(t) a_1 + sin(t) a_1' + cos(2t) a_2 + sin(2t) a_2', t \in J,
+\end{align}
+where the vectors $a_1, a_1',a_2, a_2' \in \R^4$ are determined as follows:
+\begin{enumerate}
+\item First we decompose the still simple bivector $\omega := \sqrt{\det \Lambda_{\mathfrak{g}}}(\Lambda_{\mathfrak{h}} \tilde{\Lambda}_{\mathfrak{g}})^{-1} \delta p$ into the sum of two orthogonal simple bivectors, i.e.
+\begin{align}
+	\omega = v_1 \wedge u_1 + v_2 \wedge u_2,
+\end{align}
+with  all four vectors $u_1, u_2, v_1, v_2$ pairwise orthogonal and  $|u_i| = |v_i|$, for $i \in \N_2$.
+
+\item If necessary, we permute the indices such that $|u_2|^2 + |v_2|^2 \leq |u_1|^2 + |v_1|^2$.
+
+\item We set
+	\begin{align}
+		a_1 := \frac{U \Lambda_{\mathfrak{g}}^{-1/2}}{\sqrt{2 \pi}} u_1 &, & a_1' := \frac{U \Lambda_{\mathfrak{g}}^{-1/2}}{\sqrt{2 \pi}}v_1\\
+	a_2 := \frac{U \Lambda_{\mathfrak{g}}^{-1/2}}{\sqrt{4 \pi}} u_2& , & a_2' := \frac{U \Lambda_{\mathfrak{g}}^{-1/2}}{\sqrt{4 \pi}} v_2.	
+	\end{align}
+\end{enumerate}
+Then the four vectors $a_1, a_1', a_2, a_2'$ are $\mathfrak{g}$-orthogonal and the minimum value of the energy functional is $\frac{1}{2 \pi} [|u_1|^2 + |v_2|^2] + \frac{1}{ \pi} [|u_2|^2 + |v_2|^2]$.
+\end{theorem} 
 
 
 

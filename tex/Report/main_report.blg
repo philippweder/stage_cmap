@@ -1,22 +1,22 @@
 [0] Config.pm:304> INFO - This is Biber 2.14
 [0] Config.pm:307> INFO - Logfile is 'main_report.blg'
-[79] biber-darwin:322> INFO - === Fri Aug 28, 2020, 13:49:27
-[103] Biber.pm:415> INFO - Reading 'main_report.bcf'
-[201] Biber.pm:943> INFO - Found 12 citekeys in bib section 0
+[82] biber-darwin:322> INFO - === Wed Nov 25, 2020, 15:13:51
+[97] Biber.pm:415> INFO - Reading 'main_report.bcf'
+[201] Biber.pm:943> INFO - Found 13 citekeys in bib section 0
 [214] Biber.pm:4256> INFO - Processing section 0
-[215] Utils.pm:75> INFO - Globbing data source 'report.bib'
-[215] Utils.pm:91> INFO - Globbed data source 'report.bib' to report.bib
-[226] Biber.pm:4455> INFO - Looking for bibtex format file 'report.bib' for section 0
-[228] bibtex.pm:1653> INFO - LaTeX decoding ...
-[254] bibtex.pm:1471> INFO - Found BibTeX data source 'report.bib'
-[277] Utils.pm:304> WARN - month field 'jan' in entry 'Purcell1977' is not an integer - this will probably not sort properly.
-[315] Utils.pm:304> WARN - month field 'jun' in entry 'Najafi2004' is not an integer - this will probably not sort properly.
-[321] Utils.pm:304> WARN - month field 'oct' in entry 'Avron2004' is not an integer - this will probably not sort properly.
-[354] Utils.pm:304> WARN - month field 'feb' in entry 'Alouges2020' is not an integer - this will probably not sort properly.
-[383] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[383] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[383] Biber.pm:4084> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[384] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
-[408] bbl.pm:652> INFO - Writing 'main_report.bbl' with encoding 'UTF-8'
-[416] bbl.pm:755> INFO - Output to main_report.bbl
-[416] Biber.pm:128> INFO - WARNINGS: 4
+[214] Utils.pm:75> INFO - Globbing data source 'report.bib'
+[214] Utils.pm:91> INFO - Globbed data source 'report.bib' to report.bib
+[223] Biber.pm:4455> INFO - Looking for bibtex format file 'report.bib' for section 0
+[224] bibtex.pm:1653> INFO - LaTeX decoding ...
+[248] bibtex.pm:1471> INFO - Found BibTeX data source 'report.bib'
+[265] Utils.pm:304> WARN - month field 'jan' in entry 'Purcell1977' is not an integer - this will probably not sort properly.
+[296] Utils.pm:304> WARN - month field 'jun' in entry 'Najafi2004' is not an integer - this will probably not sort properly.
+[302] Utils.pm:304> WARN - month field 'oct' in entry 'Avron2004' is not an integer - this will probably not sort properly.
+[329] Utils.pm:304> WARN - month field 'feb' in entry 'Alouges2020' is not an integer - this will probably not sort properly.
+[360] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[360] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[360] Biber.pm:4084> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[361] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[381] bbl.pm:652> INFO - Writing 'main_report.bbl' with encoding 'UTF-8'
+[388] bbl.pm:755> INFO - Output to main_report.bbl
+[388] Biber.pm:128> INFO - WARNINGS: 4

@@ -107,6 +107,7 @@
 \newcommand{\dd}[1]{\mathrm{d}#1}
 \DeclareMathOperator{\ad}{ad}
 \newcommand{\T}{\mathcal{T}}
+\newcommand{\strokes}{\dot{H}^{1}_{\sharp}(J, \R^4)}
 
 
 \begin{document}
