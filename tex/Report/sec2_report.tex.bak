@@ -29,9 +29,10 @@ The swimmer is completely described by the parameters $(\xi, p) \in \M \times \m
 \end{equation}
 Note that the functions $(r_i)_{i \in \N_4}$ are analytic in $\M  \times \mathcal{P}$ and thus we can use them to calculate the instantaneous velocity on the $i$-th sphere $B_i$, which for any $(\xi, p, r) \in \M \times \mathcal{P} \times \partial B_a$ and every $i \in \N_4$ is given by
 \begin{equation}
+\label{eq:velocity}
 	u_i(\xi, p, r) = \dot{c} + \omega \times (\xi_i z_i + r) + R z_i \dot{\xi}_i,
 \end{equation}
-where $\omega$ is the axial vector associated with the skew matrix $\dot{R} R$.
+where $\omega$ is the axial vector associated with the skew matrix $\dot{R} R^T$.
 
 In \cite{Alouges2013} it is shown that the system \textsc{SPr4}, i.e. both the shape $\xi$ and the position $p$, is controllable only using the rate of change $\dot{\xi}$ of the shape. To do so, we have to understand how $p$ responds to a variation in $\dot{\xi}$. To that end, the assumptions of \emph{self-propulsion} and \emph{negligible inertia of the swimmer} (which is equivalent to assuming a very low Reynolds number) are made. They imply that the total viscous force and torque exerted by the surrounding fluid on the swimmer must vanish. More precisely, for details see \cite{Alouges2013}, the system can be written as
 \begin{equation}
@@ -43,7 +44,7 @@ In \cite{Alouges2013} it is shown that the system \textsc{SPr4}, i.e. both the s
 \end{equation}
 where $\dot{c} = F_c(R, \xi) \dot{\xi}$ and $\dot{R} = F_\theta (R, \xi) \dot{\xi} $. 
 
-In preparation for what follows, let us note that if we denote by $T_p \mathcal{P}$ the tangent space of the smooth manifold $\mathcal{P}$ at the point $p$, we have $F(R, \xi) \in \mathcal{L}(\R^4, T_{p}\mathcal{P})$ for any $R \in \SO(3)$ and $\xi \in \R^4$, where $\mathcal{L}(V, W)$ denotes the linear maps between two vector spaces $V$ and $W$. We quickly recall the fact that at any point $R \in \SO(3)$, see e.g. \cite{Hall2015} for details, we have 
+In preparation for what follows, let us note that if we denote by $T_p \mathcal{P}$ the tangent space of the smooth manifold $\mathcal{P}$ at the point $p$, we have $F(R, \xi) \in \mathcal{L}(\R^4, T_{p}\mathcal{P})$ for any $R \in \SO(3)$ and $\xi \in \R^4$, where $\mathcal{L}(V, W)$ denotes the set ofs linear maps between two vector spaces $V$ and $W$. We quickly recall the fact that at any point $R \in \SO(3)$, see e.g. \cite{Hall2015} for details, we have 
 \begin{equation}
 	T_R \SO(3)  = \{R M \mid M \in \Skew_3(\R)\},
 \end{equation}
@@ -57,7 +58,6 @@ and therefore we can express both $F_c(R, \xi)$ and $F_{\theta}(R, \xi)$ as real
 
 
  In analogy to \cite{Alouges2017}, it is important to note here that the control system $F$ is independent of $c$ due to the translational invariance of the Stokes equations. However, the translational invariance is not the only symmetry property that \textsc{SPr4} satisfies. The goal of the following section is to examine the structure of the control system $F$ in consequence of the symmetries it must fulfill being driven by the Stokes equations.
-
 
 
 

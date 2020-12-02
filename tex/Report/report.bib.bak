@@ -162,4 +162,12 @@ url="https://doi.org/10.1007/978-1-4614-1806-1_3"
   publisher = {Springer Science and Business Media {LLC}},
 }
 
+@Book{Kielhoefer2018,
+  author    = {Hansjörg Kielhöfer},
+  title     = {Calculus of Variations},
+  year      = {2018},
+  publisher = {Springer International Publishing},
+  doi       = {10.1007/978-3-319-71123-2},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

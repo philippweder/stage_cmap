@@ -228,9 +228,12 @@ def check_decomposition(u1, v1, u2, v2, w, tol=10E-13):
         return True
     
     else:
-        print("u1^v1 = ", uu1^vv1)
-        print("u2^v2 = ", uu2^vv2)
-        print((ww) - ((uu1^vv1) + (uu2^vv2)))
+        # print("u1^v1 = ", uu1^vv1)
+        # print("u2^v2 = ", uu2^vv2)
+        print("w = ", ww)
+        print("u1^v1 + u2^v2 = ", (uu1^vv1) + (uu2^vv2))
+        print("error", abs(ww - (uu1^vv1) - (uu2^vv2)))
+
         return False
 
 
@@ -290,8 +293,8 @@ def decompose4d_simple(coeffs, basis, tol=10E-13, trace = False):
     else:
         if trace:
             print("u1, u2 are linearly independent")
-        l1 = np.dot(u1, u)
-        l2 = np.dot(u2, u)
+        l1 = np.dot(u1, u)/norm(u1)**2
+        l2 = np.dot(u2, u)/norm(u2)**2
         
         basis3d = (u1, u2, e4)
         coeffs3d = np.array([1.0, l1, l2])
@@ -423,11 +426,15 @@ def build_energy_matrices(energy_params, tau_basis):
     
     Lg = np.diag([kappa-h, kappa-h, kappa-h, kappa + 3*h])
     
+    Lg12 = np.diag([np.sqrt(kappa-h), np.sqrt(kappa-h), np.sqrt(kappa-h), np.sqrt(kappa + 3*h)])
+    
+    Lg12inv = np.diag([1/np.sqrt(kappa-h), 1/np.sqrt(kappa-h), 1/np.sqrt(kappa-h), 1/np.sqrt(kappa + 3*h)])
+     
     tildeLg = np.diag([gc, gc, gc, np.sqrt(gc*gt), np.sqrt(gc*gt), np.sqrt(gc*gt)])
     
     Lh = np.diag([hc, hc, hc, ht, ht, ht])
     
-    return (G, U, Lg, tildeLg, Lh)
+    return (G, U, Lg, Lg12, Lg12inv, tildeLg, Lh)
     
 
 def build_control_matrices(control_params, tau_basis, full=False):
@@ -545,8 +552,8 @@ def net_displacement(xi, dxidt, xi0, a, split=False):
     
     
     integrand1 = lambda t: hc * det(np.array([xi(t), dxidt(t), tau2, tau3]))
-    integrand2 = lambda t: hc * det(np.array([xi(t), dxidt(t), tau3, tau4]))
-    integrand3 = lambda t: hc * det(np.array([xi(t), dxidt(t), tau4, tau1]))
+    integrand2 = lambda t: hc * det(np.array([xi(t), dxidt(t), tau3, tau1]))
+    integrand3 = lambda t: hc * det(np.array([xi(t), dxidt(t), tau1, tau2]))
     
     integrand4 = lambda t: ht * det(np.array([xi(t), dxidt(t), tau1, tau4]))
     integrand5 = lambda t: ht * det(np.array([xi(t), dxidt(t), tau2, tau4]))
@@ -570,17 +577,16 @@ def net_displacement(xi, dxidt, xi0, a, split=False):
         return np.array(dp)
 
             
-def compute_optimal_curve(dp, xi0, a, derivative=False):
+def compute_optimal_curve(dp, xi0, a, derivative=False, coeffs=False):
    
     energy_params, control_params, tau_basis = build_params(a, xi0)
     
     kappa, h, gc, gt, hc, ht = energy_params
 
-    G, U, Lg, tildeLg, Lh = build_energy_matrices(energy_params, tau_basis)
+    G, U, Lg, Lg12, Lg12inv, tildeLg, Lh = build_energy_matrices(energy_params, tau_basis)
     
-    D = np.array([1/np.sqrt(gc), 1/np.sqrt(gc), 1/np.sqrt(gc), 1/np.sqrt(gt)])
-    Lginv12 = np.diag(D)
-    ULginv12 = np.matmul(U, Lginv12)
+
+    ULginv12 = np.matmul(U, Lg12inv)
     
     LLinv = np.linalg.inv(np.matmul(Lh, tildeLg))
     
@@ -597,22 +603,36 @@ def compute_optimal_curve(dp, xi0, a, derivative=False):
         
         print(vraw, uraw)
         
-        print(check_decomposition(vraw, uraw, u2, v2, w))
+        print("raw", check_decomposition(vraw, uraw, u2, v2, w))
         
         v, u = post_processor(vraw, uraw)
 
-        print(check_decomposition(v, u, u2, v2, w))
+        print("post processed", check_decomposition(v, u, u2, v2, w))
         
-        a = (1/np.sqrt(2*np.pi))*np.dot(ULginv12, u)
-        b = (1/np.sqrt(2*np.pi))*np.dot(ULginv12, v)
+        a = (1/np.sqrt(2*np.pi))*np.matmul(ULginv12, u)
+        b = (1/np.sqrt(2*np.pi))*np.matmul(ULginv12, v)
         
         xi = lambda t: np.cos(t)*a + np.sin(t)*b
-
+        coeffs = (a, b, np.zeros((4,1)), np.zeros((4,1)))
+        
         if derivative:
             dxidt = lambda t: -np.sin(t)*a + np.cos(t)*b
-            return (xi, dxidt)
-        else:    
-            return xi
+            
+            if coeffs:
+
+                return (xi, dxidt, coeffs)
+            
+            else:
+                return (xi, dxidt)
+        else:
+            
+            if coeffs:
+                
+                return (xi, coeffs)
+            
+            else:
+                
+                return xi
         
         
     
@@ -620,55 +640,69 @@ def compute_optimal_curve(dp, xi0, a, derivative=False):
         
         v1raw, u1raw, v2raw, u2raw = decompose4d(w, basis_r4)
         
-        print(check_decomposition(u1raw, v1raw, u2raw, v2raw, w))
+        print("raw", check_decomposition(v1raw, u1raw, v2raw, u2raw, w))
         
         v1, u1 = post_processor(v1raw, u1raw)
         v2, u2 = post_processor(v2raw, u2raw)
         
-        print(check_decomposition(v1, u1, v2, u2, w))
+        print("----------------------------------------\n")
+        print(v1)
+        print(u1)
+        print(v2)
+        print(u2)
+        print("----------------------------------------\n")
+        print("post processed", check_decomposition(v1, u1, v2, u2, w))
         
         if norm(u2)**2 + norm(v2)**2 <= norm(u1)**2 + norm(v1)**2:
-            a1 = (1/np.sqrt(2*np.pi))*np.dot(ULginv12, u1)
-            b1 = (1/np.sqrt(2*np.pi))*np.dot(ULginv12, v1)
+            a1 = (1/np.sqrt(2*np.pi))*np.matmul(ULginv12, u1)
+            b1 = (1/np.sqrt(2*np.pi))*np.matmul(ULginv12, v1)
             
-            a2 = (1/np.sqrt(4*np.pi))*np.dot(ULginv12, u2)
-            b2 = (1/np.sqrt(4*np.pi))*np.dot(ULginv12, v2)
+            a2 = (1/np.sqrt(4*np.pi))*np.matmul(ULginv12, u2)
+            b2 = (1/np.sqrt(4*np.pi))*np.matmul(ULginv12, v2)
     
         else:
-            a1 = (1/np.sqrt(2*np.pi))*np.dot(ULginv12, u2)
-            b1 = (1/np.sqrt(2*np.pi))*np.dot(ULginv12, v2)
+            a1 = (1/np.sqrt(2*np.pi))*np.matmul(ULginv12, u2)
+            b1 = (1/np.sqrt(2*np.pi))*np.matmul(ULginv12, v2)
             
-            a2 = (1/np.sqrt(4*np.pi))*np.dot(ULginv12, u1)
-            b2 = (1/np.sqrt(4*np.pi))*np.dot(ULginv12, v1)
+            a2 = (1/np.sqrt(4*np.pi))*np.matmul(ULginv12, u1)
+            b2 = (1/np.sqrt(4*np.pi))*np.matmul(ULginv12, v1)
         
         xi = lambda t: np.cos(t)*a1 + np.sin(t)*b1 + np.cos(2*t)*a2 + np.sin(2*t)*b2
+        coeffs = (a1, b1, a2, b2)
         
         if derivative:
+            
             dxidt = lambda t: -np.sin(t)*a1 + np.cos(t)*b1 -2*np.sin(2*t)*a2 + 2*np.cos(2*t)*b2
             
-            return (xi, dxidt)
+            if coeffs:
+
+                return (xi, dxidt, coeffs)
+            
+            else:
+                return (xi, dxidt)
         
         else:
             
-            return xi
+            
+            if coeffs:
+                
+                return (xi, coeffs)
+            
+            else:
+                
+                return xi
     
-
-    
-
-
-# test_coeffs = np.array([1.0, 1.0, 0.0, 0.0, 0.0, 1.0])
-
-
-
-
-
 
         
 energy_params, control_params, tau_basis = build_params(a, xi0)
 kappa, h, gc, gt, hc, ht = energy_params
 
 
-G, U, Lg, tildeLg, Lh = build_energy_matrices(energy_params, tau_basis)
+G, U, Lg, Lg12, Lg12inv,  tildeLg, Lh = build_energy_matrices(energy_params, tau_basis)
+
+
+LLinv = np.linalg.inv(np.matmul(Lh, tildeLg))
+
 
 
 # u1 = np.array([1,1,1,1])
@@ -692,39 +726,36 @@ G, U, Lg, tildeLg, Lh = build_energy_matrices(energy_params, tau_basis)
 
 
 eps = 1.0
-dp1 = eps*np.array([1,1,1,1,1,1])
+dp1 = eps*np.array([1,0,0,1,0,0])
 
-# if check_is_simple(dp1):
-#     print("SIMPLE CASE")
-#     u,v = decompose4d_simple(dp1, basis_r4, trace=False)
-#     print(u,v)
-    
-#     u2 = np.array([0,0,0,0])
-#     v2 = np.array([0,0,0,0])
-    
-#     print(check_decomposition(u, v, u2, v2, dp1))
-    
-#     upp, vpp = post_processor(u, v)
-    
-#     print(check_decomposition(upp, vpp, u2, v2, dp1))
-# else:
-#     print("NON-SIMPLE CASE")
-#     u1, v1, u2, v2 = decompose4d(dp1, basis_r4, trace=False)
-#     print(u1, v1)
-#     print(u2, v2)
-    
-#     print(check_decomposition(u1, v1, u2, v2, dp1))
+w = np.sqrt(det(Lg))*np.dot(LLinv, dp1)
 
-xi, dxidt  = compute_optimal_curve(dp1, xi0, a, derivative=True)
+xi, dxidt, coeffs  = compute_optimal_curve(dp1, xi0, a, derivative=True, coeffs=True)
+
+a1, b1, a2, b2 = coeffs
+
+u1 = np.sqrt(2*np.pi)*np.matmul(np.matmul(Lg12, U), a1)
+v1 = np.sqrt(2*np.pi)*np.matmul(np.matmul(Lg12, U), b1)
+
+u2 = np.sqrt(4*np.pi)*np.matmul(np.matmul(Lg12, U), a2)
+v2 = np.sqrt(4*np.pi)*np.matmul(np.matmul(Lg12, U), b2)
+
+# check_decomposition(v1, u1, v2, u2, w)
+print("----------------------------------------\n")
+print(v1)
+print(u1)
+print("----------------------------------------\n")
+
+print("----------------------------------------\n")
+print(v2)
+print(u2)
+print("----------------------------------------\n")
+
 
 dp2 = net_displacement(xi, dxidt, xi0, a)
 
 print(dp2)
-# for k in range(6):
-#     print(np.abs(dp1[k] + dp2[k]))
-    
-    
-# print(abs(dp1 - dp2))
+
 
 print(norm(dp1- dp2))
 
@@ -745,6 +776,7 @@ plt.show()
 plt.figure()
 plt.plot(hist[:,2], hist[:,3])
 plt.show()
+
 
 
 

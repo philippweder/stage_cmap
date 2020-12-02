@@ -161,8 +161,12 @@ This article is about the parking 4-sphere swimmer (\spr). This is a low-Reynold
 \section{Energy minimizing strokes}
 \input{sec5_report.tex}
 
+\section{The long arms approximation}
+\input{sec_longarms.tex}
+
+
 \section{Conclusion and outlook}
-\input{sec6_report.tex}
+%\input{sec6_report.tex}
 
 \section{Acknowledgments}
 \input{acknowledgements.tex}
