@@ -195,8 +195,31 @@ h(a, \xi_0)  &= \frac{1}{768} \left (60 + \frac{69 \sqrt{6} a}{\xi_0} - \frac{16
 \end{eqnarray}
 Recall that the zeroth order term $F_0$ of the control system in the limit of small strokes is characterized by a parameter $\mathfrak{a}$, cf. equation (\ref{eq:position_zeroth_order_term}), which we can now compute directly from Proposition \ref{prop:control_system_laa}:
 \begin{equation}
-\mathfrak{a}(a, \xi_0) = \frac{-5}{16} + \frac{\xi_0}{16 \xi_0 - 12 \sqrt{6} a}
+\mathfrak{a}(a, \xi_0) = \frac{-5}{16} + \frac{\xi_0}{16 \xi_0 - 12 \sqrt{6} a}.
 \end{equation}
+In addition, we find for the eigenvalues of $G$
+\begin{align}
+	\mathfrak{g}_c(a, \xi_0) &= \frac{1}{192} \left  (129 + \frac{39 \sqrt{6} a}{\xi_0} + \frac{4}{3 \sqrt{6} a/\xi_0 - 4} + \frac{27 a}{9a - 2 \sqrt{6} \xi_0} \right )\\
+	\mathfrak{g}_{\theta}(a, \xi_0) &= 1 + \frac{9}{8} \sqrt{\frac{3}{2}} \frac{a}{\xi_0}.
+\end{align}
+
+
+To determine the remaining parameters, we follow the same approach as for \textsc{SPr3} \cite{Alouges2020}: For any $i, j \in \N_4$ the $(ij)$-entry of the matrices $A_k$ and $B_k$ (cf. (\ref{eq: dynamics first approx}) is given by $\dot{\phi}_{e_i}(0)e_j \cdot f_k$ with $\phi_{e_i}(t) := F(t e_i)$. In view of the latter relation, let us recall the following identity: For smooth matrix valued Functions $\mathcal{A}, \mathcal{B}: \R \to \R^{N \times N}$ with $\mathcal{A}(0)$ invertible, it holds that
+\begin{equation}
+\partial_t[\mathcal{A}(t)^{-1} \mathcal{B}(t)]_{\mid t = 0} = \frac{\mathcal{I}}{\mathcal{A}(0)}\left ( \dot{\mathcal{B}}(0) - \dot{\mathcal{A}}(0) \frac{\mathcal{B}(0)}{\mathcal{A}(0)}\right ).
+\end{equation}
+Therefore, setting $\mathcal{A}(t) := - \mathcal{V}_{\nu}(t e_i)\mathcal{Y}(t e_i)$ and $\mathcal{B}(t) := \mathcal{V}_{\nu}(t e_i) \mathcal{X}_0$ yields
+\begin{equation}
+\dot{\phi}_{e_i}(0)e_j = \frac{\mathcal{I}}{\mathcal{V}_\nu (0, I) \mathcal{Y}(0)} \left ( \partial_t [\mathcal{V}_{\nu}(t e_i, I) \mathcal{Y}(t e_i)]_{\mid t = 0} \frac{\mathcal{V}_{\nu}(0, I)}{\mathcal{V}_{\nu}(0, I) \mathcal{Y}(0)} - \partial_t[\mathcal{V}_{\nu}(t e_i, I)]_{\mid t = 0}\right ) \mathcal{X}_0 e_j.
+\end{equation}
+One then finds using a symbolic computation program the following expressions of the remaining parameters in terms of $a$ and $\xi_0$:
+\begin{align}
+\alpha(a, \xi_0) &= -\frac{\sqrt{3} a}{8(3 \sqrt{6} a - 4 \xi_0)^2}\\
+\beta(a, \xi_0) &= - \frac{3 a( 81 \sqrt{2} a - 16 \sqrt{3} \xi_0}{128 \sqrt{2} (3 \sqrt{6} a - 4 \xi_0)^2 \xi_0}\\
+\lambda(a, \xi_0) &= \frac{9 a (27 a - 8 \sqrt{6} \xi_0)}{128 \xi_0 (3 \sqrt{6} a - 4 \xi_0)^2}\\
+\delta(a, \xi_0) &= \frac{81 a^2 - 240 \sqrt{6} a \xi_0 + 256 \xi_0^2}{64 \xi_0^2(-27 \sqrt{6} a^2 - 252 a \xi_0 + 64 \sqrt{6} \xi_0^2)}.
+\end{align}
+
 
 
 
