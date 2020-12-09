@@ -10,6 +10,7 @@ import numpy as np
 import clifford as cf
 from numpy.linalg import norm, det
 from scipy.integrate import quad
+from scipy.linalg import expm
 import matplotlib.pyplot as plt
 
 
@@ -42,8 +43,28 @@ ehat3 = np.array([0,0,1])
 
 basis_r3 = (ehat1, ehat2, ehat3)
 
+# arms of the standard tetrahedron
+z1 = np.array([np.sqrt(8/9), 0, -1.0/3.0])
+z2 = np.array([-np.sqrt(2/9), -np.sqrt(2/3), - 1.0/3.0])
+z3 = np.array([-np.sqrt(2/9), np.sqrt(2/3), - 1.0/3.0])
+z4 = np.array([0,0,1])
+
 a = 1.0
-xi0 = 10.0
+xi0 = 5.0
+
+
+def pos_array_to_pos_tuples(pos):
+    n = len(pos)
+    
+    tuples = []
+    
+    for i in range(n):
+        new_tuple = (pos[i, 0], pos[i, 1], pos[i, 2])
+        tuples.append(new_tuple)
+        
+        
+    return tuples
+        
 
 
 
@@ -577,7 +598,7 @@ def net_displacement(xi, dxidt, xi0, a, split=False):
         return np.array(dp)
 
             
-def compute_optimal_curve(dp, xi0, a, derivative=False, coeffs=False):
+def compute_optimal_curve(dp, xi0, a, full=False):
    
     energy_params, control_params, tau_basis = build_params(a, xi0)
     
@@ -669,115 +690,108 @@ def compute_optimal_curve(dp, xi0, a, derivative=False, coeffs=False):
         
         xi = lambda t: np.cos(t)*a1 + np.sin(t)*b1 + np.cos(2*t)*a2 + np.sin(2*t)*b2
         coeffs = (a1, b1, a2, b2)
+        dxidt = lambda t: -np.sin(t)*a1 + np.cos(t)*b1 -2*np.sin(2*t)*a2 + 2*np.cos(2*t)*b2
         
-        if derivative:
-            
-            dxidt = lambda t: -np.sin(t)*a1 + np.cos(t)*b1 -2*np.sin(2*t)*a2 + 2*np.cos(2*t)*b2
-            
-            if coeffs:
-
-                return (xi, dxidt, coeffs)
-            
-            else:
-                return (xi, dxidt)
+        if full:
+            return (xi, dxidt, coeffs)
         
         else:
+            return xi
             
-            
-            if coeffs:
-                
-                return (xi, coeffs)
-            
-            else:
-                
-                return xi
+
+
+def calculate_sphere_positions(xi0, dc, dR, xi, n_strokes, fps):
+    # discretization
+    T = n_strokes*2*np.pi
+    
+    n_keyframes = int(T*fps)
+    
+    dcn = n_strokes*dc/n_keyframes
+    
+    dRn = 1/n_keyframes*(dR[0]*L1 + dR[1]*L2 + dR[2]*L3)
+    
+    dt = 1/fps
+    
+    # starting positions
+    
+    hist1 = []
+    
+    hist2 = []
+    
+    hist3 = []
+
+    hist4 = []
+
+    histc = []
+    
+    for k in range(n_keyframes):
+        newpos1 = k*dcn + np.dot(expm(k*dRn), (xi0 + xi(k*dt)[0]) *z1 )
+        hist1.append(newpos1)
+        
+        newpos2 = k*dcn + np.dot(expm(k*dRn), (xi0 + xi(k*dt)[1])*z2 )
+        hist2.append(newpos2)
+        
+        newpos3 = k*dcn + np.dot(expm(k*dRn), (xi0 + xi(k*dt)[2])*z3)
+        hist3.append(newpos3)
+        
+        newpos4 = k*dcn + np.dot(expm(k*dRn), (xi0 + xi(k*dt)[3])*z4 )
+        hist4.append(newpos4)
+        
+        newposc = k*dcn
+        histc.append(newposc)
+        
+        
+    
+    hist1 = np.array(hist1)
+    hist1_tuples = pos_array_to_pos_tuples(hist1)
+    
+    hist2 = np.array(hist2)
+    hist2_tuples = pos_array_to_pos_tuples(hist2)
+    
+    hist3 = np.array(hist3)
+    hist3_tuples = pos_array_to_pos_tuples(hist3)
+    
+    hist4 = np.array(hist4)
+    hist4_tuples = pos_array_to_pos_tuples(hist4)
+    
+    histc = np.array(histc)
+    histc_tuples = pos_array_to_pos_tuples(histc)
+    
+    
+    return (hist1_tuples, hist2_tuples, hist3_tuples, hist4_tuples, histc_tuples, n_keyframes)
+    
     
 
         
-energy_params, control_params, tau_basis = build_params(a, xi0)
-kappa, h, gc, gt, hc, ht = energy_params
+dc = np.array([1,0,0,])*0.5
+dR = np.array([1,0,0])*0.5
+dp = np.array([1,0,0,1,0,0])*0.5
+xi = compute_optimal_curve(dp, xi0, a)
+n_strokes = 10
+fps = 25
+
+hist1, hist2, hist3, hist4, histc, n_keyframes = calculate_sphere_positions(xi0, dc, dR, xi, n_strokes, fps)
+
+print("keyframes: ", n_keyframes)
+print(len(histc))
+
+print("-----------histc--------------")
+print(histc)
+print("------------------------------")
+
+print("-----------hist1--------------")
+print(hist1)
+print("------------------------------")
+
+print("-----------hist2--------------")
+print(hist2)
+print("------------------------------")
+
+print("-----------hist3--------------")
+print(hist3)
+print("------------------------------")
 
 
-G, U, Lg, Lg12, Lg12inv,  tildeLg, Lh = build_energy_matrices(energy_params, tau_basis)
-
-
-LLinv = np.linalg.inv(np.matmul(Lh, tildeLg))
-
-
-
-# u1 = np.array([1,1,1,1])
-# # u1 = np.array([1,1,0,0])
-# v1 = np.array([1, 1, 1,1])
-
-# # u2 = np.array([0,0,1,1])
-# u2 = np.array([-1,1,1,1])
-# v2 = np.array([-1,1,1, 1])
-
-# a1 = np.dot(Lg, u1)
-# b1 = np.dot(Lg, v1)
-
-# a2 = np.dot(Lg, u2)
-# b2 = np.dot(Lg, v2)
-
-# xi = lambda t: np.cos(t)*a1 + np.sin(t)*b1 + np.cos(2*t)*a2 + np.sin(2*t)*b2
-# dxidt  = lambda t: -np.sin(t)*a1 + np.cos(t)*b1 - 2*np.sin(2*t)*a2 + 2*np.cos(2*t)*b2
-
-# res_dp = net_displacement(xi, dxidt, xi0, a)
-
-
-eps = 1.0
-dp1 = eps*np.array([1,0,0,1,0,0])
-
-w = np.sqrt(det(Lg))*np.dot(LLinv, dp1)
-
-xi, dxidt, coeffs  = compute_optimal_curve(dp1, xi0, a, derivative=True, coeffs=True)
-
-a1, b1, a2, b2 = coeffs
-
-u1 = np.sqrt(2*np.pi)*np.matmul(np.matmul(Lg12, U), a1)
-v1 = np.sqrt(2*np.pi)*np.matmul(np.matmul(Lg12, U), b1)
-
-u2 = np.sqrt(4*np.pi)*np.matmul(np.matmul(Lg12, U), a2)
-v2 = np.sqrt(4*np.pi)*np.matmul(np.matmul(Lg12, U), b2)
-
-# check_decomposition(v1, u1, v2, u2, w)
-print("----------------------------------------\n")
-print(v1)
-print(u1)
-print("----------------------------------------\n")
-
-print("----------------------------------------\n")
-print(v2)
-print(u2)
-print("----------------------------------------\n")
-
-
-dp2 = net_displacement(xi, dxidt, xi0, a)
-
-print(dp2)
-
-
-print(norm(dp1- dp2))
-
-T = np.linspace(0, 2*np.pi, 1000)
-
-hist = []
-
-for t in T:
-    newpoint = xi(t)
-    hist.append(newpoint)
-
-hist = np.array(hist)
-
-plt.figure()
-plt.plot(hist[:,0],hist[:,1])
-plt.show()
-
-plt.figure()
-plt.plot(hist[:,2], hist[:,3])
-plt.show()
-
-
-
-
-
+print("-----------hist4--------------")
+print(hist4)
+print("------------------------------")

@@ -2231,8 +2231,10 @@
     <bcf:citekey order="44">Alouges2017</bcf:citekey>
     <bcf:citekey order="45">Kielhoefer2018</bcf:citekey>
     <bcf:citekey order="46">Alouges2017</bcf:citekey>
-    <bcf:citekey order="47">Lighthill1952</bcf:citekey>
-    <bcf:citekey order="48">Alouges2020</bcf:citekey>
+    <bcf:citekey order="47">Alouges2013</bcf:citekey>
+    <bcf:citekey order="48">Lighthill1952</bcf:citekey>
+    <bcf:citekey order="49">Alouges2020</bcf:citekey>
+    <bcf:citekey order="50">Alouges2020</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

@@ -1,0 +1,56 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Modeling}{4}{section.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Symmetries}{5}{section.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1}Rotational invariance}{6}{subsection.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2}Permutation of two arms}{6}{subsection.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}The small strokes regime}{9}{section.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1}The zeroth order terms $F_{c,0}$ and $F_{\theta , 0}$}{10}{subsection.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2}The first order terms $\mathcal {H}_{c,0}$ and $\mathcal {H}_{\theta ,0}$}{11}{subsection.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3}The linearized control equations}{12}{subsection.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Energy minimizing strokes}{15}{section.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1}Bivectors in four dimensions}{15}{subsection.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2}G-Orthogonalization}{17}{subsection.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3}Fourier transformation of the minimization problem}{17}{subsection.5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.4}The simple case}{18}{subsection.5.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.4.1}Some examples of simple net displacements}{20}{subsubsection.5.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.5}The general case}{20}{subsection.5.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.5.1}The optimization problem in the variational setting}{21}{subsubsection.5.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.5.2}Structure of the solutions to the Euler-Lagrange equation}{22}{subsubsection.5.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.5.3}Existence of integer eigenvalues}{23}{subsubsection.5.5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.5.4}The optimal control curves}{23}{subsubsection.5.5.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}The long arms approximation}{24}{section.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1}The dynamics of \textsc {SPr4} in the long arms regime}{25}{subsection.6.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.2}Optimal swimming in the long arms regime}{27}{subsection.6.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}Conclusion and outlook}{28}{section.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8}Acknowledgments}{28}{section.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9}Appendix}{29}{section.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.1}Complete computations of the first order term $\mathcal {H}_0$}{29}{subsection.9.1}%

@@ -170,4 +170,11 @@ url="https://doi.org/10.1007/978-1-4614-1806-1_3"
   doi       = {10.1007/978-3-319-71123-2},
 }
 
+@Book{1991a,
+  title     = {Microhydrodynamics},
+  year      = {1991},
+  publisher = {Elsevier},
+  doi       = {10.1016/c2013-0-04644-0},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

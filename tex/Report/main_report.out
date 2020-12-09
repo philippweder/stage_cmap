@@ -1,0 +1,27 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Modeling}{}% 2
+\BOOKMARK [1][-]{section.3}{Symmetries}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Rotational invariance}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Permutation of two arms}{section.3}% 5
+\BOOKMARK [1][-]{section.4}{The small strokes regime}{}% 6
+\BOOKMARK [2][-]{subsection.4.1}{The zeroth order terms Fc,0 and F, 0}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.2}{The first order terms Hc,0 and H,0}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.3}{The linearized control equations}{section.4}% 9
+\BOOKMARK [1][-]{section.5}{Energy minimizing strokes}{}% 10
+\BOOKMARK [2][-]{subsection.5.1}{Bivectors in four dimensions}{section.5}% 11
+\BOOKMARK [2][-]{subsection.5.2}{G-Orthogonalization}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.3}{Fourier transformation of the minimization problem}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.4}{The simple case}{section.5}% 14
+\BOOKMARK [3][-]{subsubsection.5.4.1}{Some examples of simple net displacements}{subsection.5.4}% 15
+\BOOKMARK [2][-]{subsection.5.5}{The general case}{section.5}% 16
+\BOOKMARK [3][-]{subsubsection.5.5.1}{The optimization problem in the variational setting}{subsection.5.5}% 17
+\BOOKMARK [3][-]{subsubsection.5.5.2}{Structure of the solutions to the Euler-Lagrange equation}{subsection.5.5}% 18
+\BOOKMARK [3][-]{subsubsection.5.5.3}{Existence of integer eigenvalues}{subsection.5.5}% 19
+\BOOKMARK [3][-]{subsubsection.5.5.4}{The optimal control curves}{subsection.5.5}% 20
+\BOOKMARK [1][-]{section.6}{The long arms approximation}{}% 21
+\BOOKMARK [2][-]{subsection.6.1}{The dynamics of SPr4 in the long arms regime}{section.6}% 22
+\BOOKMARK [2][-]{subsection.6.2}{Optimal swimming in the long arms regime}{section.6}% 23
+\BOOKMARK [1][-]{section.7}{Conclusion and outlook}{}% 24
+\BOOKMARK [1][-]{section.8}{Acknowledgments}{}% 25
+\BOOKMARK [1][-]{section.9}{Appendix}{}% 26
+\BOOKMARK [2][-]{subsection.9.1}{Complete computations of the first order term H0}{section.9}% 27

@@ -1,4 +1,5 @@
-Despite having characterized the dynamics of \textsc{SPr4} as well as the optimal control curves for any prescribed net displacement, we are still missing the physical parameters $\mathfrak{a}, \alpha, \beta, \delta, \lambda, \kappa$ and $h$. Again inspired by \cite{Alouges2017}, we consider the regime of very long arms compared to the radius $a$ of the spheres $B_i$. To that end, let us review the fluid model. Recall that we neglected the arms such that our fluid domain was given by $\Omega := \bigcup_{i \in \N_4} \overline{B}_i$. The geometry of $\Omega$ is completely determined by the common radius $a$ of the four spheres and the matrix $b = (b_i)_{i \in \N_4}$ having as columns the centers of the spheres. Whenever necessary, we will emphasize this dependence by writing $\Omega := \Omega_b(a)$.
+\label{sec:laa}
+Despite having characterized the dynamics of \textsc{SPr4} as well as the optimal control curves for any prescribed net displacement, we are still missing the physical parameters $\mathfrak{a}, \alpha, \beta, \delta, \lambda, \kappa$ and $h$. Again inspired by \cite{Alouges2017}, we consider the regime of very long arms compared to the radius $a$ of the spheres $B_i$. To that end, let us review the fluid model. Recall that we neglect the arms such that our fluid domain is given by $\Omega := \bigcup_{i \in \N_4} \overline{B}_i$. The geometry of $\Omega$ is completely determined by the common radius $a$ of the four spheres and the matrix $b = (b_i)_{i \in \N_4}$ having as columns the centers of the spheres.
 
 Since we are considering the swimmer \textsc{SPr4} to be microscopically small, we can assume the Reynolds number to be low such that the governing equations are given by Stokes' equations
 \begin{align}
@@ -8,11 +9,11 @@ Since we are considering the swimmer \textsc{SPr4} to be microscopically small, 
 \mathrm{div} u  &= 0  \text{ in } \Omega,
 \end{cases}
 \end{align}
-subject to the traction boundary condition $- \boldsymbol\sigma n = f$ on $\partial \Omega$, and to the far-field condition $u(x) = o(|x|^{-1})$ as $|x| \to \infty$. The variables $u$ and $p$ denote the velocity field and the pressure of the fluid, respectively, $\mu$ is the viscosity, $n$ the outer unit normal to $\partial \Omega$ directed towards the interior of the balls, $\boldsymbol \sigma := \mu \nabla^{\mathrm{sym}}u - p I$ the Cauchy stress tensor, and $f$ the traction applied to the swimmer at each point of the boundary. The swimmer has a rigid structure. Hence, no-slip boundary conditions are imposed on the spheres, where we recall that the instantaneous velocity on the $i$-th sphere in the state $(\xi, p, \sigma) \in \M \times \mathcal{P} \times \partial B_a $ is given by
+subject to the traction boundary condition $- \boldsymbol\sigma n = f$ on $\partial \Omega$, and to the far-field condition $u(x) = o(|x|^{-1})$ as $|x| \to \infty$. The variables $u$ and $p$ denote the velocity field and the pressure of the fluid, respectively, $\mu$ is the viscosity, $n$ the outer unit normal to $\partial \Omega$ directed towards the interior of the balls, $\boldsymbol \sigma := \mu \nabla^{\mathrm{sym}}u - p I$ the Cauchy stress tensor, and $f$ the traction field on the boundary of the swimmer. The swimmer has a rigid structure. Hence, no-slip boundary conditions are imposed on the spheres, where we recall that the instantaneous velocity on the $i$-th sphere in the state $(\xi, p, \sigma) \in \M \times \mathcal{P} \times \partial B_a $ is given by
 \begin{equation}
 	u_i(\xi, p, \sigma) = \dot{c} + \omega \times (\xi_i z_i + \sigma) + R z_i \dot{\xi}_i,
 \end{equation}
-where $\omega$ is the axial vector associated with the skew matrix $\dot{R} R^T$. Furthermore, the unique velocity field $u$ solution of (\ref{eq:stokes}) can be expressed, for almost every $x \in \partial \Omega$, by a single-layer potential
+with $\omega$ the axial vector associated to the skew matrix $\dot{R} R^T$. Furthermore, the unique velocity field $u$ solution of (\ref{eq:stokes}) can be expressed, for almost every $x \in \partial \Omega$, by a single-layer potential
 \begin{align}
 \label{eq:single_layer}
 	u(x) = \int_{\partial \Omega} G(x - y) f(y) \dd y, & & G(x) := \frac{1}{8 \pi \mu} \left ( \frac{I}{|x|} + \frac{x \otimes x}{|x|^3} \right ),
@@ -20,22 +21,12 @@ where $\omega$ is the axial vector associated with the skew matrix $\dot{R} R^T$
 where the stokeslet $G$ is the fundamental solution to Stokes' equations.
 
 \subsection{The dynamics of \textsc{SPr4} in the long arms regime}
-
-Due to the simple nature of $\Omega_b(a)$, we can recast the integral representation (\ref{eq:single_layer}) for any $i \in \N_4$ and any $\sigma \in -b_i + \partial B_a$ in the form
-\begin{align}
-	u(\sigma + b_i) = \int_{\partial B_a} G(\sigma - y)f_i(y) \dd y + \sum_{j \neq i \in \N_4} \int_{\partial B_a} G(b_{ij} + \sigma - y) f_j(y) \dd y,
-\end{align}
-where $b_{ij} := b_i - b_j, f_j(y) := f(b_j + y)$. In the very long arms regime, i.e., when $\min_{i < j} |b_{ij}| \gg a$, we have at the leading order that $G(b_{ij} + \sigma - y) \sim G(b_{ij})$, whenever $i \neq j \in \N_4$. Consequently, we can write the velocity field $u_{\mid \partial B_i}$ on the $i$-th sphere as
-\begin{align}
-\label{eq:velocity_field_laa}
-	u_i(\sigma) := \frac{1}{|\partial B_a|} \int_{\partial B_a} G(\sigma - y) f_i(y) \dd y + \frac{1}{|\partial B_a|} \sum_{j \neq i \in \N_4} G(b_{ij}) \int_{\partial B_a} f_j(y) \dd y, & & \sigma \in \partial B_a.
-\end{align}
-A second benefit of the simple geometry of $\Omega$ is that it supports uniform tractions on the spheres, i.e. that if $f_i$ is constant on $\partial B_i$, so is $u_i$. Hence, we deduce from (\ref{eq:velocity_field_laa}) that for any $\sigma \in \partial B_a$
+It is shown in \cite{Alouges2013} that in the limit of very long arms, the interactions of the different spheres simplify considerably, i.e. the integral in (\ref{eq:single_layer}). More specifically, denoting by $f_i$ the total force applied to the $i$-th sphere and again by$b_i$ its center, the velocity on the $i$-th sphere can be expressed at the leading order as
 \begin{align}
 \label{eq:velocity_field_uniform}
-	u_i := u_i(\sigma) = \frac{1}{6 \pi \mu a} f_i + \sum_{j \neq i \N_4} G(b_{ij}) f_j.
+	u_i := u_i(\sigma) = \frac{1}{6 \pi \mu a} f_i + \sum_{j \neq i \N_4} G(b_{ij}) f_j,
 \end{align}
-The arms of the swimmer are assumed to have the same initial length $\xi \in \R^+$. So, as stated by (\ref{eq:velocity_field_uniform}), when the $i$-th arm of the swimmer is $\xi_0 + \xi_i$ with $\xi_0 \gg a$, the velocity field $u_i$ associated to the constant tractions $(f_i)_{i \in \N_4}$ is uniform on the boundary of the $i$-th sphere. Thus, without loss of generality, we can interpret the velocity field $u_i$ as applied to the center $b_i$ of the $i$-th ball. Furthermore, due to the negligible inertia, the total viscous force and torque exerted by the surrounding fluid on the swimmer must vanish, i.e. the dynamics must satisfy the balance equations
+where $b_{ij} := b_i - b_j$. In fact, we approximate the part of the velocity on $B_i$ due to the force $f_i$ on $B_i$ by Stokes' law, while one can consider the stokeslet to be constant on the other three spheres. The arms of the swimmer are assumed to have the same initial length $\xi \in \R^+$. So, as stated by (\ref{eq:velocity_field_uniform}), when the $i$-th arm of the swimmer is $\xi_0 + \xi_i$ with $\xi_0 \gg a$, the velocity field $u_i$ associated to the forces $(f_i)_{i \in \N_4}$ is uniform on the boundary of the $i$-th sphere. Thus, without loss of generality, we can interpret the velocity field $u_i$ as applied to the center $b_i$ of the $i$-th ball. Furthermore, due to the negligible inertia, the total viscous force and torque exerted by the surrounding fluid on the swimmer must vanish, i.e. the dynamics must satisfy the balance equations
 \begin{eqnarray}
 \label{eq:balance_equations}
 	\sum_{i \in \N_4} f_i = 0, & & \sum_{i \in \N_4} (b_i - c) \times f_i = 0.
@@ -54,7 +45,7 @@ More explicitly, we have for any $k \in \N_3$ and $i \in \N_4$ that
 \begin{equation}
 	\omega_{ki}(\xi_i, R) = (\xi_0 + \xi_i) \sum_{j,l \in \N_3}(R z_i \cdot \hat{e}_j)\omega_{k}(\hat{e}_{j}, \hat{e}_{k})\hat{e}_l.
 \end{equation}
-In particular, we find for $i \in \N_4$
+In particular, we find for $i \in \N_4$ the expressions
 \begin{equation}
 \begin{array}{lr}
 	\omega_{1i}(\xi_i, R) = (\xi_0 + \xi_i) \left (
@@ -80,7 +71,7 @@ Now, note that we have $G(b_{ij}) = G(b_{ji})$. So, let us define the matrices\f
 \begin{eqnarray}
  K_1 := G(b_{13}), &  K_2 := G(b_{24}), &  L_i := G(b_{i, i + 1}), i \in \N_4.
 \end{eqnarray}
-Furthermore, we define the vector of tractions $\boldsymbol f := (f_1, f_2, f_3, f_4)^T$ and the vector of velocities $\mathbf{u} := (u_1, u_2, u_3, u_4)^T$ in $\R^{12}$ as well as the matrices $\mathcal{I} := \diag(I, I, I, I) \in M_{12 \times 12}(\R)$
+Furthermore, we define the vector of forces $\boldsymbol f := (f_1, f_2, f_3, f_4)^T$ and the vector of velocities $\mathbf{u} := (u_1, u_2, u_3, u_4)^T$ in $\R^{12}$ as well as the matrices $\mathcal{I} := \diag(I, I, I, I) \in M_{12 \times 12}(\R)$ and
 \begin{align}
 \mathcal{L} := \left (\begin{array}{cccc}
 0 & L_1 & K_1 & L_4 \\ 
@@ -89,7 +80,7 @@ K_1 & L_2 & 0 & L_3 \\
 L_4 & K_2 & L_3 & 0
 \end{array}  \right ),
 \end{align}
-the \emph{mutual interaction matrix} where every block $L_i$ or $K_i$ describes the coupling of the two spheres corresponding to the indices. Besides, $\nu$ is the drag force exerted on a spherical object of radius $a$ immersed in a viscous fluid at very small Reynolds numbers. Finally, setting $\nu := 6 \pi \mu a$ allows us to write (\ref{eq:velocity_field_uniform}) in the purely algebraic form
+the \emph{mutual interaction matrix} where every block $L_i$ or $K_i$ describes the coupling of the two spheres corresponding to the indices. Finally, setting $\nu := 6 \pi \mu a$ allows us to write (\ref{eq:velocity_field_uniform}) in the purely algebraic form
 \begin{equation}
 	\mathbf{u} = (\frac{1}{\nu} \mathcal{I} + \mathcal{L}) \boldsymbol f.
 \end{equation}
@@ -97,7 +88,7 @@ In particular, we then find the following result:
 
 \begin{proposition}
 \label{prop:control_system_laa}
-In the limit of very long arms, and at the leading order, the swimming problem for \textsc{SPr4} at a point $p = (c, I) \in \mathcal{P}$ reduces to
+In the limit of very long arms, and at the leading order, the swimming problem for \textsc{SPr4} at a point $p = (c, I) \in \mathcal{P}$ reduces to\footnote{To shorten the notation, we write $B/A := B A^{-1}$} for the left division of $B$ by $A$.
 \begin{eqnarray}
 \label{eq:control_system_laa}
 	\dot{p} = F(I, \xi) \dot{\xi}, & &  F(I, \xi) = - \frac{\mathcal{V}_{\nu, I}( \xi) \mathcal{X}_0}{\mathcal{V}_{\nu}(\xi, I) \mathcal{Y}(\xi)},
@@ -126,7 +117,7 @@ with the $\omega_{ki}(\xi_i, R)$ from  (\ref{eq:balance_equations}), and the sha
  I_{3 \times 3} & (\xi_0 + \xi_4)[z_4]^T_\times
  \end{array} \right )_{12 \times 6},
 \end{eqnarray}
-where $[z_i]_{\times}$ denotes the $3 \times 3$ matrix which satisfies $[z_i]_{\times} \times \omega $ for any $\omega \in \R^3$.
+where $[z_i]_{\times}$ denotes the $3 \times 3$ matrix which satisfies $[z_i]_{\times} \omega = z_i \times \omega $ for any $\omega \in \R^3$.
 \end{proposition}
 
 \begin{proof}
@@ -140,7 +131,7 @@ First, we recast (\ref{eq:velocity}) in the form
 	u_4 &= \dot{c} + \dot{\xi}_4 z_4 + (\xi_0 + \xi_4) [z_4]^T_{\times} \omega
 \end{array}
 \end{equation}
-where $\omega \in T_{I}\SO(3) \simeq \R^3$ is the axial vector associated to $\dot{I}$. Note that in the notation of section \ref{sec: symmetries}, we have exactly $\omega = [\dot{I}]_{\mathcal{L}}$, so we may indeed rewrite (\ref{eq:velocities_recast1}) in terms of $\mathcal{X}_0$ and $\mathcal{Y}$ as
+where $\omega \in \so(3) \simeq \R^3$ is the axial vector associated to $\dot{I}$. Note that in the notation of section \ref{sec: symmetries}, we have exactly $\omega = [\dot{I}]_{\mathcal{L}}$, so we may indeed rewrite (\ref{eq:velocities_recast1}) in terms of $\mathcal{X}_0$ and $\mathcal{Y}$ as
 \begin{equation}
 \label{eq:velocities_recast2}
 	\mathbf{u} = \mathcal{X}_0 \dot{\xi} + \mathcal{Y}(\xi)\dot{p}.
@@ -190,21 +181,21 @@ h & h & h & \kappa
 \end{equation}
 with the two parameters $\kappa$ and $h$ now given in terms of the radius of the spheres $a$ and the initial length of the arms $\xi_0$ by
 \begin{eqnarray}
-\kappa(a, \xi_0) &= \frac{3}{256} \left ( 64 + \frac{25 \sqrt{6} a}{\xi_0} + \frac{12 a}{9 a - 2 \sqrt{6} \xi_0} \right ),\\
-h(a, \xi_0)  &= \frac{1}{768} \left (60 + \frac{69 \sqrt{6} a}{\xi_0} - \frac{16 \xi_0}{3 \sqrt{6} a - 4 \xi_0}  \right ).
+\kappa(a, \xi_0) &= \frac{3}{4} + \frac{9}{16} \sqrt{\frac{3}{2}} \frac{a}{\xi_0} + \mathcal{O}\left (\frac{a}{\xi_0}\right )^2,\\
+h(a, \xi_0)  &= \frac{1}{12} + \frac{3}{16} \sqrt{\frac{3}{2}} \frac{a}{\xi_0} \mathcal{O}\left (\frac{a}{\xi_0}\right )^2.
 \end{eqnarray}
 Recall that the zeroth order term $F_0$ of the control system in the limit of small strokes is characterized by a parameter $\mathfrak{a}$, cf. equation (\ref{eq:position_zeroth_order_term}), which we can now compute directly from Proposition \ref{prop:control_system_laa}:
 \begin{equation}
-\mathfrak{a}(a, \xi_0) = \frac{-5}{16} + \frac{\xi_0}{16 \xi_0 - 12 \sqrt{6} a}.
+\mathfrak{a}(a, \xi_0) = -\frac{1}{4} + \frac{3}{32} \sqrt{\frac{3}{2}} \frac{a}{\xi_0} + \mathcal{O}\left (\frac{a}{\xi_0}\right )^2.
 \end{equation}
 In addition, we find for the eigenvalues of $G$
 \begin{align}
-	\mathfrak{g}_c(a, \xi_0) &= \frac{1}{192} \left  (129 + \frac{39 \sqrt{6} a}{\xi_0} + \frac{4}{3 \sqrt{6} a/\xi_0 - 4} + \frac{27 a}{9a - 2 \sqrt{6} \xi_0} \right )\\
+	\mathfrak{g}_c(a, \xi_0) &= \frac{2}{3} + \frac{3}{8} \sqrt{\frac{3}{2}} \frac{a}{\xi_0} + \mathcal{O}\left (\frac{a}{\xi_0}\right )^2\\
 	\mathfrak{g}_{\theta}(a, \xi_0) &= 1 + \frac{9}{8} \sqrt{\frac{3}{2}} \frac{a}{\xi_0}.
 \end{align}
 
 
-To determine the remaining parameters, we follow the same approach as for \textsc{SPr3} \cite{Alouges2020}: For any $i, j \in \N_4$ the $(ij)$-entry of the matrices $A_k$ and $B_k$ (cf. (\ref{eq: dynamics first approx}) is given by $\dot{\phi}_{e_i}(0)e_j \cdot f_k$ with $\phi_{e_i}(t) := F(t e_i)$. In view of the latter relation, let us recall the following identity: For smooth matrix valued Functions $\mathcal{A}, \mathcal{B}: \R \to \R^{N \times N}$ with $\mathcal{A}(0)$ invertible, it holds that
+To determine the remaining parameters, we follow the same approach as for \textsc{SPr3} \cite{Alouges2020}: For any $i, j \in \N_4$ the $(ij)$-entry of the matrices $A_k$ and $B_k$ (cf. (\ref{eq: dynamics first approx}) is given by $\dot{\varphi}_{e_i}(0)e_j \cdot f_k$ with $\varphi_{e_i}(t) := F(t e_i)$. In view of the latter relation, let us recall the following identity: For smooth matrix valued Functions $\mathcal{A}, \mathcal{B}: \R \to \R^{N \times N}$ with $\mathcal{A}(0)$ invertible, it holds that
 \begin{equation}
 \partial_t[\mathcal{A}(t)^{-1} \mathcal{B}(t)]_{\mid t = 0} = \frac{\mathcal{I}}{\mathcal{A}(0)}\left ( \dot{\mathcal{B}}(0) - \dot{\mathcal{A}}(0) \frac{\mathcal{B}(0)}{\mathcal{A}(0)}\right ).
 \end{equation}
@@ -214,12 +205,19 @@ Therefore, setting $\mathcal{A}(t) := - \mathcal{V}_{\nu}(t e_i)\mathcal{Y}(t e_
 \end{equation}
 One then finds using a symbolic computation program the following expressions of the remaining parameters in terms of $a$ and $\xi_0$:
 \begin{align}
-\alpha(a, \xi_0) &= -\frac{\sqrt{3} a}{8(3 \sqrt{6} a - 4 \xi_0)^2}\\
-\beta(a, \xi_0) &= - \frac{3 a( 81 \sqrt{2} a - 16 \sqrt{3} \xi_0}{128 \sqrt{2} (3 \sqrt{6} a - 4 \xi_0)^2 \xi_0}\\
-\lambda(a, \xi_0) &= \frac{9 a (27 a - 8 \sqrt{6} \xi_0)}{128 \xi_0 (3 \sqrt{6} a - 4 \xi_0)^2}\\
-\delta(a, \xi_0) &= \frac{81 a^2 - 240 \sqrt{6} a \xi_0 + 256 \xi_0^2}{64 \xi_0^2(-27 \sqrt{6} a^2 - 252 a \xi_0 + 64 \sqrt{6} \xi_0^2)}
+\alpha(a, \xi_0) &= \frac{1}{\xi_0} \left (\frac{\sqrt{3}}{256} \frac{a}{\xi_0}+ \mathcal{O}\left (\frac{a}{\xi_0}\right )^2 \right )\\
+\beta(a, \xi_0) &=  \frac{1}{\xi_0} \left (-\frac{3}{128} \sqrt{\frac{3}{1}} \frac{a}{\xi_0} + \mathcal{O}\left (\frac{a}{\xi_0}\right )^2 \right )\\
+\lambda(a, \xi_0) &=  \frac{1}{\xi_0} \left ( - \frac{9}{128} \sqrt{\frac{3}{2}} \frac{a}{\xi_0}+ \mathcal{O}\left (\frac{a}{\xi_0}\right )^2 \right )\\
+\delta(a, \xi_0) &= \frac{1}{\xi_0^2} \left ( -\frac{1}{12 \sqrt{6}} + \frac{9}{512} \frac{a}{\xi_0}+ \mathcal{O}\left (\frac{a}{\xi_0}\right )^2 \right ).
 \end{align}
-
-
+Consequently, the governing dynamics of the swimmer \textsc{SPr4} as well as its optimal swimming strategy is fully known in terms of its geometry. However, note here that we have in close analogy to the swimmer \textsc{SPr3} \cite{Alouges2020} that $\lim_{a \to 0} \alpha(a, \xi_0) = \lim_{\xi_0 \to \infty} \alpha(a, \xi_0) = 0$ and the same holds for the parameters $\beta(a, \xi_0)$ and $\lambda(a, \xi_0)$, while we have for $\delta(a, \xi_0)$ that
+\begin{eqnarray}
+\delta(a, \xi_0) = -\frac{1}{12 \sqrt{6} \xi_0}, & & \lim_{\xi_0 \to \infty} \delta(a, \xi_0) = 0.
+\end{eqnarray}
+So, once again, the asymptotic regime of very small balls differs distinctively from the asymptotic regime of very long arms. Denoting by $|\xi|$ the average intensity of a stroke, we distinguish the following two regimes:
+\begin{eqnarray}
+\frac{a}{\xi_0} \ll \frac{|\xi|}{\xi_0} \ll 1, & & \frac{|\xi|}{\xi_0}  \ll \frac{a}{\xi_0} \ll 1.
+\end{eqnarray}
+In the first, the swimmer strongly resists any spatial net displacement, while surprisingly still being able to produce net rotations over the course of a stroke. The latter represents the regime of very long arms. Since in this limit we can produce both net displacements in position and in rotation, it is the one we are interested in for applications.
 
 
