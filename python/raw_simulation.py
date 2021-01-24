@@ -635,25 +635,13 @@ def compute_optimal_curve(dp, xi0, a, full=False):
         
         xi = lambda t: np.cos(t)*a + np.sin(t)*b
         coeffs = (a, b, np.zeros((4,1)), np.zeros((4,1)))
+        dxidt = lambda t: -np.sin(t)*a + np.cos(t)*b
+           
+        if full:
+            return (xi, dxidt, coeffs)
         
-        if derivative:
-            dxidt = lambda t: -np.sin(t)*a + np.cos(t)*b
-            
-            if coeffs:
-
-                return (xi, dxidt, coeffs)
-            
-            else:
-                return (xi, dxidt)
         else:
-            
-            if coeffs:
-                
-                return (xi, coeffs)
-            
-            else:
-                
-                return xi
+            return xi
         
         
     
@@ -700,7 +688,7 @@ def compute_optimal_curve(dp, xi0, a, full=False):
             
 
 
-def calculate_sphere_positions(xi0, dc, dR, xi, n_strokes, fps):
+def calculate_sphere_positions(xi0, dc, dR, xi, n_strokes, fps, filepath =  "/Users/philipp/Documents/GitHub/stage_cmap/python/"):
     # discretization
     T = n_strokes*2*np.pi
     

@@ -90,6 +90,7 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{booktabs}
+\usepackage{hyperref}
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\M}{\mathcal{M}}
