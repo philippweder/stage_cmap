@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.20)  9 DEC 2020 18:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.20)  28 JAN 2021 14:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -812,52 +812,83 @@ _report.toc)
 
 
 [2] (./sec1_report.tex
-</Users/philipp/Documents/GitHub/stage_cmap/images/spr3.png, id=170, 361.35pt x
- 296.8129pt>
-File: /Users/philipp/Documents/GitHub/stage_cmap/images/spr3.png Graphic file (
-type png)
-<use /Users/philipp/Documents/GitHub/stage_cmap/images/spr3.png>
-Package pdftex.def Info: /Users/philipp/Documents/GitHub/stage_cmap/images/spr3
-.png  used on input line 13.
-(pdftex.def)             Requested size: 180.67456pt x 148.40608pt.
- [3 </Users/philipp/Documents/GitHub/stage_cmap/images/spr3.png (PNG copy)>]) (
-./sec2_report.tex
-</Users/philipp/Documents/GitHub/stage_cmap/images/tetrahedron.png, id=200, 361
-.35pt x 433.25865pt>
-File: /Users/philipp/Documents/GitHub/stage_cmap/images/tetrahedron.png Graphic
- file (type png)
-<use /Users/philipp/Documents/GitHub/stage_cmap/images/tetrahedron.png>
-Package pdftex.def Info: /Users/philipp/Documents/GitHub/stage_cmap/images/tetr
-ahedron.png  used on input line 8.
-(pdftex.def)             Requested size: 161.32492pt x 193.43083pt.
-</Users/philipp/Documents/GitHub/stage_cmap/images/spr4.png, id=201, 361.35pt x
- 409.12047pt>
-File: /Users/philipp/Documents/GitHub/stage_cmap/images/spr4.png Graphic file (
-type png)
-<use /Users/philipp/Documents/GitHub/stage_cmap/images/spr4.png>
-Package pdftex.def Info: /Users/philipp/Documents/GitHub/stage_cmap/images/spr4
-.png  used on input line 12.
-(pdftex.def)             Requested size: 161.32492pt x 182.6542pt.
- [4 </Users/philipp/Documents/GitHub/stage_cmap/images/tetrahedron.png (PNG cop
-y)> </Users/philipp/Documents/GitHub/stage_cmap/images/spr4.png (PNG copy)>]) (
-./sec3_report.tex [5]
+
+LaTeX Warning: File `/Users/philipp/Documents/GitHub/stage_cmap/images/spr3.png
+' not found on input line 13.
+
+
+! Package pdftex.def Error: File `/Users/philipp/Documents/GitHub/stage_cmap/im
+ages/spr3.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ...cuments/GitHub/stage_cmap/images/spr3.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[3]) (./sec2_report.tex
+
+LaTeX Warning: File `/Users/philipp/Documents/GitHub/stage_cmap/images/tetrahed
+ron.png' not found on input line 8.
+
+
+! Package pdftex.def Error: File `/Users/philipp/Documents/GitHub/stage_cmap/im
+ages/tetrahedron.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.8 ...s/GitHub/stage_cmap/images/tetrahedron.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `/Users/philipp/Documents/GitHub/stage_cmap/images/spr4.png
+' not found on input line 12.
+
+
+! Package pdftex.def Error: File `/Users/philipp/Documents/GitHub/stage_cmap/im
+ages/spr4.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ...cuments/GitHub/stage_cmap/images/spr4.png}
+                                                   % second figure itself
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[4]) (./sec3_report.tex [5]
 LaTeX Font Info:    Trying to load font information for U+euf on input line 62.
 
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 ) [6] [7]
-</Users/philipp/Documents/GitHub/stage_cmap/images/reflection.png, id=268, 474.
-66936pt x 371.4678pt>
-File: /Users/philipp/Documents/GitHub/stage_cmap/images/reflection.png Graphic 
-file (type png)
-<use /Users/philipp/Documents/GitHub/stage_cmap/images/reflection.png>
-Package pdftex.def Info: /Users/philipp/Documents/GitHub/stage_cmap/images/refl
-ection.png  used on input line 164.
-(pdftex.def)             Requested size: 358.50227pt x 280.56134pt.
 
-[8 </Users/philipp/Documents/GitHub/stage_cmap/images/reflection.png (PNG copy)
->]) (./sec4_report.tex [9]
+LaTeX Warning: File `/Users/philipp/Documents/GitHub/stage_cmap/images/reflecti
+on.png' not found on input line 164.
+
+
+! Package pdftex.def Error: File `/Users/philipp/Documents/GitHub/stage_cmap/im
+ages/reflection.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.164 .../GitHub/stage_cmap/images/reflection.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[8]) (./sec4_report.tex [9]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 39.
@@ -977,10 +1008,10 @@ Package logreq Info: Writing requests to 'main_report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 17341 strings out of 480608
- 293922 string characters out of 5903630
- 977948 words of memory out of 5000000
- 32652 multiletter control sequences out of 15000+600000
+ 17397 strings out of 480608
+ 296627 string characters out of 5903630
+ 977939 words of memory out of 5000000
+ 32692 multiletter control sequences out of 15000+600000
  549495 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,16n,58p,1334b,2843s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1014,10 +1045,10 @@ ts/type1/public/amsfonts/euler/eufm7.pfb></usr/local/texlive/2020/texmf-dist/fo
 nts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2020/texmf-dis
 t/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2020/texmf
 -dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main_report.pdf (30 pages, 1793198 bytes).
+Output written on main_report.pdf (30 pages, 488343 bytes).
 PDF statistics:
- 912 PDF objects out of 1000 (max. 8388607)
+ 908 PDF objects out of 1000 (max. 8388607)
  836 compressed objects within 9 object streams
  291 named destinations out of 1000 (max. 500000)
- 237 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 217 words of extra memory for PDF output out of 10000 (max. 10000000)
 

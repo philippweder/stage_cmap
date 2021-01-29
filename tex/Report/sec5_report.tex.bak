@@ -71,7 +71,6 @@ where $\times$ denotes the usual cross product. This entails two things: First, 
 
 Yet, in $\R^4$, the geometry of its bivectors proves to be more involved. As $\dim \bigwedge^2 \R^4 = 6$, it is clear that the bivectors in $\R^4$ are not isomorphic to $\R^4$ itself. In particular, in $\R^4$ not all bivectors are simple. Indeed, the bivector $e_1 \wedge e_2 + e_3 \wedge e_4 \in \bigwedge^2 \R^4$ cannot be written as an exterior product of just two vectors in $\R^4$. Nevertheless, any bivector in $\R^4$ can be written as the sum of two orthogonal simple bivectors \cite{Lounesto2006}. Moreover, we have the following criterion to determine whether a bivector is simple:
 
-\newpage
 
 \begin{lemma}
 \label{lem:simple bivector}
@@ -290,8 +289,9 @@ Finally, in the $\mathfrak{g}$-orthogonal reference frame, the inner product is 
 Applying the orthogonal map $U$ to $\tilde{a}$ and $\tilde{b}$ finishes the proof.
 \end{proof}
 
-\subsection{Some examples of simple net displacements}
+\subsubsection{Some examples of simple net displacements}
 In light of Theorem \ref{thm:optimal control curves in the simple case} presented above, one might ask whether there are concrete cases in which the net displacement happens to be a simple bivector. It turns out that there is convenient correspondence for engineering purposes between certain subspaces of $\bigwedge^2 \R^4$ consisting only of simple bivectors and certain net displacements. Indeed, note that the condition in Lemma \ref{lem:simple bivector} is in particular satisfied if all coefficients corresponding to a certain index are zero, e.g. $\omega_{i4} = 0$ for $i \in \N_3$. This yields four subspaces $D^*_{ijk}$ of $\bigwedge^2 \R^4$ consisting only of simple bivectors. Then, by inspection of the basis of $\bigwedge^2 \R^4$, we have the following correspondences:
+
 \begin{align*}
 D^{*}_{123} &\longleftrightarrow\text{ rotations around all three axes } \hat{e}_1, \hat{e}_2, \hat{e}_3\\
 D^{*}_{124} &\longleftrightarrow \text{ translation in the $\hat{e}_1\hat{e}_2$-plane, rotation around the $\hat{e}_3$-axis }\\

@@ -338,7 +338,7 @@ def main():
             
             t_span = [0, 2*np.pi]
             y0 = np.array([0, 0])
-            sol_c = solve_ivp(swimmer.rhs_c, y0, t_span, method="Radau", args=(xi_eps, dxidt_eps, coeffs_eps))
+            sol_c = solve_ivp(swimmer.rhs_c, y0, t_span, method="RK45", atol=10E-6, rtol=10E-6, args=(xi_eps, dxidt_eps, coeffs_eps))
             diff = sol_c.y[:,-1] - sol_c.y[:,0]
     
         

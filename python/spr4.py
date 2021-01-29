@@ -10,8 +10,9 @@ import clifford as cf
 from numpy.linalg import norm, det
 from scipy.integrate import quad, solve_ivp
 from odeintw import odeintw
-from scipy.linalg import expm
-from myodeintw import myodeintw
+
+import matplotlib.pyplot as plt
+
 
 """
 CONSTANTS
@@ -747,27 +748,74 @@ class spr4:
 
         dRdt = np.dot(R,(np.dot(np.dot(self.M4, xi(t)), dxidt(t))*self.L1 + np.dot(np.dot(self.M5, \
             xi(t)), dxidt(t))*self.L2 + np.dot(np.dot(self.M6, xi(t)), dxidt(t))*self.L3))
-        # I = np.eye(3)
-        
-        # dcdt = np.dot(R, (np.dot(np.dot(self.A1, xi(t)), dxidt(t))\
-        #     *self.f1 + np.dot(np.dot(self.A2, xi(t)),  dxidt(t))*self.f2 + np.dot(np.dot(self.A3,\
-        #                                                 xi(t)), dxidt(t))*self.f3))
-
-        # dRdt = np.dot(R,(np.dot(np.dot(self.M4, xi(t)), dxidt(t))*self.L1 + np.dot(np.dot(self.M5, \
-        #     xi(t)), dxidt(t))*self.L2 + np.dot(np.dot(self.M6, xi(t)), dxidt(t))*self.L3))
-        
-
-        
-
-        # dudt = np.zeros((4,3))
-        # dudt[0,:] = dcdt
-        # dudt[1:,:] = dRdt
         
         dudt = np.hstack((dcdt, dRdt[0,:], dRdt[1,:], dRdt[2,:]))
         
         return dudt
+    def build_ic(self, c0, R0):
+        
+        p0 = np.hstack((c0, R0[0,:], R0[1,:], R0[2,:]))
+        
+        return p0
+    
+    def correction(self, dR, coeffs):
+        """
+        
+    
+        Parameters
+        ----------
+        swimmer : spr4 object
+        dR : numpy array 3x1
+            rotational net displacement in the std basis of so(3).
+        coeffs : tuple containing 4 numpy arrays 4x1
+            Fourier coefficients of a control curve.
+    
+        Returns
+        -------
+        numpy array 6x1
+            Correction term of order 3 in eq. (4.35) on p. 14.
+    
+        """
+        a1, b1, a2, b2 = coeffs
+        
+        dR_mat = dR[0]*L1 + dR[1]*L2 + dR[2]*L3
+        xi_end = a1 + a2
+        
+    
+        ht = self.ht
+        
+        def phi1(u, v):
+            C = np.array([u, v, self.tau1, self.tau4])
+            return det(C)
+        
+        def phi2(u, v):
+            C = np.array([u, v, self.tau2, self.tau4])
+            return det(C)
+        
+        def phi3(u, v):
+            C = np.array([u, v, self.tau3, self.tau4])
+            return det(C)
+        
+        def Phi(u, v):
             
-            
+            return phi1(u, v)*L1 + phi2(u, v)*L2 + phi3(u, v)*L3
+        
+    
+        Fc0 = self.Fc0
+        dRFc0 = np.dot(dR_mat, Fc0)
+        
+        
+        A = np.dot((3*ht*np.pi/2)*(Phi(a1, b2) + Phi(a2, b1)), Fc0)
+        B = np.dot((3*ht*np.pi/2)*(Phi(a2, a1) + Phi(b2, b1)), Fc0)
+        
+        
+        corr_c = np.dot(dRFc0, xi_end)  - np.dot(A, a1) - np.dot(B, b1)
+        
+        corr = np.zeros((6,))
+        
+        corr[:3] = corr_c
+        
+        return corr
             
             
 def pos_array_to_pos_tuples(pos):
@@ -867,95 +915,47 @@ def calculate_sphere_positions(swimmer, xi, dxidt, n_strokes, fps, amplification
     
     print("# of keyframes: ", n_keyframes)
     
-def correction(swimmer, dR, coeffs):
-    """
     
 
-    Parameters
-    ----------
-    swimmer : spr4 object
-    dR : numpy array 3x1
-        rotational net displacement in the std basis of so(3).
-    coeffs : tuple containing 4 numpy arrays 4x1
-        Fourier coefficients of a control curve.
-
-    Returns
-    -------
-    numpy array 6x1
-        Correction term of order 3 in eq. (4.35) on p. 14.
-
-    """
-    a1, b1, a2, b2 = coeffs
-    
-    dR_mat = dR[0]*L1 + dR[1]*L2 + dR[2]*L3
-    xi_end = a1 + a2
-    
-
-    ht = swimmer.ht
-    
-    def phi1(u, v):
-        C = np.array([u, v, swimmer.tau1, swimmer.tau4])
-        return det(C)
-    
-    def phi2(u, v):
-        C = np.array([u, v, swimmer.tau2, swimmer.tau4])
-        return det(C)
-    
-    def phi3(u, v):
-        C = np.array([u, v, swimmer.tau3, swimmer.tau4])
-        return det(C)
-    
-    def Phi(u, v):
-        
-        return phi1(u, v)*L1 + phi2(u, v)*L2 + phi3(u, v)*L3
-    
-
-    Fc0 = swimmer.Fc0
-    dRFc0 = np.dot(dR_mat, Fc0)
-    
-    
-    A = np.dot((3*ht*np.pi/2)*(Phi(a1, b2) + Phi(a2, b1)), Fc0)
-    B = np.dot((3*ht*np.pi/2)*(Phi(a2, a1) + Phi(b2, b1)), Fc0)
-    
-    
-    corr_c = np.dot(dRFc0, xi_end)  - np.dot(A, a1) - np.dot(B, b1)
-    
-    corr = np.zeros((6,))
-    
-    corr[:3] = corr_c
-    
-    return corr
-    
-
-def convergence_plot(ax, epsilons, errors, xlab, ylab, title):
+def convergence_plot(ax, epsilons, errors,  ylab, xlab, title):
     ax.loglog(epsilons, errors)
     ax.loglog(epsilons, (1.0*epsilons)**1, "k--", label = "O(1)")
     ax.loglog(epsilons, (1.0*epsilons)**2, "k-.", label = "O(2)")
     ax.loglog(epsilons, (1.0*epsilons)**(3), "r-.", label = "O(3)")
     ax.legend(loc = "lower right")
-    ax.set_ylabel(ylab)
     ax.set_xlabel(xlab)
+    ax.set_ylabel(ylab)
     ax.set_title(title)
     
     
-def rel_convergence_plot(ax, epsilons, errors, xlab, ylab, title):
+    
+def rel_convergence_plot(ax, epsilons, errors, xlab, ylab):
     ax.plot(epsilons, errors)
     # ax.set_xlim(1/5000, 1)
     ax.set_ylabel(ylab)
     ax.set_xlabel(xlab)
-    ax.set_title(title)
+
+def plot_amp(hist, amp, coords):
+    new_hist = hist
     
+    for ind in coords:
+        new_hist[ind, :] = amp*new_hist[ind, :]
+    
+    return new_hist 
+        
+        
+        
     
 
 
 def main():
 
     a = 0.01
-    xi0 = 10
+    xi0 = 200
     
     swimmer = spr4(a, xi0)
-    eps = 1/10000
-    dp = np.array([0, 0, 1, 0, 0, 0])*eps
+    eps = 1/1000000
+    dp = np.array([1, 1, 0, 0, 0, 1])*eps
     dR = dp[3:]
     
     xi, dxidt, coeffs = swimmer.optimal_curve(dp, full=True)
@@ -967,27 +967,32 @@ def main():
     
     R0 = np.eye(3)
     c0 = np.array([0,0,0])
-    p0 = np.hstack((c0, R0[0,:], R0[1,:], R0[2,:]))
+    p0 = swimmer.build_ic(c0, R0)
 
-    
-    # sol = odeintw(swimmer.rhs, p0, T, args=(xi, dxidt))
-    sol = solve_ivp(swimmer.rhs, t_span,p0, t_eval=T,  method="Radau", args=(xi, dxidt))
+    sol = solve_ivp(swimmer.rhs, t_span,p0, atol=10E-16,rtol= 10E-16,  method="DOP853", args=(xi, dxidt))
     sol_c = sol.y[:3,:]
-    sol_R = sol.y[3:, :]
-    print(sol_c.shape)
-    print(sol_R.shape)
 
 
     dp_raw = swimmer.net_displacement(xi, dxidt)
-    dp_corr = dp_raw + correction(swimmer, dR, coeffs)
+    dp_corr = dp_raw + swimmer.correction(dR, coeffs)
     dc_corr = dp_corr[:3]
     
+
     diff = sol_c[:, -1] - sol_c[:, 0]
-    print("th net displacement: ", dp)
-    print("exp net displacement without correction: ", dp_raw)
-    print("corrected exp net displacement: ", dp_corr)
-    print("diff: ", diff)
-    print("||dc_corr - diff||/eps**2", norm(dc_corr - diff))
+    
+    
+    amp = 1
+    amp_axes = [0,1]
+    amp_sol_c = plot_amp(sol_c, amp, amp_axes)
+    startpoint = amp_sol_c[:,0]
+    endpoint = amp_sol_c[:,-1]
+    highlights = np.array([startpoint, endpoint])
+    
+    # print("th net displacement: ", dp)
+    # print("exp net displacement without correction: ", dp_raw)
+    # print("corrected exp net displacement: ", dp_corr)
+    # print("diff: ", diff)
+    # print("||dc_corr - diff||/eps**2", norm(dc_corr - diff))
 
     
     print("====THEORETICAL NET DISPLACEMENT=======")
@@ -997,12 +1002,49 @@ def main():
     
     print("=======CURVE ============")
     print("difference curve: ", diff)
-    print("exp net displacement: ", dp_raw)
-    print("corrected exp net displacement: ", dp_corr)
+    print("exp net displacement: ",n_strokes* dp_raw)
+    print("corrected exp net displacement: ",n_strokes* dp_corr)
     print("------------------------------")
     
-
-        
+    #3D Plotting
+    fig = plt.figure(figsize=(12, 4))
+    
+    #frontal view
+    ax1 = fig.add_subplot(131, projection = "3d")
+    ax1.set_xlabel('x')
+    ax1.set_ylabel('y')
+    ax1.set_zlabel('z')
+    ax1.set_xticks([])
+    ax1.ticklabel_format(style = "sci")
+    ax1.plot3D(sol_c[0,:], sol_c[1,:], sol_c[2,:], color="#00a3dd")
+    # ax1.plot3D(highlights[:,0], highlights[:,1], highlights[:,2], "*",  color = "#e31c23")
+    ax1.view_init(0, 0)
+    
+    #side view
+    ax2 = fig.add_subplot(132, projection = "3d")
+    ax2.set_xlabel('x')
+    ax2.set_ylabel('y')
+    ax2.set_zlabel('z')
+    ax2.set_yticks([])
+    ax2.ticklabel_format(style = "sci")
+    ax2.plot3D(sol_c[0,:], sol_c[1,:], sol_c[2,:], color="#00a3dd")
+    # ax2.plot3D(highlights[:,0], highlights[:,1], highlights[:,2], "*", color="#e31c23")
+    ax2.view_init(0, 90)
+    
+    #top view
+    ax3 = fig.add_subplot(133, projection = "3d")
+    ax3.set_xlabel('x')
+    ax3.set_ylabel('y')
+    ax3.set_zlabel('z')
+    ax3.set_zticks([])
+    ax3.ticklabel_format(style = "sci")
+    ax3.plot3D(sol_c[0,:], sol_c[1,:], sol_c[2,:], color="#00a3dd")
+    # ax3.plot3D(highlights[:,0], highlights[:,1], highlights[:,2], "*", color="#e31c23")
+    ax3.view_init(90, 0)
+    
+    plt.tight_layout()
+    plt.show()
+            
 
     
 
