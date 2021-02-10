@@ -1,11 +1,11 @@
-\subsection{Complete computations of the first order term $\mathcal{H}_0$}
+\subsection{Complete computations of the first order terms}
  
  In analogy to the calculation of the matrices $M_k$, we define $\mathcal{T}_{0, c}(\xi \otimes \eta) := \tfrac{1}{2}  [\mathcal{H}_{c,0}(\xi \otimes \eta) + \mathcal{H}_{c,0}(\eta \otimes \xi)]$ and similarly $\mathcal{T}_{0, \theta}(\xi \otimes \eta)$ for $\xi, \eta \in \R^4$ such that $\T_{0,c}(\xi \otimes \eta) = \T_{0,c}(\eta \otimes \xi)$ as well as $\T_{0,\theta}(\xi \otimes \eta) = \T_{0,\theta}(\eta \otimes \xi)$. Clearly, $\T_{c,0}$ and $\T_{\theta,0}$ satisfy the same symmetry relations as $\h_{c,0}$ and $\h_{\theta,0}$ and thus we find for any permutation matrix $P_{ij}$ and the corresponding reflection $S_{ij}$ that
 \begin{align}
 \label{eq:even_position_first_order_condition}
- S_{ij}\T_{c,0}(P_{ij} \xi \otimes P_{ij} \eta) &= \T_{c,0}(\xi \otimes \eta)\\
+ S_{ij}\T_{c,0}(P_{ij} \xi \otimes P_{ij} \eta) &= \T_{c,0}(\xi \otimes \eta),\\
  \label{eq:even_angle_first_order_condition}
-  -S_{ij}\T_{\theta,0}(P_{ij} \xi \otimes P_{ij} \eta) &= \T_{\theta,0}(\xi \otimes \eta)
+  -S_{ij}\T_{\theta,0}(P_{ij} \xi \otimes P_{ij} \eta) &= \T_{\theta,0}(\xi \otimes \eta).
 \end{align}
 We treat the spatial part first. Since the matrix $S_{ij}$ represents the reflection at the plane spanned by the remaining two arms $z_k$ and $z_l$, equation (\ref{eq:even_position_first_order_condition}) implies that $\T_{c,0}(e_i \otimes e_j) \in \Span\{z_k, z_l\}$. Next, we find, using again (\ref{eq:even_position_first_order_condition}) and the fact that the reflection $S_{kl}$ is an orthogonal transformation, that
 \begin{equation}
@@ -21,7 +21,7 @@ Since the vectors $z_1, z_2, z_3$ and $z_4$ are normalized and enclose pairwise 
 \end{equation}
 Hence, we have $\T_{c,0}(e_i\otimes e_i) = \lambda z_i$ for all $i\in \N_4$ and some $\lambda \in \R$.
 
-For the rotational part, we observe that equation (\ref{eq:even_angle_first_order_condition}) implies that on the one hand we have $\T_{\theta,0}(e_i \otimes e_j) = - S_{ij} \T_{\theta,0}(e_i \otimes e_j)$ and on the other hand that $\T_{\theta,0}(e_i \otimes e_j) = -S_{kl} \T_{\theta,0}(e_i \otimes e_j)$. However, the first equation implies that $\T_{\theta,0}(e_i \otimes e_j)$ is proportional to $z_k \times z_l$, while the second implies that $\T_{\theta,0}(e_i \otimes e_j)$ is proportional to $z_i \times z_j$. Yet, from this we conclude that necessarily $\T_{\theta,0}(e_i \otimes e_j) = 0$ since $z_k \times z_l \in \Span\{e_i, e_j\}$ and vice-versa. The argument for $\T_{\theta,0}(e_i \otimes e_i)  = 0$ is very similar and thus omitted.
+For the rotational part, we observe that equation (\ref{eq:even_angle_first_order_condition}) implies that on the one hand we have $\T_{\theta,0}(e_i \otimes e_j) = - S_{ij} \T_{\theta,0}(e_i \otimes e_j)$ and on the other hand that $\T_{\theta,0}(e_i \otimes e_j) = -S_{kl} \T_{\theta,0}(e_i \otimes e_j)$. However, the first equation implies that $\T_{\theta,0}(e_i \otimes e_j)$ is proportional to $z_k \times z_l$, while the second implies that $\T_{\theta,0}(e_i \otimes e_j)$ is proportional to $z_i \times z_j$. Yet, from this we conclude that necessarily $\T_{\theta,0}(e_i \otimes e_j) = 0$ since $z_k \times z_l \in \Span\{z_i, z_j\}$ and vice-versa. The argument for $\T_{\theta,0}(e_i \otimes e_i)  = 0$ is very similar and thus omitted.
 
 In conclusion, the matrices $N_k :=( \T_{c,0}(e_i \otimes e_j)\cdot  \hat{e}_k)_{i,j \in \N_4}  = \tfrac{1}{2}(A_k + A_k^T), k \in \N_3$ and $N_{k + 3} := ( \T_{\theta,0}(e_i \otimes e_j)\cdot  \hat{e}_k)_{i,j \in \N_4}  = \tfrac{1}{2}(B_k + B_k^T), k \in \N_3$ are given by
 
@@ -29,29 +29,29 @@ In conclusion, the matrices $N_k :=( \T_{c,0}(e_i \otimes e_j)\cdot  \hat{e}_k)_
 \begin{align}
  N_1 = \frac{\sqrt{2}}{3}\left(
 \begin{array}{cccc}
- 2 l & -b & -b & -2 b \\
- -b & -l & 2 b & b \\
- -b & 2 b & -l & b \\
- -2 b & b & b & 0 \\
+ 2 \lambda & -\beta & -\beta & -2 \beta \\
+ -\beta & -\lambda & 2 \beta & \beta \\
+ -\beta & 2 \beta & -\lambda & \beta \\
+ -2 \beta & \beta & \beta & 0 \\
 \end{array}
 \right),
 \end{align}
 
 \begin{eqnarray}
-N_2 =\frac{2}{3} \left(
+N_2 =\sqrt{\frac{2}{3}} \left(
 \begin{array}{cccc}
- 0 & b & -b & 0 \\
- b & -l & 0 & b \\
- -b & 0 & l & -b \\
- 0 & b & -b & 0 \\
+ 0 & \beta & -\beta & 0 \\
+ \beta & -\lambda & 0 & \beta \\
+ -\beta & 0 & \lambda & -\beta \\
+ 0 & \beta & -\beta & 0 \\
 \end{array}
 \right), & &
  N_3 = \frac{1}{3}\left(
 \begin{array}{cccc}
- 0 & b & -b & 0 \\
- b & -l & 0 & b \\
- -b & 0 & l & -b \\
- 0 & b & -b & 0 \\
+ -\lambda & 2 \beta & 2 \beta & -2 \beta \\
+ 2 \beta & -\lambda & 2 \beta & -2 \beta \\
+ 2 \beta & 2 \beta & -\lambda & -2 \beta \\
+ -2 \beta & -2 \beta & -2 \beta & 3 \lambda \\
 \end{array}
 \right)
 \end{eqnarray}
@@ -59,3 +59,36 @@ N_2 =\frac{2}{3} \left(
 \begin{align}
 N_4 = N_5 = N_6 = 0.
 \end{align}
+
+
+\subsection{Decomposition of bivectors}
+\label{subsec:decomposition}
+For the implementation of an algorithm that constructs optimal control curves to a given net displacement, the decomposition of bivectors is crucial; that is, given a bivector $\omega \in \bigwedge^2 \R^4$, we want to find vectors $u_1, v_1, u_2, v_2 \in \R^4$ such that $\omega = u_1 \wedge v_1 + u_2 \wedge v_2$. Moreover, if we are in the case of a simple bivector, we even want to find $u, v \in \R^4$ such that $\omega = u \wedge v$. Fortunately, Lemma \ref{lem:simple bivector} gives us already an efficient way to check whether a bivector is simple or not. In fact, the decomposition will be largely based on its proof, which first decomposes $\omega$ into the sum of two simple bivectors, see \cite{Hitchin2003}.
+
+So, let us first decompose any $\omega \in \bigwedge^2 \R^4$ into the sum of two simple bivectors. To that end, let $\omega = a_{14}e_{14} +  a_{24}e_{24} +  a_{34}e_{34} +  a_{23}e_{23} +  a_{31}e_{31} +  a_{12}e_{12}$ be a bivector expressed in the basis related to the problem, cf. (\ref{eq: basis of bivectors}). Then we can rewrite
+\begin{equation}
+    \omega = u \wedge e_4 + (a_{23} e_2 - a_{31}e_1) \wedge e_3 + a_{12} e_{12},
+\end{equation}
+where $u := ( a_{14}e_{1} +  a_{24}e_{2} +  a_{34}e_{3})$. If $a_{31} = 0$, we immediately find the decomposition
+\begin{equation}
+    \omega = u \wedge e_4 + (a_{12} e_1 - a_{23} e_3) \wedge e_2.
+\end{equation}
+Otherwise, set $\alpha := - \tfrac{a_{12}}{a_{31}} a_{23}$. Then, we have
+\begin{equation}
+    a_{12} e_{12} = (\alpha e_2 + a_{12} e_1) \wedge e_2 = - \frac{a_{12}}{a_{31}} (a_{23} e_2 - a_{31} e_1) \wedge e_2.
+\end{equation}
+Hence, we may rewrite $\omega$ as
+\begin{equation}
+    \omega = u \wedge e_4 + (a_{23} e_2 - a_{31} e_1) \wedge \left(e_3 - \frac{a_{12}}{a_{31}}e_2 \right), 
+\end{equation}
+which yields the desired decomposition.
+
+To construct a decomposition in the simple case, we first have to know how to decompose any bivector $\omega \in \bigwedge^2 V$, where $V$ is a vector space of dimension 3, into a simple bivector. Let $(u_1, u_2, u_3)$ be an ordered basis of $V$. Then, we can write $\omega \in \bigwedge^2 V$ as $\omega = \lambda_{12} u_1 \wedge u_2 + \lambda_{13} u_1 \wedge u_3 + \lambda_{23} u_2 \wedge u_3$. If $\lambda_{13} = 0$, we immediately have $\omega = (\lambda_{12} u_1 - \lambda_{13} u_3) \wedge u_2$. Otherwise, we have $\lambda_{23} u_2 \wedge u_3 = \frac{\lambda_{23}}{\lambda_{13}} u_2 \wedge (\lambda_{12} u_2 + \lambda_{13} u_3)$ and thus
+\begin{equation}
+    \omega =\left (u_1 + \frac{\lambda_{23}}{\lambda_{13}} u_2 \right) \wedge \left(\lambda_{12} u_2 + \lambda_{13} u_3 \right).
+\end{equation}
+So, if we already know that $\omega \wedge \omega = 0$ for $\omega \in \bigwedge^2 \R^4$, we decompose it according to the first paragraph into $\omega = u \wedge e_4 + v_1 \wedge v_2$. Note that the condition $\omega \wedge \omega = 0$ implies that $u \wedge v_1 \wedge v_2 = 0$ and thus the latter three vectors must be linearly dependent. If $v_1$ and $v_2$ are linearly dependent, then $v_1 \wedge v_2 = 0$ and we are done. Otherwise, write $u = \lambda_1 v_1 + \lambda_2 v_2$. Then, we have
+\begin{equation}
+    \omega = \lambda_1 (v_1 \wedge e_4) + \lambda_2(v_2 \wedge e_4) + v_1 \wedge v_2.
+\end{equation}
+Note that due to the definition of $v_1$ and $v_2$ in the first paragraph, the vectors $v_1, v_2$, and $e_4$ are linearly independent and thus we can apply the decomposition algorithm for three-dimensional vector spaces.

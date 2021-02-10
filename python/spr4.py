@@ -1,22 +1,27 @@
-#!/usr/bin/env python3
+ #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Created on Thu Dec 10 09:26:05 2020
 
-@author: philipp
+@author: 
+    
+    Philipp Weder
+    wederp@student.ethz.ch
+    Sonnenstrasse 12a
+    9434 Au SG
+    ETH Zürich
+    
 """
 import numpy as np
 import clifford as cf
 from numpy.linalg import norm, det
 from scipy.integrate import quad, solve_ivp
-from odeintw import odeintw
-
 import matplotlib.pyplot as plt
 
 
-"""
-CONSTANTS
-"""
+# =============================================================================
+#                   CONSTANTS
+# =============================================================================
 
 # standard basis of so(3)
 L1 = np.array([[0,0,0],[0,0,-1],[0,1,0]])
@@ -352,22 +357,24 @@ class spr4:
         tuple of vectors (u_new, v_new) such that u_new^v_new = u^v, |u_new| = |v_new|
         and u_new.v_new = 0.
         """
-        # TODO: Raise error if u,v are linearly dependent
+
+        if self.check_lin_dep(u, v):
+            raise ValueError
         
         # step 1: orthogonalize u,v with Gram-Schmidt
         u_temp = u
         v_temp = v - (np.dot(u_temp, v)/norm(u_temp)**2)*u_temp
         
         # step 2: balance the lengths
-        # Recall that since u_temp and v_temp are orthogonal, we have |u_temp^v_temp| = |u_temp||v_temp|
+        # Recall that since u_temp and v_temp are orthogonal,
+        # we have |u_temp^v_temp| = |u_temp||v_temp|
         
         u_new = u_temp*np.sqrt(norm(v_temp)/norm(u_temp))
         v_new = v_temp*np.sqrt(norm(u_temp)/norm(v_temp))
         
         return (u_new, v_new)
         
-        
-        
+    
     def build_params(self):
         """
         
@@ -427,7 +434,10 @@ class spr4:
 
         """
 
-        self.G = np.array([[self.kappa,self.h,self.h,self.h],[self.h,self.kappa,self.h,self.h],[self.h,self.h,self.kappa,self.h],[self.h,self.h,self.h,self.kappa]])
+        self.G = np.array([
+            [self.kappa,self.h,self.h,self.h],
+            [self.h,self.kappa,self.h,self.h],[self.h,self.h,self.kappa,self.h],
+            [self.h,self.h,self.h,self.kappa]])
         
         self.U = np.array([self.tau1, self.tau2, self.tau3, self.tau4]).T
         
@@ -742,12 +752,12 @@ class spr4:
         
         R = np.vstack((R1, R2, R3))
         
-        dcdt = np.dot(R,(np.dot(self.Fc0, dxidt(t)) + np.dot(np.dot(self.A1, xi(t)), dxidt(t))\
-            *self.f1 + np.dot(np.dot(self.A2, xi(t)),  dxidt(t))*self.f2 + np.dot(np.dot(self.A3,\
-                                                        xi(t)), dxidt(t))*self.f3))
+        dcdt = np.dot(R,(np.dot(self.Fc0, dxidt(t)) + np.dot(np.dot(self.A1, xi(t)),\
+                    dxidt(t))*self.f1 + np.dot(np.dot(self.A2, xi(t)), dxidt(t))*self.f2 \
+                    + np.dot(np.dot(self.A3, xi(t)), dxidt(t))*self.f3))
 
         dRdt = np.dot(R,(np.dot(np.dot(self.M4, xi(t)), dxidt(t))*self.L1 + np.dot(np.dot(self.M5, \
-            xi(t)), dxidt(t))*self.L2 + np.dot(np.dot(self.M6, xi(t)), dxidt(t))*self.L3))
+                    xi(t)), dxidt(t))*self.L2 + np.dot(np.dot(self.M6, xi(t)), dxidt(t))*self.L3))
         
         dudt = np.hstack((dcdt, dRdt[0,:], dRdt[1,:], dRdt[2,:]))
         
@@ -761,7 +771,7 @@ class spr4:
     def correction(self, dR, coeffs):
         """
         
-    
+        
         Parameters
         ----------
         swimmer : spr4 object
@@ -816,106 +826,255 @@ class spr4:
         corr[:3] = corr_c
         
         return corr
+    
+    def optimal_curve_trajectory(self, dp, n_strokes, n_res, c0, R0, log=False):
+        """
+        
+
+        Parameters
+        ----------
+        dp : numpy array 6x1
+            prescribed net displacement.
+        n_strokes : int
+            number of strokes.
+        n_res : int
+            resolution per stroke.
+        c0 : numpy array 3x1
+            initial position of the swimmer.
+        R0 : numpy array 3x3
+            initial rotation of the swimmer as a matrix.
+        log : bool, optional
+            if True, then a log is printed. The default is False.
+
+        Returns
+        -------
+        sol_c : numpy array 3x(n_strokes x n_res)
+            spatial trajectory of the swimmer due to an optimal control curve
+            realizing the prescribed net displacement dp.
+        diff : numpy array 3x1
+            difference between endpoint and starting point of the trajectory.
+        dp_exp : numpy array 6x1
+            experimental net displacement.
+        dp_corr : numpy array 6x1
+            experimental net displacement with order 3 correction.
+
+        """
+        xi, dxidt, coeffs = self.optimal_curve(dp, full=True)
+        T = np.linspace(0, n_strokes*2*np.pi, n_res*n_strokes, endpoint=True)
+        t_span = [0, 2*np.pi*n_strokes]
+        p0 = self.build_ic(c0, R0)
+        
+        sol = solve_ivp(self.rhs, t_span,p0, t_eval = T, atol=10E-16,rtol= 10E-16,\
+                        method="DOP853", args=(xi, dxidt))
+        sol_c = sol.y[:3,:]
+        diff = sol_c[:, -1] - sol_c[:, 0]
+        
+        dp_exp = self.net_displacement(xi, dxidt)
+        dR = dp[3:]
+        dp_corr = dp_exp + self.correction(dR, coeffs)
+        
+        
+        if log:
+            print("====THEORETICAL NET DISPLACEMENT=======")
+            print(dp)
+            print("------------------------------")
             
             
+            print("=======CURVE ============")
+            print("difference curve: ", diff)
+            print("exp net displacement: ",n_strokes* dp_exp)
+            print("corrected exp net displacement: ",n_strokes* dp_corr)
+            print("------------------------------")
+        
+        return (sol_c, diff, dp_exp, dp_corr)
+    
+    
+    def calculate_sphere_positions(self, xi, dxidt, n_strokes, fps, amplification, filepath):
+        """
+        
+    
+        Parameters
+        ----------
+        xi : vector valued function returning 4x1 arrays
+            control curve .
+        dxidt : vector valued function returning 4x1 arrays
+            time derivative of the control curve.
+        n_strokes : int
+            number of strokes.
+        fps : int
+            frames/s.
+        amplification : float
+            amplification of the results.
+        filepath : string, optional
+            filepath to where one wants to save the histories.
+    
+        Returns
+        -------
+        None. Writes the positions of the 4 spheres and the center into csv files.
+        The csv files then can be loaded in Blender to animate a 3D-model of SPR4.
+    
+        """    
+        # discretization
+        t = n_strokes*2*np.pi
+        n_keyframes = int(t*fps)
+        dt = 1/fps
+        
+        
+        R0 = np.eye(3)
+        c0 = np.array([0,0,0])
+        p0 = np.vstack((c0, R0))
+        T = np.linspace(0, t, n_keyframes)
+        t_span = [0, t]
+        
+        sol = solve_ivp(self.rhs, t_span,p0, t_eval = T, atol=10E-16,rtol= 10E-16,\
+                        method="DOP853", args=(xi, dxidt))
+        solc = sol.y[:3, :]*amplification
+        solR = sol.y[3:, :]
+        
+        hist1 = []
+        hist2 = []
+        hist3 = []
+        hist4 = []
+        histc = []
+        
+        for k in range(len(sol)):
+            newpos1 = solc[k,:] + np.dot(solR[k,:], (self.xi0 + xi(k*dt)[0]) *z1 )
+            hist1.append(newpos1)
+            
+            newpos2 = solc[k,:] + np.dot(solR[k,:], (self.xi0 + xi(k*dt)[1]) *z2 )
+            hist2.append(newpos2)
+            
+            newpos3 = solc[k,:] + np.dot(solR[k,:], (self.xi0 + xi(k*dt)[2]) *z3 )
+            hist3.append(newpos3)
+            
+            newpos4 = solc[k,:] + np.dot(solR[k,:], (self.xi0 + xi(k*dt)[3]) *z4 )
+            hist4.append(newpos4)
+            
+            newposc = solc[k,:]
+            histc.append(newposc)
+            
+            
+        
+        hist1 = np.array(hist1)  
+        np.savetxt(filepath + "loc1.csv",  hist1, delimiter =", ")
+        
+        hist2 = np.array(hist2)
+        np.savetxt(filepath + "loc2.csv",  hist2, delimiter =", ")
+        
+        hist3 = np.array(hist3)
+        np.savetxt(filepath + "loc3.csv",  hist3, delimiter =", ")
+        
+        hist4 = np.array(hist4)
+        np.savetxt(filepath + "loc4.csv",  hist4, delimiter =", ")
+        
+        histc = np.array(histc)
+        np.savetxt(filepath + "locc.csv",  histc, delimiter =", ")
+        
+        print("# of keyframes: ", n_keyframes)
+
+    def trajectories_plot(self, sols, highlights = False):
+        """
+        
+
+        Parameters
+        ----------
+        sols : list of numpy arrays 3xn
+            list of trajectories of SPR4.
+        highlights : bool, optional
+            If True, then the start- and endpoints of the trajectories are
+            highlighted. The default is False.
+
+        Returns
+        -------
+        None.
+
+        """
+        
+        #3D Plotting
+        fig = plt.figure(figsize=(24, 6))
+        if highlights:
+            sols_endpoints = []
+            for sol_c in sols:
+                new_endpoints = np.array([sol_c[:,0], sol_c[:, -1]])
+                sols_endpoints.append(new_endpoints)
+                
+        #frontal view
+        ax1 = fig.add_subplot(131, projection = "3d")
+        ax1.set_xlabel('x')
+        ax1.set_ylabel('y')
+        ax1.set_zlabel('z')
+        ax1.set_xticks([])
+        ax1.ticklabel_format(style = "sci", scilimits = (0,0))
+        ax1.tick_params(which='major', pad=5)
+        for sol_c in sols:
+            ax1.plot3D(sol_c[0,:], sol_c[1,:], sol_c[2,:])
+        if highlights:
+            for endpoints in sols_endpoints:
+                ax1.plot3D(endpoints[:,0], endpoints[:,1], endpoints[:,2], "*")
+        ax1.view_init(0, 0)
+        
+        #side view
+        ax2 = fig.add_subplot(132, projection = "3d")
+        ax2.set_xlabel('x')
+        ax2.set_ylabel('y')
+        ax2.set_zlabel('z')
+        ax2.set_yticks([])
+        ax2.ticklabel_format(style = "sci", scilimits = (0,0))
+        ax2.tick_params(which='major', pad=5)
+        for sol_c in sols:
+            ax2.plot3D(sol_c[0,:], sol_c[1,:], sol_c[2,:])
+        if highlights:
+            for endpoints in sols_endpoints:
+                ax2.plot3D(endpoints[:,0], endpoints[:,1], endpoints[:,2], "*")
+        ax2.view_init(0, 90)
+        
+        #top view
+        ax3 = fig.add_subplot(133, projection = "3d")
+        ax3.set_xlabel('x')
+        ax3.set_ylabel('y')
+        ax3.set_zlabel('z')
+        ax3.set_zticks([])
+        ax3.ticklabel_format(style = "sci", scilimits = (0,0))
+        ax3.tick_params(which='major', pad=5)
+        for sol_c in sols:
+            ax3.plot3D(sol_c[0,:], sol_c[1,:], sol_c[2,:])
+        if highlights:
+            for endpoints in sols_endpoints:
+                ax3.plot3D(endpoints[:,0], endpoints[:,1], endpoints[:,2], "*")
+        ax3.view_init(90, 0)
+        
+        plt.tight_layout()
+        plt.show()
+        
+        
+# =============================================================================
+#                           HELPER FUNCTIONS
+# =============================================================================
+          
 def pos_array_to_pos_tuples(pos):
-    n = len(pos)
-    
-    tuples = []
-    
-    for i in range(n):
-        new_tuple = (pos[i, 0], pos[i, 1], pos[i, 2])
-        tuples.append(new_tuple)
-        
-        
-    return tuples
-
-
-def calculate_sphere_positions(swimmer, xi, dxidt, n_strokes, fps, amplification, filepath = "/Users/philipp/Documents/GitHub/stage_cmap/python/"):
-    """
-    
-
+   """
     Parameters
     ----------
-    swimmer : spr4 object
-    xi : vector valued function returning 4x1 arrays
-        control curve .
-    dxidt : vector valued function returning 4x1 arrays
-        time derivative of the control curve.
-    n_strokes : int
-        number of strokes.
-    fps : int
-        frames/s.
-    amplification : float
-        amplification of the results.
-    filepath : string, optional
-        filepath to where one wants to save the histories.
-        The default is "/Users/philipp/Documents/GitHub/stage_cmap/python/".
+    pos : numpy array 3xn
+        trajectory in 3D.
 
     Returns
     -------
-    None. Writes the positions of the 4 spheres and the center into csv files.
-
+    tuples : list of tuples 3x1
+        Every point in the trajectory is reformated into a tuple (x,y,z).
+        One can animate an object in Blender by iterating over this list of
+        tuples.
     """
-    xi0 = swimmer.get_init_length()
+   n = len(pos)
+   tuples = []
     
-    # discretization
-    T = n_strokes*2*np.pi
-    n_keyframes = int(T*fps)
-    dt = 1/fps
-    
-    
-    R0 = np.eye(3)
-    c0 = np.array([0,0,0])
-    p0 = np.vstack((c0, R0))
-    tspan = np.linspace(0, T, n_keyframes)
-    
-    sol = odeintw(swimmer.rhs, p0, tspan, args= (xi, dxidt))
-    solc = sol[:, 0, :]*amplification
-    solR = sol[:, 1:, :]
-    
-    hist1 = []
-    hist2 = []
-    hist3 = []
-    hist4 = []
-    histc = []
-    
-    for k in range(len(sol)):
-        newpos1 = solc[k,:] + np.dot(solR[k,:], (xi0 + xi(k*dt)[0]) *z1 )
-        hist1.append(newpos1)
-        
-        newpos2 = solc[k,:] + np.dot(solR[k,:], (xi0 + xi(k*dt)[1]) *z2 )
-        hist2.append(newpos2)
-        
-        newpos3 = solc[k,:] + np.dot(solR[k,:], (xi0 + xi(k*dt)[2]) *z3 )
-        hist3.append(newpos3)
-        
-        newpos4 = solc[k,:] + np.dot(solR[k,:], (xi0 + xi(k*dt)[3]) *z4 )
-        hist4.append(newpos4)
-        
-        newposc = solc[k,:]
-        histc.append(newposc)
-        
-        
-    
-    hist1 = np.array(hist1)  
-    np.savetxt(filepath + "loc1.csv",  hist1, delimiter =", ")
-    
-    hist2 = np.array(hist2)
-    np.savetxt(filepath + "loc2.csv",  hist2, delimiter =", ")
-    
-    hist3 = np.array(hist3)
-    np.savetxt(filepath + "loc3.csv",  hist3, delimiter =", ")
-    
-    hist4 = np.array(hist4)
-    np.savetxt(filepath + "loc4.csv",  hist4, delimiter =", ")
-    
-    histc = np.array(histc)
-    np.savetxt(filepath + "locc.csv",  histc, delimiter =", ")
-    
-    print("# of keyframes: ", n_keyframes)
+   for i in range(n):
+        new_tuple = (pos[i, 0], pos[i, 1], pos[i, 2])
+        tuples.append(new_tuple)
     
     
+   return tuples
+
 
 def convergence_plot(ax, epsilons, errors,  ylab, xlab, title):
     ax.loglog(epsilons, errors)
@@ -928,125 +1087,14 @@ def convergence_plot(ax, epsilons, errors,  ylab, xlab, title):
     ax.set_title(title)
     
     
-    
 def rel_convergence_plot(ax, epsilons, errors, xlab, ylab):
     ax.plot(epsilons, errors)
     # ax.set_xlim(1/5000, 1)
     ax.set_ylabel(ylab)
     ax.set_xlabel(xlab)
+    
 
-def plot_amp(hist, amp, coords):
-    new_hist = hist
-    
-    for ind in coords:
-        new_hist[ind, :] = amp*new_hist[ind, :]
-    
-    return new_hist 
+
         
         
-        
-    
-
-
-def main():
-
-    a = 0.01
-    xi0 = 200
-    
-    swimmer = spr4(a, xi0)
-    eps = 1/1000000
-    dp = np.array([1, 1, 0, 0, 0, 1])*eps
-    dR = dp[3:]
-    
-    xi, dxidt, coeffs = swimmer.optimal_curve(dp, full=True)
-    
-    n_strokes = 1
-    T = np.linspace(0, n_strokes*2*np.pi, 1000*n_strokes, endpoint=True)
-    t_span = [0, 2*np.pi*n_strokes]
-    
-    
-    R0 = np.eye(3)
-    c0 = np.array([0,0,0])
-    p0 = swimmer.build_ic(c0, R0)
-
-    sol = solve_ivp(swimmer.rhs, t_span,p0, atol=10E-16,rtol= 10E-16,  method="DOP853", args=(xi, dxidt))
-    sol_c = sol.y[:3,:]
-
-
-    dp_raw = swimmer.net_displacement(xi, dxidt)
-    dp_corr = dp_raw + swimmer.correction(dR, coeffs)
-    dc_corr = dp_corr[:3]
-    
-
-    diff = sol_c[:, -1] - sol_c[:, 0]
-    
-    
-    amp = 1
-    amp_axes = [0,1]
-    amp_sol_c = plot_amp(sol_c, amp, amp_axes)
-    startpoint = amp_sol_c[:,0]
-    endpoint = amp_sol_c[:,-1]
-    highlights = np.array([startpoint, endpoint])
-    
-    # print("th net displacement: ", dp)
-    # print("exp net displacement without correction: ", dp_raw)
-    # print("corrected exp net displacement: ", dp_corr)
-    # print("diff: ", diff)
-    # print("||dc_corr - diff||/eps**2", norm(dc_corr - diff))
-
-    
-    print("====THEORETICAL NET DISPLACEMENT=======")
-    print(dp)
-    print("------------------------------")
-    
-    
-    print("=======CURVE ============")
-    print("difference curve: ", diff)
-    print("exp net displacement: ",n_strokes* dp_raw)
-    print("corrected exp net displacement: ",n_strokes* dp_corr)
-    print("------------------------------")
-    
-    #3D Plotting
-    fig = plt.figure(figsize=(12, 4))
-    
-    #frontal view
-    ax1 = fig.add_subplot(131, projection = "3d")
-    ax1.set_xlabel('x')
-    ax1.set_ylabel('y')
-    ax1.set_zlabel('z')
-    ax1.set_xticks([])
-    ax1.ticklabel_format(style = "sci")
-    ax1.plot3D(sol_c[0,:], sol_c[1,:], sol_c[2,:], color="#00a3dd")
-    # ax1.plot3D(highlights[:,0], highlights[:,1], highlights[:,2], "*",  color = "#e31c23")
-    ax1.view_init(0, 0)
-    
-    #side view
-    ax2 = fig.add_subplot(132, projection = "3d")
-    ax2.set_xlabel('x')
-    ax2.set_ylabel('y')
-    ax2.set_zlabel('z')
-    ax2.set_yticks([])
-    ax2.ticklabel_format(style = "sci")
-    ax2.plot3D(sol_c[0,:], sol_c[1,:], sol_c[2,:], color="#00a3dd")
-    # ax2.plot3D(highlights[:,0], highlights[:,1], highlights[:,2], "*", color="#e31c23")
-    ax2.view_init(0, 90)
-    
-    #top view
-    ax3 = fig.add_subplot(133, projection = "3d")
-    ax3.set_xlabel('x')
-    ax3.set_ylabel('y')
-    ax3.set_zlabel('z')
-    ax3.set_zticks([])
-    ax3.ticklabel_format(style = "sci")
-    ax3.plot3D(sol_c[0,:], sol_c[1,:], sol_c[2,:], color="#00a3dd")
-    # ax3.plot3D(highlights[:,0], highlights[:,1], highlights[:,2], "*", color="#e31c23")
-    ax3.view_init(90, 0)
-    
-    plt.tight_layout()
-    plt.show()
-            
-
-    
-
-# main()
 

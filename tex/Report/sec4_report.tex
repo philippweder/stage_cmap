@@ -1,5 +1,5 @@
 \label{sec: linearization}
-Let us return to the control equations for \textsc{SPr4} given by (\ref{eq:dynamical system}). The response of the control system is characterized by the two matrix valued functions $F_c, F_{\theta}: \SO(3) \times \R^4 \to M_{3 \times 4}(\R)$ which can by Proposition \ref{prop: rotational invariance} can be factorized as:
+Let us return to the control equations for \textsc{SPr4} given by (\ref{eq:dynamical system}). The response of the control system is characterized by the two matrix valued functions $F_c, F_{\theta}: \SO(3) \times \R^4 \to M_{3 \times 4}(\R)$ which by Proposition \ref{prop: rotational invariance} can be factorized as:
 \begin{equation}
 \label{eq: reminder control system}
 	F_{c}(R, \zeta) = R F_{c}(\zeta) \text{ and } F_{\theta}(R, \xi) = R F_{\theta}(\zeta),
@@ -7,7 +7,7 @@ Let us return to the control equations for \textsc{SPr4} given by (\ref{eq:dynam
 with $F_{c}(\zeta) := F_c(I, \zeta)$ and $F_{\theta}(\zeta) := F_{\theta}(I, \zeta)$. Hereinafter, we suppose that $\zeta := \xi_0 + \xi$ with $\xi_0 \in \M$ having all its components equal. Furthermore, we set $F_{c, \xi_0}(\xi) := F_{c}(\xi_0 + \xi)$ and analogously $F_{\theta, \xi_0}(\xi) := F_{\theta}(\xi_0 + \xi)$. It has been shown in \cite{Alouges2013} that $F$ and thus both $F_{ c, \xi_0}$ and $F_{\theta, \xi_0}$ are analytic functions. Therefore, we can consider their first order expansions in $\xi$:
 \begin{align}
 \label{eq: spatial control expansion}
-	F_{c, \xi_0}(\xi)\eta &= F_{c, 0} \eta  + \h_{c,0}(\xi \otimes \eta) + \mathcal{O}(|\xi|)\eta\\
+	F_{c, \xi_0}(\xi)\eta &= F_{c, 0} \eta  + \h_{c,0}(\xi \otimes \eta) + \mathcal{O}(|\xi|)\eta,\\
 \label{eq: angular control expansion}
 	F_{\theta, \xi_0}(\xi) \eta &= F_{\theta, 0} \eta + \h_{\theta, 0}(\xi \otimes \eta) + \mathcal{O}(|\xi|)\eta,
 \end{align}
@@ -36,7 +36,7 @@ and
 \end{eqnarray}
 \end{lemma}
 
-\subsection{The zeroth order terms $F_{c,0}$ and $F_{\theta, 0}$} 
+\subsection{The zeroth order terms} 
 One could directly use Lemma \ref{lem: general symmetries of expansion terms} to obtain the terms of order zero up to a scalar by solving a system of two matrix equations as it was done in \cite{Alouges2017}. Yet, there is a direct geometric argument, which incidentally also works for \textsc{SPr3} in \cite{Alouges2017},  that reveals their structure.
 Let us denote by $A^{(i)}$ the $i$-th column of a matrix $A \in M_{m \times n}(\R)$. Then we note that for the spatial term $F_{c,0}$ and any $i \in \N_4$ we obtain from Lemma \ref{lem: general symmetries of expansion terms} and Proposition \ref{prop: spatial permutation invariance}
 \begin{equation}
@@ -48,7 +48,7 @@ Similarly, for any $k \in \N_4$ one has
 \label{eq:zeroth spatial term condition 2}
 F_{c,0}^{(k)} = S_{ij} F_{c,0} P_{ij} e_k = S_{ij} F_{c,0} e_k = S_{ij} F_{c,0}^{(k)}.
 \end{equation}
-Recall that $S_{ij}$ is the reflection that maps the arm $||i$ onto arm $||j$ and vice-versa in the reference orientation, i.e. where $||i$ is collinear to $z_i$, the $i$-th arm of the reference tetrahedron defined in section \ref{sec:modeling}. In particular, the plane of reflection is defined by the origin and the remaining arms of the reference tetrahedron, i.e. by the vectors $z_k$ and $z_l$. Thus, equation (\ref{eq:zeroth spatial term condition 2}) implies that $F_{c,0}^{(k)} \in \Span\{z_k, z_l\}$ as $F_{c,0}^{(k)}$ apparently is an eigenvector associated to the eigenvalue 1 of $S_{ij}$. Yet, the same argument shows that $F_{c,0}^{(k)} \in \Span\{z_k, z_i\}$ and $F_{c,0} \in \Span\{z_k, z_j\}$ and the vectors $z_i, z_j$ and $z_l$ being linearly independent implies that $F_{c,0}^{(k)} = a_k z_k$ for some $a_k \in \R$. Due to equation (\ref{eq:zeroth spatial term condition 1}) and the fact that $S_{ij}$ is orthogonal, we have $|a_i| = |a_j| = |a_k| = |a_l|$. Finally, we note that the quantity $a_k z_k \cdot z_k$ stays constant under change of indices again in consequence of the symmetry conditions from Lemma \ref{lem: general symmetries of expansion terms}. Hence, we have $a_1 = a_2 = a_3 =a_4 := \mathfrak{a}$ and therefore
+Recall that $S_{ij}$ is the reflection that maps the arm $||i$ onto arm $||j$ and vice-versa in the reference orientation, i.e. where $||i$ is collinear to $z_i$, the $i$-th arm of the reference tetrahedron defined in section \ref{sec:modeling}. In particular, the plane of reflection is spanned by the vectors $z_k$ and $z_l$. Thus, equation (\ref{eq:zeroth spatial term condition 2}) implies that $F_{c,0}^{(k)} \in \Span\{z_k, z_l\}$ as $F_{c,0}^{(k)}$ apparently is an eigenvector associated to the eigenvalue 1 of $S_{ij}$. Yet, the same argument shows that $F_{c,0}^{(k)} \in \Span\{z_k, z_i\}$ and $F_{c,0}^{(k)}  \in \Span\{z_k, z_j\}$ and the vectors $z_i, z_j$ and $z_l$ being linearly independent implies that $F_{c,0}^{(k)} = a_k z_k$ for some $a_k \in \R$. Due to equation (\ref{eq:zeroth spatial term condition 1}) and the fact that $S_{ij}$ is orthogonal, we have $|a_i| = |a_j| = |a_k| = |a_l|$. Finally, we note that the quantity $F^{(k)}_{c, 0} \cdot z_k = a_k z_k \cdot z_k$ stays constant under change of indices again in consequence of the symmetry conditions from Lemma \ref{lem: general symmetries of expansion terms}. Hence, we have $a_1 = a_2 = a_3 =a_4 := \mathfrak{a}$ and therefore
 \begin{equation}
 \label{eq:position_zeroth_order_term}
 	F_{c,0} = \mathfrak{a} (z_1 |z_2| z_3|z_4).
@@ -63,7 +63,7 @@ F_{\theta, 0}^{(k)} = -S_{ij} F_{\theta, 0}^{(k)}.
 This means that in this case $F_{\theta,0}^{(k)}$ is an eigenvector to the eigenvalue $-1$ and therefore must be orthogonal to the plane of reflection, i.e. $\Span\{z_k, z_l\}$. The same is true for the reflections $S_{il}$ and $S_{jl}$ and hence $F_{c,0}^{(k)}$ is in particular orthogonal to $z_i, z_j, z_l$. This eventually implies that $ F_{\theta, 0} = 0$ since the latter three vectors form a basis of $\R^3$.
 
 \begin{remark}
-First, we observe that the upper left corner of $F_{c,0}$ corresponding to the arms $||1, ||2$ and $||3$ up to multiplication by a scalar is the same as for \textsc{SPr3} in \cite{Alouges2017}. Furthermore, one notes that physically it is  clear that $F_{\theta,0}$ must vanish since by hypothesis $\xi_0$ has all its components equal and thus the swimmer is in a symmetric shape at $\xi = 0$. Therefore, the balls moving along their axes cannot create any torque.
+First, we observe that the upper left corner of $F_{c,0}$ corresponding to the arms $||1, ||2$ and $||3$ up to multiplication by a scalar is the same as for \textsc{SPr3} in \cite{Alouges2017}. Furthermore, one notes that physically it is  clear that $F_{\theta,0}$ must vanish since by hypothesis $\xi_0$ has all its components equal and thus the swimmer is in a symmetric shape at $\xi = 0$. Therefore, even if they have a nonzero velocity, the balls cannot create any torque.
 \end{remark}
 
 
@@ -88,22 +88,18 @@ First, we observe that the upper left corner of $F_{c,0}$ corresponding to the a
 %First, we observe that the upper left corner of $F_{c,0}$ corresponding to the arms $||1, ||2$ and $||3$ is exactly the same as for \textsc{SPr3} in \cite{Alouges2017}. Furthermore, one notes that physically it is  clear that $F_{\theta,0}$ must vanish since by hypothesis $\xi_0$ has all its components equal and thus the swimmer is in a symmetric shape at $\xi = 0$. Therefore, the balls moving along their axes cannot create any torque. Lastly, one should note that apparently $F_{c,0} \sim (z_1 |z_2|z_3|z_4)$ which can be shown directly using the symmetry properties.
 %\end{remark}
 
-\subsection{The first order terms $\h_{c,0}$ and $\h_{\theta,0}$}
-Following the approach in \cite{Alouges2017}, we evaluate the tensors $\h_{c,0}$ and $\h_{\theta,0}$ on the basis $(e_{i} \otimes e_{j})_{i,j \in \N_4}$. Setting $A_k := (\h_{c,0}(e_i \otimes e_j)\cdot \hat{e}_k)_{i,j \in \N_4}$ and $B_k:= (\h_{\theta,0}(e_i \otimes e_j)\cdot L_k)_{i,j \in \N_4}$ for $k \in \N_3$, we can write the vectors $\h_{c,0}(\xi \otimes \eta), \h_{\theta,0}(\xi \otimes \eta) \in \R^3$ for any $\xi, \eta \in \R^3$ as
-\begin{equation}
+\subsection{The first order terms}
+Following the approach in \cite{Alouges2017}, we evaluate the tensors $\h_{c,0}$ and $\h_{\theta,0}$ on the basis $(e_{i} \otimes e_{j})_{i,j \in \N_4}$. Setting $A_k := (\h_{c,0}(e_i \otimes e_j)\cdot \hat{e}_k)_{i,j \in \N_4}$ and $B_k:= (\h_{\theta,0}(e_i \otimes e_j)\cdot L_k)_{i,j \in \N_4}$ for $k \in \N_3$, we can write the vectors $\h_{c,0}(\xi \otimes \eta)$ and $\h_{\theta,0}(\xi \otimes \eta) \in \R^3$ for any $\xi, \eta \in \R^3$ as
+\begin{align}
 \label{eq: matrix representation of spatial first order term}
-	\h_{c,0}(\xi \otimes \eta) = \sum_{k \in \N_3}(A_k \eta \cdot \xi)\hat{e}_k, 
-\end{equation}
-and similarly
-\begin{equation}
+	\h_{c,0}(\xi \otimes \eta) &= \sum_{k \in \N_3}(A_k \eta \cdot \xi)\hat{e}_k, \\
 \label{eq: matrix representation of angular first order term}
-	\h_{\theta, 0}(\xi \otimes \eta) = \sum_{k \in \N_3}(B_k \eta \cdot \xi) L_k.
-\end{equation}
+	\h_{\theta, 0}(\xi \otimes \eta) &= \sum_{k \in \N_3}(B_k \eta \cdot \xi) L_k.
+\end{align}
 
-We could pursue the approach of \cite{Alouges2017} and directly calculate the matrices $A_k$ and $B_k$. However, as we shall see later, the dynamics of \textsc{SPr4}, up to higher order terms in the norm of the control curve $\xi$, will only be governed by their skew symmetric parts. Thus, we will evade this strenuous task and we determine the skew symmetric matrices $M_k := \tfrac{1}{2}(A_k - A_k^T)$ and $M_{k + 3}:= \tfrac{1}{2}(B_k - B_k^T)$ for $k \in \N_3$, up to two scalar parameters, using a geometric argument similar to the one used in the previous section. Nevertheless, it is possible to calculate the symmetric parts of the matrices $A_k$ and $B_k$ using similar geometric arguments, c.f. appendix, to obtain a complete description of the dynamics.
+We could pursue the approach of \cite{Alouges2017} and directly calculate the matrices $A_k$ and $B_k$ using a symbolic computation software. However, we want to present here a geometrical argument for the structure of their skew symmetric part, where we refer to the appendix for the complete computations.
 
-
-To that end, we notice that Lemma \ref{lem: general symmetries of expansion terms} together with the fact that $(P_{ij})^2 = I$ yields for all $i,j \in \N_4$ and for all $\xi, \eta \in \N_4$
+To that end, let $M_k := \tfrac{1}{2}[A_k - A_k^T], k \in \N_3$ and $M_{k + 3} := \tfrac{1}{2}[B_k - B_k^T], k \in \N_3$. We notice that Lemma \ref{lem: general symmetries of expansion terms} together with the fact that $(P_{ij})^2 = I$ yields for all $i,j \in \N_4$ and $\xi, \eta \in \N_4$
 \begin{equation}
 	S_{ij} \h_{c,0}(P_{ij} \xi \otimes P_{ij} \eta) = \h_{c,0}(\xi \otimes \eta),
 \end{equation}
@@ -121,7 +117,7 @@ For the spatial part, we deduce from the symmetry properties above that for all 
 \begin{equation}
 	\K_{c,0}(e_i \otimes e_j) = S_{ij} \K_{c,0}(e_j \otimes e_i) = -S_{ij} \K_{c,0}(e_i \otimes e_j)
 \end{equation}
-and therefore $\K_{c,0}(e_i \otimes e_j)$ is an eigenvector associated to the eigenvalue $-1$ of the reflection $S_{ij}$. The reflection $S_{ij}$ taking place at the plane passing through the two remaining arms of the reference tetrahedron $z_k$ and $z_l$, implies that $\K_{c,0}(e_i \otimes e_j) = \alpha_{ij}( z_k \times z_l)$ for some scalar $\alpha_{ij} \in \R$. Additionally, we have $\K_{c,0}(e_i \otimes e_j) = S_{jk} \K_{c,0}(e_i \otimes e_k) = \alpha_{ik}(z_j \times z_l)$ and since $S_{jk}$ is orthogonal, we have $|\alpha_{ij}| = |\alpha_{ik}|$ as the vectors $z_i$ are normalized. Eventually, one quickly verifies that the quantity
+and therefore $\K_{c,0}(e_i \otimes e_j)$ is an eigenvector associated to the eigenvalue $-1$ of the reflection $S_{ij}$. The reflection $S_{ij}$ taking place at the plane passing through the two remaining arms of the reference tetrahedron $z_k$ and $z_l$, implies that $\K_{c,0}(e_i \otimes e_j) = \alpha_{ij}( z_k \times z_l)$ for some scalar $\alpha_{ij} \in \R$. Additionally, we have $\K_{c,0}(e_i \otimes e_j) = S_{jk} \K_{c,0}(e_i \otimes e_k) = \alpha_{ik}(z_j \times z_l)$ and since $S_{jk}$ is orthogonal, we have $|\alpha_{ij}| = |\alpha_{ik}|$ because the vectors $z_i$ are normalized. Eventually, one quickly verifies that the quantity
 \begin{equation}
 	\K_{c,0}(e_i \otimes e_j) \cdot \sgn(ijkl) (z_k \times z_l),
 \end{equation}
@@ -201,12 +197,12 @@ At this point, let us point out the apparent similarity between the matrices $M_
 
 \subsection{The linearized control equations}
 Herein, we denote by $J$ the closed interval  $[0,2\pi] \subset \R$ and for every $f \in L^{2}_{\sharp}(J, \R^4)$ we denote by $\langle f \rangle := (2\pi)^{-1} \int_{J} f(s) \dd s$ the average of $f$ on $J$.
-We define the so-called \emph{strokes space} as $\dot{H}_\sharp^1(J, \R^4)$, i.e. the Sobolev space of $2\pi$-periodic vector valued functions of $L_{\sharp}^2(J, \R^4)$ having first order weak derivative in $L_{\sharp}^2(\R^4)$ and average zero. Indeed, we can assume a control curve $\xi \in H^1_{\sharp}(J, \R^4)$ without loss of generality since we can add any non-zero average to the initial shape $\xi_0$.
+We define the so-called \emph{strokes space} as $\dot{H}_\sharp^1(J, \R^4)$, i.e. the Sobolev space of $2\pi$-periodic vector valued functions of $L_{\sharp}^2(J, \R^4)$ having first order weak derivative in $L_{\sharp}^2(\R^4)$ and average zero. In other words, we consider the strokes to be small deviations from the initial configuration with average zero.
 
 In the previous section, we have seen that the control system governing the evolution of \textsc{SPr4} under the action of the control parameters $\zeta \in \M$ is given by
 \begin{align}
 \begin{cases}
-	\dot{c} &= R F_c(\zeta) \dot{\zeta}\\
+	\dot{c} &= R F_c(\zeta) \dot{\zeta},\\
 	\dot{R} &= R F_{\theta}(\zeta) \dot{\zeta},
 \end{cases}
 \end{align}
@@ -215,22 +211,22 @@ where $(c,R) \in \mathcal{P} = \R^3 \times \SO(3)$, the systems $F_{c}, F_{\thet
  \begin{align}
  \label{eq: dynamics first approx}
  \begin{cases}
- 	\dot{c} &= R F_{c,0} \dot{\xi} + R \sum_{k \in \N_3}(A_k \dot{\xi} \cdot \xi)\hat{e_k}\\
+ 	\dot{c} &= R F_{c,0} \dot{\xi} + R \sum_{k \in \N_3}(A_k \dot{\xi} \cdot \xi)\hat{e}_k\\
  	\dot{R} &= R \sum_{k \in \N_3} (B_k \dot{\xi} \cdot \xi) L_k.
  \end{cases}
  \end{align}
-In particular, if we fix $\xi \in H^1_{\sharp}(J, \R^4)$ and define $\Gamma := \sum_{k \in \N_3} (B_k \dot{\xi} \cdot \xi): J \to \so(3)$, then the dynamics of $R$ can be written as an ordinary differential equation on the Lie group $\SO(3)$:
+In particular, if we fix $\xi \in \strokes$ and define $\Gamma := \sum_{k \in \N_3} (B_k \dot{\xi} \cdot \xi): J \to \so(3)$, then the dynamics of $R$ can be written as an ordinary differential equation on the Lie group $\SO(3)$:
 \begin{align}
 \label{eq: orientation ode}
 \begin{cases}
-	\dot{R}(t) = R(t) \Gamma(t)\\
+	\dot{R}(t) = R(t) \Gamma(t),\\
 	R(0) := R_0.
 \end{cases}
 \end{align}
 
-To simplify equations  (\ref{eq: dynamics first approx}) further, we are interested in the solution of (\ref{eq: orientation ode}) in the regime of a small stroke $\xi \in H_{\sharp}^1(J, \R^4)$ or equivalently in the regime of a small vector field $\Gamma$. Intuitively, the solution $R$ of (\ref{eq: orientation ode}) should not deviate too much from the initial value $R_0$ if the vector field $\Gamma$ driving the differential equation is small. The solution of (\ref{eq: orientation ode}) and its relation to a small vector field $\Gamma$ as well as the notion of smallness for the vector field $\Gamma$ in the first place, are mathematically formalized by the concept of \emph{chronological calculus}. For details on the topic, we refer to \cite{Agrachev2004} but essentially it works as follows: First, one identifies any smooth manifold $M$ with the space $C^{\infty}(M)$, on which one defines a certain metric topology, the Whitney topology. Then, the solution of a differential equation $\dot{q}(t) = q(t) V(t)$ for $V$ a non-autonomous vector field on $M$ is given by
+To simplify equations  (\ref{eq: dynamics first approx}) further, we are interested in the solution of (\ref{eq: orientation ode}) in the regime of a small stroke $\xi \in \strokes$ or equivalently in the regime of a small vector field $\Gamma$. Intuitively, the solution $R$ of (\ref{eq: orientation ode}) should not deviate too much from the initial value $R_0$ if the vector field $\Gamma$ driving the differential equation is small. The solution of (\ref{eq: orientation ode}) and its relation to a small vector field $\Gamma$ as well as the notion of smallness for the vector field $\Gamma$ in the first place, are mathematically formalized by the concept of \emph{chronological calculus}. For details on the topic, we refer to \cite{Agrachev2004} but essentially it works as follows: First, one identifies any smooth manifold $M$ with the space $C^{\infty}(M)$, on which one defines a certain metric topology, the Whitney topology. Then, the solution of a differential equation $\dot{q}(t) = q(t) V(t)$ for $V$ a non-autonomous vector field on $M$ is given by
 \begin{equation}
-	q(t) = q(0)\,\chroexp \int_{0}^{t} V(s) \dd s,
+	q(t) = q(0)\circ\chroexp \int_{0}^{t} V(s) \dd s,
 \end{equation}
 where $\chroexp$ is a special operator called the \emph{right chronological exponential}. It is defined as a limit of an iterated integral, see \cite{Agrachev2004}. For the series expansion
 \begin{equation}
@@ -239,20 +235,23 @@ S_m(t) := I + \sum_{n = 1}^{m-1} \int_{\Delta_n(t)} \dotsm \int V(s_n) \circ \do
 \end{equation}
 with $\Delta_n(t) = \{(s_1, \dotsc, s_n) \in \R^n | 0 \leq s_n \leq \dotsm \leq s_1 \leq t\}$, we have
 \begin{align}
-q(t) = S_m(t) + \mathcal{O}(t^m), & & t \downarrow 0.
+q(t) = q(0) \circ S_m(t) + \mathcal{O}(t^m), & & t \downarrow 0.
 \end{align}
 In particular, for an equation of the form $\dot{q}(t) = q(t) \varepsilon V(t)$, it is shown in \cite{Agrachev2004}, that
 \begin{align}
 \label{eq: estimation of chronological exponential}
-	q(t) = S_m^{\varepsilon}(t) + \mathcal{O}(\varepsilon^m), & & \varepsilon \downarrow 0,
+	q(t) = q(0) \circ S_m^{\varepsilon}(t) + \mathcal{O}(\varepsilon^m), & & \varepsilon \downarrow 0,
 \end{align}
 where $S_{m}^{\varepsilon}$ denotes the series expansion (\ref{eq: chron exp series expansion}) for the vector field $\varepsilon V$.
-
-With the estimate (\ref{eq: estimation of chronological exponential}) at hand, let $\hat{\xi} \in H^1_{\sharp}(J, \R^4)$ be a normalized stroke, i.e. $||\hat{\xi}||_{H_{\sharp}^1} = 1$, and $\varepsilon > 0$. Set $\xi := \varepsilon \hat{\xi}$ as well as $\Gamma_\varepsilon := \sum_{k \in \N_3}(B_k \dot{\xi} \cdot \xi) L_k$ such that $\Gamma_1 = \sum_{k \in \N_3}(B_k \dot{\hat{\xi}} \cdot \hat{\xi}) L_k$ and  $\Gamma_\varepsilon = \varepsilon^2 \Gamma_1$. Writing $S_{m}^{\epsilon}$ for the expansion (\ref{eq: chron exp series expansion}) of the vector field $\Gamma_\varepsilon$, we find by (\ref{eq: estimation of chronological exponential})
+With the above estimate at hand, let $\hat{\xi} \in H^1_{\sharp}(J, \R^4)$ be a normalized stroke, i.e. $||\hat{\xi}||_{H_{\sharp}^1} = 1$, and $\varepsilon > 0$. Set $\xi := \varepsilon \hat{\xi}$ as well as 
+\begin{equation}
+\Gamma_\varepsilon := \sum_{k \in \N_3}(B_k \dot{\xi} \cdot \xi) L_k, \text{ such that } \Gamma_1 = \sum_{k \in \N_3}(B_k \dot{\hat{\xi}} \cdot \hat{\xi}) L_k,
+\end{equation}
+and  $\Gamma_\varepsilon = \varepsilon^2 \Gamma_1$. Writing $S_{m}^{\epsilon}$ for the expansion (\ref{eq: chron exp series expansion}) of the vector field $\Gamma_\varepsilon$, we obtain from (\ref{eq: estimation of chronological exponential}) that
 \begin{align}
-	R(t) = R_0 \left ( I + \int_{0}^{t} \Gamma_\varepsilon(\tau) \dd\tau \right ) + \mathcal{O}(\epsilon^4), & & \varepsilon \downarrow 0.
+	R(t) = R_0 \circ \left ( I + \int_{0}^{t} \Gamma_\varepsilon(\tau) \dd\tau \right ) + \mathcal{O}(\epsilon^4), & & \varepsilon \downarrow 0.
 \end{align}
-Hence, choosing $R_0 = I$, we have in particular the following approximations for any $t \in J $
+Hence, choosing $R_0 = I$ yields in particular the following approximations for any $t \in J:$
 \begin{align}
 \label{eq: linearized ode}
 \begin{cases}
@@ -260,12 +259,13 @@ Hence, choosing $R_0 = I$, we have in particular the following approximations fo
 \dot{R} &= \left ( I + \int_{0}^{t} \Gamma_\varepsilon(\tau) \dd\tau \right ) \sum_{k \in \N_3}(B_k \dot{\xi} \cdot \xi) L_k + \mathcal{O}(\varepsilon^4),
 \end{cases}
 \end{align}
-for $\varepsilon\downarrow 0$. By integrating the previous two relations over $J$, we find an estimate of the net displacement undergone by the center $c$ of \textsc{SPr4} as well as its orientation $R$ after a small stroke. Moreover, with equations (\ref{eq: linearized ode}) we can express the net displacements $\delta c$ and $\delta R$ as maps $H_{\sharp}^1(J,\R^4) \to \R^3$ and $H_{\sharp}^1(J,\R^4) \to \so(3)$, respectively, given by $\xi \mapsto 2 \pi \langle \dot{c}(\xi) \rangle $ and $\xi \mapsto 2 \pi \langle \dot{R}(\xi) \rangle$, respectively. Consequently, let us prove that
+for $\varepsilon\downarrow 0$. By integrating the previous two relations over $J$, we find an estimate of the net displacement undergone by the center $c$ of \textsc{SPr4} as well as its orientation $R$ after a small stroke. Moreover, with equations (\ref{eq: linearized ode}) we can express the net displacements $\delta c$ and $\delta R$ as maps $\strokes \to \R^3$ and $\strokes \to \so(3)$, respectively, given by $\xi \mapsto 2 \pi \langle \dot{c}(\xi) \rangle $ and $\xi \mapsto 2 \pi \langle \dot{R}(\xi) \rangle$. Consequently, let us prove the following result:
 
 \begin{proposition}
 \label{prop:net displacement}
-For any $\xi \in H_\sharp^1(J, \R^4)$, in a neighborhood of $0 \in H_{\sharp}^{1}(J, \R^4)$, the following estimates hold
+For any $\xi \in \strokes$, in a neighborhood of $0 \in \strokes$, the following estimates hold
 \begin{equation}
+\label{eq:net displacement expansion}
 \begin{aligned}
 \delta c(\xi) &= 2 \pi \sum_{k \in \N_3} \langle A_k \dot{\xi} \cdot \xi \rangle \hat{e}_k + \mathcal{O}(||\xi||_{H^1_{\sharp}}^3),\\
 \delta R(\xi) &= 2 \pi \sum_{k \in \N_3} \langle B_k \dot{\xi} \cdot \xi \rangle L_k + \mathcal{O}(||\xi||^4_{H_\sharp^1}).
@@ -282,28 +282,28 @@ as well as $ \langle  ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(
 \begin{equation}
 \begin{aligned}
 \left |\int_J \left ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau) \cdot \hat{\xi}(\tau) \dd \tau\right ) \dot{\hat{\xi}}_i(t) \dd t \right | = \left | \int_{0}^{2\pi} B_k \dot{\hat{\xi}}(t) \cdot \hat{\xi}(t) \int_{t}^{2 \pi} \dot{\hat{\xi}}_i(s) \dd s \dd t \right |\\
-\leq ||B_k||_{op} \int_{J} |\dot{\hat{\xi}}(t)| \cdot |\hat{\xi}(t) - \hat{\xi}(0)|^2 \dd t
+\leq ||B_k||_{\mathrm{op}} \int_{J} |\dot{\hat{\xi}}(t)| \cdot |\hat{\xi}(t) - \hat{\xi}(0)|^2 \dd t.
 \end{aligned}
 \end{equation}
-The Sobolev-Morrey embedding $H_\sharp^{1}(J, \R^4) \subseteq L^\infty_{\sharp}(J, \R^4)$ guarantees the existence of a $c_S > 0$ such that $||\xi||_{\infty} \leq c_S ||\xi||_{H_\sharp^1}$ for every $\xi \in H_\sharp^1(J, \R^4)$. Hence, we have
+The Sobolev-Morrey embedding $H_\sharp^{1}(J, \R^4) \subseteq L^\infty_{\sharp}(J, \R^4)$ guarantees the existence of a $c_S > 0$ such that $||\xi||_{\infty} \leq c_S ||\xi||_{H_\sharp^1}$ for every $\xi \in \strokes$. Hence, we have
 \begin{equation}
 \begin{aligned}
 \left | \left \langle \left  ( \int_{0}^{t} B_k \dot{\hat{\xi}}(\tau)  \cdot \hat{\xi}(\tau) \dd \tau  \right )\dot{\hat{\xi}}_i \right  \rangle\right |
-& \leq ||B_k||_{op} ||\hat{\xi}||_{\infty}^2 ||||_{H_\sharp^1}\\
-&\leq c_S ||B_k||_{op} ||\hat{\xi}||_{H_\sharp^1}^3 = c_S ||B_k||_{op},
+& \leq ||B_k||_{\mathrm{op}} ||\hat{\xi}||_{\infty}^2 ||\hat{\xi}||_{H_\sharp^1}\\
+&\leq c_S ||B_k||_{\mathrm{op}} ||\hat{\xi}||_{H_\sharp^1}^3 = c_S ||B_k||_{\mathrm{op}},
 \end{aligned}
 \end{equation}
 which is clearly bounded. This finishes the proof.
 \end{proof}
 
-To end this section, we note that on the one hand, we have $\langle A_k \dot{\xi} \cdot \xi \rangle = \langle M_k \dot{\xi} \cdot \xi \rangle$ and $\langle B_k \dot{\xi} \cdot \xi \rangle = \langle M_{k + 3} \dot{\xi} \cdot \xi \rangle$ for all $k \in \N_3$. Indeed, if $A$ is a symmetric matrix, we have by integration by parts that $\langle A \xi \cdot \dot{\xi} \rangle = \langle A \dot{\xi} \cdot \xi \rangle = - \langle A \xi \cdot \dot{\xi} \rangle $ and thus only the skew-symmetric parts of the matrices $A_k$ and $B_k$ contribute to the net displacement. Furthermore, similarly to \cite{Alouges2017}, we can represent the terms $ M_k \dot{\xi} \cdot \xi$ in terms of certain operations of the orthonormal basis $\{\tau_i\}_{i \in \N_4}$ of $\R^4$. In fact, we find by straightforward calculation using  that
+To end this section, we note that on the one hand, we have $\langle A_k \dot{\xi} \cdot \xi \rangle = \langle M_k \dot{\xi} \cdot \xi \rangle$ and $\langle B_k \dot{\xi} \cdot \xi \rangle = \langle M_{k + 3} \dot{\xi} \cdot \xi \rangle$ for all $k \in \N_3$. Indeed, if $A$ is a symmetric matrix, we have by integration by parts that $\langle A \xi \cdot \dot{\xi} \rangle = \langle A \dot{\xi} \cdot \xi \rangle = - \langle A \xi \cdot \dot{\xi} \rangle = 0 $ and thus only the skew-symmetric parts of the matrices $A_k$ and $B_k$ contribute to the net displacement. Furthermore, similarly to \cite{Alouges2017}, we can represent the terms $ M_k \dot{\xi} \cdot \xi$ in terms of certain operations of the orthonormal basis $\{\tau_i\}_{i \in \N_4}$ of $\R^4$. In fact, by setting $\mathfrak{h}_c := -2\sqrt{6} \alpha$ and $\mathfrak{h}_{\theta} := -2\sqrt{6}\delta$, we find by straightforward calculation that
 \begin{align}
-  M_k \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\alpha \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}), & & k \in \N_3 \\
-  M_{3 + k} \dot{\xi} \cdot \xi &= - 2 \sqrt{6} \,\delta \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4}), & & k \in \N_3,
+  M_k \dot{\xi} \cdot \xi &= \mathfrak{h}_c \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}), & & k \in \N_3 \\
+  M_{3 + k} \dot{\xi} \cdot \xi &= \mathfrak{h}_{\theta} \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4}), & & k \in \N_3,
 \end{align}
-where $\det(\xi|\dot{\xi}|\tau_j|\tau_k)$ denotes the determinant of the matrix $(\xi|\dot{\xi}|\tau_j |\tau_k)$ and the index $k$ is reduced mod 3 to simplify the notation. Ultimately, using that $\R^3 \times \so(3) \simeq \R^6$, we can write the net displacement in position and orientation simultaneously as
+where $\det(\xi|\dot{\xi}|\tau_j|\tau_k)$ denotes the determinant of the matrix $(\xi|\dot{\xi}|\tau_j |\tau_k)$ and the index $k$ is reduced mod 3 to simplify the notation. Ultimately, using that $\R^3 \times \so(3) \simeq \R^6$ and the above expressions, we can write the net displacement in position and orientation simultaneously as
 \begin{equation}
 \label{eq: net displacement}
-\frac{\delta p}{2 \pi}= - 2  \sqrt{6} \alpha \sum_{k \in \N_3}\langle \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}) \rangle f_k  - 2  \sqrt{6} \delta \sum_{k \in \N_3}\langle \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4})\rangle f_{k + 3},
+\frac{\delta p}{2 \pi}= \mathfrak{h}_c \sum_{k \in \N_3}\langle \det( \xi | \dot{\xi} | \tau_{k+1} | \tau_{k+2}) \rangle f_k + \mathfrak{h}_\theta \sum_{k \in \N_3}\langle \det ( \xi | \dot{\xi} | \tau_{k} | \tau_{4})\rangle f_{k + 3},
 \end{equation}
 where $\{f_i\}_{i \in \N_6}$ denotes the canonical Basis of $\R^6$ and the index $k$ is once more reduced mod 3. This representation will prove particularly useful in the following section.
